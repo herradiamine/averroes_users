@@ -56,25 +56,25 @@ class User
         }
     }
 
-    private function initUserEntity(array $user): void
+    private function initUserEntity(array $userData): void
     {
-        $this->setUserId($user['id']);
-        $this->setUserName($user['name']);
-        $this->setUserFirstname($user['firstName']);
-        $this->setUserLastname($user['lastName']);
+        $this->setUserId($userData['id']);
+        $this->setUserName($userData['name']);
+        $this->setUserFirstname($userData['firstName']);
+        $this->setUserLastname($userData['lastName']);
         $this->setUserEmail(
-            new Email($user['email'])
+            new Email($userData['email'])
         );
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $user['creationDate']
+                $userData['creationDate']
             )
         );
         $this->setUpdateDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $user['updateDate']
+                $userData['updateDate']
             )
         );
     }
