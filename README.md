@@ -1,2 +1,2 @@
-# averoes_users
-Averroes users microservice
+# Averroès Users Microservice
+Averroès's users microservice
