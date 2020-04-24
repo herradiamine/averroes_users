@@ -1,8 +1,10 @@
 <?php
 
+namespace App;
+
 /**
  * Class UserModel
- * @package averoes_users\app
+ * @package App
  */
 class UserModel
 {

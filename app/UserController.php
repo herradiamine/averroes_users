@@ -1,9 +1,10 @@
 <?php
 
+namespace App;
 
 /**
  * Class UserController
- * @package averoes_uers/app
+ * @package App
  */
 class UserController
 {
