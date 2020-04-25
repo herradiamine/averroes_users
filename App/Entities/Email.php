@@ -2,28 +2,61 @@
 
 namespace App\Entities;
 
+use DateTimeImmutable;
+
 /**
  * Class Email
  * @package App\Entities
  */
 class Email
 {
+    /** @var int $emailId */
+    private int $emailId;
+
     /** @var string $email */
     private string $email;
+
     /** @var string $localPart */
     private string $localPart;
+
     /** @var string $domainName */
     private string $domainName;
-    /** @var string $domainExtension */
-    private string $domainExtension;
+
+    /** @var string $domainExt */
+    private string $domainExt;
+
+    /** @var DateTimeImmutable $creationDate */
+    private DateTimeImmutable $creationDate;
+
+    /** @var DateTimeImmutable $updateDate */
+    private DateTimeImmutable $updateDate;
 
     /**
      * Email constructor.
-     * @param string $email
+     * @param array $email
      */
-    public function __construct(string $email)
+    public function __construct(array $email = [])
+    {
+        if (!empty($user)) {
+            $this->initEmailEntity($email);
+        }
+    }
+
+    private function initEmailEntity(array $emailData): void
     {
 
+    }
+
+    /** @return int */
+    public function getEmailId(): int
+    {
+        return $this->emailId;
+    }
+
+    /** @param int $emailId */
+    public function setEmailId(int $emailId): void
+    {
+        $this->emailId = $emailId;
     }
 
     /** @return string */
@@ -63,14 +96,38 @@ class Email
     }
 
     /** @return string */
-    public function getDomainExtension(): string
+    public function getDomainExt(): string
     {
-        return $this->domainExtension;
+        return $this->domainExt;
     }
 
-    /** @param string $domainExtension */
-    public function setDomainExtension(string $domainExtension): void
+    /** @param string $domainExt */
+    public function setDomainExt(string $domainExt): void
     {
-        $this->domainExtension = $domainExtension;
+        $this->domainExt = $domainExt;
+    }
+
+    /** @return DateTimeImmutable */
+    public function getCreationDate(): DateTimeImmutable
+    {
+        return $this->creationDate;
+    }
+
+    /** @param DateTimeImmutable $creationDate */
+    public function setCreationDate(DateTimeImmutable $creationDate): void
+    {
+        $this->creationDate = $creationDate;
+    }
+
+    /** @return DateTimeImmutable */
+    public function getUpdateDate(): DateTimeImmutable
+    {
+        return $this->updateDate;
+    }
+
+    /** @param DateTimeImmutable $updateDate */
+    public function setUpdateDate(DateTimeImmutable $updateDate): void
+    {
+        $this->updateDate = $updateDate;
     }
 }

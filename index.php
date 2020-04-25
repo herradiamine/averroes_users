@@ -4,7 +4,6 @@ ini_set('display_errors', 'On');
 
 include 'vendor/autoload.php';
 
-use App\Entities\Email;
 use App\Entities\User;
 
 $users = [

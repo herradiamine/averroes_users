@@ -10,39 +10,25 @@ use DateTimeImmutable;
  */
 class User
 {
-    /**
-     * @var int $userId
-     */
+    /** @var int $userId */
     private int $userId;
 
-    /**
-     * @var string $userName
-     */
+    /** @var string $userName */
     private string $userName;
 
-    /**
-     * @var string $userFirstname
-     */
+    /** @var string $userFirstname */
     private string $userFirstname;
 
-    /**
-     * @var string $userLastname
-     */
+    /** @var string $userLastname */
     private string $userLastname;
 
-    /**
-     * @var Email $userEmail
-     */
+    /** @var Email $userEmail */
     private Email $userEmail;
 
-    /**
-     * @var DateTimeImmutable $creationDate
-     */
+    /** @var DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
 
-    /**
-     * @var DateTimeImmutable $updateDate
-     */
+    /** @var DateTimeImmutable $updateDate */
     private DateTimeImmutable $updateDate;
 
     /**
