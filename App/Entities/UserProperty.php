@@ -45,7 +45,23 @@ class UserProperty
     /** @param array $userPropertyData */
     private function initUserProperty(array $userPropertyData): void
     {
-
+        $this->setUserPropertyId($userPropertyData['userPropertyId']);
+        $this->setUserGroupId($userPropertyData['userGroupId']);
+        $this->setName($userPropertyData['name']);
+        $this->setType($userPropertyData['type']);
+        $this->setEnabled($userPropertyData['enabled']);
+        $this->setCreationDate(
+            DateTimeImmutable::createFromFormat(
+                DATE_W3C,
+                $userPropertyData['creationDate']
+            )
+        );
+        $this->setUpdateDate(
+            DateTimeImmutable::createFromFormat(
+                DATE_W3C,
+                $userPropertyData['updateDate']
+            )
+        );
     }
 
     /** @return int */

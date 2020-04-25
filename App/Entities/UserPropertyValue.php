@@ -42,7 +42,22 @@ class UserPropertyValue
     /** @param array $propertyValueData */
     private function initUserPropertyValue(array $propertyValueData): void
     {
-
+        $this->setUserPropertyValueId($propertyValueData['userPropertyValueId']);
+        $this->setUserId($propertyValueData['userId']);
+        $this->setUserPropertyId($propertyValueData['userPropertyId']);
+        $this->setCustomValue($propertyValueData['customValue']);
+        $this->setCreationDate(
+            DateTimeImmutable::createFromFormat(
+                DATE_W3C,
+                $propertyValueData['creationDate']
+            )
+        );
+        $this->setUpdateDate(
+            DateTimeImmutable::createFromFormat(
+                DATE_W3C,
+                $propertyValueData['updateDate']
+            )
+        );
     }
 
     /** @return int */

@@ -45,7 +45,23 @@ class Email
     /** @param array $emailData */
     private function initEmail(array $emailData): void
     {
-
+        $this->setEmailId($emailData['emailId']);
+        $this->setEmail($emailData['email']);
+        $this->setLocalPart($emailData['localPart']);
+        $this->setDomainName($emailData['domainName']);
+        $this->setDomainExt($emailData['domainExt']);
+        $this->setCreationDate(
+            DateTimeImmutable::createFromFormat(
+                DATE_W3C,
+                $emailData['creationDate']
+            )
+        );
+        $this->setUpdateDate(
+            DateTimeImmutable::createFromFormat(
+                DATE_W3C,
+                $emailData['updateDate']
+            )
+        );
     }
 
     /** @return int */
