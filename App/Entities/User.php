@@ -13,6 +13,9 @@ class User
     /** @var int $userId */
     private int $userId;
 
+    /** @var int|null $userGroupId */
+    private ?int $userGroupId;
+
     /** @var string $userName */
     private string $userName;
 
@@ -28,23 +31,25 @@ class User
     /** @var DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
 
-    /** @var DateTimeImmutable $updateDate */
-    private DateTimeImmutable $updateDate;
+    /** @var DateTimeImmutable|null $updateDate */
+    private ?DateTimeImmutable $updateDate;
 
     /**
      * User constructor.
-     * @param array $user
+     * @param array $userData
      */
-    public function __construct(array $user = [])
+    public function __construct(array $userData = [])
     {
-        if (!empty($user)) {
-            $this->initUserEntity($user);
+        if (!empty($userData)) {
+            $this->initUser($userData);
         }
     }
 
-    private function initUserEntity(array $userData): void
+    /** @param array $userData */
+    private function initUser(array $userData): void
     {
         $this->setUserId($userData['id']);
+        $this->setUserGroupId($userData['groupId']);
         $this->setUserName($userData['name']);
         $this->setUserFirstname($userData['firstName']);
         $this->setUserLastname($userData['lastName']);
@@ -75,6 +80,18 @@ class User
     public function setUserId(int $userId): void
     {
         $this->userId = $userId;
+    }
+
+    /** @return int|null */
+    public function getUserGroupId(): ?int
+    {
+        return $this->userGroupId;
+    }
+
+    /** @param int|null $userGroupId */
+    public function setUserGroupId(int $userGroupId = null): void
+    {
+        $this->userGroupId = $userGroupId;
     }
 
     /** @return string */
@@ -137,14 +154,14 @@ class User
         $this->creationDate = $creationDate;
     }
 
-    /** @return DateTimeImmutable */
-    public function getUpdateDate(): DateTimeImmutable
+    /** @return DateTimeImmutable|null */
+    public function getUpdateDate(): ?DateTimeImmutable
     {
         return $this->updateDate;
     }
 
-    /** @param DateTimeImmutable $updateDate */
-    public function setUpdateDate(DateTimeImmutable $updateDate): void
+    /** @param DateTimeImmutable|null $updateDate */
+    public function setUpdateDate(DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;
     }

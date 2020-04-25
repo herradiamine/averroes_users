@@ -28,21 +28,22 @@ class Email
     /** @var DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
 
-    /** @var DateTimeImmutable $updateDate */
-    private DateTimeImmutable $updateDate;
+    /** @var DateTimeImmutable|null $updateDate */
+    private ?DateTimeImmutable $updateDate;
 
     /**
      * Email constructor.
-     * @param array $email
+     * @param array $emailData
      */
-    public function __construct(array $email = [])
+    public function __construct(array $emailData = [])
     {
-        if (!empty($user)) {
-            $this->initEmailEntity($email);
+        if (!empty($email)) {
+            $this->initEmail($emailData);
         }
     }
 
-    private function initEmailEntity(array $emailData): void
+    /** @param array $emailData */
+    private function initEmail(array $emailData): void
     {
 
     }
@@ -119,14 +120,14 @@ class Email
         $this->creationDate = $creationDate;
     }
 
-    /** @return DateTimeImmutable */
-    public function getUpdateDate(): DateTimeImmutable
+    /** @return DateTimeImmutable|null */
+    public function getUpdateDate(): ?DateTimeImmutable
     {
         return $this->updateDate;
     }
 
-    /** @param DateTimeImmutable $updateDate */
-    public function setUpdateDate(DateTimeImmutable $updateDate): void
+    /** @param DateTimeImmutable|null $updateDate */
+    public function setUpdateDate(DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;
     }

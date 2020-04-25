@@ -13,8 +13,8 @@ class UserProperty
     /** @var int $userPropertyId */
     private int $userPropertyId;
 
-    /** @var int|null $userId */
-    private ?int $userId;
+    /** @var int|null $userGroupId */
+    private ?int $userGroupId;
 
     /** @var string $name */
     private string $name;
@@ -33,9 +33,17 @@ class UserProperty
 
     /**
      * UserProperty constructor.
-     * @param array $userProperty
+     * @param array $userPropertyData
      */
-    public function __construct(array $userProperty = [])
+    public function __construct(array $userPropertyData = [])
+    {
+        if (!empty($userPropertyData)) {
+            $this->initUserProperty($userPropertyData);
+        }
+    }
+
+    /** @param array $userPropertyData */
+    private function initUserProperty(array $userPropertyData): void
     {
 
     }
@@ -53,15 +61,15 @@ class UserProperty
     }
 
     /** @return int|null */
-    public function getUserId(): ?int
+    public function getUserGroupId(): ?int
     {
-        return $this->userId;
+        return $this->userGroupId;
     }
 
-    /** @param int|null $userId */
-    public function setUserId(int $userId = null): void
+    /** @param int|null $userGroupId */
+    public function setUserGroupId(int $userGroupId = null): void
     {
-        $this->userId = $userId;
+        $this->userGroupId = $userGroupId;
     }
 
     /** @return string */
@@ -118,7 +126,7 @@ class UserProperty
         return $this->updateDate;
     }
 
-    /** @param DateTimeImmutable $updateDate */
+    /** @param DateTimeImmutable|null $updateDate */
     public function setUpdateDate(DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;

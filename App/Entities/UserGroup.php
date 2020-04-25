@@ -10,16 +10,31 @@ use DateTimeImmutable;
  */
 class UserGroup
 {
+    /** @var int $userGroupId */
     private int $userGroupId;
+
+    /** @var string $userGroupName */
     private string $userGroupName;
+
+    /** @var DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
-    private DateTimeImmutable $updateDate;
+
+    /** @var DateTimeImmutable|null $updateDate */
+    private ?DateTimeImmutable $updateDate;
 
     /**
      * UserGroup constructor.
-     * @param array $userGroup
+     * @param array $userGroupData
      */
-    public function __construct(array $userGroup = [])
+    public function __construct(array $userGroupData = [])
+    {
+        if (!empty($userGroupData)) {
+            $this->initUserGroup($userGroupData);
+        }
+    }
+
+    /** @param array $userGroupData */
+    private function initUserGroup(array $userGroupData): void
     {
 
     }
@@ -60,14 +75,14 @@ class UserGroup
         $this->creationDate = $creationDate;
     }
 
-    /** @return DateTimeImmutable */
-    public function getUpdateDate(): DateTimeImmutable
+    /** @return DateTimeImmutable|null */
+    public function getUpdateDate(): ?DateTimeImmutable
     {
         return $this->updateDate;
     }
 
-    /** @param DateTimeImmutable $updateDate */
-    public function setUpdateDate(DateTimeImmutable $updateDate): void
+    /** @param DateTimeImmutable|null $updateDate */
+    public function setUpdateDate(DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;
     }
