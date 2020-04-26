@@ -11,16 +11,20 @@ use DateTimeImmutable;
  */
 class UserGroup implements EntityInterface
 {
-    public const LABEL_USER_GROUP_ID   = 'userGroupId';
-    public const LABEL_USER_GROUP_NAME = 'userGroupName';
-    public const LABEL_CREATION_DATE   = 'creationDate';
-    public const LABEL_UPDATE_DATE     = 'updateDate';
+    public const LABEL_USER_GROUP_ID   = 'user_group_id';
+    public const LABEL_USER_GROUP_NAME = 'group_name';
+    public const LABEL_GROUP_ENABLED   = 'group_enabled';
+    public const LABEL_CREATION_DATE   = 'create_date';
+    public const LABEL_UPDATE_DATE     = 'update_date';
 
     /** @var int $userGroupId */
     private int $userGroupId;
 
-    /** @var string $userGroupName */
-    private string $userGroupName;
+    /** @var string $groupName */
+    private string $groupName;
+
+    /** @var bool $groupEnabled */
+    private bool $groupEnabled;
 
     /** @var DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
@@ -43,7 +47,8 @@ class UserGroup implements EntityInterface
     public function initEntity(array $entityData): void
     {
         $this->setUserGroupId($entityData[self::LABEL_USER_GROUP_ID]);
-        $this->setUserGroupName($entityData[self::LABEL_USER_GROUP_NAME]);
+        $this->setGroupName($entityData[self::LABEL_USER_GROUP_NAME]);
+        $this->setGroupEnabled($entityData[self::LABEL_GROUP_ENABLED]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
@@ -71,15 +76,27 @@ class UserGroup implements EntityInterface
     }
 
     /** @return string */
-    public function getUserGroupName(): string
+    public function getGroupName(): string
     {
-        return $this->userGroupName;
+        return $this->groupName;
     }
 
-    /** @param string $userGroupName */
-    public function setUserGroupName(string $userGroupName): void
+    /** @param string $groupName */
+    public function setGroupName(string $groupName): void
     {
-        $this->userGroupName = $userGroupName;
+        $this->groupName = $groupName;
+    }
+
+    /** @return bool */
+    public function isGroupEnabled(): bool
+    {
+        return $this->groupEnabled;
+    }
+
+    /** @param bool $groupEnabled */
+    public function setGroupEnabled(bool $groupEnabled): void
+    {
+        $this->groupEnabled = $groupEnabled;
     }
 
     /** @return DateTimeImmutable */

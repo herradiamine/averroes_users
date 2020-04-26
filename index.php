@@ -5,10 +5,10 @@ ini_set('display_errors', 'On');
 
 include 'vendor/autoload.php';
 
-use App\Entities\UserEmail;
-use App\Entities\UserPassword;
 use App\Entities\User;
+use App\Entities\UserEmail;
 use App\Entities\UserGroup;
+use App\Entities\UserPassword;
 use App\Entities\UserProperty;
 use App\Entities\UserPropertyValue;
 
@@ -85,7 +85,7 @@ $user_property = [
     UserProperty::LABEL_USER_GROUP_ID    => 3409248095243,
     UserProperty::LABEL_NAME             => 'hasBankAccount',
     UserProperty::LABEL_TYPE             => 'boolean',
-    UserProperty::LABEL_ENABLED          => true,
+    UserProperty::LABEL_PROPERTY_ENABLED          => true,
     UserProperty::LABEL_CREATION_DATE    => date(
         DATE_W3C,
         strtotime('yesterday')

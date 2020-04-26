@@ -16,6 +16,7 @@ class User implements EntityInterface
     public const LABEL_USER_NAME      = 'user_name';
     public const LABEL_USER_FIRSTNAME = 'user_firstname';
     public const LABEL_USER_LASTNAME  = 'user_lastname';
+    public const LABEL_USER_ENABLED   = 'user_enabled';
     public const LABEL_CREATION_DATE  = 'creation_date';
     public const LABEL_UPDATE_DATE    = 'update_date';
 
@@ -33,6 +34,9 @@ class User implements EntityInterface
 
     /** @var string $userLastname */
     private string $userLastname;
+
+    /** @var bool $userEnabled */
+    private bool $userEnabled;
 
     /** @var DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
@@ -59,6 +63,7 @@ class User implements EntityInterface
         $this->setUserName($entityData[self::LABEL_USER_NAME]);
         $this->setUserFirstname($entityData[self::LABEL_USER_FIRSTNAME]);
         $this->setUserLastname($entityData[self::LABEL_USER_LASTNAME]);
+        $this->setUserEnabled($entityData[self::LABEL_USER_ENABLED]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
@@ -131,6 +136,18 @@ class User implements EntityInterface
     public function setUserLastname(string $userLastname): void
     {
         $this->userLastname = $userLastname;
+    }
+
+    /** @return bool */
+    public function isUserEnabled(): bool
+    {
+        return $this->userEnabled;
+    }
+
+    /** @param bool $userEnabled */
+    public function setUserEnabled(bool $userEnabled): void
+    {
+        $this->userEnabled = $userEnabled;
     }
 
     /** @return DateTimeImmutable */
