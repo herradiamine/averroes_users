@@ -9,7 +9,7 @@ use DateTimeImmutable;
  * Class Password
  * @package App\Entities
  */
-class Password implements EntityInterface
+class UserPassword implements EntityInterface
 {
     public const LABEL_PASSWORD_ID      = 'password_id';
     public const LABEL_USER_ID          = 'user_id';
@@ -47,9 +47,25 @@ class Password implements EntityInterface
         }
     }
 
+    /** @param array $entityData */
     public function initEntity(array $entityData): void
     {
-        // TODO: Implement initEntity() method.
+        $this->setPasswordId($entityData[self::LABEL_PASSWORD_ID]);
+        $this->setUserId($entityData[self::LABEL_USER_ID]);
+        $this->setPassword($entityData[self::LABEL_PASSWORD]);
+        $this->setPasswordEnabled($entityData[self::LABEL_PASSWORD_ENABLED]);
+        $this->setCreationDate(
+            DateTimeImmutable::createFromFormat(
+                DATE_W3C,
+                $entityData[self::LABEL_CREATION_DATE]
+            )
+        );
+        $this->setUpdateDate(
+            DateTimeImmutable::createFromFormat(
+                DATE_W3C,
+                $entityData[self::LABEL_UPDATE_DATE]
+            )
+        );
     }
 
     /** @return int */

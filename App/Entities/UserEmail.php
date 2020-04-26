@@ -9,7 +9,7 @@ use DateTimeImmutable;
  * Class Email
  * @package App\Entities
  */
-class Email implements EntityInterface
+class UserEmail implements EntityInterface
 {
     public const LABEL_EMAIL_ID      = 'emailId';
     public const LABEL_USER_ID       = 'userId';

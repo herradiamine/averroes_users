@@ -5,48 +5,49 @@ ini_set('display_errors', 'On');
 
 include 'vendor/autoload.php';
 
-use App\Entities\Email;
-use App\Entities\Password;
+use App\Entities\UserEmail;
+use App\Entities\UserPassword;
 use App\Entities\User;
 use App\Entities\UserGroup;
 use App\Entities\UserProperty;
 use App\Entities\UserPropertyValue;
-use Faker\Factory;
+
+// use Faker\Factory;
 
 // Instance d'un email
 $email = [
-    Email::LABEL_EMAIL_ID      => 3098432098234,
-    Email::LABEL_EMAIL         => 'amine.herradi@gmail.com',
-    Email::LABEL_LOCAL_PART    => 'amine.herradi',
-    Email::LABEL_DOMAIN_NAME   => 'gmail',
-    Email::LABEL_DOMAIN_EXT    => '.com',
-    Email::LABEL_CREATION_DATE => date(
+    UserEmail::LABEL_EMAIL_ID      => 3098432098234,
+    UserEmail::LABEL_EMAIL         => 'amine.herradi@gmail.com',
+    UserEmail::LABEL_LOCAL_PART    => 'amine.herradi',
+    UserEmail::LABEL_DOMAIN_NAME   => 'gmail',
+    UserEmail::LABEL_DOMAIN_EXT    => '.com',
+    UserEmail::LABEL_CREATION_DATE => date(
         DATE_W3C,
         strtotime('yesterday')
     ),
-    Email::LABEL_UPDATE_DATE   => date(
+    UserEmail::LABEL_UPDATE_DATE   => date(
         DATE_W3C,
         strtotime('today')
     )
 ];
-$email = new Email($email);
+$email = new UserEmail($email);
 // var_dump($email);
 
 $password = [
-    Password::LABEL_PASSWORD_ID      => 3208324089,
-    Password::LABEL_USER_ID          => 3239875402,
-    Password::LABEL_PASSWORD         => 'DFZEeoizuç!è"/',
-    Password::LABEL_PASSWORD_ENABLED => true,
-    Password::LABEL_CREATION_DATE    => date(
+    UserPassword::LABEL_PASSWORD_ID      => 3208324089,
+    UserPassword::LABEL_USER_ID          => 3239875402,
+    UserPassword::LABEL_PASSWORD         => 'DFZEeoizuç!è"/',
+    UserPassword::LABEL_PASSWORD_ENABLED => true,
+    UserPassword::LABEL_CREATION_DATE    => date(
         DATE_W3C,
         strtotime('yesterday')
     ),
-    Password::LABEL_UPDATE_DATE      => date(
+    UserPassword::LABEL_UPDATE_DATE      => date(
         DATE_W3C,
         strtotime('today')
     )
 ];
-$password = new Password($password);
+$password = new UserPassword($password);
 // var_dump($password);
 
 // Instance d'un utilisateur
