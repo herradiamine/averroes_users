@@ -10,6 +10,14 @@ use DateTimeImmutable;
  */
 class Email
 {
+    public const LABEL_EMAIL_ID      = 'emailId';
+    public const LABEL_EMAIL         = 'email';
+    public const LABEL_LOCAL_PART    = 'localPart';
+    public const LABEL_DOMAIN_NAME   = 'domainName';
+    public const LABEL_DOMAIN_EXT    = 'domainExt';
+    public const LABEL_CREATION_DATE = 'creationDate';
+    public const LABEL_UPDATE_DATE   = 'updateDate';
+
     /** @var int $emailId */
     private int $emailId;
 
@@ -45,21 +53,21 @@ class Email
     /** @param array $emailData */
     private function initEmail(array $emailData): void
     {
-        $this->setEmailId($emailData['emailId']);
-        $this->setEmail($emailData['email']);
-        $this->setLocalPart($emailData['localPart']);
-        $this->setDomainName($emailData['domainName']);
-        $this->setDomainExt($emailData['domainExt']);
+        $this->setEmailId($emailData[self::LABEL_EMAIL_ID]);
+        $this->setEmail($emailData[self::LABEL_EMAIL]);
+        $this->setLocalPart($emailData[self::LABEL_LOCAL_PART]);
+        $this->setDomainName($emailData[self::LABEL_DOMAIN_NAME]);
+        $this->setDomainExt($emailData[self::LABEL_DOMAIN_EXT]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $emailData['creationDate']
+                $emailData[self::LABEL_CREATION_DATE]
             )
         );
         $this->setUpdateDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $emailData['updateDate']
+                $emailData[self::LABEL_UPDATE_DATE]
             )
         );
     }

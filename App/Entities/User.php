@@ -10,6 +10,15 @@ use DateTimeImmutable;
  */
 class User
 {
+    public const LABEL_USER_ID        = 'userId';
+    public const LABEL_USER_GROUP_ID  = 'userGroupId';
+    public const LABEL_USER_NAME      = 'userName';
+    public const LABEL_USER_FIRSTNAME = 'userFirstName';
+    public const LABEL_USER_LASTNAME  = 'userLastName';
+    public const LABEL_USER_EMAIL     = 'userEmail';
+    public const LABEL_CREATION_DATE  = 'creationDate';
+    public const LABEL_UPDATE_DATE    = 'updateDate';
+
     /** @var int $userId */
     private int $userId;
 
@@ -48,22 +57,22 @@ class User
     /** @param array $userData */
     private function initUser(array $userData): void
     {
-        $this->setUserId($userData['userId']);
-        $this->setUserGroupId($userData['userGroupId']);
-        $this->setUserName($userData['userName']);
-        $this->setUserFirstname($userData['userFirstName']);
-        $this->setUserLastname($userData['userLastName']);
-        $this->setUserEmail(new Email($userData['userEmail']));
+        $this->setUserId($userData[self::LABEL_USER_ID]);
+        $this->setUserGroupId($userData[self::LABEL_USER_GROUP_ID]);
+        $this->setUserName($userData[self::LABEL_USER_NAME]);
+        $this->setUserFirstname($userData[self::LABEL_USER_FIRSTNAME]);
+        $this->setUserLastname($userData[self::LABEL_USER_LASTNAME]);
+        $this->setUserEmail($userData[self::LABEL_USER_EMAIL]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $userData['creationDate']
+                $userData[self::LABEL_CREATION_DATE]
             )
         );
         $this->setUpdateDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $userData['updateDate']
+                $userData[self::LABEL_UPDATE_DATE]
             )
         );
     }

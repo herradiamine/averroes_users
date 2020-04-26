@@ -10,6 +10,11 @@ use DateTimeImmutable;
  */
 class UserGroup
 {
+    public const LABEL_USER_GROUP_ID   = 'userGroupId';
+    public const LABEL_USER_GROUP_NAME = 'userGroupName';
+    public const LABEL_CREATION_DATE   = 'creationDate';
+    public const LABEL_UPDATE_DATE     = 'updateDate';
+
     /** @var int $userGroupId */
     private int $userGroupId;
 
@@ -36,18 +41,18 @@ class UserGroup
     /** @param array $userGroupData */
     private function initUserGroup(array $userGroupData): void
     {
-        $this->setUserGroupId($userGroupData['userGroupId']);
-        $this->setUserGroupName($userGroupData['userGroupName']);
+        $this->setUserGroupId($userGroupData[self::LABEL_USER_GROUP_ID]);
+        $this->setUserGroupName($userGroupData[self::LABEL_USER_GROUP_NAME]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $userGroupData['creationDate']
+                $userGroupData[self::LABEL_CREATION_DATE]
             )
         );
         $this->setUpdateDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $userGroupData['updateDate']
+                $userGroupData[self::LABEL_UPDATE_DATE]
             )
         );
     }

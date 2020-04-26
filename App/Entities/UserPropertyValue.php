@@ -10,6 +10,13 @@ use DateTimeImmutable;
  */
 class UserPropertyValue
 {
+    public const LABEL_USER_PROPERTY_VALUE_ID = 'userPropertyValueId';
+    public const LABEL_USER_ID                = 'userId';
+    public const LABEL_USER_PROPERTY_ID       = 'userPropertyId';
+    public const LABEL_CUSTOM_VALUE           = 'customValue';
+    public const LABEL_CREATION_DATE          = 'creationDate';
+    public const LABEL_UPDATE_DATE            = 'updateDate';
+
     /** @var int $userPropertyValueId */
     private int $userPropertyValueId;
 
@@ -42,20 +49,20 @@ class UserPropertyValue
     /** @param array $propertyValueData */
     private function initUserPropertyValue(array $propertyValueData): void
     {
-        $this->setUserPropertyValueId($propertyValueData['userPropertyValueId']);
-        $this->setUserId($propertyValueData['userId']);
-        $this->setUserPropertyId($propertyValueData['userPropertyId']);
-        $this->setCustomValue($propertyValueData['customValue']);
+        $this->setUserPropertyValueId($propertyValueData[self::LABEL_USER_PROPERTY_VALUE_ID]);
+        $this->setUserId($propertyValueData[self::LABEL_USER_ID]);
+        $this->setUserPropertyId($propertyValueData[self::LABEL_USER_PROPERTY_ID]);
+        $this->setCustomValue($propertyValueData[self::LABEL_CUSTOM_VALUE]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $propertyValueData['creationDate']
+                $propertyValueData[self::LABEL_CREATION_DATE]
             )
         );
         $this->setUpdateDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $propertyValueData['updateDate']
+                $propertyValueData[self::LABEL_UPDATE_DATE]
             )
         );
     }
