@@ -13,8 +13,8 @@ class UserProperty implements EntityInterface
 {
     public const LABEL_USER_PROPERTY_ID = 'user_property_id';
     public const LABEL_USER_GROUP_ID    = 'user_group_id';
-    public const LABEL_NAME             = 'property_name';
-    public const LABEL_TYPE             = 'property_type';
+    public const LABEL_PROPERTY_NAME    = 'property_name';
+    public const LABEL_PROPERTY_TYPE    = 'property_type';
     public const LABEL_PROPERTY_ENABLED = 'property_enabled';
     public const LABEL_CREATION_DATE    = 'creation_date';
     public const LABEL_UPDATE_DATE      = 'update_date';
@@ -56,8 +56,8 @@ class UserProperty implements EntityInterface
     {
         $this->setUserPropertyId($entityData[self::LABEL_USER_PROPERTY_ID]);
         $this->setUserGroupId($entityData[self::LABEL_USER_GROUP_ID]);
-        $this->setPropertyName($entityData[self::LABEL_NAME]);
-        $this->setPropertyType($entityData[self::LABEL_TYPE]);
+        $this->setPropertyName($entityData[self::LABEL_PROPERTY_NAME]);
+        $this->setPropertyType($entityData[self::LABEL_PROPERTY_TYPE]);
         $this->setPropertyEnabled($entityData[self::LABEL_PROPERTY_ENABLED]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(

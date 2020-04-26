@@ -12,7 +12,7 @@ use DateTimeImmutable;
 class UserGroup implements EntityInterface
 {
     public const LABEL_USER_GROUP_ID   = 'user_group_id';
-    public const LABEL_USER_GROUP_NAME = 'group_name';
+    public const LABEL_GROUP_NAME      = 'group_name';
     public const LABEL_GROUP_ENABLED   = 'group_enabled';
     public const LABEL_CREATION_DATE   = 'create_date';
     public const LABEL_UPDATE_DATE     = 'update_date';
@@ -47,7 +47,7 @@ class UserGroup implements EntityInterface
     public function initEntity(array $entityData): void
     {
         $this->setUserGroupId($entityData[self::LABEL_USER_GROUP_ID]);
-        $this->setGroupName($entityData[self::LABEL_USER_GROUP_NAME]);
+        $this->setGroupName($entityData[self::LABEL_GROUP_NAME]);
         $this->setGroupEnabled($entityData[self::LABEL_GROUP_ENABLED]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(

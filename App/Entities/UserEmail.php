@@ -11,15 +11,15 @@ use DateTimeImmutable;
  */
 class UserEmail implements EntityInterface
 {
-    public const LABEL_EMAIL_ID      = 'user_email_id';
-    public const LABEL_USER_ID       = 'user_id';
-    public const LABEL_EMAIL         = 'email';
-    public const LABEL_LOCAL_PART    = 'email_local_part';
-    public const LABEL_DOMAIN_NAME   = 'email_domain_name';
-    public const LABEL_DOMAIN_EXT    = 'email_domain_ext';
-    public const LABEL_EMAIL_ENABLED = 'email_enabled';
-    public const LABEL_CREATION_DATE = 'creation_date';
-    public const LABEL_UPDATE_DATE   = 'update_date';
+    public const LABEL_EMAIL_ID          = 'user_email_id';
+    public const LABEL_USER_ID           = 'user_id';
+    public const LABEL_EMAIL             = 'email';
+    public const LABEL_EMAIL_LOCAL_PART  = 'email_local_part';
+    public const LABEL_EMAIL_DOMAIN_NAME = 'email_domain_name';
+    public const LABEL_EMAIL_DOMAIN_EXT  = 'email_domain_ext';
+    public const LABEL_EMAIL_ENABLED     = 'email_enabled';
+    public const LABEL_CREATION_DATE     = 'creation_date';
+    public const LABEL_UPDATE_DATE       = 'update_date';
 
     /** @var int $userEmailId */
     private int $userEmailId;
@@ -65,9 +65,9 @@ class UserEmail implements EntityInterface
         $this->setUserEmailId($entityData[self::LABEL_EMAIL_ID]);
         $this->setUserId($entityData[self::LABEL_USER_ID]);
         $this->setEmail($entityData[self::LABEL_EMAIL]);
-        $this->setLocalPart($entityData[self::LABEL_LOCAL_PART]);
-        $this->setDomainName($entityData[self::LABEL_DOMAIN_NAME]);
-        $this->setDomainExt($entityData[self::LABEL_DOMAIN_EXT]);
+        $this->setLocalPart($entityData[self::LABEL_EMAIL_LOCAL_PART]);
+        $this->setDomainName($entityData[self::LABEL_EMAIL_DOMAIN_NAME]);
+        $this->setDomainExt($entityData[self::LABEL_EMAIL_DOMAIN_EXT]);
         $this->setEmailEnabled($entityData[self::LABEL_EMAIL_ENABLED]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(

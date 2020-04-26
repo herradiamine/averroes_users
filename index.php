@@ -17,10 +17,12 @@ use App\Entities\UserPropertyValue;
 // Instance d'un email
 $email = [
     UserEmail::LABEL_EMAIL_ID      => 3098432098234,
+    UserEmail::LABEL_USER_ID       => 2309823409834,
     UserEmail::LABEL_EMAIL         => 'amine.herradi@gmail.com',
-    UserEmail::LABEL_LOCAL_PART    => 'amine.herradi',
-    UserEmail::LABEL_DOMAIN_NAME   => 'gmail',
-    UserEmail::LABEL_DOMAIN_EXT    => '.com',
+    UserEmail::LABEL_EMAIL_LOCAL_PART    => 'amine.herradi',
+    UserEmail::LABEL_EMAIL_DOMAIN_NAME   => 'gmail',
+    UserEmail::LABEL_EMAIL_DOMAIN_EXT    => '.com',
+    UserEmail::LABEL_EMAIL_ENABLED => true,
     UserEmail::LABEL_CREATION_DATE => date(
         DATE_W3C,
         strtotime('yesterday')
@@ -36,7 +38,7 @@ $email = new UserEmail($email);
 $password = [
     UserPassword::LABEL_PASSWORD_ID      => 3208324089,
     UserPassword::LABEL_USER_ID          => 3239875402,
-    UserPassword::LABEL_PASSWORD         => 'DFZEeoizuç!è"/',
+    UserPassword::LABEL_USER_PASSWORD         => 'DFZEeoizuç!è"/',
     UserPassword::LABEL_PASSWORD_ENABLED => true,
     UserPassword::LABEL_CREATION_DATE    => date(
         DATE_W3C,
@@ -53,10 +55,11 @@ $password = new UserPassword($password);
 // Instance d'un utilisateur
 $user = [
     User::LABEL_USER_ID        => 3098240892734,
-    User::LABEL_USER_GROUP_ID  => 39847398723876,
+    User::LABEL_USER_GROUP_ID  => null,
     User::LABEL_USER_NAME      => 'amineherradi',
     User::LABEL_USER_FIRSTNAME => 'Amine',
     User::LABEL_USER_LASTNAME  => 'Herradi',
+    User::LABEL_USER_ENABLED   => true,
     User::LABEL_CREATION_DATE  => date(
         DATE_W3C,
         strtotime('yesterday')
@@ -67,12 +70,13 @@ $user = [
     )
 ];
 $user = new User($user);
-var_dump($user);
+// var_dump($user);
 
 // Instance d'un groupe d'utilisateurs
 $user_group = [
     UserGroup::LABEL_USER_GROUP_ID   => 3098452309,
-    UserGroup::LABEL_USER_GROUP_NAME => 'Administrateurs',
+    UserGroup::LABEL_GROUP_NAME => 'Administrateurs',
+    UserGroup::LABEL_GROUP_ENABLED   => true,
     UserGroup::LABEL_CREATION_DATE   => date(DATE_W3C, strtotime('yesterday')),
     UserGroup::LABEL_UPDATE_DATE     => date(DATE_W3C, strtotime('today')),
 ];
@@ -83,9 +87,9 @@ $user_group = new UserGroup($user_group);
 $user_property = [
     UserProperty::LABEL_USER_PROPERTY_ID => 3290874230987,
     UserProperty::LABEL_USER_GROUP_ID    => 3409248095243,
-    UserProperty::LABEL_NAME             => 'hasBankAccount',
-    UserProperty::LABEL_TYPE             => 'boolean',
-    UserProperty::LABEL_PROPERTY_ENABLED          => true,
+    UserProperty::LABEL_PROPERTY_NAME             => 'hasBankAccount',
+    UserProperty::LABEL_PROPERTY_TYPE             => 'boolean',
+    UserProperty::LABEL_PROPERTY_ENABLED => true,
     UserProperty::LABEL_CREATION_DATE    => date(
         DATE_W3C,
         strtotime('yesterday')

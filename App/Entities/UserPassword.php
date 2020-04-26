@@ -13,7 +13,7 @@ class UserPassword implements EntityInterface
 {
     public const LABEL_PASSWORD_ID      = 'user_password_id';
     public const LABEL_USER_ID          = 'user_id';
-    public const LABEL_PASSWORD         = 'user_password';
+    public const LABEL_USER_PASSWORD    = 'user_password';
     public const LABEL_PASSWORD_ENABLED = 'password_enabled';
     public const LABEL_CREATION_DATE    = 'creation_date';
     public const LABEL_UPDATE_DATE      = 'update_date';
@@ -52,7 +52,7 @@ class UserPassword implements EntityInterface
     {
         $this->setPasswordId($entityData[self::LABEL_PASSWORD_ID]);
         $this->setUserId($entityData[self::LABEL_USER_ID]);
-        $this->setUserPassword($entityData[self::LABEL_PASSWORD]);
+        $this->setUserPassword($entityData[self::LABEL_USER_PASSWORD]);
         $this->setPasswordEnabled($entityData[self::LABEL_PASSWORD_ENABLED]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
