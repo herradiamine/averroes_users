@@ -48,14 +48,12 @@ class User
     /** @param array $userData */
     private function initUser(array $userData): void
     {
-        $this->setUserId($userData['id']);
-        $this->setUserGroupId($userData['groupId']);
-        $this->setUserName($userData['name']);
-        $this->setUserFirstname($userData['firstName']);
-        $this->setUserLastname($userData['lastName']);
-        $this->setUserEmail(
-            new Email($userData['email'])
-        );
+        $this->setUserId($userData['userId']);
+        $this->setUserGroupId($userData['userGroupId']);
+        $this->setUserName($userData['userName']);
+        $this->setUserFirstname($userData['userFirstName']);
+        $this->setUserLastname($userData['userLastName']);
+        $this->setUserEmail(new Email($userData['userEmail']));
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,

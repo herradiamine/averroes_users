@@ -36,7 +36,20 @@ class UserGroup
     /** @param array $userGroupData */
     private function initUserGroup(array $userGroupData): void
     {
-
+        $this->setUserGroupId($userGroupData['userGroupId']);
+        $this->setUserGroupName($userGroupData['userGroupName']);
+        $this->setCreationDate(
+            DateTimeImmutable::createFromFormat(
+                DATE_W3C,
+                $userGroupData['creationDate']
+            )
+        );
+        $this->setUpdateDate(
+            DateTimeImmutable::createFromFormat(
+                DATE_W3C,
+                $userGroupData['updateDate']
+            )
+        );
     }
 
     /** @return int */

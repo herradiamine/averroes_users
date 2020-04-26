@@ -37,7 +37,7 @@ class Email
      */
     public function __construct(array $emailData = [])
     {
-        if (!empty($email)) {
+        if (!empty($emailData)) {
             $this->initEmail($emailData);
         }
     }
