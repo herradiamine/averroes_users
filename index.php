@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
@@ -55,8 +56,6 @@ $user = [
     User::LABEL_USER_NAME      => 'amineherradi',
     User::LABEL_USER_FIRSTNAME => 'Amine',
     User::LABEL_USER_LASTNAME  => 'Herradi',
-    User::LABEL_USER_EMAIL     => $email,
-    User::LABEL_USER_PASSWORD  => $password,
     User::LABEL_CREATION_DATE  => date(
         DATE_W3C,
         strtotime('yesterday')
@@ -121,16 +120,24 @@ $user_property_value = new UserPropertyValue($user_property_value);
 // } catch (Exception $exception) {
 //     die($exception->getMessage());
 // }
-//
 // $faker = new Factory();
 // $create = $faker::create();
-//
-// $sql = 'INSERT INTO users (user_name, user_firstname, user_lastname, user_email, user_password, creation_date) VALUES ';
+
+/*
+$sql = 'INSERT INTO users (user_name, user_firstname, user_lastname, user_email, user_password, creation_date) VALUES ';
+*/
+
 // for ($iter = 1; $iter <= 10000; $iter++) {
-//     $sql.= "(".$database->quote($create->userName).", ".$database->quote($create->firstName).", ".$database->quote($create->lastName).", ".$database->quote($create->freeEmail).", ".$database->quote($create->password(10, 10)).", ".$database->quote($create->dateTime->format(DATE_W3C)).")";
-//     $sql.= ($iter != 10000)? ", " : "";
+//    $sql.= "(";
+//        $sql.= $database->quote($create->userName).", ";
+//        $sql.= $database->quote($create->firstName).", ";
+//        $sql.= $database->quote($create->lastName).", ";
+//        $sql.= $database->quote($create->freeEmail).", ";
+//        $sql.= $database->quote($create->password(10, 10)).", ";
+//        $sql.= $database->quote($create->dateTime->format(DATE_W3C));
+//    $sql.= ")";
+//    $sql.= ($iter != 10000)? ", " : "";
 // }
-//
 // $query = $database->query($sql);
 // $insert = $query->execute();
 // var_dump($insert);
