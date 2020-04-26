@@ -2,21 +2,20 @@
 
 namespace App\Entities;
 
+use App\Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
 
 /**
  * Class User
  * @package App\Entities
  */
-class User
+class User implements EntityInterface
 {
     public const LABEL_USER_ID        = 'user_id';
     public const LABEL_USER_GROUP_ID  = 'user_group_id';
     public const LABEL_USER_NAME      = 'user_name';
     public const LABEL_USER_FIRSTNAME = 'user_firstname';
     public const LABEL_USER_LASTNAME  = 'user_lastname';
-    public const LABEL_USER_EMAIL     = 'user_email';
-    public const LABEL_USER_PASSWORD  = 'user_password';
     public const LABEL_CREATION_DATE  = 'creation_date';
     public const LABEL_UPDATE_DATE    = 'update_date';
 
@@ -35,12 +34,6 @@ class User
     /** @var string $userLastname */
     private string $userLastname;
 
-    /** @var Email $userEmail */
-    private Email $userEmail;
-
-    /** @var Password $userPassword */
-    private Password $userPassword;
-
     /** @var DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
 
@@ -49,35 +42,33 @@ class User
 
     /**
      * User constructor.
-     * @param array $userData
+     * @param array $entityData
      */
-    public function __construct(array $userData = [])
+    public function __construct(array $entityData = [])
     {
-        if (!empty($userData)) {
-            $this->initUser($userData);
+        if (!empty($entityData)) {
+            $this->initEntity($entityData);
         }
     }
 
-    /** @param array $userData */
-    private function initUser(array $userData): void
+    /** @param array $entityData */
+    public function initEntity(array $entityData): void
     {
-        $this->setUserId($userData[self::LABEL_USER_ID]);
-        $this->setUserGroupId($userData[self::LABEL_USER_GROUP_ID]);
-        $this->setUserName($userData[self::LABEL_USER_NAME]);
-        $this->setUserFirstname($userData[self::LABEL_USER_FIRSTNAME]);
-        $this->setUserLastname($userData[self::LABEL_USER_LASTNAME]);
-        $this->setUserEmail($userData[self::LABEL_USER_EMAIL]);
-        $this->setUserPassword($userData[self::LABEL_USER_PASSWORD]);
+        $this->setUserId($entityData[self::LABEL_USER_ID]);
+        $this->setUserGroupId($entityData[self::LABEL_USER_GROUP_ID]);
+        $this->setUserName($entityData[self::LABEL_USER_NAME]);
+        $this->setUserFirstname($entityData[self::LABEL_USER_FIRSTNAME]);
+        $this->setUserLastname($entityData[self::LABEL_USER_LASTNAME]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $userData[self::LABEL_CREATION_DATE]
+                $entityData[self::LABEL_CREATION_DATE]
             )
         );
         $this->setUpdateDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $userData[self::LABEL_UPDATE_DATE]
+                $entityData[self::LABEL_UPDATE_DATE]
             )
         );
     }
@@ -140,30 +131,6 @@ class User
     public function setUserLastname(string $userLastname): void
     {
         $this->userLastname = $userLastname;
-    }
-
-    /** @return Email */
-    public function getUserEmail(): Email
-    {
-        return $this->userEmail;
-    }
-
-    /** @param Email $userEmail */
-    public function setUserEmail(Email $userEmail): void
-    {
-        $this->userEmail = $userEmail;
-    }
-
-    /** @return Password */
-    public function getUserPassword(): Password
-    {
-        return $this->userPassword;
-    }
-
-    /** @param Password $userPassword */
-    public function setUserPassword(Password $userPassword): void
-    {
-        $this->userPassword = $userPassword;
     }
 
     /** @return DateTimeImmutable */
