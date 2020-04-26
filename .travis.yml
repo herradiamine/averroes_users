@@ -1,0 +1,23 @@
+language: php
+
+dist: trusty
+
+matrix:
+  include:
+    - php: 7.3
+    - php: 7.4
+
+sudo: true
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+before_script:
+  - composer install --prefer-dist
+
+install:
+  - travis_retry composer update
+
+script:
+  - vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*
