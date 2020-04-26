@@ -2,13 +2,14 @@
 
 namespace App\Entities;
 
+use App\Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
 
 /**
  * Class UserPropertyValue
  * @package App\Entities
  */
-class UserPropertyValue
+class UserPropertyValue implements EntityInterface
 {
     public const LABEL_USER_PROPERTY_VALUE_ID = 'userPropertyValueId';
     public const LABEL_USER_ID                = 'userId';
@@ -37,32 +38,32 @@ class UserPropertyValue
 
     /**
      * UserPropertyValue constructor.
-     * @param array $propertyValueData
+     * @param array $entityData
      */
-    public function __construct(array $propertyValueData = [])
+    public function __construct(array $entityData = [])
     {
-        if (!empty($propertyValueData)) {
-            $this->initUserPropertyValue($propertyValueData);
+        if (!empty($entityData)) {
+            $this->initEntity($entityData);
         }
     }
 
-    /** @param array $propertyValueData */
-    private function initUserPropertyValue(array $propertyValueData): void
+    /** @param array $entityData */
+    public function initEntity(array $entityData): void
     {
-        $this->setUserPropertyValueId($propertyValueData[self::LABEL_USER_PROPERTY_VALUE_ID]);
-        $this->setUserId($propertyValueData[self::LABEL_USER_ID]);
-        $this->setUserPropertyId($propertyValueData[self::LABEL_USER_PROPERTY_ID]);
-        $this->setCustomValue($propertyValueData[self::LABEL_CUSTOM_VALUE]);
+        $this->setUserPropertyValueId($entityData[self::LABEL_USER_PROPERTY_VALUE_ID]);
+        $this->setUserId($entityData[self::LABEL_USER_ID]);
+        $this->setUserPropertyId($entityData[self::LABEL_USER_PROPERTY_ID]);
+        $this->setCustomValue($entityData[self::LABEL_CUSTOM_VALUE]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $propertyValueData[self::LABEL_CREATION_DATE]
+                $entityData[self::LABEL_CREATION_DATE]
             )
         );
         $this->setUpdateDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $propertyValueData[self::LABEL_UPDATE_DATE]
+                $entityData[self::LABEL_UPDATE_DATE]
             )
         );
     }

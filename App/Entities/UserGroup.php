@@ -2,13 +2,14 @@
 
 namespace App\Entities;
 
+use App\Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
 
 /**
  * Class UserGroup
  * @package App\Entities
  */
-class UserGroup
+class UserGroup implements EntityInterface
 {
     public const LABEL_USER_GROUP_ID   = 'userGroupId';
     public const LABEL_USER_GROUP_NAME = 'userGroupName';
@@ -29,30 +30,30 @@ class UserGroup
 
     /**
      * UserGroup constructor.
-     * @param array $userGroupData
+     * @param array $entityData
      */
-    public function __construct(array $userGroupData = [])
+    public function __construct(array $entityData = [])
     {
-        if (!empty($userGroupData)) {
-            $this->initUserGroup($userGroupData);
+        if (!empty($entityData)) {
+            $this->initEntity($entityData);
         }
     }
 
-    /** @param array $userGroupData */
-    private function initUserGroup(array $userGroupData): void
+    /** @param array $entityData */
+    public function initEntity(array $entityData): void
     {
-        $this->setUserGroupId($userGroupData[self::LABEL_USER_GROUP_ID]);
-        $this->setUserGroupName($userGroupData[self::LABEL_USER_GROUP_NAME]);
+        $this->setUserGroupId($entityData[self::LABEL_USER_GROUP_ID]);
+        $this->setUserGroupName($entityData[self::LABEL_USER_GROUP_NAME]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $userGroupData[self::LABEL_CREATION_DATE]
+                $entityData[self::LABEL_CREATION_DATE]
             )
         );
         $this->setUpdateDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
-                $userGroupData[self::LABEL_UPDATE_DATE]
+                $entityData[self::LABEL_UPDATE_DATE]
             )
         );
     }
