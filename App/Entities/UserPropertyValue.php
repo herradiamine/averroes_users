@@ -17,22 +17,22 @@ class UserPropertyValue
     public const LABEL_CREATION_DATE          = 'creationDate';
     public const LABEL_UPDATE_DATE            = 'updateDate';
 
-    /** @var int $userPropertyValueId */
+    /** @property int $userPropertyValueId */
     private int $userPropertyValueId;
 
-    /** @var int $userId */
+    /** @property int $userId */
     private int $userId;
 
-    /** @var int $userPropertyId */
+    /** @property int $userPropertyId */
     private int $userPropertyId;
 
-    /** @var int|string|bool|array|null $customValue could be anything */
+    /** @property int|string|bool|array|null $customValue could be anything */
     private ?int $customValue;
 
-    /** @var DateTimeImmutable $creationDate */
+    /** @property DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
 
-    /** @var DateTimeImmutable|null $updateDate */
+    /** @property DateTimeImmutable|null $updateDate */
     private ?DateTimeImmutable $updateDate;
 
     /**

@@ -9,6 +9,7 @@ use App\Entities\User;
 use App\Entities\UserGroup;
 use App\Entities\UserProperty;
 use App\Entities\UserPropertyValue;
+use Faker\Factory;
 
 // Instance d'un email
 $email = [
@@ -27,7 +28,7 @@ $email = [
     )
 ];
 $email = new Email($email);
-var_dump($email);
+// var_dump($email);
 
 // Instance d'un utilisateur
 $user = [
@@ -47,7 +48,7 @@ $user = [
     )
 ];
 $user = new User($user);
-var_dump($user);
+// var_dump($user);
 
 // Instance d'un groupe d'utilisateurs
 $user_group = [
@@ -57,7 +58,7 @@ $user_group = [
     UserGroup::LABEL_UPDATE_DATE     => date(DATE_W3C, strtotime('today')),
 ];
 $user_group = new UserGroup($user_group);
-var_dump($user_group);
+// var_dump($user_group);
 
 // Instance d'une propriété utilisateur
 $user_property = [
@@ -76,7 +77,7 @@ $user_property = [
     )
 ];
 $user_property = new UserProperty($user_property);
-var_dump($user_property);
+// var_dump($user_property);
 
 // Instance d'une valeur de propriété utilisateur
 $user_property_value = [
@@ -94,4 +95,23 @@ $user_property_value = [
     )
 ];
 $user_property_value = new UserPropertyValue($user_property_value);
-var_dump($user_property_value);
+// var_dump($user_property_value);
+
+try {
+    $database = new PDO('mysql:host=172.17.0.3;dbname=averoes;charset=utf8', 'root', 'root');
+} catch (Exception $exception) {
+    die($exception->getMessage());
+}
+
+$faker = new Factory();
+$create = $faker::create();
+
+$sql = 'INSERT INTO users (user_name, user_firstname, user_lastname, user_email, user_password, creation_date) VALUES ';
+for ($iter = 1; $iter <= 10000; $iter++) {
+    $sql.= "(".$database->quote($create->userName).", ".$database->quote($create->firstName).", ".$database->quote($create->lastName).", ".$database->quote($create->freeEmail).", ".$database->quote($create->password(10, 10)).", ".$database->quote($create->dateTime->format(DATE_W3C)).")";
+    $sql.= ($iter != 10000)? ", " : "";
+}
+
+$query = $database->query($sql);
+$insert = $query->execute();
+var_dump($insert);

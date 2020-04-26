@@ -19,28 +19,28 @@ class User
     public const LABEL_CREATION_DATE  = 'creationDate';
     public const LABEL_UPDATE_DATE    = 'updateDate';
 
-    /** @var int $userId */
+    /** @property int $userId */
     private int $userId;
 
-    /** @var int|null $userGroupId */
+    /** @property int|null $userGroupId */
     private ?int $userGroupId;
 
-    /** @var string $userName */
+    /** @property string $userName */
     private string $userName;
 
-    /** @var string $userFirstname */
+    /** @property string $userFirstname */
     private string $userFirstname;
 
-    /** @var string $userLastname */
+    /** @property string $userLastname */
     private string $userLastname;
 
-    /** @var Email $userEmail */
+    /** @property Email $userEmail */
     private Email $userEmail;
 
-    /** @var DateTimeImmutable $creationDate */
+    /** @property DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
 
-    /** @var DateTimeImmutable|null $updateDate */
+    /** @property DateTimeImmutable|null $updateDate */
     private ?DateTimeImmutable $updateDate;
 
     /**

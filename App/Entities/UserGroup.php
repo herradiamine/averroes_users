@@ -15,16 +15,16 @@ class UserGroup
     public const LABEL_CREATION_DATE   = 'creationDate';
     public const LABEL_UPDATE_DATE     = 'updateDate';
 
-    /** @var int $userGroupId */
+    /** @property int $userGroupId */
     private int $userGroupId;
 
-    /** @var string $userGroupName */
+    /** @property string $userGroupName */
     private string $userGroupName;
 
-    /** @var DateTimeImmutable $creationDate */
+    /** @property DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
 
-    /** @var DateTimeImmutable|null $updateDate */
+    /** @property DateTimeImmutable|null $updateDate */
     private ?DateTimeImmutable $updateDate;
 
     /**

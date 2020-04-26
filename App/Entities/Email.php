@@ -18,25 +18,25 @@ class Email
     public const LABEL_CREATION_DATE = 'creationDate';
     public const LABEL_UPDATE_DATE   = 'updateDate';
 
-    /** @var int $emailId */
+    /** @property int $emailId */
     private int $emailId;
 
-    /** @var string $email */
+    /** @property string $email */
     private string $email;
 
-    /** @var string $localPart */
+    /** @property string $localPart */
     private string $localPart;
 
-    /** @var string $domainName */
+    /** @property string $domainName */
     private string $domainName;
 
-    /** @var string $domainExt */
+    /** @property string $domainExt */
     private string $domainExt;
 
-    /** @var DateTimeImmutable $creationDate */
+    /** @property DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
 
-    /** @var DateTimeImmutable|null $updateDate */
+    /** @property DateTimeImmutable|null $updateDate */
     private ?DateTimeImmutable $updateDate;
 
     /**

@@ -18,25 +18,25 @@ class UserProperty
     public const LABEL_CREATION_DATE    = 'creationDate';
     public const LABEL_UPDATE_DATE      = 'updateDate';
 
-    /** @var int $userPropertyId */
+    /** @property int $userPropertyId */
     private int $userPropertyId;
 
-    /** @var int|null $userGroupId */
+    /** @property int|null $userGroupId */
     private ?int $userGroupId;
 
-    /** @var string $name */
+    /** @property string $name */
     private string $name;
 
-    /** @var string $type */
+    /** @property string $type */
     private string $type;
 
-    /** @var bool $enabled */
+    /** @property bool $enabled */
     private bool $enabled;
 
-    /** @var DateTimeImmutable $creationDate */
+    /** @property DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
 
-    /** @var DateTimeImmutable|null $updateDate */
+    /** @property DateTimeImmutable|null $updateDate */
     private ?DateTimeImmutable $updateDate;
 
     /**
