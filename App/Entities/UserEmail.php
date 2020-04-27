@@ -9,19 +9,20 @@ use DateTimeImmutable;
  * Class Email
  * @package App\Entities
  */
-class Email implements EntityInterface
+class UserEmail implements EntityInterface
 {
-    public const LABEL_EMAIL_ID      = 'emailId';
-    public const LABEL_USER_ID       = 'userId';
-    public const LABEL_EMAIL         = 'email';
-    public const LABEL_LOCAL_PART    = 'localPart';
-    public const LABEL_DOMAIN_NAME   = 'domainName';
-    public const LABEL_DOMAIN_EXT    = 'domainExt';
-    public const LABEL_CREATION_DATE = 'creationDate';
-    public const LABEL_UPDATE_DATE   = 'updateDate';
+    public const LABEL_EMAIL_ID          = 'user_email_id';
+    public const LABEL_USER_ID           = 'user_id';
+    public const LABEL_EMAIL             = 'email';
+    public const LABEL_EMAIL_LOCAL_PART  = 'email_local_part';
+    public const LABEL_EMAIL_DOMAIN_NAME = 'email_domain_name';
+    public const LABEL_EMAIL_DOMAIN_EXT  = 'email_domain_ext';
+    public const LABEL_EMAIL_ENABLED     = 'email_enabled';
+    public const LABEL_CREATION_DATE     = 'creation_date';
+    public const LABEL_UPDATE_DATE       = 'update_date';
 
-    /** @var int $emailId */
-    private int $emailId;
+    /** @var int $userEmailId */
+    private int $userEmailId;
 
     /** @var int $userId */
     private int $userId;
@@ -37,6 +38,9 @@ class Email implements EntityInterface
 
     /** @var string $domainExt */
     private string $domainExt;
+
+    /** @var bool $emailEnabled */
+    private bool $emailEnabled;
 
     /** @var DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
@@ -58,12 +62,13 @@ class Email implements EntityInterface
     /** @param array $entityData */
     public function initEntity(array $entityData): void
     {
-        $this->setEmailId($entityData[self::LABEL_EMAIL_ID]);
+        $this->setUserEmailId($entityData[self::LABEL_EMAIL_ID]);
         $this->setUserId($entityData[self::LABEL_USER_ID]);
         $this->setEmail($entityData[self::LABEL_EMAIL]);
-        $this->setLocalPart($entityData[self::LABEL_LOCAL_PART]);
-        $this->setDomainName($entityData[self::LABEL_DOMAIN_NAME]);
-        $this->setDomainExt($entityData[self::LABEL_DOMAIN_EXT]);
+        $this->setLocalPart($entityData[self::LABEL_EMAIL_LOCAL_PART]);
+        $this->setDomainName($entityData[self::LABEL_EMAIL_DOMAIN_NAME]);
+        $this->setDomainExt($entityData[self::LABEL_EMAIL_DOMAIN_EXT]);
+        $this->setEmailEnabled($entityData[self::LABEL_EMAIL_ENABLED]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
@@ -79,15 +84,15 @@ class Email implements EntityInterface
     }
 
     /** @return int */
-    public function getEmailId(): int
+    public function getUserEmailId(): int
     {
-        return $this->emailId;
+        return $this->userEmailId;
     }
 
-    /** @param int $emailId */
-    public function setEmailId(int $emailId): void
+    /** @param int $userEmailId */
+    public function setUserEmailId(int $userEmailId): void
     {
-        $this->emailId = $emailId;
+        $this->userEmailId = $userEmailId;
     }
 
     /** @return int */
@@ -148,6 +153,18 @@ class Email implements EntityInterface
     public function setDomainExt(string $domainExt): void
     {
         $this->domainExt = $domainExt;
+    }
+
+    /** @return bool */
+    public function isEmailEnabled(): bool
+    {
+        return $this->emailEnabled;
+    }
+
+    /** @param bool $emailEnabled */
+    public function setEmailEnabled(bool $emailEnabled): void
+    {
+        $this->emailEnabled = $emailEnabled;
     }
 
     /** @return DateTimeImmutable */

@@ -9,11 +9,11 @@ use DateTimeImmutable;
  * Class Password
  * @package App\Entities
  */
-class Password implements EntityInterface
+class UserPassword implements EntityInterface
 {
-    public const LABEL_PASSWORD_ID      = 'password_id';
+    public const LABEL_PASSWORD_ID      = 'user_password_id';
     public const LABEL_USER_ID          = 'user_id';
-    public const LABEL_PASSWORD         = 'password';
+    public const LABEL_USER_PASSWORD    = 'user_password';
     public const LABEL_PASSWORD_ENABLED = 'password_enabled';
     public const LABEL_CREATION_DATE    = 'creation_date';
     public const LABEL_UPDATE_DATE      = 'update_date';
@@ -24,8 +24,8 @@ class Password implements EntityInterface
     /** @var int $userId */
     private int $userId;
 
-    /** @var string $password */
-    private string $password;
+    /** @var string $userPassword */
+    private string $userPassword;
 
     /** @var bool $passwordEnabled */
     private bool $passwordEnabled;
@@ -47,9 +47,25 @@ class Password implements EntityInterface
         }
     }
 
+    /** @param array $entityData */
     public function initEntity(array $entityData): void
     {
-        // TODO: Implement initEntity() method.
+        $this->setPasswordId($entityData[self::LABEL_PASSWORD_ID]);
+        $this->setUserId($entityData[self::LABEL_USER_ID]);
+        $this->setUserPassword($entityData[self::LABEL_USER_PASSWORD]);
+        $this->setPasswordEnabled($entityData[self::LABEL_PASSWORD_ENABLED]);
+        $this->setCreationDate(
+            DateTimeImmutable::createFromFormat(
+                DATE_W3C,
+                $entityData[self::LABEL_CREATION_DATE]
+            )
+        );
+        $this->setUpdateDate(
+            DateTimeImmutable::createFromFormat(
+                DATE_W3C,
+                $entityData[self::LABEL_UPDATE_DATE]
+            )
+        );
     }
 
     /** @return int */
@@ -77,15 +93,15 @@ class Password implements EntityInterface
     }
 
     /** @return string */
-    public function getPassword(): string
+    public function getUserPassword(): string
     {
-        return $this->password;
+        return $this->userPassword;
     }
 
-    /** @param string $password */
-    public function setPassword(string $password): void
+    /** @param string $userPassword */
+    public function setUserPassword(string $userPassword): void
     {
-        $this->password = $password;
+        $this->userPassword = $userPassword;
     }
 
     /** @return bool */

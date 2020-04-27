@@ -11,13 +11,13 @@ use DateTimeImmutable;
  */
 class UserProperty implements EntityInterface
 {
-    public const LABEL_USER_PROPERTY_ID = 'userPropertyId';
-    public const LABEL_USER_GROUP_ID    = 'userGroupId';
-    public const LABEL_NAME             = 'name';
-    public const LABEL_TYPE             = 'type';
-    public const LABEL_ENABLED          = 'enabled';
-    public const LABEL_CREATION_DATE    = 'creationDate';
-    public const LABEL_UPDATE_DATE      = 'updateDate';
+    public const LABEL_USER_PROPERTY_ID = 'user_property_id';
+    public const LABEL_USER_GROUP_ID    = 'user_group_id';
+    public const LABEL_PROPERTY_NAME    = 'property_name';
+    public const LABEL_PROPERTY_TYPE    = 'property_type';
+    public const LABEL_PROPERTY_ENABLED = 'property_enabled';
+    public const LABEL_CREATION_DATE    = 'creation_date';
+    public const LABEL_UPDATE_DATE      = 'update_date';
 
     /** @var int $userPropertyId */
     private int $userPropertyId;
@@ -25,14 +25,14 @@ class UserProperty implements EntityInterface
     /** @var int|null $userGroupId */
     private ?int $userGroupId;
 
-    /** @var string $name */
-    private string $name;
+    /** @var string $propertyName */
+    private string $propertyName;
 
-    /** @var string $type */
-    private string $type;
+    /** @var string $propertyType */
+    private string $propertyType;
 
-    /** @var bool $enabled */
-    private bool $enabled;
+    /** @var bool $propertyEnabled */
+    private bool $propertyEnabled;
 
     /** @var DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
@@ -56,9 +56,9 @@ class UserProperty implements EntityInterface
     {
         $this->setUserPropertyId($entityData[self::LABEL_USER_PROPERTY_ID]);
         $this->setUserGroupId($entityData[self::LABEL_USER_GROUP_ID]);
-        $this->setName($entityData[self::LABEL_NAME]);
-        $this->setType($entityData[self::LABEL_TYPE]);
-        $this->setEnabled($entityData[self::LABEL_ENABLED]);
+        $this->setPropertyName($entityData[self::LABEL_PROPERTY_NAME]);
+        $this->setPropertyType($entityData[self::LABEL_PROPERTY_TYPE]);
+        $this->setPropertyEnabled($entityData[self::LABEL_PROPERTY_ENABLED]);
         $this->setCreationDate(
             DateTimeImmutable::createFromFormat(
                 DATE_W3C,
@@ -98,39 +98,39 @@ class UserProperty implements EntityInterface
     }
 
     /** @return string */
-    public function getName(): string
+    public function getPropertyName(): string
     {
-        return $this->name;
+        return $this->propertyName;
     }
 
-    /** @param string $name */
-    public function setName(string $name): void
+    /** @param string $propertyName */
+    public function setPropertyName(string $propertyName): void
     {
-        $this->name = $name;
+        $this->propertyName = $propertyName;
     }
 
     /** @return string */
-    public function getType(): string
+    public function getPropertyType(): string
     {
-        return $this->type;
+        return $this->propertyType;
     }
 
-    /** @param string $type */
-    public function setType(string $type): void
+    /** @param string $propertyType */
+    public function setPropertyType(string $propertyType): void
     {
-        $this->type = $type;
+        $this->propertyType = $propertyType;
     }
 
     /** @return bool */
-    public function isEnabled(): bool
+    public function isPropertyEnabled(): bool
     {
-        return $this->enabled;
+        return $this->propertyEnabled;
     }
 
-    /** @param bool $enabled */
-    public function setEnabled(bool $enabled): void
+    /** @param bool $propertyEnabled */
+    public function setPropertyEnabled(bool $propertyEnabled): void
     {
-        $this->enabled = $enabled;
+        $this->propertyEnabled = $propertyEnabled;
     }
 
     /** @return DateTimeImmutable */
