@@ -11,12 +11,12 @@ use DateTimeImmutable;
  */
 class UserPropertyValue implements EntityInterface
 {
-    public const LABEL_USER_PROPERTY_VALUE_ID = 'userPropertyValueId';
-    public const LABEL_USER_ID                = 'userId';
-    public const LABEL_USER_PROPERTY_ID       = 'userPropertyId';
-    public const LABEL_CUSTOM_VALUE           = 'customValue';
-    public const LABEL_CREATION_DATE          = 'creationDate';
-    public const LABEL_UPDATE_DATE            = 'updateDate';
+    public const LABEL_USER_PROPERTY_VALUE_ID = 'user_property_value_id';
+    public const LABEL_USER_ID                = 'user_id';
+    public const LABEL_USER_PROPERTY_ID       = 'user_property_id';
+    public const LABEL_CUSTOM_VALUE           = 'custom_value';
+    public const LABEL_CREATION_DATE          = 'creation_date';
+    public const LABEL_UPDATE_DATE            = 'update_date';
 
     /** @var int $userPropertyValueId */
     private int $userPropertyValueId;

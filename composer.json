@@ -6,6 +6,13 @@
         "squizlabs/php_codesniffer": "^3.5"
     },
     "autoload": {
-        "psr-4": {"App\\": "App/"}
+        "psr-4": {
+            "App\\": "App/",
+            "Config\\": "Config/",
+            "Database\\": "Database/",
+            "Public\\": "Public/",
+            "Routes\\": "Routes/",
+            "Tests\\": "Tests/"
+        }
     }
 }
