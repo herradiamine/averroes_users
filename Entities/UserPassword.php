@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entities;
+namespace Entities;
 
-use App\Entities\Interfaces\EntityInterface;
+use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
 
 /**

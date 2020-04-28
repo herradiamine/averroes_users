@@ -2,8 +2,7 @@
 
 namespace Tests\Entities;
 
-use App\Entities\UserGroup;
-use PHPUnit\Framework\ConstraintTest;
+use Entities\UserGroup;
 use PHPUnit\Framework\TestCase;
 
 /**
