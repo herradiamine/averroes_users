@@ -1,6 +1,6 @@
 name: Development configuration file
 
-database:
+database_configuration:
   driver: mysql
   host: 172.17.0.3
   database: averoes

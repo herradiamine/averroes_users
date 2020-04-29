@@ -1,6 +1,8 @@
 <?php
 
-namespace Database;
+namespace Database\Engine;
+
+use Exception;
 
 /**
  * Class PDOConfig
@@ -37,42 +39,74 @@ class PDOConfig
     /** @var string $dns */
     private string $dns;
 
+    /*************************************
+     * To store yaml file parsing result *
+     *************************************/
+
+    /** @var array $yamlConfig */
+    private array $yamlConfig;
+
     /**
      * PDOConfig constructor.
+     * @throws Exception
      */
     public function __construct()
     {
-        $config_settings = getenv('APP_DEV_CONFIG');
-        var_dump($config_settings);
-        $yaml_to_array = yaml_parse_file($config_settings);
-        var_dump($yaml_to_array);
-        die;
-        if (!empty($configData)) {
-            $this->iniDatabaseConfig($yaml_to_array);
-        }
+        $config_settings  = getenv('APP_DEV_CONFIG');
+        $this->yamlConfig = yaml_parse_file($config_settings);
+        $this->yamlConfig = $this->yamlConfig['database_configuration'];
+        $this->loadDatabaseConfig($this->yamlConfig);
     }
 
     /**
-     * Initiate a clean database config settings with DNS et access using configuration YML file
+     * Initiate a clean database config settings with DNS and access using configuration YML file
      * @param array $configData
+     * @throws Exception
      */
-    private function iniDatabaseConfig(array $configData): void
+    private function loadDatabaseConfig(array $configData): void
     {
         /*****************************
          * For DNS elements settings *
          *****************************/
 
-        $this->setDriver($configData['dirver']);
-        $this->setHost($configData['host']);
-        $this->setDatabase($configData['database']);
-        $this->setCharset($configData['charset']);
+        if (array_key_exists('driver', $configData)) {
+            $this->setDriver($configData['driver']);
+        } else {
+            throw new Exception('Database driver is missing');
+        }
+
+        if (array_key_exists('host', $configData)) {
+            $this->setHost($configData['host']);
+        } else {
+            throw new Exception('Database host is missing');
+        }
+
+        if (array_key_exists('database', $configData)) {
+            $this->setDatabase($configData['database']);
+        } else {
+            throw new Exception('Database name is missing');
+        }
+
+        if (array_key_exists('charset', $configData)) {
+            $this->setCharset($configData['charset']);
+        } else {
+            throw new Exception('Database charset is missing');
+        }
 
         /***********************
          * For database access *
          ***********************/
+        if (array_key_exists('username', $configData)) {
+            $this->setUsername($configData['username']);
+        } else {
+            throw new Exception('Database username is missing');
+        }
 
-        $this->setUsername($configData['username']);
-        $this->setPassword($configData['password']);
+        if (array_key_exists('password', $configData)) {
+            $this->setPassword($configData['password']);
+        } else {
+            throw new Exception('Database password is missing');
+        }
 
         /***************************************
          * For DNS construction using settings *
@@ -87,7 +121,7 @@ class PDOConfig
     }
 
     /** @param string $driver */
-    public function setDriver(string $driver): void
+    private function setDriver(string $driver): void
     {
         $this->driver = $driver;
     }
@@ -99,7 +133,7 @@ class PDOConfig
     }
 
     /** @param string $database */
-    public function setDatabase(string $database): void
+    private function setDatabase(string $database): void
     {
         $this->database = $database;
     }
