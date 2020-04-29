@@ -1,0 +1,9 @@
+name: Development configuration file
+
+database:
+  driver: mysql
+  host: 172.17.0.3
+  database: averoes
+  charset: utf8
+  username: root
+  password: root
