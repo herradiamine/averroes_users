@@ -9,18 +9,18 @@ use PDO;
  * Class ModelManager
  * @package Database
  */
-class ModelManager
+class ModelManager extends PDO
 {
     /** @var PDOConfigEntity $pdoConfig */
     private PDOConfigEntity $pdoConfig;
 
-    /** @var PDO $pdo */
-    private PDO $pdo;
-
+    /**
+     * ModelManager constructor.
+     */
     public function __construct()
     {
         $this->pdoConfig = new PDOConfigEntity();
-        $this->pdo = new PDO(
+        parent::__construct(
             $this->pdoConfig->getDns(),
             $this->pdoConfig->getUsername(),
             $this->pdoConfig->getPassword()
