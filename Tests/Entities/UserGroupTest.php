@@ -38,12 +38,12 @@ class UserGroupTest extends TestCase
     public function testSetUserGroupId()
     {
         /** Is an integer */
-        static::assertIsInt($this->userGroupEntity->getUserGroupId(), "OK");
+        static::assertIsInt($this->userGroupEntity->getUserGroupId());
     }
 
     public function testSetGroupName()
     {
         /** Is a string */
-        static::assertIsString($this->userGroupEntity->getGroupName(), "OK");
+        static::assertIsString($this->userGroupEntity->getGroupName());
     }
 }

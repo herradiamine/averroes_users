@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Engine;
+namespace Config;
 
 use Exception;
 
@@ -8,7 +8,7 @@ use Exception;
  * Class PDOConfig
  * @package Config
  */
-class PDOConfig
+class PDOConfigEntity
 {
     /************************
      * For dns construction *

@@ -2,6 +2,7 @@
 
 namespace Database\Engine;
 
+use Config\PDOConfigEntity;
 use PDO;
 
 /**
@@ -10,15 +11,15 @@ use PDO;
  */
 class ModelManager
 {
-    /** @var PDOConfig $pdoConfig */
-    private PDOConfig $pdoConfig;
+    /** @var PDOConfigEntity $pdoConfig */
+    private PDOConfigEntity $pdoConfig;
 
     /** @var PDO $pdo */
     private PDO $pdo;
 
     public function __construct()
     {
-        $this->pdoConfig = new PDOConfig();
+        $this->pdoConfig = new PDOConfigEntity();
         $this->pdo = new PDO(
             $this->pdoConfig->getDns(),
             $this->pdoConfig->getUsername(),
