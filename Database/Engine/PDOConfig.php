@@ -190,9 +190,9 @@ class PDOConfig
         string $database,
         string $charset
     ): void {
-        $this->dns = $driver.':';
-        $this->dns.= 'host='.$host.';';
-        $this->dns.= 'dbname='.$database.';';
-        $this->dns.= 'charset='.$charset;
+        $this->dns  = $driver . ':';
+        $this->dns .= 'host=' . $host . ';';
+        $this->dns .= 'dbname=' . $database . ';';
+        $this->dns .= 'charset=' . $charset;
     }
 }
