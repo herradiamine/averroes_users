@@ -18,9 +18,9 @@ class UserEmailModel implements ModelInterface
      * @param array $displayFiedls
      * @param int   $limit
      * @param int   $offset
-     * @return object
+     * @return object|false
      */
-    public function getOneById(int $id, array $displayFiedls = [], int $limit = 20, int $offset = 0): object
+    public function getOneById(int $id, array $displayFiedls = [], int $limit = 20, int $offset = 0): ?object
     {
         // TODO: Implement getOneById() method.
     }
@@ -33,9 +33,9 @@ class UserEmailModel implements ModelInterface
      * @param array $displayFiedls
      * @param int   $limit
      * @param int   $offset
-     * @return array
+     * @return array|false
      */
-    public function getManyByIds(array $ids, array $displayFiedls = [], int $limit = 20, int $offset = 0): array
+    public function getManyByIds(array $ids, array $displayFiedls = [], int $limit = 20, int $offset = 0): ?array
     {
         // TODO: Implement getManyByIds() method.
     }
@@ -48,9 +48,9 @@ class UserEmailModel implements ModelInterface
      * @param array $displayFields
      * @param int   $limit
      * @param int   $offset
-     * @return array
+     * @return array|false
      */
-    public function getCustom(array $dataSelect, array $displayFields = [], int $limit = 20, int $offset = 0): array
+    public function getCustom(array $dataSelect, array $displayFields = [], int $limit = 20, int $offset = 0): ?array
     {
         // TODO: Implement getCustom() method.
     }
@@ -62,9 +62,9 @@ class UserEmailModel implements ModelInterface
      * @param array $displayFields
      * @param int   $limit
      * @param int   $offset
-     * @return array
+     * @return array|false
      */
-    public function getAll(array $displayFields = [], int $limit = 20, int $offset = 0): array
+    public function getAll(array $displayFields = [], int $limit = 20, int $offset = 0): ?array
     {
         // TODO: Implement getAll() method.
     }
@@ -74,9 +74,9 @@ class UserEmailModel implements ModelInterface
      * Returns the inserted element id.
      * @param array $data
      * @param array $rules
-     * @return int
+     * @return int|false
      */
-    public function insertOne(array $data, array $rules): int
+    public function insertOne(array $data, array $rules): ?int
     {
         // TODO: Implement insertOne() method.
     }
@@ -87,9 +87,9 @@ class UserEmailModel implements ModelInterface
      * Returns the inserted elements ids in an array.
      * @param array $datas
      * @param array $rules
-     * @return array
+     * @return array|false
      */
-    public function insertMany(array $datas, array $rules): array
+    public function insertMany(array $datas, array $rules): ?array
     {
         // TODO: Implement insertMany() method.
     }
@@ -101,7 +101,7 @@ class UserEmailModel implements ModelInterface
      * @param int   $id
      * @param array $data
      * @param array $rules
-     * @return int|bool
+     * @return int|false
      */
     public function updateOneById(int $id, array $data, array $rules): ?int
     {
@@ -115,9 +115,9 @@ class UserEmailModel implements ModelInterface
      * @param array $ids
      * @param array $datas
      * @param array $rules
-     * @return array
+     * @return array|false
      */
-    public function updateManyByIds(array $ids, array $datas, array $rules): array
+    public function updateManyByIds(array $ids, array $datas, array $rules): ?array
     {
         // TODO: Implement updateManyByIds() method.
     }
@@ -129,9 +129,9 @@ class UserEmailModel implements ModelInterface
      * @param array $dataSelects
      * @param array $dataUpdates
      * @param array $rules
-     * @return array
+     * @return array|false
      */
-    public function updateManyByCustom(array $dataSelects, array $dataUpdates, array $rules): array
+    public function updateManyByCustom(array $dataSelects, array $dataUpdates, array $rules): ?array
     {
         // TODO: Implement updateManyByCustom() method.
     }
@@ -151,9 +151,9 @@ class UserEmailModel implements ModelInterface
      * Deletes many elements by ids, must have array of ids elements to be deleted.
      * Returns array that contains boolean in front of each elements ids that has been deleted or not.
      * @param array $ids
-     * @return array
+     * @return array|false
      */
-    public function deleteManyByIds(array $ids): array
+    public function deleteManyByIds(array $ids): ?array
     {
         // TODO: Implement deleteManyByIds() method.
     }
@@ -162,9 +162,9 @@ class UserEmailModel implements ModelInterface
      * Deletes many elements by custom selets datas, must have array of datas to select elements to be deleted.
      * Returns array that contains boolean in front of each elements ids that has been deleted or not.
      * @param array $dataSelects
-     * @return array
+     * @return array|false
      */
-    public function deleteManyByCustom(array $dataSelects): array
+    public function deleteManyByCustom(array $dataSelects): ?array
     {
         // TODO: Implement deleteManyByCustom() method.
     }
