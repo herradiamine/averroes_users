@@ -14,11 +14,11 @@ cache:
     - $HOME/.composer/cache
 
 before_script:
-  - printf "\n" | pecl install yaml
-  - echo "extension=yaml.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - composer install --prefer-dist
 
 install:
+  - printf "\n" | pecl install yaml
+  - echo "extension=yaml.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - travis_retry composer update
 
 script:
