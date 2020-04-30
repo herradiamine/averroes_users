@@ -14,10 +14,10 @@ cache:
     - $HOME/.composer/cache
 
 before_script:
-  - apt install php-yaml
   - composer install --prefer-dist
 
 install:
+  - pecl install yaml
   - travis_retry composer update
 
 script:
