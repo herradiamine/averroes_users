@@ -11,6 +11,8 @@ use DateTimeImmutable;
  */
 class UserPassword implements EntityInterface
 {
+    public const TABLE_NAME = 'user_password';
+
     public const LABEL_PASSWORD_ID      = 'user_password_id';
     public const LABEL_USER_ID          = 'user_id';
     public const LABEL_USER_PASSWORD    = 'user_password';

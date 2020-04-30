@@ -11,6 +11,8 @@ use DateTimeImmutable;
  */
 class UserGroup implements EntityInterface
 {
+    public const TABLE_NAME = 'user_group';
+
     public const LABEL_USER_GROUP_ID   = 'user_group_id';
     public const LABEL_GROUP_NAME      = 'group_name';
     public const LABEL_GROUP_ENABLED   = 'group_enabled';

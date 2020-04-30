@@ -11,6 +11,8 @@ use DateTimeImmutable;
  */
 class UserProperty implements EntityInterface
 {
+    public const TABLE_NAME = 'user_property';
+
     public const LABEL_USER_PROPERTY_ID = 'user_property_id';
     public const LABEL_USER_GROUP_ID    = 'user_group_id';
     public const LABEL_PROPERTY_NAME    = 'property_name';
