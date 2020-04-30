@@ -18,8 +18,10 @@ before_script:
 
 install:
   - printf "\n" | pecl install yaml
-  - echo "extension=yaml.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - travis_retry composer update
 
 script:
   - vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*
+
+notifications:
+  email: amineherradi@gmail.com
