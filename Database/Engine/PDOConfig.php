@@ -96,6 +96,7 @@ class PDOConfig
         /***********************
          * For database access *
          ***********************/
+
         if (array_key_exists('username', $configData)) {
             $this->setUsername($configData['username']);
         } else {
