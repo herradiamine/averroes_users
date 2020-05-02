@@ -103,13 +103,25 @@ class Select extends ModelManager
      * @param $limit
      * @return $this
      */
-    public function limit($limit): Select
+    public function limit($limit = 20): Select
     {
         return $this;
     }
 
-    public function offset(): Select
+    /**
+     * @param int $offset
+     * @return $this
+     */
+    public function offset($offset = 0): Select
     {
         return $this;
+    }
+
+    /** @return array */
+    public function fetch(): array
+    {
+        $result = $this->query($this->query);
+        $result = $result->fetchAll(self::FETCH_CLASS);
+        return $result;
     }
 }
