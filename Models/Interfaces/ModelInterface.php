@@ -81,7 +81,10 @@ interface ModelInterface
      * @param array $rules
      * @return int|false
      */
-    public function insertOne(array $data, array $rules): ?int;
+    public function insertOne(
+        array $data,
+        array $rules
+    ): ?int;
 
     /**
      * Inserts many elements at once, must have one or many datas to be inserted
@@ -120,7 +123,11 @@ interface ModelInterface
      * @param array $rules
      * @return array|false
      */
-    public function updateManyByIds(array $ids, array $datas, array $rules): ?array;
+    public function updateManyByIds(
+        array $ids,
+        array $datas,
+        array $rules
+    ): ?array;
 
     /**
      * Updates many elements by custum selected data, must have array of selects datas to be updated.
@@ -131,7 +138,11 @@ interface ModelInterface
      * @param array $rules
      * @return array|false
      */
-    public function updateManyByCustom(array $dataSelects, array $dataUpdates, array $rules): ?array;
+    public function updateManyByCustom(
+        array $dataSelects,
+        array $dataUpdates,
+        array $rules
+    ): ?array;
 
     /**
      * Deletes on element by id, must have element id to be deleted.

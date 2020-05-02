@@ -20,8 +20,12 @@ class UserModel implements ModelInterface
      * @param int   $offset
      * @return object|false
      */
-    public function getOneById(int $id, array $displayFiedls = [], int $limit = 20, int $offset = 0): ?object
-    {
+    public function getOneById(
+        int $id,
+        array $displayFiedls = [],
+        int $limit = 20,
+        int $offset = 0
+    ): ?object {
         // TODO: Implement getOneById() method.
     }
 
@@ -35,8 +39,12 @@ class UserModel implements ModelInterface
      * @param int   $offset
      * @return array|false
      */
-    public function getManyByIds(array $ids, array $displayFiedls = [], int $limit = 20, int $offset = 0): ?array
-    {
+    public function getManyByIds(
+        array $ids,
+        array $displayFiedls = [],
+        int $limit = 20,
+        int $offset = 0
+    ): ?array {
         // TODO: Implement getManyByIds() method.
     }
 
@@ -50,8 +58,12 @@ class UserModel implements ModelInterface
      * @param int   $offset
      * @return array|false
      */
-    public function getCustom(array $dataSelect, array $displayFields = [], int $limit = 20, int $offset = 0): ?array
-    {
+    public function getCustom(
+        array $dataSelect,
+        array $displayFields = [],
+        int $limit = 20,
+        int $offset = 0
+    ): ?array {
         // TODO: Implement getCustom() method.
     }
 
@@ -64,8 +76,11 @@ class UserModel implements ModelInterface
      * @param int   $offset
      * @return array|false
      */
-    public function getAll(array $displayFields = [], int $limit = 20, int $offset = 0): ?array
-    {
+    public function getAll(
+        array $displayFields = [],
+        int $limit = 20,
+        int $offset = 0
+    ): ?array {
         // TODO: Implement getAll() method.
     }
 
@@ -76,8 +91,10 @@ class UserModel implements ModelInterface
      * @param array $rules
      * @return int|false
      */
-    public function insertOne(array $data, array $rules): ?int
-    {
+    public function insertOne(
+        array $data,
+        array $rules
+    ): ?int {
         // TODO: Implement insertOne() method.
     }
 
@@ -89,8 +106,10 @@ class UserModel implements ModelInterface
      * @param array $rules
      * @return array|false
      */
-    public function insertMany(array $datas, array $rules): ?array
-    {
+    public function insertMany(
+        array $datas,
+        array $rules
+    ): ?array {
         // TODO: Implement insertMany() method.
     }
 
@@ -103,8 +122,11 @@ class UserModel implements ModelInterface
      * @param array $rules
      * @return int|false
      */
-    public function updateOneById(int $id, array $data, array $rules): ?int
-    {
+    public function updateOneById(
+        int $id,
+        array $data,
+        array $rules
+    ): ?int {
         // TODO: Implement updateOneById() method.
     }
 
@@ -117,8 +139,11 @@ class UserModel implements ModelInterface
      * @param array $rules
      * @return array|false
      */
-    public function updateManyByIds(array $ids, array $datas, array $rules): ?array
-    {
+    public function updateManyByIds(
+        array $ids,
+        array $datas,
+        array $rules
+    ): ?array {
         // TODO: Implement updateManyByIds() method.
     }
 
@@ -131,8 +156,11 @@ class UserModel implements ModelInterface
      * @param array $rules
      * @return array|false
      */
-    public function updateManyByCustom(array $dataSelects, array $dataUpdates, array $rules): ?array
-    {
+    public function updateManyByCustom(
+        array $dataSelects,
+        array $dataUpdates,
+        array $rules
+    ): ?array {
         // TODO: Implement updateManyByCustom() method.
     }
 

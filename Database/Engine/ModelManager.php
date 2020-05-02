@@ -7,7 +7,7 @@ use PDO;
 
 /**
  * Class ModelManager
- * @package Database
+ * @package Database/Engine
  */
 class ModelManager extends PDO
 {
