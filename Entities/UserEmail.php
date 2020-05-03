@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entities;
+namespace Entities;
 
-use App\Entities\Interfaces\EntityInterface;
+use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
 
 /**
@@ -11,6 +11,8 @@ use DateTimeImmutable;
  */
 class UserEmail implements EntityInterface
 {
+    public const TABLE_NAME = 'user_mail';
+
     public const LABEL_EMAIL_ID          = 'user_email_id';
     public const LABEL_USER_ID           = 'user_id';
     public const LABEL_EMAIL             = 'email';

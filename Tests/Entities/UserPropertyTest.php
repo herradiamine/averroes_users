@@ -2,7 +2,7 @@
 
 namespace Tests\Entities;
 
-use App\Entities\UserProperty;
+use Entities\UserProperty;
 use PHPUnit\Framework\TestCase;
 
 /**

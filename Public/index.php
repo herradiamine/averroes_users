@@ -5,12 +5,12 @@ ini_set('display_errors', 'On');
 
 include 'vendor/autoload.php';
 
-use App\Entities\User;
-use App\Entities\UserEmail;
-use App\Entities\UserGroup;
-use App\Entities\UserPassword;
-use App\Entities\UserProperty;
-use App\Entities\UserPropertyValue;
+use Entities\User;
+use Entities\UserEmail;
+use Entities\UserGroup;
+use Entities\UserPassword;
+use Entities\UserProperty;
+use Entities\UserPropertyValue;
 
 // use Faker\Factory;
 

@@ -2,7 +2,7 @@
 
 namespace Tests\Entities;
 
-use App\Entities\UserEmail;
+use Entities\UserEmail;
 use PHPUnit\Framework\TestCase;
 
 /**

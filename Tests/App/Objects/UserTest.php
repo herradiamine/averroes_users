@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Entities;
+namespace Tests\App\Objects;
 
-use Entities\User;
+use App\Objects\User;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class UserTest
- * @package App\Test\Entities
+ * @package Tests\App\Objects
  */
 class UserTest extends TestCase
 {
