@@ -33,7 +33,7 @@ class UserEmailModel extends ModelManager implements ModelInterface
                                 ->from(UserEmail::TABLE_NAME)
                                 ->where([UserEmail::LABEL_USER_ID => $id])
                                 ->fetch();
-        return (!empty($result))? $result : false;
+        return (!empty($result)) ? $result : false;
     }
 
     /**
