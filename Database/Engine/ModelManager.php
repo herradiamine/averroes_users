@@ -3,6 +3,10 @@
 namespace Database\Engine;
 
 use Config\PDOConfigEntity;
+use Database\Delete;
+use Database\Insert;
+use Database\Select;
+use Database\Update;
 use PDO;
 
 /**
@@ -25,5 +29,25 @@ class ModelManager extends PDO
             $this->pdoConfig->getUsername(),
             $this->pdoConfig->getPassword()
         );
+    }
+
+    public function select(): Select
+    {
+        return new Select();
+    }
+
+    public function insert(): Insert
+    {
+        return new Insert();
+    }
+
+    public function update(): Update
+    {
+        return new Update();
+    }
+
+    public function delete(): Delete
+    {
+        return new Delete();
     }
 }

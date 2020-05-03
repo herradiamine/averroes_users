@@ -3,12 +3,14 @@
 namespace Models;
 
 use Models\Interfaces\ModelInterface;
+use Database\Engine\ModelManager;
+use Entities\UserEmail;
 
 /**
  * Class UserEmailModel
  * @package Models
  */
-class UserEmailModel implements ModelInterface
+class UserEmailModel extends ModelManager implements ModelInterface
 {
     /**
      * Gets one element using select by id and displays choosen fields.
@@ -26,7 +28,12 @@ class UserEmailModel implements ModelInterface
         int $limit = 20,
         int $offset = 0
     ): ?object {
-        // TODO: Implement getOneById() method.
+        $result = (object) $this->select()
+                                ->fields($displayFiedls)
+                                ->from(UserEmail::TABLE_NAME)
+                                ->where([UserEmail::LABEL_USER_ID => $id])
+                                ->fetch();
+        return (!empty($result))? $result : false;
     }
 
     /**

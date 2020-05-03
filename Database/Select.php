@@ -23,14 +23,11 @@ class Select extends ModelManager
     }
 
     /**
-     * @param array $concatFields
      * @param array $fields
      * @return $this
      */
-    public function fiels(
-        array $concatFields = [],
-        array $fields = []
-    ): Select {
+    public function fields(array $fields = []): Select
+    {
         return $this;
     }
 
@@ -121,7 +118,6 @@ class Select extends ModelManager
     public function fetch(): array
     {
         $result = $this->query($this->query);
-        $result = $result->fetchAll(self::FETCH_CLASS);
-        return $result;
+        return $result->fetchAll(self::FETCH_CLASS);
     }
 }
