@@ -1,5 +1,6 @@
 {
     "require": {
+        "ext-http": "*",
         "ext-yaml": "*",
         "ext-pdo": "*",
         "phpunit/phpunit": "^9.1",

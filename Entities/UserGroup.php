@@ -4,6 +4,7 @@ namespace Entities;
 
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
+use InvalidArgumentException;
 
 /**
  * Class UserGroup
@@ -50,19 +51,6 @@ class UserGroup implements EntityInterface
     {
         $this->setUserGroupId($entityData[self::LABEL_USER_GROUP_ID]);
         $this->setGroupName($entityData[self::LABEL_GROUP_NAME]);
-        $this->setGroupEnabled($entityData[self::LABEL_GROUP_ENABLED]);
-        $this->setCreationDate(
-            DateTimeImmutable::createFromFormat(
-                DATE_W3C,
-                $entityData[self::LABEL_CREATION_DATE]
-            )
-        );
-        $this->setUpdateDate(
-            DateTimeImmutable::createFromFormat(
-                DATE_W3C,
-                $entityData[self::LABEL_UPDATE_DATE]
-            )
-        );
     }
 
     /** @return int */
@@ -71,7 +59,10 @@ class UserGroup implements EntityInterface
         return $this->userGroupId;
     }
 
-    /** @param int $userGroupId */
+    /**
+     * @param int $userGroupId
+     * @throws InvalidArgumentException
+     */
     public function setUserGroupId(int $userGroupId): void
     {
         $this->userGroupId = $userGroupId;

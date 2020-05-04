@@ -2,7 +2,10 @@
 
 namespace Tests\Entities;
 
+use DateTimeImmutable;
 use Entities\UserGroup;
+use Tests\Entities\HelpersTraits\AvailableDataTypesTrait;
+use TypeError;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -11,6 +14,10 @@ use PHPUnit\Framework\TestCase;
  */
 class UserGroupTest extends TestCase
 {
+    use AvailableDataTypesTrait {
+        AvailableDataTypesTrait::__construct as availableData;
+    }
+
     /** @var UserGroup $userGroupEntity */
     private UserGroup $userGroupEntity;
 
@@ -24,26 +31,28 @@ class UserGroupTest extends TestCase
     public function __construct(?string $name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
-
-        $entity_data = [
-            UserGroup::LABEL_USER_GROUP_ID => 3098452309,
-            UserGroup::LABEL_GROUP_NAME    => 'Administrateurs',
-            UserGroup::LABEL_GROUP_ENABLED => true,
-            UserGroup::LABEL_CREATION_DATE => date(DATE_W3C, strtotime('yesterday')),
-            UserGroup::LABEL_UPDATE_DATE   => date(DATE_W3C, strtotime('today')),
-        ];
-        $this->userGroupEntity = new UserGroup($entity_data);
+        $this->availableData();
+        $this->userGroupEntity = new UserGroup();
     }
 
     public function testSetUserGroupId()
     {
-        /** Is an integer */
-        static::assertIsInt($this->userGroupEntity->getUserGroupId());
-    }
-
-    public function testSetGroupName()
-    {
-        /** Is a string */
-        static::assertIsString($this->userGroupEntity->getGroupName());
+        foreach ($this->entityData as $key => $value) {
+            switch ($key) {
+                case 'integer':
+                    $this->userGroupEntity->setUserGroupId($value);
+                    static::assertIsInt($this->userGroupEntity->getUserGroupId());
+                    break;
+                case 'float':
+                case 'string':
+                case 'boolean':
+                case 'array':
+                case 'datetime':
+                case 'null':
+                    static::expectException(TypeError::class);
+                    $this->userGroupEntity->setUserGroupId($value);
+                    break;
+            }
+        }
     }
 }

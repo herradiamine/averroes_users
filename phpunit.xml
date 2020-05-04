@@ -7,7 +7,7 @@
 >
     <testsuites>
         <testsuite name="averoes">
-            <directory suffix=".php">Tests</directory>
+            <file>Tests/Entities/UserGroupTest.php</file>
         </testsuite>
     </testsuites>
 

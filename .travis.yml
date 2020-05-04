@@ -18,6 +18,7 @@ before_script:
 
 install:
   - printf "\n" | pecl install yaml
+  - printf "\n" | apt install php-http
   - travis_retry composer update
 
 script:
