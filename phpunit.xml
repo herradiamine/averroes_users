@@ -10,6 +10,7 @@
             <file>Tests/Entities/UserTest.php</file>
             <file>Tests/Entities/UserGroupTest.php</file>
             <file>Tests/Entities/UserEmailTest.php</file>
+            <file>Tests/Entities/UserPasswordTest.php</file>
         </testsuite>
     </testsuites>
 

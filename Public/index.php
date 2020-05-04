@@ -42,21 +42,27 @@ $email = [
 // var_dump($email);
 
 $password = [
-    UserPassword::LABEL_PASSWORD_ID      => 3208324089,
+    UserPassword::LABEL_USER_PASSWORD_ID      => 3208324089,
     UserPassword::LABEL_USER_ID          => 3239875402,
-    UserPassword::LABEL_USER_PASSWORD         => 'DFZEeoizuç!è"/',
+    UserPassword::LABEL_USER_PASSWORD    => 'DFZEeoizuç!è"/',
     UserPassword::LABEL_PASSWORD_ENABLED => true,
-    UserPassword::LABEL_CREATION_DATE    => date(
+    UserPassword::LABEL_CREATION_DATE    => DateTimeImmutable::createFromFormat(
         DATE_W3C,
-        strtotime('yesterday')
+        date(
+            DATE_W3C,
+            strtotime('yesterday')
+        )
     ),
-    UserPassword::LABEL_UPDATE_DATE      => date(
+    UserPassword::LABEL_UPDATE_DATE      => DateTimeImmutable::createFromFormat(
         DATE_W3C,
-        strtotime('today')
-    )
+        date(
+            DATE_W3C,
+            strtotime('today')
+        )
+    ),
 ];
-// $password = new UserPassword($password);
-// var_dump($password);
+$password = new UserPassword($password);
+var_dump($password);
 
 // Instance d'un utilisateur
 $user = [
@@ -81,8 +87,8 @@ $user = [
         )
     ),
 ];
-$user = new User($user);
-var_dump($user);
+// $user = new User($user);
+// var_dump($user);
 
 // Instance d'un groupe d'utilisateurs
 $user_group = [
