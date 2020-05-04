@@ -18,7 +18,6 @@ before_script:
 
 install:
   - printf "\n" | pecl install yaml
-  - printf "\n" | pecl install http
   - travis_retry composer update
 
 script:
