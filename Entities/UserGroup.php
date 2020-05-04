@@ -2,6 +2,7 @@
 
 namespace Entities;
 
+use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -17,7 +18,7 @@ class UserGroup implements EntityInterface
     public const LABEL_USER_GROUP_ID   = 'user_group_id';
     public const LABEL_GROUP_NAME      = 'group_name';
     public const LABEL_GROUP_ENABLED   = 'group_enabled';
-    public const LABEL_CREATION_DATE   = 'create_date';
+    public const LABEL_CREATION_DATE   = 'creation_date';
     public const LABEL_UPDATE_DATE     = 'update_date';
 
     /** @var int $userGroupId */
@@ -38,6 +39,7 @@ class UserGroup implements EntityInterface
     /**
      * UserGroup constructor.
      * @param array $entityData
+     * @codeCoverageIgnore
      */
     public function __construct(array $entityData = [])
     {
@@ -46,14 +48,16 @@ class UserGroup implements EntityInterface
         }
     }
 
-    /** @param array $entityData */
+    /**
+     * @param array $entityData
+     * @codeCoverageIgnore
+     */
     public function initEntity(array $entityData): void
     {
-        $this->setUserGroupId($entityData[self::LABEL_USER_GROUP_ID]);
-        $this->setGroupName($entityData[self::LABEL_GROUP_NAME]);
-        $this->setGroupEnabled($entityData[self::LABEL_GROUP_ENABLED]);
-        $this->setCreationDate($entityData[self::LABEL_CREATION_DATE]);
-        $this->setUpdateDate($entityData[self::LABEL_CREATION_DATE]);
+        foreach ($entityData as $key => $value) {
+            $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
+            $this->{$method}($value);
+        }
     }
 
     /** @return int */

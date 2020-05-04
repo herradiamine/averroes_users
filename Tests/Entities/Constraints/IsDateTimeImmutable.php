@@ -23,11 +23,13 @@ final class IsDateTimeImmutable extends Constraint
      */
     protected function matches($other): bool
     {
+        parent::matches($other);
         return ($other instanceof DateTimeImmutable);
     }
+
     public function toString(): string
     {
-        return 'is instance of '.DateTimeImmutable::class;
+        return 'is instance of ' . DateTimeImmutable::class;
     }
 
     /**
@@ -47,7 +49,7 @@ final class IsDateTimeImmutable extends Constraint
     protected function failureDescription($other): string
     {
         return \sprintf(
-            '"%s" is '.DateTimeImmutable::class,
+            '"%s" is ' . DateTimeImmutable::class,
             $other
         );
     }

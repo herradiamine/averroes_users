@@ -77,11 +77,23 @@ $user_group = [
     UserGroup::LABEL_USER_GROUP_ID => 3098452309,
     UserGroup::LABEL_GROUP_NAME    => 'Administrateurs',
     UserGroup::LABEL_GROUP_ENABLED => true,
-    UserGroup::LABEL_CREATION_DATE => date(DATE_W3C, strtotime('yesterday')),
-    UserGroup::LABEL_UPDATE_DATE   => date(DATE_W3C, strtotime('today')),
+    UserGroup::LABEL_CREATION_DATE => DateTimeImmutable::createFromFormat(
+        DATE_W3C,
+        date(
+            DATE_W3C,
+            strtotime('yesterday')
+        )
+    ),
+    UserGroup::LABEL_UPDATE_DATE   => DateTimeImmutable::createFromFormat(
+        DATE_W3C,
+        date(
+            DATE_W3C,
+            strtotime('today')
+        )
+    ),
 ];
-// $user_group = new UserGroup($user_group);
-// var_dump($user_group);
+$user_group = new UserGroup($user_group);
+var_dump($user_group);
 
 // Instance d'une propriété utilisateur
 $user_property = [
