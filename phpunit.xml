@@ -7,7 +7,9 @@
 >
     <testsuites>
         <testsuite name="averoes">
+            <file>Tests/Entities/UserTest.php</file>
             <file>Tests/Entities/UserGroupTest.php</file>
+            <file>Tests/Entities/UserEmailTest.php</file>
         </testsuite>
     </testsuites>
 

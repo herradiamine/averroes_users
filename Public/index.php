@@ -18,19 +18,25 @@ use Entities\UserPropertyValue;
 $email = [
     UserEmail::LABEL_EMAIL_ID      => 3098432098234,
     UserEmail::LABEL_USER_ID       => 2309823409834,
-    UserEmail::LABEL_EMAIL         => 'amine.herradi@gmail.com',
+    UserEmail::LABEL_USER_EMAIL         => 'amine.herradi@gmail.com',
     UserEmail::LABEL_EMAIL_LOCAL_PART    => 'amine.herradi',
     UserEmail::LABEL_EMAIL_DOMAIN_NAME   => 'gmail',
     UserEmail::LABEL_EMAIL_DOMAIN_EXT    => '.com',
     UserEmail::LABEL_EMAIL_ENABLED => true,
-    UserEmail::LABEL_CREATION_DATE => date(
+    UserEmail::LABEL_CREATION_DATE => DateTimeImmutable::createFromFormat(
         DATE_W3C,
-        strtotime('yesterday')
+        date(
+            DATE_W3C,
+            strtotime('yesterday')
+        )
     ),
-    UserEmail::LABEL_UPDATE_DATE   => date(
+    UserEmail::LABEL_UPDATE_DATE   => DateTimeImmutable::createFromFormat(
         DATE_W3C,
-        strtotime('today')
-    )
+        date(
+            DATE_W3C,
+            strtotime('today')
+        )
+    ),
 ];
 // $email = new UserEmail($email);
 // var_dump($email);
@@ -60,17 +66,23 @@ $user = [
     User::LABEL_USER_FIRSTNAME => 'Amine',
     User::LABEL_USER_LASTNAME  => 'Herradi',
     User::LABEL_USER_ENABLED   => true,
-    User::LABEL_CREATION_DATE  => date(
+    User::LABEL_CREATION_DATE => DateTimeImmutable::createFromFormat(
         DATE_W3C,
-        strtotime('yesterday')
+        date(
+            DATE_W3C,
+            strtotime('yesterday')
+        )
     ),
-    User::LABEL_UPDATE_DATE    => date(
+    User::LABEL_UPDATE_DATE   => DateTimeImmutable::createFromFormat(
         DATE_W3C,
-        strtotime('today')
-    )
+        date(
+            DATE_W3C,
+            strtotime('today')
+        )
+    ),
 ];
-// $user = new User($user);
-// var_dump($user);
+$user = new User($user);
+var_dump($user);
 
 // Instance d'un groupe d'utilisateurs
 $user_group = [
@@ -93,7 +105,7 @@ $user_group = [
     ),
 ];
 // $user_group = new UserGroup($user_group);
-var_dump($user_group);
+// var_dump($user_group);
 
 // Instance d'une propriété utilisateur
 $user_property = [

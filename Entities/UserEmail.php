@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Entities;
 
 use Entities\Helpers\EntityHelper;
@@ -16,11 +18,11 @@ class UserEmail implements EntityInterface
 
     public const LABEL_EMAIL_ID          = 'user_email_id';
     public const LABEL_USER_ID           = 'user_id';
-    public const LABEL_EMAIL             = 'user_email';
+    public const LABEL_USER_EMAIL        = 'user_email';
     public const LABEL_EMAIL_LOCAL_PART  = 'local_part';
     public const LABEL_EMAIL_DOMAIN_NAME = 'domain_name';
     public const LABEL_EMAIL_DOMAIN_EXT  = 'domain_ext';
-    public const LABEL_EMAIL_ENABLED     = 'enabled';
+    public const LABEL_EMAIL_ENABLED     = 'email_enabled';
     public const LABEL_CREATION_DATE     = 'creation_date';
     public const LABEL_UPDATE_DATE       = 'update_date';
 
@@ -54,6 +56,7 @@ class UserEmail implements EntityInterface
     /**
      * Email constructor.
      * @param array $entityData
+     * @codeCoverageIgnore
      */
     public function __construct(array $entityData = [])
     {
@@ -62,7 +65,10 @@ class UserEmail implements EntityInterface
         }
     }
 
-    /** @param array $entityData */
+    /**
+     * @param array $entityData
+     * @codeCoverageIgnore
+     */
     public function initEntity(array $entityData): void
     {
         foreach ($entityData as $key => $value) {
