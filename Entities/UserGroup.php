@@ -5,7 +5,6 @@ namespace Entities;
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
-use InvalidArgumentException;
 
 /**
  * Class UserGroup
@@ -66,10 +65,7 @@ class UserGroup implements EntityInterface
         return $this->userGroupId;
     }
 
-    /**
-     * @param int $userGroupId
-     * @throws InvalidArgumentException
-     */
+    /** @param int $userGroupId */
     public function setUserGroupId(int $userGroupId): void
     {
         $this->userGroupId = $userGroupId;

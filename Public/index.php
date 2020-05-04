@@ -92,7 +92,7 @@ $user_group = [
         )
     ),
 ];
-$user_group = new UserGroup($user_group);
+// $user_group = new UserGroup($user_group);
 var_dump($user_group);
 
 // Instance d'une propriété utilisateur
