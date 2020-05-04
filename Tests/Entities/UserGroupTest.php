@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Entities;
 
-use DateTimeImmutable;
 use Entities\UserGroup;
-use PHPUnit\Framework\Constraint\Constraint;
-use PHPUnit\Framework\Constraint\IsEqual;
-use PHPUnit\Framework\Constraint\IsInstanceOf;
 use PHPUnit\Framework\Constraint\IsNull;
 use Tests\Entities\Constraints\IsDateTimeImmutable;
 use Tests\Entities\Traits\AvailableDataTypesTrait;
