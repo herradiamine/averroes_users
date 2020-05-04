@@ -48,6 +48,7 @@ final class IsDateTimeImmutable extends Constraint
      */
     protected function failureDescription($other): string
     {
+        parent::failureDescription($other);
         return \sprintf(
             '"%s" is ' . DateTimeImmutable::class,
             $other

@@ -74,7 +74,7 @@ $user = [
 
 // Instance d'un groupe d'utilisateurs
 $user_group = [
-    UserGroup::LABEL_USER_GROUP_ID => 3098452309,
+    UserGroup::LABEL_USER_GROUP_ID => 3.098452309,
     UserGroup::LABEL_GROUP_NAME    => 'Administrateurs',
     UserGroup::LABEL_GROUP_ENABLED => true,
     UserGroup::LABEL_CREATION_DATE => DateTimeImmutable::createFromFormat(

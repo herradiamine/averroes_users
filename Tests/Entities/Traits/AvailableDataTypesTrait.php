@@ -22,19 +22,19 @@ trait AvailableDataTypesTrait
     public function __construct()
     {
         $this->entityData = [
-            'integer'  => 340198,
-            'float'    => 3.40198,
-            'string'   => 'String',
-            'boolean'  => true,
-            'array'    => [],
-            'datetime' => DateTimeImmutable::createFromFormat(
+            ['integer', 340198],
+            ['float', 3.40198],
+            ['string', 'String'],
+            ['boolean', true],
+            ['array', []],
+            ['datetime', DateTimeImmutable::createFromFormat(
                 DATE_W3C,
                 date(
                     DATE_W3C,
                     strtotime('today')
                 )
-            ),
-            'null'     => null
+            )],
+            ['null', null]
         ];
     }
 }

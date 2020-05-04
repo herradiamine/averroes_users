@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests\Entities;
 
@@ -40,120 +41,141 @@ class UserGroupTest extends TestCase
         $this->userGroupEntity = new UserGroup();
     }
 
-    public function testSetUserGroupId()
+    /**
+     * @dataProvider setAvailableData
+     * @param $type
+     * @param $value
+     */
+    public function testSetUserGroupId($type, $value)
     {
-        foreach ($this->entityData as $key => $value) {
-            switch ($key) {
-                case 'integer':
-                    $this->userGroupEntity->setUserGroupId($value);
-                    static::assertIsInt($this->userGroupEntity->getUserGroupId());
-                    break;
-                case 'float':
-                case 'string':
-                case 'boolean':
-                case 'array':
-                case 'datetime':
-                case 'null':
-                    static::expectException(TypeError::class);
-                    $this->userGroupEntity->setUserGroupId($value);
-                    break;
-            }
+        switch ($type) {
+            case 'integer':
+                $this->userGroupEntity->setUserGroupId($value);
+                static::assertIsInt($this->userGroupEntity->getUserGroupId());
+                break;
+            case 'boolean':
+            case 'float':
+            case 'string':
+            case 'array':
+            case 'datetime':
+            case 'null':
+                static::expectException(TypeError::class);
+                $this->userGroupEntity->setUserGroupId($value);
+                break;
         }
     }
 
-    public function testSetGroupName()
+    /**
+     * @dataProvider setAvailableData
+     * @param $type
+     * @param $value
+     */
+    public function testSetGroupName($type, $value)
     {
-        foreach ($this->entityData as $key => $value) {
-            switch ($key) {
-                case 'string':
-                    $this->userGroupEntity->setGroupName($value);
-                    static::assertIsString($this->userGroupEntity->getGroupName());
-                    break;
-                case 'integer':
-                case 'float':
-                case 'boolean':
-                case 'array':
-                case 'datetime':
-                case 'null':
-                    static::expectException(TypeError::class);
-                    $this->userGroupEntity->setGroupName($value);
-                    break;
-            }
+        switch ($type) {
+            case 'string':
+                $this->userGroupEntity->setGroupName($value);
+                static::assertIsString($this->userGroupEntity->getGroupName());
+                break;
+            case 'integer':
+            case 'float':
+            case 'boolean':
+            case 'array':
+            case 'datetime':
+            case 'null':
+                static::expectException(TypeError::class);
+                $this->userGroupEntity->setGroupName($value);
+                break;
         }
     }
 
-    public function testSetGroupEnabled()
+    /**
+     * @dataProvider setAvailableData
+     * @param $type
+     * @param $value
+     */
+    public function testSetGroupEnabled($type, $value)
     {
-        foreach ($this->entityData as $key => $value) {
-            switch ($key) {
-                case 'boolean':
-                    $this->userGroupEntity->setGroupEnabled($value);
-                    static::assertIsBool($this->userGroupEntity->isGroupEnabled());
-                    break;
-                case 'integer':
-                case 'float':
-                case 'string':
-                case 'array':
-                case 'datetime':
-                case 'null':
-                    static::expectException(TypeError::class);
-                    $this->userGroupEntity->setGroupEnabled($value);
-                    break;
-            }
+        switch ($type) {
+            case 'boolean':
+                $this->userGroupEntity->setGroupEnabled($value);
+                static::assertIsBool($this->userGroupEntity->isGroupEnabled());
+                break;
+            case 'integer':
+            case 'float':
+            case 'string':
+            case 'array':
+            case 'datetime':
+            case 'null':
+                static::expectException(TypeError::class);
+                $this->userGroupEntity->setGroupEnabled($value);
+                break;
         }
     }
 
-    public function testSetCreationDate()
+    /**
+     * @dataProvider setAvailableData
+     * @param $type
+     * @param $value
+     */
+    public function testSetCreationDate($type, $value)
     {
-        foreach ($this->entityData as $key => $value) {
-            switch ($key) {
-                case 'datetime':
-                    $this->userGroupEntity->setCreationDate($value);
-                    static::assertThat(
-                        $this->userGroupEntity->getCreationDate(),
-                        new IsDateTimeImmutable()
-                    );
-                    break;
-                case 'boolean':
-                case 'integer':
-                case 'float':
-                case 'string':
-                case 'array':
-                case 'null':
-                    // static::expectException(TypeError::class);
-                    // $this->userGroupEntity->setCreationDate($value);
-                    break;
-            }
+        switch ($type) {
+            case 'datetime':
+                $this->userGroupEntity->setCreationDate($value);
+                static::assertThat(
+                    $this->userGroupEntity->getCreationDate(),
+                    new IsDateTimeImmutable()
+                );
+                break;
+            case 'boolean':
+            case 'integer':
+            case 'float':
+            case 'string':
+            case 'array':
+            case 'null':
+                static::expectException(TypeError::class);
+                $this->userGroupEntity->setCreationDate($value);
+                break;
         }
     }
 
-    public function testSetUpdateDate()
+    /**
+     * @dataProvider setAvailableData
+     * @param $type
+     * @param $value
+     */
+    public function testSetUpdateDate($type, $value)
     {
-        foreach ($this->entityData as $key => $value) {
-            switch ($key) {
-                case 'datetime':
-                    $this->userGroupEntity->setUpdateDate($value);
-                    static::assertThat(
-                        $this->userGroupEntity->getUpdateDate(),
-                        new IsDateTimeImmutable()
-                    );
-                    break;
-                case 'null':
-                    $this->userGroupEntity->setUpdateDate($value);
-                    static::assertThat(
-                        $this->userGroupEntity->getUpdateDate(),
-                        new IsNull()
-                    );
-                    break;
-                case 'boolean':
-                case 'integer':
-                case 'float':
-                case 'string':
-                case 'array':
-                    // static::expectException(TypeError::class);
-                    // $this->userGroupEntity->setUpdateDate($value);
-                    break;
-            }
+        switch ($type) {
+            case 'datetime':
+                $this->userGroupEntity->setUpdateDate($value);
+                static::assertThat(
+                    $this->userGroupEntity->getUpdateDate(),
+                    new IsDateTimeImmutable()
+                );
+                break;
+            case 'null':
+                $this->userGroupEntity->setUpdateDate($value);
+                static::assertThat(
+                    $this->userGroupEntity->getUpdateDate(),
+                    new IsNull()
+                );
+                break;
+            case 'boolean':
+            case 'integer':
+            case 'float':
+            case 'string':
+            case 'array':
+                static::expectException(TypeError::class);
+                $this->userGroupEntity->setUpdateDate($value);
+                break;
         }
+    }
+
+    /** @return array */
+    public function setAvailableData()
+    {
+        return $this->entityData;
     }
 }
