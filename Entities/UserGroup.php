@@ -51,6 +51,9 @@ class UserGroup implements EntityInterface
     {
         $this->setUserGroupId($entityData[self::LABEL_USER_GROUP_ID]);
         $this->setGroupName($entityData[self::LABEL_GROUP_NAME]);
+        $this->setGroupEnabled($entityData[self::LABEL_GROUP_ENABLED]);
+        $this->setCreationDate($entityData[self::LABEL_CREATION_DATE]);
+        $this->setUpdateDate($entityData[self::LABEL_CREATION_DATE]);
     }
 
     /** @return int */

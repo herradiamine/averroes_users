@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-include 'vendor/autoload.php';
+include '../vendor/autoload.php';
 
 use Entities\User;
 use Entities\UserEmail;
@@ -32,7 +32,7 @@ $email = [
         strtotime('today')
     )
 ];
-$email = new UserEmail($email);
+// $email = new UserEmail($email);
 // var_dump($email);
 
 $password = [
@@ -49,7 +49,7 @@ $password = [
         strtotime('today')
     )
 ];
-$password = new UserPassword($password);
+// $password = new UserPassword($password);
 // var_dump($password);
 
 // Instance d'un utilisateur
@@ -69,26 +69,26 @@ $user = [
         strtotime('today')
     )
 ];
-$user = new User($user);
+// $user = new User($user);
 // var_dump($user);
 
 // Instance d'un groupe d'utilisateurs
 $user_group = [
-    UserGroup::LABEL_USER_GROUP_ID   => 3098452309,
-    UserGroup::LABEL_GROUP_NAME => 'Administrateurs',
-    UserGroup::LABEL_GROUP_ENABLED   => true,
-    UserGroup::LABEL_CREATION_DATE   => date(DATE_W3C, strtotime('yesterday')),
-    UserGroup::LABEL_UPDATE_DATE     => date(DATE_W3C, strtotime('today')),
+    UserGroup::LABEL_USER_GROUP_ID => 3098452309,
+    UserGroup::LABEL_GROUP_NAME    => 'Administrateurs',
+    UserGroup::LABEL_GROUP_ENABLED => true,
+    UserGroup::LABEL_CREATION_DATE => date(DATE_W3C, strtotime('yesterday')),
+    UserGroup::LABEL_UPDATE_DATE   => date(DATE_W3C, strtotime('today')),
 ];
-$user_group = new UserGroup($user_group);
+// $user_group = new UserGroup($user_group);
 // var_dump($user_group);
 
 // Instance d'une propriété utilisateur
 $user_property = [
     UserProperty::LABEL_USER_PROPERTY_ID => 3290874230987,
     UserProperty::LABEL_USER_GROUP_ID    => 3409248095243,
-    UserProperty::LABEL_PROPERTY_NAME             => 'hasBankAccount',
-    UserProperty::LABEL_PROPERTY_TYPE             => 'boolean',
+    UserProperty::LABEL_PROPERTY_NAME    => 'hasBankAccount',
+    UserProperty::LABEL_PROPERTY_TYPE    => 'boolean',
     UserProperty::LABEL_PROPERTY_ENABLED => true,
     UserProperty::LABEL_CREATION_DATE    => date(
         DATE_W3C,
@@ -99,7 +99,7 @@ $user_property = [
         strtotime('today')
     )
 ];
-$user_property = new UserProperty($user_property);
+// $user_property = new UserProperty($user_property);
 // var_dump($user_property);
 
 // Instance d'une valeur de propriété utilisateur
@@ -117,7 +117,7 @@ $user_property_value = [
         strtotime('today')
     )
 ];
-$user_property_value = new UserPropertyValue($user_property_value);
+// $user_property_value = new UserPropertyValue($user_property_value);
 // var_dump($user_property_value);
 
 // try {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Entities\HelpersTraits;
+namespace Tests\Entities\Traits;
 
 use DateTime;
 use DateTimeImmutable;
@@ -22,7 +22,6 @@ trait AvailableDataTypesTrait
     public function __construct()
     {
         $this->entityData = [
-
             'integer'  => 340198,
             'float'    => 3.40198,
             'string'   => 'String',
