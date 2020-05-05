@@ -4,14 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Entities\Traits;
 
-use DateTime;
 use DateTimeImmutable;
-use Entities\User;
-use Entities\UserEmail;
-use Entities\UserGroup;
-use Entities\UserPassword;
-use Entities\UserProperty;
-use Entities\UserPropertyValue;
 
 /**
  * Trait AvailableDataTypes
@@ -19,7 +12,7 @@ use Entities\UserPropertyValue;
 trait AvailableDataTypesTrait
 {
     /** @var array $entityData */
-    public array $entityData;
+    public $entityData;
 
     public function __construct()
     {
