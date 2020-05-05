@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Entities;
 
+use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
 
@@ -15,10 +18,10 @@ class UserEmail implements EntityInterface
 
     public const LABEL_EMAIL_ID          = 'user_email_id';
     public const LABEL_USER_ID           = 'user_id';
-    public const LABEL_EMAIL             = 'email';
-    public const LABEL_EMAIL_LOCAL_PART  = 'email_local_part';
-    public const LABEL_EMAIL_DOMAIN_NAME = 'email_domain_name';
-    public const LABEL_EMAIL_DOMAIN_EXT  = 'email_domain_ext';
+    public const LABEL_USER_EMAIL        = 'user_email';
+    public const LABEL_EMAIL_LOCAL_PART  = 'local_part';
+    public const LABEL_EMAIL_DOMAIN_NAME = 'domain_name';
+    public const LABEL_EMAIL_DOMAIN_EXT  = 'domain_ext';
     public const LABEL_EMAIL_ENABLED     = 'email_enabled';
     public const LABEL_CREATION_DATE     = 'creation_date';
     public const LABEL_UPDATE_DATE       = 'update_date';
@@ -29,8 +32,8 @@ class UserEmail implements EntityInterface
     /** @var int $userId */
     private int $userId;
 
-    /** @var string $email */
-    private string $email;
+    /** @var string $userEmail */
+    private string $userEmail;
 
     /** @var string $localPart */
     private string $localPart;
@@ -53,6 +56,7 @@ class UserEmail implements EntityInterface
     /**
      * Email constructor.
      * @param array $entityData
+     * @codeCoverageIgnore
      */
     public function __construct(array $entityData = [])
     {
@@ -61,28 +65,16 @@ class UserEmail implements EntityInterface
         }
     }
 
-    /** @param array $entityData */
+    /**
+     * @param array $entityData
+     * @codeCoverageIgnore
+     */
     public function initEntity(array $entityData): void
     {
-        $this->setUserEmailId($entityData[self::LABEL_EMAIL_ID]);
-        $this->setUserId($entityData[self::LABEL_USER_ID]);
-        $this->setEmail($entityData[self::LABEL_EMAIL]);
-        $this->setLocalPart($entityData[self::LABEL_EMAIL_LOCAL_PART]);
-        $this->setDomainName($entityData[self::LABEL_EMAIL_DOMAIN_NAME]);
-        $this->setDomainExt($entityData[self::LABEL_EMAIL_DOMAIN_EXT]);
-        $this->setEmailEnabled($entityData[self::LABEL_EMAIL_ENABLED]);
-        $this->setCreationDate(
-            DateTimeImmutable::createFromFormat(
-                DATE_W3C,
-                $entityData[self::LABEL_CREATION_DATE]
-            )
-        );
-        $this->setUpdateDate(
-            DateTimeImmutable::createFromFormat(
-                DATE_W3C,
-                $entityData[self::LABEL_UPDATE_DATE]
-            )
-        );
+        foreach ($entityData as $key => $value) {
+            $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
+            $this->{$method}($value);
+        }
     }
 
     /** @return int */
@@ -110,15 +102,15 @@ class UserEmail implements EntityInterface
     }
 
     /** @return string */
-    public function getEmail(): string
+    public function getUserEmail(): string
     {
-        return $this->email;
+        return $this->userEmail;
     }
 
-    /** @param string $email */
-    public function setEmail(string $email): void
+    /** @param string $userEmail */
+    public function setUserEmail(string $userEmail): void
     {
-        $this->email = $email;
+        $this->userEmail = $userEmail;
     }
 
     /** @return string */

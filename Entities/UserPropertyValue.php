@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Entities;
 
+use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
 
@@ -29,8 +32,8 @@ class UserPropertyValue implements EntityInterface
     /** @var int $userPropertyId */
     private int $userPropertyId;
 
-    /** @var int|string|bool|array|null $customValue could be anything */
-    private ?int $customValue;
+    /** @var int|float|bool|string|null $customValue could be anything */
+    private $customValue;
 
     /** @var DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
@@ -41,6 +44,7 @@ class UserPropertyValue implements EntityInterface
     /**
      * UserPropertyValue constructor.
      * @param array $entityData
+     * @codeCoverageIgnore
      */
     public function __construct(array $entityData = [])
     {
@@ -49,25 +53,16 @@ class UserPropertyValue implements EntityInterface
         }
     }
 
-    /** @param array $entityData */
+    /**
+     * @codeCoverageIgnore
+     * @param array $entityData
+     */
     public function initEntity(array $entityData): void
     {
-        $this->setUserPropertyValueId($entityData[self::LABEL_USER_PROPERTY_VALUE_ID]);
-        $this->setUserId($entityData[self::LABEL_USER_ID]);
-        $this->setUserPropertyId($entityData[self::LABEL_USER_PROPERTY_ID]);
-        $this->setCustomValue($entityData[self::LABEL_CUSTOM_VALUE]);
-        $this->setCreationDate(
-            DateTimeImmutable::createFromFormat(
-                DATE_W3C,
-                $entityData[self::LABEL_CREATION_DATE]
-            )
-        );
-        $this->setUpdateDate(
-            DateTimeImmutable::createFromFormat(
-                DATE_W3C,
-                $entityData[self::LABEL_UPDATE_DATE]
-            )
-        );
+        foreach ($entityData as $key => $value) {
+            $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
+            $this->{$method}($value);
+        }
     }
 
     /** @return int */
@@ -106,13 +101,13 @@ class UserPropertyValue implements EntityInterface
         $this->userPropertyId = $userPropertyId;
     }
 
-    /** @return array|bool|int|string|null */
+    /** @return int|float|bool|string|null */
     public function getCustomValue()
     {
         return $this->customValue;
     }
 
-    /** @param array|bool|int|string|null $customValue */
+    /** @param int|float|bool|string|null $customValue */
     public function setCustomValue($customValue): void
     {
         $this->customValue = $customValue;

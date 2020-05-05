@@ -6,7 +6,6 @@ os: linux
 
 jobs:
   include:
-    - php: 7.3
     - php: 7.4
 
 cache:
@@ -22,6 +21,7 @@ install:
 
 script:
   - vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*
+  - vendor/bin/phpunit
 
 notifications:
-  email: amineherradi@gmail.com
+  email: herradiamine@gmail.com

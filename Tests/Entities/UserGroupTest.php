@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Entities;
 
 use Entities\UserGroup;
+use PHPUnit\Framework\Constraint\IsNull;
+use Tests\Entities\Constraints\IsDateTimeImmutable;
+use Tests\Entities\Traits\AvailableDataTypesTrait;
+use TypeError;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -11,6 +17,10 @@ use PHPUnit\Framework\TestCase;
  */
 class UserGroupTest extends TestCase
 {
+    use AvailableDataTypesTrait {
+        AvailableDataTypesTrait::__construct as availableData;
+    }
+
     /** @var UserGroup $userGroupEntity */
     private UserGroup $userGroupEntity;
 
@@ -24,26 +34,145 @@ class UserGroupTest extends TestCase
     public function __construct(?string $name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
-
-        $entity_data = [
-            UserGroup::LABEL_USER_GROUP_ID => 3098452309,
-            UserGroup::LABEL_GROUP_NAME    => 'Administrateurs',
-            UserGroup::LABEL_GROUP_ENABLED => true,
-            UserGroup::LABEL_CREATION_DATE => date(DATE_W3C, strtotime('yesterday')),
-            UserGroup::LABEL_UPDATE_DATE   => date(DATE_W3C, strtotime('today')),
-        ];
-        $this->userGroupEntity = new UserGroup($entity_data);
+        $this->availableData();
+        $this->userGroupEntity = new UserGroup();
     }
 
-    public function testSetUserGroupId()
+    /**
+     * @dataProvider setAvailableData
+     * @param $type
+     * @param $value
+     */
+    public function testSetUserGroupId($type, $value)
     {
-        /** Is an integer */
-        static::assertIsInt($this->userGroupEntity->getUserGroupId());
+        switch ($type) {
+            case 'integer':
+                $this->userGroupEntity->setUserGroupId($value);
+                static::assertIsInt($this->userGroupEntity->getUserGroupId());
+                break;
+            case 'boolean':
+            case 'float':
+            case 'string':
+            case 'array':
+            case 'datetime':
+            case 'null':
+                static::expectException(TypeError::class);
+                $this->userGroupEntity->setUserGroupId($value);
+                break;
+        }
     }
 
-    public function testSetGroupName()
+    /**
+     * @dataProvider setAvailableData
+     * @param $type
+     * @param $value
+     */
+    public function testSetGroupName($type, $value)
     {
-        /** Is a string */
-        static::assertIsString($this->userGroupEntity->getGroupName());
+        switch ($type) {
+            case 'string':
+                $this->userGroupEntity->setGroupName($value);
+                static::assertIsString($this->userGroupEntity->getGroupName());
+                break;
+            case 'integer':
+            case 'float':
+            case 'boolean':
+            case 'array':
+            case 'datetime':
+            case 'null':
+                static::expectException(TypeError::class);
+                $this->userGroupEntity->setGroupName($value);
+                break;
+        }
+    }
+
+    /**
+     * @dataProvider setAvailableData
+     * @param $type
+     * @param $value
+     */
+    public function testSetGroupEnabled($type, $value)
+    {
+        switch ($type) {
+            case 'boolean':
+                $this->userGroupEntity->setGroupEnabled($value);
+                static::assertIsBool($this->userGroupEntity->isGroupEnabled());
+                break;
+            case 'integer':
+            case 'float':
+            case 'string':
+            case 'array':
+            case 'datetime':
+            case 'null':
+                static::expectException(TypeError::class);
+                $this->userGroupEntity->setGroupEnabled($value);
+                break;
+        }
+    }
+
+    /**
+     * @dataProvider setAvailableData
+     * @param $type
+     * @param $value
+     */
+    public function testSetCreationDate($type, $value)
+    {
+        switch ($type) {
+            case 'datetime':
+                $this->userGroupEntity->setCreationDate($value);
+                static::assertThat(
+                    $this->userGroupEntity->getCreationDate(),
+                    new IsDateTimeImmutable()
+                );
+                break;
+            case 'boolean':
+            case 'integer':
+            case 'float':
+            case 'string':
+            case 'array':
+            case 'null':
+                static::expectException(TypeError::class);
+                $this->userGroupEntity->setCreationDate($value);
+                break;
+        }
+    }
+
+    /**
+     * @dataProvider setAvailableData
+     * @param $type
+     * @param $value
+     */
+    public function testSetUpdateDate($type, $value)
+    {
+        switch ($type) {
+            case 'datetime':
+                $this->userGroupEntity->setUpdateDate($value);
+                static::assertThat(
+                    $this->userGroupEntity->getUpdateDate(),
+                    new IsDateTimeImmutable()
+                );
+                break;
+            case 'null':
+                $this->userGroupEntity->setUpdateDate($value);
+                static::assertThat(
+                    $this->userGroupEntity->getUpdateDate(),
+                    new IsNull()
+                );
+                break;
+            case 'boolean':
+            case 'integer':
+            case 'float':
+            case 'string':
+            case 'array':
+                static::expectException(TypeError::class);
+                $this->userGroupEntity->setUpdateDate($value);
+                break;
+        }
+    }
+
+    /** @return array */
+    public function setAvailableData()
+    {
+        return $this->entityData;
     }
 }

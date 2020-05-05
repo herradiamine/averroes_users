@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Entities;
 
+use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
 
@@ -45,6 +48,7 @@ class UserProperty implements EntityInterface
     /**
      * UserProperty constructor.
      * @param array $entityData
+     * @codeCoverageIgnore
      */
     public function __construct(array $entityData = [])
     {
@@ -53,26 +57,16 @@ class UserProperty implements EntityInterface
         }
     }
 
-    /** @param array $entityData */
+    /**
+     * @param array $entityData
+     * @codeCoverageIgnore
+     */
     public function initEntity(array $entityData): void
     {
-        $this->setUserPropertyId($entityData[self::LABEL_USER_PROPERTY_ID]);
-        $this->setUserGroupId($entityData[self::LABEL_USER_GROUP_ID]);
-        $this->setPropertyName($entityData[self::LABEL_PROPERTY_NAME]);
-        $this->setPropertyType($entityData[self::LABEL_PROPERTY_TYPE]);
-        $this->setPropertyEnabled($entityData[self::LABEL_PROPERTY_ENABLED]);
-        $this->setCreationDate(
-            DateTimeImmutable::createFromFormat(
-                DATE_W3C,
-                $entityData[self::LABEL_CREATION_DATE]
-            )
-        );
-        $this->setUpdateDate(
-            DateTimeImmutable::createFromFormat(
-                DATE_W3C,
-                $entityData[self::LABEL_UPDATE_DATE]
-            )
-        );
+        foreach ($entityData as $key => $value) {
+            $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
+            $this->{$method}($value);
+        }
     }
 
     /** @return int */
