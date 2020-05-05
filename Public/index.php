@@ -61,8 +61,8 @@ $password = [
         )
     ),
 ];
-$password = new UserPassword($password);
-var_dump($password);
+// $password = new UserPassword($password);
+// var_dump($password);
 
 // Instance d'un utilisateur
 $user = [
@@ -120,14 +120,20 @@ $user_property = [
     UserProperty::LABEL_PROPERTY_NAME    => 'hasBankAccount',
     UserProperty::LABEL_PROPERTY_TYPE    => 'boolean',
     UserProperty::LABEL_PROPERTY_ENABLED => true,
-    UserProperty::LABEL_CREATION_DATE    => date(
+    UserProperty::LABEL_CREATION_DATE => DateTimeImmutable::createFromFormat(
         DATE_W3C,
-        strtotime('yesterday')
+        date(
+            DATE_W3C,
+            strtotime('yesterday')
+        )
     ),
-    UserProperty::LABEL_UPDATE_DATE      => date(
+    UserProperty::LABEL_UPDATE_DATE   => DateTimeImmutable::createFromFormat(
         DATE_W3C,
-        strtotime('today')
-    )
+        date(
+            DATE_W3C,
+            strtotime('today')
+        )
+    ),
 ];
 // $user_property = new UserProperty($user_property);
 // var_dump($user_property);
@@ -138,14 +144,20 @@ $user_property_value = [
     UserPropertyValue::LABEL_USER_ID                => 230985423098,
     UserPropertyValue::LABEL_USER_PROPERTY_ID       => 340982354098534,
     UserPropertyValue::LABEL_CUSTOM_VALUE           => true,
-    UserPropertyValue::LABEL_CREATION_DATE          => date(
+    UserPropertyValue::LABEL_CREATION_DATE => DateTimeImmutable::createFromFormat(
         DATE_W3C,
-        strtotime('yesterday')
+        date(
+            DATE_W3C,
+            strtotime('yesterday')
+        )
     ),
-    UserPropertyValue::LABEL_UPDATE_DATE            => date(
+    UserPropertyValue::LABEL_UPDATE_DATE   => DateTimeImmutable::createFromFormat(
         DATE_W3C,
-        strtotime('today')
-    )
+        date(
+            DATE_W3C,
+            strtotime('today')
+        )
+    ),
 ];
 // $user_property_value = new UserPropertyValue($user_property_value);
 // var_dump($user_property_value);

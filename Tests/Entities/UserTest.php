@@ -87,7 +87,7 @@ class UserTest extends TestCase
             case 'array':
             case 'datetime':
                 static::expectException(TypeError::class);
-                $this->userEntity->setUserId($value);
+                $this->userEntity->setUserGroupId($value);
                 break;
         }
     }
