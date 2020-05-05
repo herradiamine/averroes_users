@@ -7,12 +7,7 @@
 >
     <testsuites>
         <testsuite name="averoes">
-            <file>Tests/Entities/UserTest.php</file>
-            <file>Tests/Entities/UserGroupTest.php</file>
-            <file>Tests/Entities/UserEmailTest.php</file>
-            <file>Tests/Entities/UserPasswordTest.php</file>
-            <file>Tests/Entities/UserPropertyTest.php</file>
-            <file>Tests/Entities/UserPropertyValueTest.php</file>
+            <directory suffix=".php">Tests/Entities</directory>
         </testsuite>
     </testsuites>
 

@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Entities\Helpers;
 
 /**
  * Class EntityHelper
  * @package Entities\Helpers
+ * @codeCoverageIgnore
  */
 class EntityHelper
 {
