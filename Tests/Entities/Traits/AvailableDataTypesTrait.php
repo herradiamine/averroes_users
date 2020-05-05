@@ -12,7 +12,7 @@ use DateTimeImmutable;
 trait AvailableDataTypesTrait
 {
     /** @var array $entityData */
-    public $entityData;
+    public array $entityData = [];
 
     public function __construct()
     {

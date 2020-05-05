@@ -21,7 +21,7 @@ class UserEmailTest extends TestCase
         AvailableDataTypesTrait::__construct as availableData;
     }
 
-    /** @var UserEmail $userGroupEntity */
+    /** @var UserEmail $userEmailEntity */
     private UserEmail $userEmailEntity;
 
     /**
