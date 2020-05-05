@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Entities;
 
+use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
 
@@ -13,15 +16,15 @@ class UserPassword implements EntityInterface
 {
     public const TABLE_NAME = 'user_password';
 
-    public const LABEL_PASSWORD_ID      = 'user_password_id';
+    public const LABEL_USER_PASSWORD_ID = 'user_password_id';
     public const LABEL_USER_ID          = 'user_id';
     public const LABEL_USER_PASSWORD    = 'user_password';
     public const LABEL_PASSWORD_ENABLED = 'password_enabled';
     public const LABEL_CREATION_DATE    = 'creation_date';
     public const LABEL_UPDATE_DATE      = 'update_date';
 
-    /** @var int $passwordId */
-    private int $passwordId;
+    /** @var int $userPasswordId */
+    private int $userPasswordId;
 
     /** @var int $userId */
     private int $userId;
@@ -41,6 +44,7 @@ class UserPassword implements EntityInterface
     /**
      * Password constructor.
      * @param array $entityData
+     * @codeCoverageIgnore
      */
     public function __construct(array $entityData = [])
     {
@@ -49,37 +53,28 @@ class UserPassword implements EntityInterface
         }
     }
 
-    /** @param array $entityData */
+    /**
+     * @param array $entityData
+     * @codeCoverageIgnore
+     */
     public function initEntity(array $entityData): void
     {
-        $this->setPasswordId($entityData[self::LABEL_PASSWORD_ID]);
-        $this->setUserId($entityData[self::LABEL_USER_ID]);
-        $this->setUserPassword($entityData[self::LABEL_USER_PASSWORD]);
-        $this->setPasswordEnabled($entityData[self::LABEL_PASSWORD_ENABLED]);
-        $this->setCreationDate(
-            DateTimeImmutable::createFromFormat(
-                DATE_W3C,
-                $entityData[self::LABEL_CREATION_DATE]
-            )
-        );
-        $this->setUpdateDate(
-            DateTimeImmutable::createFromFormat(
-                DATE_W3C,
-                $entityData[self::LABEL_UPDATE_DATE]
-            )
-        );
+        foreach ($entityData as $key => $value) {
+            $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
+            $this->{$method}($value);
+        }
     }
 
     /** @return int */
-    public function getPasswordId(): int
+    public function getUserPasswordId(): int
     {
-        return $this->passwordId;
+        return $this->userPasswordId;
     }
 
-    /** @param int $passwordId */
-    public function setPasswordId(int $passwordId): void
+    /** @param int $userPasswordId */
+    public function setUserPasswordId(int $userPasswordId): void
     {
-        $this->passwordId = $passwordId;
+        $this->userPasswordId = $userPasswordId;
     }
 
     /** @return int */
