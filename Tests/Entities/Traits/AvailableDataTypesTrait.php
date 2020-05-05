@@ -19,7 +19,7 @@ use Entities\UserPropertyValue;
 trait AvailableDataTypesTrait
 {
     /** @var array $entityData */
-    public array $entityData = [];
+    public array $entityData;
 
     public function __construct()
     {
