@@ -51,6 +51,7 @@ class PDOConfigEntityTest extends TestCase
     public function testLoadDatabaseConfig($case, $config)
     {
         $set_database_config = $this->mockEntity->method('loadDatabaseConfig');
+        $get_dns = $this->mockEntity->method('getDns');
         switch ($case) {
             case 'real':
                 $set_database_config->with($config)->willReturn(true);
@@ -58,6 +59,8 @@ class PDOConfigEntityTest extends TestCase
                     $this->configEntity->loadDatabaseConfig($config),
                     new IsTrue()
                 );
+
+                $get_dns->willReturn($this->configEntity->getDns());
                 static::assertIsString($this->configEntity->getDns());
                 break;
 
