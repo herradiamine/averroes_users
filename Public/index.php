@@ -1,16 +1,37 @@
 <?php
 
+declare(strict_types=1);
+
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 include '../vendor/autoload.php';
 
+$dotenv = Dotenv\Dotenv::createImmutable('/var/www/html/averoes/averoes_users');
+$dotenv->load();
+
+use Config\PDOConfigEntity;
 use Entities\User;
 use Entities\UserEmail;
 use Entities\UserGroup;
 use Entities\UserPassword;
 use Entities\UserProperty;
 use Entities\UserPropertyValue;
+use SebastianBergmann\ObjectEnumerator\Enumerator;
+
+try {
+    $pdo_config = new PDOConfigEntity();
+    $bdd = new PDO(
+        $pdo_config->getDns(),
+        $pdo_config->getUsername(),
+        $pdo_config->getPassword()
+    );
+    $users = $bdd->query('SELECT * FROM user');
+    $users = $users->fetchAll(PDO::FETCH_CLASS);
+    // var_dump($users);
+} catch (Exception $exception) {
+    echo $exception->getMessage();
+}
 
 // use Faker\Factory;
 
@@ -88,7 +109,9 @@ $user = [
     ),
 ];
 // $user = new User($user);
-// var_dump($user);
+$enumerator = new Enumerator();
+$user = $enumerator->enumerate(new PDOConfigEntity());
+var_dump($user);
 
 // Instance d'un groupe d'utilisateurs
 $user_group = [
