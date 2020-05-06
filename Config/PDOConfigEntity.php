@@ -127,7 +127,7 @@ class PDOConfigEntity
         ];
 
         $config_settings  = getenv('APP_DEV_CONFIG');
-        $this->yamlConfig = ($config_settings)? yaml_parse_file($config_settings): null;
+        $this->yamlConfig = ($config_settings) ? yaml_parse_file($config_settings) : null;
         if ($this->yamlConfig) {
             $this->yamlConfig = $this->yamlConfig['database_configuration'];
             $this->loadDatabaseConfig($this->yamlConfig);
