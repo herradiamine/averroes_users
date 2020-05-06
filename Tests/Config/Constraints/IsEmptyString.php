@@ -1,12 +1,17 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Tests\Config\Constraints;
 
-
+use PHPUnit\Framework\Constraint\Constraint;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
-class IsEmptyString extends \PHPUnit\Framework\Constraint\Constraint
+/**
+ * Class IsEmptyString
+ * @package Tests\Config\Constraints
+ */
+class IsEmptyString extends Constraint
 {
     /**
      * Evaluates the constraint for parameter $other. Returns true if the
