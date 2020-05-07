@@ -56,11 +56,16 @@ class PDOConfigEntityTest extends TestCase
             case 'real':
                 $set_database_config->with($config)->willReturn(true);
                 static::assertThat(
+                    $this->mockEntity->loadDatabaseConfig($config),
+                    new IsTrue()
+                );
+                static::assertThat(
                     $this->configEntity->loadDatabaseConfig($config),
                     new IsTrue()
                 );
 
                 $get_dns->willReturn($this->configEntity->getDns());
+                static::assertIsString($this->mockEntity->getDns());
                 static::assertIsString($this->configEntity->getDns());
                 break;
 
@@ -74,6 +79,9 @@ class PDOConfigEntityTest extends TestCase
                 $set_database_config->with($config)->willThrowException(new InvalidArgumentException());
                 static::expectException(InvalidArgumentException::class);
                 $this->configEntity->loadDatabaseConfig($config);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->loadDatabaseConfig($config);
                 break;
         }
     }
@@ -89,8 +97,17 @@ class PDOConfigEntityTest extends TestCase
         $get_driver = $this->mockEntity->method('getDriver');
         switch ($case) {
             case 'real':
-                $set_driver->with($value);
+                $set_driver->with($value)->willReturn(true);
                 $get_driver->willReturn($value);
+
+                static::assertThat(
+                    $this->mockEntity->setDriver($value),
+                    new IsTrue()
+                );
+                static::assertEquals(
+                    $value,
+                    $this->mockEntity->getDriver()
+                );
 
                 static::assertThat(
                     $this->configEntity->setDriver($value),
@@ -108,6 +125,9 @@ class PDOConfigEntityTest extends TestCase
 
                 static::expectException(InvalidArgumentException::class);
                 $this->configEntity->setDriver($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setDriver($value);
                 break;
 
             case 'empty':
@@ -116,6 +136,9 @@ class PDOConfigEntityTest extends TestCase
 
                 static::expectException(InvalidArgumentException::class);
                 $this->configEntity->setDriver($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setDriver($value);
                 break;
         }
     }
@@ -131,8 +154,17 @@ class PDOConfigEntityTest extends TestCase
         $get_host = $this->mockEntity->method('gethost');
         switch ($case) {
             case 'real':
-                $set_host->with($value);
+                $set_host->with($value)->willReturn(true);
                 $get_host->willReturn($value);
+
+                static::assertThat(
+                    $this->mockEntity->setHost($value),
+                    new IsTrue()
+                );
+                static::assertMatchesRegularExpression(
+                    $this->regexHost,
+                    $this->mockEntity->getHost()
+                );
 
                 static::assertThat(
                     $this->configEntity->setHost($value),
@@ -150,6 +182,9 @@ class PDOConfigEntityTest extends TestCase
 
                 static::expectException(InvalidArgumentException::class);
                 $this->configEntity->setHost($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setHost($value);
                 break;
 
             case 'empty':
@@ -158,6 +193,9 @@ class PDOConfigEntityTest extends TestCase
 
                 static::expectException(TypeError::class);
                 $this->configEntity->setHost($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setHost($value);
                 break;
         }
     }
@@ -177,6 +215,15 @@ class PDOConfigEntityTest extends TestCase
                 $get_database->willReturn($value);
 
                 static::assertThat(
+                    $this->mockEntity->setDatabase($value),
+                    new IsTrue()
+                );
+                static::assertEquals(
+                    $value,
+                    $this->mockEntity->getDatabase()
+                );
+
+                static::assertThat(
                     $this->configEntity->setDatabase($value),
                     new IsTrue()
                 );
@@ -192,6 +239,9 @@ class PDOConfigEntityTest extends TestCase
 
                 static::expectException(InvalidArgumentException::class);
                 $this->configEntity->setDatabase($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setDatabase($value);
                 break;
         }
     }
@@ -211,6 +261,15 @@ class PDOConfigEntityTest extends TestCase
                 $get_charset->willReturn($value);
 
                 static::assertThat(
+                    $this->mockEntity->setCharset($value),
+                    new IsTrue()
+                );
+                static::assertEquals(
+                    $value,
+                    $this->mockEntity->getCharset()
+                );
+
+                static::assertThat(
                     $this->configEntity->setCharset($value),
                     new IsTrue()
                 );
@@ -227,6 +286,9 @@ class PDOConfigEntityTest extends TestCase
 
                 static::expectException(InvalidArgumentException::class);
                 $this->configEntity->setCharset($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setCharset($value);
                 break;
         }
     }
@@ -246,6 +308,15 @@ class PDOConfigEntityTest extends TestCase
                 $get_username->willReturn($value);
 
                 static::assertThat(
+                    $this->mockEntity->setUsername($value),
+                    new IsTrue()
+                );
+                static::assertEquals(
+                    $value,
+                    $this->mockEntity->getUsername()
+                );
+
+                static::assertThat(
                     $this->configEntity->setUsername($value),
                     new IsTrue()
                 );
@@ -261,6 +332,9 @@ class PDOConfigEntityTest extends TestCase
 
                 static::expectException(InvalidArgumentException::class);
                 $this->configEntity->setUsername($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setUsername($value);
                 break;
         }
     }
@@ -280,6 +354,15 @@ class PDOConfigEntityTest extends TestCase
                 $get_password->willReturn($value);
 
                 static::assertThat(
+                    $this->mockEntity->setPassword($value),
+                    new IsTrue()
+                );
+                static::assertEquals(
+                    $value,
+                    $this->mockEntity->getPassword()
+                );
+
+                static::assertThat(
                     $this->configEntity->setPassword($value),
                     new IsTrue()
                 );
@@ -295,6 +378,9 @@ class PDOConfigEntityTest extends TestCase
 
                 static::expectException(InvalidArgumentException::class);
                 $this->configEntity->setPassword($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setPassword($value);
                 break;
         }
     }
