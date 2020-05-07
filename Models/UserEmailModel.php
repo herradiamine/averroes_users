@@ -14,19 +14,14 @@ class UserEmailModel extends ModelManager implements ModelInterface
 {
     /**
      * Gets one element using select by id and displays choosen fields.
-     * Returns all fields by default if not given $displayFields parameter
-     * and 20 elements from offset 0.
+     * Returns all fields by default if not given $displayFields parameter.
      * @param int   $id
      * @param array $displayFiedls
-     * @param int   $limit
-     * @param int   $offset
      * @return object|false
      */
     public function getOneById(
         int $id,
-        array $displayFiedls = [],
-        int $limit = 20,
-        int $offset = 0
+        array $displayFiedls = []
     ): ?object {
         $result = (object) $this->select()
                                 ->fields($displayFiedls)
