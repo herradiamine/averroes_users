@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database;
 
 use Database\Engine\ModelManager;
@@ -19,6 +21,7 @@ class Select extends ModelManager
      */
     public function distinct(string $distinctField): Select
     {
+        $this->query .= "DISTINCT ($distinctField), ";
         return $this;
     }
 
@@ -28,20 +31,30 @@ class Select extends ModelManager
      */
     public function fields(array $fields = []): Select
     {
+        if (empty($fields)) {
+            $this->query .= "* \n";
+        } else {
+            $this->query .= implode(", ", $fields)." \n";
+        }
         return $this;
     }
 
     /**
-     * @param string $fiels
+     * @param string $field
      * @param array  $cases
      * @param string $asField
      * @return $this
      */
     public function case(
-        string $fiels,
+        string $field,
         array $cases,
         string $asField
     ): Select {
+        $this->query .= "CASE $field \n";
+        foreach ($cases as $value => $condition) {
+            $this->query .= "\t WHEN " . implode(" ", $condition) . " THEN $value \n";
+        }
+        $this->query .= "END $asField \n";
         return $this;
     }
 
@@ -51,6 +64,7 @@ class Select extends ModelManager
      */
     public function from(string $tableName): Select
     {
+        $this->query .= "FROM $tableName \n";
         return $this;
     }
 
@@ -74,8 +88,20 @@ class Select extends ModelManager
      * @param array $operatorKeyValue
      * @return $this
      */
-    public function where(array $operatorKeyValue): Select
+    public function where(array $operatorKeyValue = []): Select
     {
+        $this->query .= "WHERE ";
+        $first = true;
+        if (!empty($operatorKeyValue)) {
+            foreach ($operatorKeyValue as $operator) {
+                $logic   = ($first) ? "" : $operator[0];
+                $compare = implode(" ", $operator[1]);
+
+                $this->query .= $logic . " " . $compare . " ";
+                $first = false;
+            }
+        }
+
         return $this;
     }
 
