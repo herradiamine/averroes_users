@@ -7,6 +7,9 @@ namespace Entities;
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
+use InvalidArgumentException;
+use PharIo\Manifest\InvalidEmailException;
+use TypeError;
 
 /**
  * Class Email
@@ -41,9 +44,6 @@ class UserEmail implements EntityInterface
     /** @var string $domainName */
     private string $domainName;
 
-    /** @var string $domainExt */
-    private string $domainExt;
-
     /** @var bool $emailEnabled */
     private bool $emailEnabled;
 
@@ -73,7 +73,13 @@ class UserEmail implements EntityInterface
     {
         foreach ($entityData as $key => $value) {
             $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
-            $this->{$method}($value);
+            try {
+                $this->{$method}($value);
+            } catch (TypeError $type_error) {
+                echo "TypeError : " . $type_error->getMessage() . PHP_EOL;
+            } catch (InvalidArgumentException $exception) {
+                echo "InvalidArgumentException : " . $exception->getMessage() . PHP_EOL;
+            }
         }
     }
 
@@ -83,10 +89,19 @@ class UserEmail implements EntityInterface
         return $this->userEmailId;
     }
 
-    /** @param int $userEmailId */
-    public function setUserEmailId(int $userEmailId): void
+    /**
+     * @param int $userEmailId
+     * @return bool
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserEmailId(int $userEmailId): bool
     {
-        $this->userEmailId = $userEmailId;
+        if ($userEmailId) {
+            $this->userEmailId = $userEmailId;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userEmailId is not a valid user email id");
+        }
     }
 
     /** @return int */
@@ -95,10 +110,19 @@ class UserEmail implements EntityInterface
         return $this->userId;
     }
 
-    /** @param int $userId */
-    public function setUserId(int $userId): void
+    /**
+     * @param int $userId
+     * @return bool
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserId(int $userId): bool
     {
-        $this->userId = $userId;
+        if ($userId) {
+            $this->userId = $userId;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userId is not a valid user id");
+        }
     }
 
     /** @return string */
@@ -107,10 +131,24 @@ class UserEmail implements EntityInterface
         return $this->userEmail;
     }
 
-    /** @param string $userEmail */
-    public function setUserEmail(string $userEmail): void
+    /**
+     * @param string $userEmail
+     * @return bool
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserEmail(string $userEmail): bool
     {
-        $this->userEmail = $userEmail;
+        $user_email = filter_var($userEmail, FILTER_VALIDATE_EMAIL);
+        if ($user_email) {
+            $this->userEmail     = $user_email;
+            $exploded_user_email = explode("@", $user_email);
+
+            $this->setLocalPart($exploded_user_email[0]);
+            $this->setDomainName($exploded_user_email[1]);
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userEmail is not a valid user email");
+        }
     }
 
     /** @return string */
@@ -119,10 +157,19 @@ class UserEmail implements EntityInterface
         return $this->localPart;
     }
 
-    /** @param string $localPart */
-    public function setLocalPart(string $localPart): void
+    /**
+     * @param string $localPart
+     * @return bool
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setLocalPart(string $localPart): bool
     {
-        $this->localPart = $localPart;
+        if ($localPart != '') {
+            $this->localPart = $localPart;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$localPart is not a valid local part");
+        }
     }
 
     /** @return string */
@@ -131,22 +178,20 @@ class UserEmail implements EntityInterface
         return $this->domainName;
     }
 
-    /** @param string $domainName */
-    public function setDomainName(string $domainName): void
+    /**
+     * @param string $domainName
+     * @return bool
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setDomainName(string $domainName): bool
     {
-        $this->domainName = $domainName;
-    }
-
-    /** @return string */
-    public function getDomainExt(): string
-    {
-        return $this->domainExt;
-    }
-
-    /** @param string $domainExt */
-    public function setDomainExt(string $domainExt): void
-    {
-        $this->domainExt = $domainExt;
+        $domain_name = filter_var($domainName, FILTER_VALIDATE_DOMAIN);
+        if ($domain_name) {
+            $this->domainName = $domainName;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$domainName is not a valid domain name");
+        }
     }
 
     /** @return bool */
@@ -155,8 +200,11 @@ class UserEmail implements EntityInterface
         return $this->emailEnabled;
     }
 
-    /** @param bool $emailEnabled */
-    public function setEmailEnabled(bool $emailEnabled): void
+    /**
+     * @param bool $emailEnabled
+     * @throws TypeError
+     */
+    public function setEmailEnabled(bool $emailEnabled = false): void
     {
         $this->emailEnabled = $emailEnabled;
     }
@@ -167,7 +215,10 @@ class UserEmail implements EntityInterface
         return $this->creationDate;
     }
 
-    /** @param DateTimeImmutable $creationDate */
+    /**
+     * @param DateTimeImmutable $creationDate
+     * @throws TypeError
+     */
     public function setCreationDate(DateTimeImmutable $creationDate): void
     {
         $this->creationDate = $creationDate;
@@ -179,7 +230,10 @@ class UserEmail implements EntityInterface
         return $this->updateDate;
     }
 
-    /** @param DateTimeImmutable|null $updateDate */
+    /**
+     * @param DateTimeImmutable|null $updateDate
+     * @throws TypeError
+     */
     public function setUpdateDate(DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;
