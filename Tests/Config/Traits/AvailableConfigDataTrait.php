@@ -113,7 +113,7 @@ trait AvailableConfigDataTrait
         $this->host     = [
             ['real', '172.17.0.3'],
             ['dummy', 'dummy'],
-            ['empty', null]
+            ['empty', '']
         ];
         $this->database = [
             ['real', 'averoes'],

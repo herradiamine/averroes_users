@@ -7,7 +7,7 @@ namespace Tests\Entities;
 use Entities\User;
 use PHPUnit\Framework\Constraint\IsNull;
 use PHPUnit\Framework\TestCase;
-use Tests\Entities\Constraints\IsDateTimeImmutable;
+use Tests\Constraints\IsDateTimeImmutable;
 use Tests\Entities\Traits\AvailableDataTypesTrait;
 use TypeError;
 

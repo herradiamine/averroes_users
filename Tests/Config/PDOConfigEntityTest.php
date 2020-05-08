@@ -39,7 +39,7 @@ class PDOConfigEntityTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableConfigData();
-        $this->mockEntity   = $this->createMock(PDOConfigEntity::class);
+        $this->mockEntity   = static::createMock(PDOConfigEntity::class);
         $this->configEntity = new PDOConfigEntity();
     }
 
