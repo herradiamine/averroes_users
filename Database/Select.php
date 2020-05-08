@@ -34,7 +34,7 @@ class Select extends ModelManager
         if (empty($fields)) {
             $this->query .= "* \n";
         } else {
-            $this->query .= implode(", ", $fields)." \n";
+            $this->query .= implode(", ", $fields) . " \n";
         }
         return $this;
     }

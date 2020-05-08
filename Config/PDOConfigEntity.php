@@ -233,13 +233,8 @@ class PDOConfigEntity
      */
     public function setHost(string $host): bool
     {
-        $regex  = '/\b(?:(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.';
-        $regex .= '(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.';
-        $regex .= '(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.';
-        $regex .= '(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9]))\b/';
-
-        $valid = preg_match_all($regex, $host);
-        if ($valid) {
+        $host = filter_var($host, FILTER_VALIDATE_IP);
+        if ($host) {
             $this->host = $host;
             return true;
         } else {
