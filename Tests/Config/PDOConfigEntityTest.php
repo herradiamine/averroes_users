@@ -10,7 +10,6 @@ use PHPUnit\Framework\Constraint\IsTrue;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Tests\Config\Traits\AvailableConfigDataTrait;
-use TypeError;
 
 /**
  * Class PDOConfigEntityTest
@@ -118,7 +117,6 @@ class PDOConfigEntityTest extends TestCase
                     $this->configEntity->getDriver()
                 );
                 break;
-
             case 'dummy':
                 $set_driver->with($value)->willThrowException(new InvalidArgumentException());
                 $get_driver->willReturn($value);
@@ -129,7 +127,6 @@ class PDOConfigEntityTest extends TestCase
                 static::expectException(InvalidArgumentException::class);
                 $this->mockEntity->setDriver($value);
                 break;
-
             case 'empty':
                 $set_driver->with($value)->willThrowException(new InvalidArgumentException());
                 $get_driver->willReturn(null);
@@ -177,6 +174,7 @@ class PDOConfigEntityTest extends TestCase
                 break;
 
             case 'dummy':
+            case 'empty':
                 $set_host->with($value)->willThrowException(new InvalidArgumentException());
                 $get_host->willReturn(null);
 
@@ -184,17 +182,6 @@ class PDOConfigEntityTest extends TestCase
                 $this->configEntity->setHost($value);
 
                 static::expectException(InvalidArgumentException::class);
-                $this->mockEntity->setHost($value);
-                break;
-
-            case 'empty':
-                $set_host->with($value)->willThrowException(new TypeError());
-                $get_host->willReturn(null);
-
-                static::expectException(TypeError::class);
-                $this->configEntity->setHost($value);
-
-                static::expectException(TypeError::class);
                 $this->mockEntity->setHost($value);
                 break;
         }
@@ -383,47 +370,5 @@ class PDOConfigEntityTest extends TestCase
                 $this->mockEntity->setPassword($value);
                 break;
         }
-    }
-
-    /** @return array */
-    public function setAvailableDriver()
-    {
-        return $this->driver;
-    }
-
-    /** @return array */
-    public function setAvailableHost()
-    {
-        return $this->host;
-    }
-
-    /** @return array */
-    public function setAvailableDatabase()
-    {
-        return $this->database;
-    }
-
-    /** @return array */
-    public function setAvailableCharset()
-    {
-        return $this->charset;
-    }
-
-    /** @return array */
-    public function setAvailableUsername()
-    {
-        return $this->username;
-    }
-
-    /** @return array */
-    public function setAvailablePassword()
-    {
-        return $this->password;
-    }
-
-    /** @return array */
-    public function setAvailableDatabaseConfig()
-    {
-        return $this->databaseConfig;
     }
 }
