@@ -77,8 +77,9 @@ trait EmailProviderTrait
                     strtotime('today')
                 )
             )],
+            ['null', null],
             ['type_error', date(DATE_W3C, strtotime('today'))],
-            ['empty', null]
+            ['empty', '']
         ];
     }
 

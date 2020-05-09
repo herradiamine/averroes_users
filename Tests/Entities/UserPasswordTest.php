@@ -266,7 +266,7 @@ class UserPasswordTest extends TestCase
                     $this->mockEntity->getUpdateDate()
                 );
                 break;
-            case 'empty':
+            case 'null':
                 $set_update_date->with($value);
                 $get_update_date->willReturn($value);
 
@@ -277,6 +277,7 @@ class UserPasswordTest extends TestCase
                 static::assertNull($this->mockEntity->getUpdateDate());
                 break;
             case 'type_error':
+            case 'empty':
                 $set_update_date->with($value)->willThrowException(new TypeError());
 
                 static::expectException(TypeError::class);

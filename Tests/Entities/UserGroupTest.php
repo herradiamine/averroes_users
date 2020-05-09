@@ -210,12 +210,12 @@ class UserGroupTest extends TestCase
                 $get_update_date->willReturn($value);
 
                 $this->userGroupEntity->setUpdateDate($value);
+                $this->mockEntity->setUpdateDate($value);
+
                 static::assertInstanceOf(
                     DateTimeImmutable::class,
                     $this->userGroupEntity->getUpdateDate()
                 );
-
-                $this->mockEntity->setUpdateDate($value);
                 static::assertInstanceOf(
                     DateTimeImmutable::class,
                     $this->mockEntity->getUpdateDate()
@@ -226,9 +226,9 @@ class UserGroupTest extends TestCase
                 $get_update_date->willReturn($value);
 
                 $this->userGroupEntity->setUpdateDate($value);
-                static::assertNull($this->userGroupEntity->getUpdateDate());
-
                 $this->mockEntity->setUpdateDate($value);
+
+                static::assertNull($this->userGroupEntity->getUpdateDate());
                 static::assertNull($this->mockEntity->getUpdateDate());
                 break;
             case 'type_error':
