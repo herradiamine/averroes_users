@@ -62,6 +62,7 @@ trait GroupProviderTrait
             ['empty', '']
         ];
     }
+
     /** @return array */
     public function provideUserGroupId()
     {
