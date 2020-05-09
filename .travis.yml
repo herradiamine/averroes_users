@@ -21,7 +21,6 @@ install:
 
 script:
   - vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*
-  - vendor/bin/phpunit
 
 notifications:
   email: herradiamine@gmail.com
