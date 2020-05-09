@@ -58,10 +58,10 @@ class UserEmailTest extends TestCase
                 $get_user_email_id->willReturn($value);
 
                 static::assertTrue($this->userEmailEntity->setUserEmailId($value));
-                static::assertIsInt($this->userEmailEntity->getUserEmailId());
+                static::assertEquals($value, $this->userEmailEntity->getUserEmailId());
 
                 static::assertTrue($this->mockEntity->setUserEmailId($value));
-                static::assertIsInt($this->mockEntity->getUserEmailId());
+                static::assertEquals($value, $this->mockEntity->getUserEmailId());
                 break;
             case 'invalid_arg':
                 $set_user_email_id->with($value)->willThrowException(new InvalidArgumentException());
@@ -100,10 +100,10 @@ class UserEmailTest extends TestCase
                 $get_user_id->willReturn($value);
 
                 static::assertTrue($this->userEmailEntity->setUserId($value));
-                static::assertIsInt($this->userEmailEntity->getUserId());
+                static::assertEquals($value, $this->userEmailEntity->getUserId());
 
                 static::assertTrue($this->mockEntity->setUserId($value));
-                static::assertIsInt($this->mockEntity->getUserId());
+                static::assertEquals($value, $this->mockEntity->getUserId());
                 break;
             case 'invalid_arg':
                 $set_user_id->with($value)->willThrowException(new InvalidArgumentException());
@@ -142,10 +142,10 @@ class UserEmailTest extends TestCase
                 $get_user_email->willReturn($value);
 
                 static::assertTrue($this->mockEntity->setUserEmail($value));
-                static::assertIsString($this->mockEntity->getUserEmail());
+                static::assertEquals($value, $this->mockEntity->getUserEmail());
 
                 static::assertTrue($this->userEmailEntity->setUserEmail($value));
-                static::assertIsString($this->userEmailEntity->getUserEmail());
+                static::assertEquals($value, $this->userEmailEntity->getUserEmail());
                 break;
             case 'invalid_arg':
             case 'empty':
@@ -184,10 +184,10 @@ class UserEmailTest extends TestCase
                 $get_local_part->willReturn($value);
 
                 static::assertTrue($this->mockEntity->setLocalPart($value));
-                static::assertIsString($this->mockEntity->getLocalPart());
+                static::assertEquals($value, $this->mockEntity->getLocalPart());
 
                 static::assertTrue($this->userEmailEntity->setLocalPart($value));
-                static::assertIsString($this->userEmailEntity->getLocalPart());
+                static::assertEquals($value, $this->userEmailEntity->getLocalPart());
                 break;
             case 'invalid_arg':
             case 'empty':
@@ -226,10 +226,10 @@ class UserEmailTest extends TestCase
                 $get_domain_name->willReturn($value);
 
                 static::assertTrue($this->mockEntity->setDomainName($value));
-                static::assertIsString($this->mockEntity->getDomainName());
+                static::assertEquals($value, $this->mockEntity->getDomainName());
 
                 static::assertTrue($this->userEmailEntity->setDomainName($value));
-                static::assertIsString($this->userEmailEntity->getDomainName());
+                static::assertEquals($value, $this->userEmailEntity->getDomainName());
                 break;
             case 'invalid_arg':
             case 'empty':
@@ -268,10 +268,10 @@ class UserEmailTest extends TestCase
                 $is_email_enabled->willReturn(true);
 
                 $this->userEmailEntity->setEmailEnabled($value);
-                static::assertIsBool($this->userEmailEntity->isEmailEnabled());
+                static::assertTrue($this->userEmailEntity->isEmailEnabled());
 
                 $this->mockEntity->setEmailEnabled($value);
-                static::assertIsBool($this->mockEntity->isEmailEnabled());
+                static::assertTrue($this->mockEntity->isEmailEnabled());
                 break;
             case 'type_error':
             case 'empty':
