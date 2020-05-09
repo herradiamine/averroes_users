@@ -7,6 +7,8 @@ namespace Entities;
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
+use InvalidArgumentException;
+use TypeError;
 
 /**
  * Class UserGroup
@@ -57,7 +59,13 @@ class UserGroup implements EntityInterface
     {
         foreach ($entityData as $key => $value) {
             $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
-            $this->{$method}($value);
+            try {
+                $this->{$method}($value);
+            } catch (TypeError $type_error) {
+                echo $type_error->getMessage();
+            } catch (InvalidArgumentException $exception) {
+                echo $exception->getMessage();
+            }
         }
     }
 
@@ -67,10 +75,19 @@ class UserGroup implements EntityInterface
         return $this->userGroupId;
     }
 
-    /** @param int $userGroupId */
-    public function setUserGroupId(int $userGroupId): void
+    /**
+     * @param int $userGroupId
+     * @return bool
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserGroupId(int $userGroupId): bool
     {
-        $this->userGroupId = $userGroupId;
+        if ($userGroupId) {
+            $this->userGroupId = $userGroupId;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userGroupId is not a valid user group id");
+        }
     }
 
     /** @return string */
@@ -79,10 +96,19 @@ class UserGroup implements EntityInterface
         return $this->groupName;
     }
 
-    /** @param string $groupName */
-    public function setGroupName(string $groupName): void
+    /**
+     * @param string $groupName
+     * @return bool
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setGroupName(string $groupName): bool
     {
-        $this->groupName = $groupName;
+        if ($groupName != '') {
+            $this->groupName = $groupName;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$groupName is not a valid group name");
+        }
     }
 
     /** @return bool */
@@ -91,7 +117,10 @@ class UserGroup implements EntityInterface
         return $this->groupEnabled;
     }
 
-    /** @param bool $groupEnabled */
+    /**
+     * @param bool $groupEnabled
+     * @throws TypeError
+     */
     public function setGroupEnabled(bool $groupEnabled): void
     {
         $this->groupEnabled = $groupEnabled;
@@ -103,7 +132,10 @@ class UserGroup implements EntityInterface
         return $this->creationDate;
     }
 
-    /** @param DateTimeImmutable $creationDate */
+    /**
+     * @param DateTimeImmutable $creationDate
+     * @throws TypeError
+     */
     public function setCreationDate(DateTimeImmutable $creationDate): void
     {
         $this->creationDate = $creationDate;
@@ -115,7 +147,10 @@ class UserGroup implements EntityInterface
         return $this->updateDate;
     }
 
-    /** @param DateTimeImmutable|null $updateDate */
+    /**
+     * @param DateTimeImmutable|null $updateDate
+     * @throws TypeError
+     */
     public function setUpdateDate(DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;

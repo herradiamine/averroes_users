@@ -8,7 +8,6 @@ use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
 use InvalidArgumentException;
-use PharIo\Manifest\InvalidEmailException;
 use TypeError;
 
 /**
