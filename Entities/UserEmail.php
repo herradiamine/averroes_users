@@ -90,7 +90,7 @@ class UserEmail implements EntityInterface
 
     /**
      * @param int $userEmailId
-     * @return bool
+     * @return true
      * @throws InvalidArgumentException|TypeError
      */
     public function setUserEmailId(int $userEmailId): bool
@@ -111,7 +111,7 @@ class UserEmail implements EntityInterface
 
     /**
      * @param int $userId
-     * @return bool
+     * @return true
      * @throws InvalidArgumentException|TypeError
      */
     public function setUserId(int $userId): bool
@@ -132,7 +132,7 @@ class UserEmail implements EntityInterface
 
     /**
      * @param string $userEmail
-     * @return bool
+     * @return true
      * @throws InvalidArgumentException|TypeError
      */
     public function setUserEmail(string $userEmail): bool
@@ -158,7 +158,7 @@ class UserEmail implements EntityInterface
 
     /**
      * @param string $localPart
-     * @return bool
+     * @return true
      * @throws InvalidArgumentException|TypeError
      */
     public function setLocalPart(string $localPart): bool
@@ -179,7 +179,7 @@ class UserEmail implements EntityInterface
 
     /**
      * @param string $domainName
-     * @return bool
+     * @return true
      * @throws InvalidArgumentException|TypeError
      */
     public function setDomainName(string $domainName): bool
@@ -201,6 +201,7 @@ class UserEmail implements EntityInterface
 
     /**
      * @param bool $emailEnabled
+     * @return void
      * @throws TypeError
      */
     public function setEmailEnabled(bool $emailEnabled = false): void
@@ -216,6 +217,7 @@ class UserEmail implements EntityInterface
 
     /**
      * @param DateTimeImmutable $creationDate
+     * @return void
      * @throws TypeError
      */
     public function setCreationDate(DateTimeImmutable $creationDate): void
@@ -231,9 +233,10 @@ class UserEmail implements EntityInterface
 
     /**
      * @param DateTimeImmutable|null $updateDate
+     * @return void
      * @throws TypeError
      */
-    public function setUpdateDate(DateTimeImmutable $updateDate = null): void
+    public function setUpdateDate(?DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;
     }

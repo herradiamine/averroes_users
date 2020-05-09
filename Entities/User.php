@@ -87,10 +87,19 @@ class User implements EntityInterface
         return $this->userId;
     }
 
-    /** @param int $userId */
-    public function setUserId(int $userId): void
+    /**
+     * @param int $userId
+     * @return bool
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserId(int $userId): bool
     {
-        $this->userId = $userId;
+        if ($userId) {
+            $this->userId = $userId;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userId is not a valid user id");
+        }
     }
 
     /** @return int|null */
@@ -99,10 +108,19 @@ class User implements EntityInterface
         return $this->userGroupId;
     }
 
-    /** @param int|null $userGroupId */
-    public function setUserGroupId(int $userGroupId = null): void
+    /**
+     * @param int|null $userGroupId
+     * @return bool
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserGroupId(int $userGroupId = null): bool
     {
-        $this->userGroupId = $userGroupId;
+        if ($userGroupId || is_null($userGroupId)) {
+            $this->userGroupId = $userGroupId;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userGroupId is not a valid user group id");
+        }
     }
 
     /** @return string */
@@ -111,10 +129,19 @@ class User implements EntityInterface
         return $this->userName;
     }
 
-    /** @param string $userName */
-    public function setUserName(string $userName): void
+    /**
+     * @param string $userName
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserName(string $userName): bool
     {
-        $this->userName = $userName;
+        if ($userName != '') {
+            $this->userName = $userName;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userName is not a valid user name");
+        }
     }
 
     /** @return string */
@@ -123,10 +150,19 @@ class User implements EntityInterface
         return $this->userFirstname;
     }
 
-    /** @param string $userFirstname */
-    public function setUserFirstname(string $userFirstname): void
+    /**
+     * @param string $userFirstname
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserFirstname(string $userFirstname): bool
     {
-        $this->userFirstname = $userFirstname;
+        if ($userFirstname != '') {
+            $this->userFirstname = $userFirstname;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userFirstname is not a valid user firstname");
+        }
     }
 
     /** @return string */
@@ -135,10 +171,19 @@ class User implements EntityInterface
         return $this->userLastname;
     }
 
-    /** @param string $userLastname */
-    public function setUserLastname(string $userLastname): void
+    /**
+     * @param string $userLastname
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserLastname(string $userLastname): bool
     {
-        $this->userLastname = $userLastname;
+        if ($userLastname != '') {
+            $this->userLastname = $userLastname;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userLastname is not a valid user firstname");
+        }
     }
 
     /** @return bool */
@@ -147,8 +192,12 @@ class User implements EntityInterface
         return $this->userEnabled;
     }
 
-    /** @param bool $userEnabled */
-    public function setUserEnabled(bool $userEnabled): void
+    /**
+     * @param bool $userEnabled
+     * @return void
+     * @throws TypeError
+     */
+    public function setUserEnabled(bool $userEnabled = false): void
     {
         $this->userEnabled = $userEnabled;
     }
@@ -159,7 +208,11 @@ class User implements EntityInterface
         return $this->creationDate;
     }
 
-    /** @param DateTimeImmutable $creationDate */
+    /**
+     * @param DateTimeImmutable $creationDate
+     * @return void
+     * @throws TypeError
+     */
     public function setCreationDate(DateTimeImmutable $creationDate): void
     {
         $this->creationDate = $creationDate;
@@ -171,8 +224,12 @@ class User implements EntityInterface
         return $this->updateDate;
     }
 
-    /** @param DateTimeImmutable|null $updateDate */
-    public function setUpdateDate(DateTimeImmutable $updateDate = null): void
+    /**
+     * @param DateTimeImmutable|null $updateDate
+     * @return void
+     * @throws TypeError
+     */
+    public function setUpdateDate(?DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;
     }

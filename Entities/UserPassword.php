@@ -81,7 +81,7 @@ class UserPassword implements EntityInterface
 
     /**
      * @param int $userPasswordId
-     * @return bool
+     * @return true
      * @throws InvalidArgumentException|TypeError
      */
     public function setUserPasswordId(int $userPasswordId): bool
@@ -102,7 +102,7 @@ class UserPassword implements EntityInterface
 
     /**
      * @param int $userId
-     * @return bool
+     * @return true
      * @throws InvalidArgumentException|TypeError
      */
     public function setUserId(int $userId): bool
@@ -123,7 +123,7 @@ class UserPassword implements EntityInterface
 
     /**
      * @param string $userPassword
-     * @return bool
+     * @return true
      * @throws InvalidArgumentException|TypeError
      */
     public function setUserPassword(string $userPassword): bool
@@ -142,7 +142,11 @@ class UserPassword implements EntityInterface
         return $this->passwordEnabled;
     }
 
-    /** @param bool $passwordEnabled */
+    /**
+     * @param bool $passwordEnabled
+     * @return void
+     * @throws TypeError
+     */
     public function setPasswordEnabled(bool $passwordEnabled): void
     {
         $this->passwordEnabled = $passwordEnabled;
@@ -154,7 +158,11 @@ class UserPassword implements EntityInterface
         return $this->creationDate;
     }
 
-    /** @param DateTimeImmutable $creationDate */
+    /**
+     * @param DateTimeImmutable $creationDate
+     * @return void
+     * @throws TypeError
+     */
     public function setCreationDate(DateTimeImmutable $creationDate): void
     {
         $this->creationDate = $creationDate;
@@ -166,8 +174,12 @@ class UserPassword implements EntityInterface
         return $this->updateDate;
     }
 
-    /** @param DateTimeImmutable|null $updateDate */
-    public function setUpdateDate(?DateTimeImmutable $updateDate): void
+    /**
+     * @param DateTimeImmutable|null $updateDate
+     * @return void
+     * @throws TypeError
+     */
+    public function setUpdateDate(?DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;
     }

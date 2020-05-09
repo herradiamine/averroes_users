@@ -18,6 +18,13 @@ class UserProperty implements EntityInterface
 {
     public const TABLE_NAME = 'user_property';
 
+    public const INT_VALUE = 'integer';
+    public const FLOAT_VALUE = 'float';
+    public const BOOL_VALUE = 'boolean';
+    public const STRING_VALUE = 'string';
+    public const NULL_VALUE = 'null';
+    public const OBJECT_VALUE = 'object';
+
     public const LABEL_USER_PROPERTY_ID = 'user_property_id';
     public const LABEL_USER_GROUP_ID    = 'user_group_id';
     public const LABEL_PROPERTY_NAME    = 'property_name';
@@ -106,7 +113,7 @@ class UserProperty implements EntityInterface
 
     /**
      * @param int|null $userGroupId
-     * @return bool
+     * @return true
      * @throws InvalidArgumentException|TypeError
      */
     public function setUserGroupId(int $userGroupId = null): bool
@@ -204,7 +211,7 @@ class UserProperty implements EntityInterface
      * @return void
      * @throws TypeError
      */
-    public function setUpdateDate(DateTimeImmutable $updateDate = null): void
+    public function setUpdateDate(?DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;
     }

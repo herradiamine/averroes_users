@@ -77,7 +77,7 @@ class UserGroup implements EntityInterface
 
     /**
      * @param int $userGroupId
-     * @return bool
+     * @return true
      * @throws InvalidArgumentException|TypeError
      */
     public function setUserGroupId(int $userGroupId): bool
@@ -98,7 +98,7 @@ class UserGroup implements EntityInterface
 
     /**
      * @param string $groupName
-     * @return bool
+     * @return true
      * @throws InvalidArgumentException|TypeError
      */
     public function setGroupName(string $groupName): bool
@@ -119,6 +119,7 @@ class UserGroup implements EntityInterface
 
     /**
      * @param bool $groupEnabled
+     * @return void
      * @throws TypeError
      */
     public function setGroupEnabled(bool $groupEnabled): void
@@ -134,6 +135,7 @@ class UserGroup implements EntityInterface
 
     /**
      * @param DateTimeImmutable $creationDate
+     * @return void
      * @throws TypeError
      */
     public function setCreationDate(DateTimeImmutable $creationDate): void
@@ -149,9 +151,10 @@ class UserGroup implements EntityInterface
 
     /**
      * @param DateTimeImmutable|null $updateDate
+     * @return void
      * @throws TypeError
      */
-    public function setUpdateDate(DateTimeImmutable $updateDate = null): void
+    public function setUpdateDate(?DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;
     }
