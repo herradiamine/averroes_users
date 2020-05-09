@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace Tests\Entities;
 
 use Entities\UserGroup;
-use PHPUnit\Framework\Constraint\IsNull;
-use Tests\Constraints\IsDateTimeImmutable;
-use Tests\Entities\Traits\EmailProviderTrait;
-use TypeError;
+
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Tests\Entities\Traits\GroupProviderTrait;
+use DateTimeImmutable;
+use InvalidArgumentException;
+use TypeError;
 
 /**
  * Class UserGroupTest
@@ -17,9 +19,12 @@ use PHPUnit\Framework\TestCase;
  */
 class UserGroupTest extends TestCase
 {
-    use EmailProviderTrait {
-        EmailProviderTrait::__construct as availableData;
+    use GroupProviderTrait {
+        GroupProviderTrait::__construct as availableData;
     }
+
+    /** @var UserGroup|MockObject $mockEntity */
+    private ?MockObject $mockEntity;
 
     /** @var UserGroup $userGroupEntity */
     private UserGroup $userGroupEntity;
@@ -35,75 +40,116 @@ class UserGroupTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableData();
+        $this->mockEntity      = static::createMock(UserGroup::class);
         $this->userGroupEntity = new UserGroup();
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideUserGroupId
      * @param $type
      * @param $value
      */
     public function testSetUserGroupId($type, $value)
     {
+        $set_user_group_id = $this->mockEntity->method('setUserGroupId');
+        $get_user_group_id = $this->mockEntity->method('getUserGroupId');
         switch ($type) {
-            case 'integer':
-                $this->userGroupEntity->setUserGroupId($value);
-                static::assertIsInt($this->userGroupEntity->getUserGroupId());
+            case 'real':
+                $set_user_group_id->with($value)->willReturn(true);
+                $get_user_group_id->willReturn($value);
+
+                static::assertTrue($this->mockEntity->setUserGroupId($value));
+                static::assertEquals($value, $this->mockEntity->getUserGroupId());
+
+                static::assertTrue($this->userGroupEntity->setUserGroupId($value));
+                static::assertEquals($value, $this->userGroupEntity->getUserGroupId());
                 break;
-            case 'boolean':
-            case 'float':
-            case 'string':
-            case 'array':
-            case 'datetime':
-            case 'null':
+            case 'invalid_arg':
+                $set_user_group_id->with($value)->willThrowException(new InvalidArgumentException());
+
+                static::expectException(InvalidArgumentException::class);
+                $this->userGroupEntity->setUserGroupId($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setUserGroupId($value);
+                break;
+            case 'type_error':
+            case 'empty':
+                $set_user_group_id->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userGroupEntity->setUserGroupId($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setUserGroupId($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideGroupName
      * @param $type
      * @param $value
      */
     public function testSetGroupName($type, $value)
     {
+        $set_group_name = $this->mockEntity->method('setGroupName');
+        $get_group_name = $this->mockEntity->method('getGroupName');
         switch ($type) {
-            case 'string':
-                $this->userGroupEntity->setGroupName($value);
-                static::assertIsString($this->userGroupEntity->getGroupName());
+            case 'real':
+                $set_group_name->with($value)->willReturn(true);
+                $get_group_name->willReturn($value);
+
+                static::assertTrue($this->userGroupEntity->setGroupName($value));
+                static::assertEquals($value, $this->userGroupEntity->getGroupName());
                 break;
-            case 'integer':
-            case 'float':
-            case 'boolean':
-            case 'array':
-            case 'datetime':
-            case 'null':
+            case 'invalid_arg':
+                $set_group_name->with($value)->willThrowException(new InvalidArgumentException());
+
+                static::expectException(InvalidArgumentException::class);
+                $this->userGroupEntity->setGroupName($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setGroupName($value);
+                break;
+            case 'type_error':
+            case 'empty':
+                $set_group_name->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userGroupEntity->setGroupName($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setGroupName($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideGroupEnabled
      * @param $type
      * @param $value
      */
     public function testSetGroupEnabled($type, $value)
     {
+        $set_group_enabled = $this->mockEntity->method('setGroupEnabled');
+        $get_group_enabled = $this->mockEntity->method('isGroupEnabled');
+
         switch ($type) {
-            case 'boolean':
+            case 'real':
+                $set_group_enabled->with($value);
+                $get_group_enabled->willReturn($value);
+
                 $this->userGroupEntity->setGroupEnabled($value);
-                static::assertIsBool($this->userGroupEntity->isGroupEnabled());
+                static::assertTrue($this->userGroupEntity->isGroupEnabled());
+
+                $this->mockEntity->setGroupEnabled($value);
+                static::assertTrue($this->mockEntity->isGroupEnabled());
                 break;
-            case 'integer':
-            case 'float':
-            case 'string':
-            case 'array':
-            case 'datetime':
-            case 'null':
+            case 'type_error':
+            case 'empty':
+                $set_group_enabled->with($value);
+
                 static::expectException(TypeError::class);
                 $this->userGroupEntity->setGroupEnabled($value);
                 break;
@@ -111,68 +157,90 @@ class UserGroupTest extends TestCase
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideCreationDate
      * @param $type
      * @param $value
      */
     public function testSetCreationDate($type, $value)
     {
+        $set_creation_date = $this->mockEntity->method('setCreationDate');
+        $get_creation_date = $this->mockEntity->method('getCreationDate');
         switch ($type) {
-            case 'datetime':
+            case 'real':
+                $set_creation_date->with($value);
+                $get_creation_date->willReturn($value);
+
                 $this->userGroupEntity->setCreationDate($value);
-                static::assertThat(
-                    $this->userGroupEntity->getCreationDate(),
-                    new IsDateTimeImmutable()
+                static::assertInstanceOf(
+                    DateTimeImmutable::class,
+                    $this->userGroupEntity->getCreationDate()
+                );
+
+                $this->mockEntity->setCreationDate($value);
+                static::assertInstanceOf(
+                    DateTimeImmutable::class,
+                    $this->mockEntity->getCreationDate()
                 );
                 break;
-            case 'boolean':
-            case 'integer':
-            case 'float':
-            case 'string':
-            case 'array':
-            case 'null':
+            case 'type_error':
+            case 'empty':
+                $set_creation_date->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userGroupEntity->setCreationDate($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setCreationDate($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideUpdateDate
      * @param $type
      * @param $value
      */
     public function testSetUpdateDate($type, $value)
     {
+        $set_update_date = $this->mockEntity->method('setUpdateDate');
+        $get_update_date = $this->mockEntity->method('getUpdateDate');
         switch ($type) {
-            case 'datetime':
+            case 'real':
+                $set_update_date->with($value);
+                $get_update_date->willReturn($value);
+
                 $this->userGroupEntity->setUpdateDate($value);
-                static::assertThat(
-                    $this->userGroupEntity->getUpdateDate(),
-                    new IsDateTimeImmutable()
+                static::assertInstanceOf(
+                    DateTimeImmutable::class,
+                    $this->userGroupEntity->getUpdateDate()
+                );
+
+                $this->mockEntity->setUpdateDate($value);
+                static::assertInstanceOf(
+                    DateTimeImmutable::class,
+                    $this->mockEntity->getUpdateDate()
                 );
                 break;
             case 'null':
+                $set_update_date->with($value);
+                $get_update_date->willReturn($value);
+
                 $this->userGroupEntity->setUpdateDate($value);
-                static::assertThat(
-                    $this->userGroupEntity->getUpdateDate(),
-                    new IsNull()
-                );
+                static::assertNull($this->userGroupEntity->getUpdateDate());
+
+                $this->mockEntity->setUpdateDate($value);
+                static::assertNull($this->mockEntity->getUpdateDate());
                 break;
-            case 'boolean':
-            case 'integer':
-            case 'float':
-            case 'string':
-            case 'array':
+            case 'type_error':
+            case 'empty':
+                $set_update_date->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userGroupEntity->setUpdateDate($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setUpdateDate($value);
                 break;
         }
-    }
-
-    /** @return array */
-    public function setAvailableData()
-    {
-        return $this->entityData;
     }
 }

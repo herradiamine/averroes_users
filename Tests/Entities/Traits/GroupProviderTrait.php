@@ -23,15 +23,15 @@ trait GroupProviderTrait
     {
         $this->userGroupId = [
             ['real', 39873],
-            ['invalid_arg', ''],
+            ['invalid_arg', 0],
             ['type_error', '39873'],
             ['empty', '']
         ];
         $this->groupName = [
-            ['real', 'GROUP NAME'],
-            ['invalid_arg', 0],
-            ['type_error', '39873'],
-            ['empty', '']
+            ['real', 'GROUP_NAME'],
+            ['invalid_arg', ''],
+            ['type_error', 39873],
+            ['empty', null]
         ];
         $this->groupEnabled = [
             ['real', true],
@@ -57,37 +57,37 @@ trait GroupProviderTrait
                     strtotime('today')
                 )
             )],
-            ['type_error', date(DATE_W3C, strtotime('today'))],
             ['null', null],
+            ['type_error', date(DATE_W3C, strtotime('today'))],
             ['empty', '']
         ];
     }
     /** @return array */
-    private function provideUserGroupId()
+    public function provideUserGroupId()
     {
         return $this->userGroupId;
     }
 
     /** @return array */
-    private function provideGroupName()
+    public function provideGroupName()
     {
         return $this->groupName;
     }
 
     /** @return array */
-    private function provideGroupEnabled()
+    public function provideGroupEnabled()
     {
         return $this->groupEnabled;
     }
 
     /** @return array */
-    private function provideCreationDate()
+    public function provideCreationDate()
     {
         return $this->creationDate;
     }
 
     /** @return array */
-    private function provideUpdateDate()
+    public function provideUpdateDate()
     {
         return $this->updateDate;
     }
