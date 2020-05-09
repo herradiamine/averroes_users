@@ -9,7 +9,10 @@
     <testsuites>
         <testsuite name="averoes">
             <directory suffix=".php">Tests/Config</directory>
-            <directory suffix=".php">Tests/Entities</directory>
+            <directory suffix=".php">Tests/Entities/UserGroupTest.php</directory>
+            <directory suffix=".php">Tests/Entities/UserEmailTest.php</directory>
+            <directory suffix=".php">Tests/Entities/UserPropertyTest.php</directory>
+            <directory suffix=".php">Tests/Entities/UserPasswordTest.php</directory>
         </testsuite>
     </testsuites>
 
@@ -23,8 +26,7 @@
             <directory suffix=".php">Routes</directory>
         </whitelist>
     </filter>
-
-    <!--
+<!--
     <logging>
         <log type="coverage-html" target="/var/www/html/averoes/averoes_users/Rapports/tmp/report" lowUpperBound="35" highLowerBound="70"/>
         <log type="coverage-clover" target="/var/www/html/averoes/averoes_users/Rapports/tmp/coverage.xml"/>
@@ -34,8 +36,7 @@
         <log type="testdox-html" target="/var/www/html/averoes/averoes_users/Rapports/tmp/testdox.html"/>
         <log type="testdox-text" target="/var/www/html/averoes/averoes_users/Rapports/tmp/testdox.txt"/>
     </logging>
-    -->
-
+-->
     <php>
         <const name="PHPUNIT_TESTSUITE" value="true"/>
     </php>
