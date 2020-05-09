@@ -190,15 +190,12 @@ class UserPasswordTest extends TestCase
             case 'type_error':
             case 'empty':
                 $set_password_enabled->with($value)->willThrowException(new TypeError());
-                $is_password_enabled->willReturn(false);
 
                 static::expectException(TypeError::class);
                 $this->userPasswordEntity->setPasswordEnabled($value);
-                static::assertIsBool($this->userPasswordEntity->isPasswordEnabled());
 
                 static::expectException(TypeError::class);
                 $this->mockEntity->setPasswordEnabled($value);
-                static::assertIsBool($this->mockEntity->isPasswordEnabled());
                 break;
         }
     }
@@ -231,6 +228,8 @@ class UserPasswordTest extends TestCase
                 break;
             case 'type_error':
             case 'empty':
+                $set_creation_date->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userPasswordEntity->setCreationDate($value);
 
