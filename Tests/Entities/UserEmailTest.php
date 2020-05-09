@@ -9,7 +9,7 @@ use Entities\UserEmail;
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Tests\Entities\Traits\AvailableDataTypesTrait;
+use Tests\Entities\Traits\EmailProviderTrait;
 use TypeError;
 
 /**
@@ -18,8 +18,8 @@ use TypeError;
  */
 class UserEmailTest extends TestCase
 {
-    use AvailableDataTypesTrait {
-        AvailableDataTypesTrait::__construct as availableData;
+    use EmailProviderTrait {
+        EmailProviderTrait::__construct as availableData;
     }
 
     /** @var UserEmail|MockObject $mockEntity */

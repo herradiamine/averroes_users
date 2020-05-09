@@ -7,7 +7,7 @@ namespace Tests\Entities;
 use Entities\UserGroup;
 use PHPUnit\Framework\Constraint\IsNull;
 use Tests\Constraints\IsDateTimeImmutable;
-use Tests\Entities\Traits\AvailableDataTypesTrait;
+use Tests\Entities\Traits\EmailProviderTrait;
 use TypeError;
 use PHPUnit\Framework\TestCase;
 
@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
  */
 class UserGroupTest extends TestCase
 {
-    use AvailableDataTypesTrait {
-        AvailableDataTypesTrait::__construct as availableData;
+    use EmailProviderTrait {
+        EmailProviderTrait::__construct as availableData;
     }
 
     /** @var UserGroup $userGroupEntity */

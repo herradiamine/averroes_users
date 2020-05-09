@@ -8,7 +8,7 @@ use Entities\UserPassword;
 use PHPUnit\Framework\Constraint\IsNull;
 use PHPUnit\Framework\TestCase;
 use Tests\Constraints\IsDateTimeImmutable;
-use Tests\Entities\Traits\AvailableDataTypesTrait;
+use Tests\Entities\Traits\EmailProviderTrait;
 use TypeError;
 
 /**
@@ -17,8 +17,8 @@ use TypeError;
  */
 class UserPasswordTest extends TestCase
 {
-    use AvailableDataTypesTrait {
-        AvailableDataTypesTrait::__construct as availableData;
+    use EmailProviderTrait {
+        EmailProviderTrait::__construct as availableData;
     }
 
     /** @var UserPassword $userPasswordEntity */
