@@ -7,6 +7,8 @@ namespace Entities;
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
+use InvalidArgumentException;
+use TypeError;
 
 /**
  * Class User
@@ -69,7 +71,13 @@ class User implements EntityInterface
     {
         foreach ($entityData as $key => $value) {
             $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
-            $this->{$method}($value);
+            try {
+                $this->{$method}($value);
+            } catch (TypeError $error) {
+                echo TypeError::class . ' : ' . $error->getMessage();
+            } catch (InvalidArgumentException $exception) {
+                echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
+            }
         }
     }
 

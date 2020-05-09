@@ -61,10 +61,10 @@ class UserGroup implements EntityInterface
             $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
             try {
                 $this->{$method}($value);
-            } catch (TypeError $type_error) {
-                echo $type_error->getMessage();
+            } catch (TypeError $error) {
+                echo TypeError::class . ' : ' . $error->getMessage();
             } catch (InvalidArgumentException $exception) {
-                echo $exception->getMessage();
+                echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
             }
         }
     }

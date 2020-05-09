@@ -317,6 +317,8 @@ class UserEmailTest extends TestCase
                 break;
             case 'type_error':
             case 'empty':
+                $set_creation_date->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userEmailEntity->setCreationDate($value);
 

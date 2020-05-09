@@ -74,10 +74,10 @@ class UserEmail implements EntityInterface
             $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
             try {
                 $this->{$method}($value);
-            } catch (TypeError $type_error) {
-                echo "TypeError : " . $type_error->getMessage() . PHP_EOL;
+            } catch (TypeError $error) {
+                echo TypeError::class . ' : ' . $error->getMessage();
             } catch (InvalidArgumentException $exception) {
-                echo "InvalidArgumentException : " . $exception->getMessage() . PHP_EOL;
+                echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
             }
         }
     }
