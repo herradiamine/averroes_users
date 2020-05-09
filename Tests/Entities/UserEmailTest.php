@@ -23,7 +23,7 @@ class UserEmailTest extends TestCase
     }
 
     /** @var UserEmail|MockObject $mockEntity */
-    private ?MockObject $mockEntity;
+    private MockObject $mockEntity;
 
     /** @var UserEmail $userEmailEntity */
     private UserEmail $userEmailEntity;

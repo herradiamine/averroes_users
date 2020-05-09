@@ -24,7 +24,7 @@ class UserGroupTest extends TestCase
     }
 
     /** @var UserGroup|MockObject $mockEntity */
-    private ?MockObject $mockEntity;
+    private MockObject $mockEntity;
 
     /** @var UserGroup $userGroupEntity */
     private UserGroup $userGroupEntity;
