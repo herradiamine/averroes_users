@@ -7,23 +7,24 @@ namespace Tests\Entities\Traits;
 use DateTimeImmutable;
 
 /**
- * Trait PropertyProviderTrait
+ * Trait UserProviderTrait
  *
  * @package Tests\Entities\Traits
  */
-trait PropertyProviderTrait
+trait UserProviderTrait
 {
-    private array $userPropertyId;
+    private array $userId;
     private array $userGroupId;
-    private array $propertyName;
-    private array $propertyType;
-    private array $propertyEnabled;
+    private array $userName;
+    private array $userFirstname;
+    private array $userLastname;
+    private array $userEnabled;
     private array $creationDate;
     private array $updateDate;
 
     public function __construct()
     {
-        $this->userPropertyId = [
+        $this->userId = [
             ['real', 39873],
             ['invalid_arg', 0],
             ['type_error', '39873'],
@@ -36,19 +37,25 @@ trait PropertyProviderTrait
             ['type_error', '39873'],
             ['empty', '']
         ];
-        $this->propertyName = [
-            ['real', 'PROPERTY_NAME'],
+        $this->userName = [
+            ['real', 'amineherradi'],
             ['invalid_arg', ''],
             ['type_error', 39873],
             ['empty', null]
         ];
-        $this->propertyType = [
-            ['real', 'PROPERTY_TYPE'],
+        $this->userFirstname = [
+            ['real', 'Amine'],
             ['invalid_arg', ''],
             ['type_error', 39873],
             ['empty', null]
         ];
-        $this->propertyEnabled = [
+        $this->userLastname = [
+            ['real', 'Herradi'],
+            ['invalid_arg', ''],
+            ['type_error', 39873],
+            ['empty', null]
+        ];
+        $this->userEnabled = [
             ['real', true],
             ['type_error', 1],
             ['empty', '']
@@ -79,9 +86,9 @@ trait PropertyProviderTrait
     }
 
     /** @return array */
-    public function provideUserPropertyId()
+    public function provideUserId()
     {
-        return $this->userPropertyId;
+        return $this->userId;
     }
 
     /** @return array */
@@ -91,21 +98,27 @@ trait PropertyProviderTrait
     }
 
     /** @return array */
-    public function providePropertyName()
+    public function provideUserName()
     {
-        return $this->propertyName;
+        return $this->userName;
     }
 
     /** @return array */
-    public function providePropertyType()
+    public function provideUserFirstname()
     {
-        return $this->propertyType;
+        return $this->userFirstname;
     }
 
     /** @return array */
-    public function providePropertyEnabled()
+    public function provideUserLastname()
     {
-        return $this->propertyEnabled;
+        return $this->userLastname;
+    }
+
+    /** @return array */
+    public function provideUserEnabled()
+    {
+        return $this->userEnabled;
     }
 
     /** @return array */

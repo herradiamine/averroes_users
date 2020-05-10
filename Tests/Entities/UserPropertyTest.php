@@ -156,7 +156,7 @@ class UserPropertyTest extends TestCase
                 $this->userPropertyEntity->setPropertyName($value);
 
                 static::expectException(InvalidArgumentException::class);
-                $this->userPropertyEntity->setPropertyName($value);
+                $this->mockEntity->setPropertyName($value);
                 break;
             case 'type_error':
             case 'empty':
@@ -166,13 +166,13 @@ class UserPropertyTest extends TestCase
                 $this->userPropertyEntity->setPropertyName($value);
 
                 static::expectException(TypeError::class);
-                $this->userPropertyEntity->setPropertyName($value);
+                $this->mockEntity->setPropertyName($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider providePropertyName
+     * @dataProvider providePropertyType
      * @param $type
      * @param $value
      */
@@ -199,7 +199,7 @@ class UserPropertyTest extends TestCase
                 $this->userPropertyEntity->setPropertyType($value);
 
                 static::expectException(InvalidArgumentException::class);
-                $this->userPropertyEntity->setPropertyType($value);
+                $this->mockEntity->setPropertyType($value);
                 break;
             case 'type_error':
             case 'empty':
@@ -209,7 +209,7 @@ class UserPropertyTest extends TestCase
                 $this->userPropertyEntity->setPropertyType($value);
 
                 static::expectException(TypeError::class);
-                $this->userPropertyEntity->setPropertyType($value);
+                $this->mockEntity->setPropertyType($value);
                 break;
         }
     }
