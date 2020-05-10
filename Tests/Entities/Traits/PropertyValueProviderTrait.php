@@ -43,7 +43,7 @@ trait PropertyValueProviderTrait
         ];
         $this->customValue = [
             ['real', 'CUSTOM_VALUE'],
-            ['invalid_arg', '']
+            ['invalid_arg', ['']]
         ];
         $this->creationDate = [
             ['real', DateTimeImmutable::createFromFormat(
