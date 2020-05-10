@@ -7,6 +7,8 @@ namespace Entities;
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
+use InvalidArgumentException;
+use TypeError;
 
 /**
  * Class Password
@@ -61,7 +63,13 @@ class UserPassword implements EntityInterface
     {
         foreach ($entityData as $key => $value) {
             $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
-            $this->{$method}($value);
+            try {
+                $this->{$method}($value);
+            } catch (TypeError $error) {
+                echo TypeError::class . ' : ' . $error->getMessage();
+            } catch (InvalidArgumentException $exception) {
+                echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
+            }
         }
     }
 
@@ -71,10 +79,19 @@ class UserPassword implements EntityInterface
         return $this->userPasswordId;
     }
 
-    /** @param int $userPasswordId */
-    public function setUserPasswordId(int $userPasswordId): void
+    /**
+     * @param int $userPasswordId
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserPasswordId(int $userPasswordId): bool
     {
-        $this->userPasswordId = $userPasswordId;
+        if ($userPasswordId) {
+            $this->userPasswordId = $userPasswordId;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userPasswordId is not a valid user password id");
+        }
     }
 
     /** @return int */
@@ -83,10 +100,19 @@ class UserPassword implements EntityInterface
         return $this->userId;
     }
 
-    /** @param int $userId */
-    public function setUserId(int $userId): void
+    /**
+     * @param int $userId
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserId(int $userId): bool
     {
-        $this->userId = $userId;
+        if ($userId) {
+            $this->userId = $userId;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userId is not a valid user id");
+        }
     }
 
     /** @return string */
@@ -95,10 +121,19 @@ class UserPassword implements EntityInterface
         return $this->userPassword;
     }
 
-    /** @param string $userPassword */
-    public function setUserPassword(string $userPassword): void
+    /**
+     * @param string $userPassword
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserPassword(string $userPassword): bool
     {
-        $this->userPassword = $userPassword;
+        if ($userPassword != '') {
+            $this->userPassword = $userPassword;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userPassword is not a valid user password");
+        }
     }
 
     /** @return bool */
@@ -107,7 +142,11 @@ class UserPassword implements EntityInterface
         return $this->passwordEnabled;
     }
 
-    /** @param bool $passwordEnabled */
+    /**
+     * @param bool $passwordEnabled
+     * @return void
+     * @throws TypeError
+     */
     public function setPasswordEnabled(bool $passwordEnabled): void
     {
         $this->passwordEnabled = $passwordEnabled;
@@ -119,7 +158,11 @@ class UserPassword implements EntityInterface
         return $this->creationDate;
     }
 
-    /** @param DateTimeImmutable $creationDate */
+    /**
+     * @param DateTimeImmutable $creationDate
+     * @return void
+     * @throws TypeError
+     */
     public function setCreationDate(DateTimeImmutable $creationDate): void
     {
         $this->creationDate = $creationDate;
@@ -131,8 +174,12 @@ class UserPassword implements EntityInterface
         return $this->updateDate;
     }
 
-    /** @param DateTimeImmutable|null $updateDate */
-    public function setUpdateDate(?DateTimeImmutable $updateDate): void
+    /**
+     * @param DateTimeImmutable|null $updateDate
+     * @return void
+     * @throws TypeError
+     */
+    public function setUpdateDate(?DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;
     }

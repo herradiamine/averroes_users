@@ -7,6 +7,8 @@ namespace Entities;
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
+use InvalidArgumentException;
+use TypeError;
 
 /**
  * Class UserProperty
@@ -15,6 +17,13 @@ use DateTimeImmutable;
 class UserProperty implements EntityInterface
 {
     public const TABLE_NAME = 'user_property';
+
+    public const INT_VALUE = 'integer';
+    public const FLOAT_VALUE = 'float';
+    public const BOOL_VALUE = 'boolean';
+    public const STRING_VALUE = 'string';
+    public const NULL_VALUE = 'null';
+    public const OBJECT_VALUE = 'object';
 
     public const LABEL_USER_PROPERTY_ID = 'user_property_id';
     public const LABEL_USER_GROUP_ID    = 'user_group_id';
@@ -65,7 +74,13 @@ class UserProperty implements EntityInterface
     {
         foreach ($entityData as $key => $value) {
             $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
-            $this->{$method}($value);
+            try {
+                $this->{$method}($value);
+            } catch (TypeError $error) {
+                echo TypeError::class . ' : ' . $error->getMessage();
+            } catch (InvalidArgumentException $exception) {
+                echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
+            }
         }
     }
 
@@ -75,10 +90,19 @@ class UserProperty implements EntityInterface
         return $this->userPropertyId;
     }
 
-    /** @param int $userPropertyId */
-    public function setUserPropertyId(int $userPropertyId): void
+    /**
+     * @param int $userPropertyId
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserPropertyId(int $userPropertyId): bool
     {
-        $this->userPropertyId = $userPropertyId;
+        if ($userPropertyId) {
+            $this->userPropertyId = $userPropertyId;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userPropertyId is not a valid user password id");
+        }
     }
 
     /** @return int|null */
@@ -87,10 +111,19 @@ class UserProperty implements EntityInterface
         return $this->userGroupId;
     }
 
-    /** @param int|null $userGroupId */
-    public function setUserGroupId(int $userGroupId = null): void
+    /**
+     * @param int|null $userGroupId
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserGroupId(int $userGroupId = null): bool
     {
-        $this->userGroupId = $userGroupId;
+        if ($userGroupId || is_null($userGroupId)) {
+            $this->userGroupId = $userGroupId;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userGroupId is not a valid user group id");
+        }
     }
 
     /** @return string */
@@ -99,10 +132,19 @@ class UserProperty implements EntityInterface
         return $this->propertyName;
     }
 
-    /** @param string $propertyName */
-    public function setPropertyName(string $propertyName): void
+    /**
+     * @param string $propertyName
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setPropertyName(string $propertyName): bool
     {
-        $this->propertyName = $propertyName;
+        if ($propertyName != '') {
+            $this->propertyName = $propertyName;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$propertyName is not a valid property name");
+        }
     }
 
     /** @return string */
@@ -111,10 +153,19 @@ class UserProperty implements EntityInterface
         return $this->propertyType;
     }
 
-    /** @param string $propertyType */
-    public function setPropertyType(string $propertyType): void
+    /**
+     * @param string $propertyType
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setPropertyType(string $propertyType): bool
     {
-        $this->propertyType = $propertyType;
+        if ($propertyType != '') {
+            $this->propertyType = $propertyType;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$propertyType is not a valid property type");
+        }
     }
 
     /** @return bool */
@@ -123,7 +174,11 @@ class UserProperty implements EntityInterface
         return $this->propertyEnabled;
     }
 
-    /** @param bool $propertyEnabled */
+    /**
+     * @param bool $propertyEnabled
+     * @return void
+     * @throws TypeError
+     */
     public function setPropertyEnabled(bool $propertyEnabled): void
     {
         $this->propertyEnabled = $propertyEnabled;
@@ -135,7 +190,11 @@ class UserProperty implements EntityInterface
         return $this->creationDate;
     }
 
-    /** @param DateTimeImmutable $creationDate */
+    /**
+     * @param DateTimeImmutable $creationDate
+     * @return void
+     * @throws TypeError
+     */
     public function setCreationDate(DateTimeImmutable $creationDate): void
     {
         $this->creationDate = $creationDate;
@@ -147,8 +206,12 @@ class UserProperty implements EntityInterface
         return $this->updateDate;
     }
 
-    /** @param DateTimeImmutable|null $updateDate */
-    public function setUpdateDate(DateTimeImmutable $updateDate = null): void
+    /**
+     * @param DateTimeImmutable|null $updateDate
+     * @return void
+     * @throws TypeError
+     */
+    public function setUpdateDate(?DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;
     }

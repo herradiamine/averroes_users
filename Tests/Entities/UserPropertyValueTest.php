@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Entities;
 
+use DateTimeImmutable;
 use Entities\UserPropertyValue;
-use PHPUnit\Framework\Constraint\IsNull;
+use InvalidArgumentException;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Tests\Entities\Constraints\IsDateTimeImmutable;
-use Tests\Entities\Traits\AvailableDataTypesTrait;
+use Tests\Entities\Traits\PropertyValueProviderTrait;
 use TypeError;
 
 /**
@@ -17,12 +18,15 @@ use TypeError;
  */
 class UserPropertyValueTest extends TestCase
 {
-    use AvailableDataTypesTrait {
-        AvailableDataTypesTrait::__construct as availableData;
+    use PropertyValueProviderTrait {
+        PropertyValueProviderTrait::__construct as availableData;
     }
 
     /** @var UserPropertyValue $userPropertyValueEntity */
     private UserPropertyValue $userPropertyValueEntity;
+
+    /** @var UserPropertyValue|MockObject $mockEntity */
+    private MockObject $mockEntity;
 
     /**
      * @param string|null $name
@@ -35,168 +39,254 @@ class UserPropertyValueTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableData();
+        $this->mockEntity = static::createMock(UserPropertyValue::class);
         $this->userPropertyValueEntity = new UserPropertyValue();
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideUserPropertyValueId
      * @param $type
      * @param $value
      */
     public function testSetUserPropertyValueId($type, $value)
     {
+        $set_user_property_value_id = $this->mockEntity->method('setUserPropertyValueId');
+        $get_user_property_value_id = $this->mockEntity->method('getUserPropertyValueId');
         switch ($type) {
-            case 'integer':
-                $this->userPropertyValueEntity->setUserPropertyValueId($value);
-                static::assertIsInt($this->userPropertyValueEntity->getUserPropertyValueId());
+            case 'real':
+                $set_user_property_value_id->with($value)->willReturn(true);
+                $get_user_property_value_id->willReturn($value);
+
+                static::assertTrue($this->userPropertyValueEntity->setUserPropertyValueId($value));
+                static::assertEquals($value, $this->userPropertyValueEntity->getUserPropertyValueId());
+
+                static::assertTrue($this->mockEntity->setUserPropertyValueId($value));
+                static::assertEquals($value, $this->mockEntity->getUserPropertyValueId());
                 break;
-            case 'boolean':
-            case 'float':
-            case 'string':
-            case 'array':
-            case 'datetime':
-            case 'null':
+            case 'invalid_arg':
+                $set_user_property_value_id->with($value)->willThrowException(new InvalidArgumentException());
+
+                static::expectException(InvalidArgumentException::class);
+                $this->userPropertyValueEntity->setUserPropertyValueId($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setUserPropertyValueId($value);
+                break;
+            case 'type_error':
+            case 'empty':
+                $set_user_property_value_id->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userPropertyValueEntity->setUserPropertyValueId($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setUserPropertyValueId($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideUserId
      * @param $type
      * @param $value
      */
     public function testSetUserId($type, $value)
     {
+        $set_user_id = $this->mockEntity->method('setUserId');
+        $get_user_id = $this->mockEntity->method('getUserId');
         switch ($type) {
-            case 'integer':
-                $this->userPropertyValueEntity->setUserId($value);
-                static::assertIsInt($this->userPropertyValueEntity->getUserId());
+            case 'real':
+                $set_user_id->with($value)->willReturn(true);
+                $get_user_id->willReturn($value);
+
+                static::assertTrue($this->userPropertyValueEntity->setUserId($value));
+                static::assertEquals($value, $this->userPropertyValueEntity->getUserId());
+
+                static::assertTrue($this->mockEntity->setUserId($value));
+                static::assertEquals($value, $this->mockEntity->getUserId());
                 break;
-            case 'boolean':
-            case 'float':
-            case 'string':
-            case 'array':
-            case 'datetime':
-            case 'null':
+            case 'invalid_arg':
+                $set_user_id->with($value)->willThrowException(new InvalidArgumentException());
+
+                static::expectException(InvalidArgumentException::class);
+                $this->userPropertyValueEntity->setUserId($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setUserId($value);
+                break;
+            case 'type_error':
+            case 'empty':
+                $set_user_id->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userPropertyValueEntity->setUserId($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setUserId($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideUserPropertyId
      * @param $type
      * @param $value
      */
     public function testSetUserPropertyId($type, $value)
     {
+        $set_user_property_id = $this->mockEntity->method('setUserPropertyId');
+        $get_user_property_id = $this->mockEntity->method('getUserPropertyId');
         switch ($type) {
-            case 'integer':
-                $this->userPropertyValueEntity->setUserPropertyId($value);
-                static::assertIsInt($this->userPropertyValueEntity->getUserPropertyId());
+            case 'real':
+                $set_user_property_id->with($value)->willReturn(true);
+                $get_user_property_id->willReturn($value);
+
+                static::assertTrue($this->userPropertyValueEntity->setUserPropertyId($value));
+                static::assertEquals($value, $this->userPropertyValueEntity->getUserPropertyId());
+
+                static::assertTrue($this->mockEntity->setUserPropertyId($value));
+                static::assertEquals($value, $this->mockEntity->getUserPropertyId());
                 break;
-            case 'boolean':
-            case 'float':
-            case 'string':
-            case 'array':
-            case 'datetime':
-            case 'null':
+            case 'invalid_arg':
+                $set_user_property_id->with($value)->willThrowException(new InvalidArgumentException());
+
+                static::expectException(InvalidArgumentException::class);
+                $this->userPropertyValueEntity->setUserPropertyId($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setUserPropertyId($value);
+                break;
+            case 'type_error':
+            case 'empty':
+                $set_user_property_id->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userPropertyValueEntity->setUserPropertyId($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setUserPropertyId($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideCustomValue
      * @param $type
      * @param $value
      */
     public function testSetCustomValue($type, $value)
     {
+        $set_custom_value = $this->mockEntity->method('setCustomValue');
+        $get_custom_value = $this->mockEntity->method('getCustomValue');
+
         switch ($type) {
-            case 'integer':
-            case 'float':
-            case 'boolean':
-            case 'string':
-            case 'null':
-                $this->userPropertyValueEntity->setCustomValue((string) $value);
-                static::assertIsString($this->userPropertyValueEntity->getCustomValue());
+            case 'real':
+                $set_custom_value->with($value)->willReturn(true);
+                $get_custom_value->willReturn($value);
+
+                static::assertTrue($this->userPropertyValueEntity->setCustomValue($value));
+                static::assertEquals($value, $this->userPropertyValueEntity->getCustomValue());
+
+                static::assertTrue($this->mockEntity->setCustomValue($value));
+                static::assertEquals($value, $this->mockEntity->getCustomValue());
                 break;
-            case 'array':
-            case 'datetime':
-                static::expectException(TypeError::class);
-                $this->userPropertyValueEntity->setUserPropertyId($value);
+            case 'invalid_arg':
+                $set_custom_value->with($value)->willThrowException(new InvalidArgumentException());
+
+                static::expectException(InvalidArgumentException::class);
+                $this->userPropertyValueEntity->setCustomValue($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setCustomValue($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideCreationDate
      * @param $type
      * @param $value
      */
     public function testSetCreationDate($type, $value)
     {
+        $set_creation_date = $this->mockEntity->method('setCreationDate');
+        $get_creation_date = $this->mockEntity->method('getCreationDate');
         switch ($type) {
-            case 'datetime':
+            case 'real':
+                $set_creation_date->with($value);
+                $get_creation_date->willReturn($value);
+
                 $this->userPropertyValueEntity->setCreationDate($value);
-                static::assertThat(
-                    $this->userPropertyValueEntity->getCreationDate(),
-                    new IsDateTimeImmutable()
+                $this->mockEntity->setCreationDate($value);
+
+                static::assertInstanceOf(
+                    DateTimeImmutable::class,
+                    $this->userPropertyValueEntity->getCreationDate()
+                );
+                static::assertInstanceOf(
+                    DateTimeImmutable::class,
+                    $this->mockEntity->getCreationDate()
                 );
                 break;
-            case 'boolean':
-            case 'integer':
-            case 'float':
-            case 'string':
-            case 'array':
-            case 'null':
+            case 'type_error':
+            case 'empty':
+                $set_creation_date->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userPropertyValueEntity->setCreationDate($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setCreationDate($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideUpdateDate
      * @param $type
      * @param $value
      */
-    public function testSetUpdateData($type, $value)
+    public function testSetUpdateDate($type, $value)
     {
+        $set_update_date = $this->mockEntity->method('setUpdateDate');
+        $get_update_date = $this->mockEntity->method('getUpdateDate');
         switch ($type) {
-            case 'datetime':
+            case 'real':
+                $set_update_date->with($value);
+                $get_update_date->willReturn($value);
+
                 $this->userPropertyValueEntity->setUpdateDate($value);
-                static::assertThat(
-                    $this->userPropertyValueEntity->getUpdateDate(),
-                    new IsDateTimeImmutable()
+                $this->mockEntity->setUpdateDate($value);
+
+                static::assertInstanceOf(
+                    DateTimeImmutable::class,
+                    $this->userPropertyValueEntity->getUpdateDate()
+                );
+                static::assertInstanceOf(
+                    DateTimeImmutable::class,
+                    $this->mockEntity->getUpdateDate()
                 );
                 break;
             case 'null':
+                $set_update_date->with($value);
+                $get_update_date->willReturn($value);
+
                 $this->userPropertyValueEntity->setUpdateDate($value);
-                static::assertThat(
-                    $this->userPropertyValueEntity->getUpdateDate(),
-                    new IsNull()
-                );
+                $this->mockEntity->setUpdateDate($value);
+
+                static::assertNull($this->userPropertyValueEntity->getUpdateDate());
+                static::assertNull($this->mockEntity->getUpdateDate());
                 break;
-            case 'boolean':
-            case 'integer':
-            case 'float':
-            case 'string':
-            case 'array':
+            case 'type_error':
+            case 'empty':
+                $set_update_date->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userPropertyValueEntity->setUpdateDate($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setUpdateDate($value);
                 break;
         }
-    }
-
-    /** @return array */
-    public function setAvailableData()
-    {
-        return $this->entityData;
     }
 }

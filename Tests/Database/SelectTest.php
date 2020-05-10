@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Database;
 
 use Database\Select;
@@ -7,11 +9,11 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Class SelectTest
+ *
  * @package Tests\Database
  */
 class SelectTest extends TestCase
 {
-
     public function testJoin()
     {
     }

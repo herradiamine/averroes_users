@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Entities;
 
+use DateTimeImmutable;
 use Entities\UserEmail;
-use PHPUnit\Framework\Constraint\IsNull;
+use InvalidArgumentException;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Tests\Entities\Constraints\IsDateTimeImmutable;
-use Tests\Entities\Traits\AvailableDataTypesTrait;
+use Tests\Entities\Traits\EmailProviderTrait;
 use TypeError;
 
 /**
@@ -17,9 +18,12 @@ use TypeError;
  */
 class UserEmailTest extends TestCase
 {
-    use AvailableDataTypesTrait {
-        AvailableDataTypesTrait::__construct as availableData;
+    use EmailProviderTrait {
+        EmailProviderTrait::__construct as availableData;
     }
+
+    /** @var UserEmail|MockObject $mockEntity */
+    private MockObject $mockEntity;
 
     /** @var UserEmail $userEmailEntity */
     private UserEmail $userEmailEntity;
@@ -35,240 +39,341 @@ class UserEmailTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableData();
+        $this->mockEntity      = static::createMock(UserEmail::class);
         $this->userEmailEntity = new UserEmail();
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideUserEmailId
      * @param $type
      * @param $value
      */
     public function testSetUserEmailId($type, $value)
     {
+        $set_user_email_id = $this->mockEntity->method('setUserEmailId');
+        $get_user_email_id = $this->mockEntity->method('getUserEmailId');
         switch ($type) {
-            case 'integer':
-                $this->userEmailEntity->setUserEmailId($value);
-                static::assertIsInt($this->userEmailEntity->getUserEmailId());
+            case 'real':
+                $set_user_email_id->with($value)->willReturn(true);
+                $get_user_email_id->willReturn($value);
+
+                static::assertTrue($this->userEmailEntity->setUserEmailId($value));
+                static::assertEquals($value, $this->userEmailEntity->getUserEmailId());
+
+                static::assertTrue($this->mockEntity->setUserEmailId($value));
+                static::assertEquals($value, $this->mockEntity->getUserEmailId());
                 break;
-            case 'boolean':
-            case 'float':
-            case 'string':
-            case 'array':
-            case 'datetime':
-            case 'null':
+            case 'invalid_arg':
+                $set_user_email_id->with($value)->willThrowException(new InvalidArgumentException());
+
+                static::expectException(InvalidArgumentException::class);
+                $this->userEmailEntity->setUserEmailId($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setUserEmailId($value);
+                break;
+            case 'type_error':
+            case 'empty':
+                $set_user_email_id->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userEmailEntity->setUserEmailId($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setUserEmailId($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideUserId
      * @param $type
      * @param $value
      */
     public function testSetUserId($type, $value)
     {
+        $set_user_id = $this->mockEntity->method('setUserId');
+        $get_user_id = $this->mockEntity->method('getUserId');
         switch ($type) {
-            case 'integer':
-                $this->userEmailEntity->setUserId($value);
-                static::assertIsInt($this->userEmailEntity->getUserId());
+            case 'real':
+                $set_user_id->with($value)->willReturn(true);
+                $get_user_id->willReturn($value);
+
+                static::assertTrue($this->userEmailEntity->setUserId($value));
+                static::assertEquals($value, $this->userEmailEntity->getUserId());
+
+                static::assertTrue($this->mockEntity->setUserId($value));
+                static::assertEquals($value, $this->mockEntity->getUserId());
                 break;
-            case 'null':
-            case 'boolean':
-            case 'float':
-            case 'string':
-            case 'array':
-            case 'datetime':
+            case 'invalid_arg':
+                $set_user_id->with($value)->willThrowException(new InvalidArgumentException());
+
+                static::expectException(InvalidArgumentException::class);
+                $this->userEmailEntity->setUserId($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setUserId($value);
+                break;
+            case 'type_error':
+            case 'empty':
+                $set_user_id->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userEmailEntity->setUserId($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setUserId($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideUserEmail
      * @param $type
      * @param $value
      */
     public function testSetUserEmail($type, $value)
     {
+        $set_user_email = $this->mockEntity->method('setUserEmail');
+        $get_user_email = $this->mockEntity->method('getUserEmail');
         switch ($type) {
-            case 'string':
-                $this->userEmailEntity->setUserEmail($value);
-                static::assertIsString($this->userEmailEntity->getUserEmail());
+            case 'real':
+                $set_user_email->with($value)->willReturn(true);
+                $get_user_email->willReturn($value);
+
+                static::assertTrue($this->mockEntity->setUserEmail($value));
+                static::assertEquals($value, $this->mockEntity->getUserEmail());
+
+                static::assertTrue($this->userEmailEntity->setUserEmail($value));
+                static::assertEquals($value, $this->userEmailEntity->getUserEmail());
                 break;
-            case 'integer':
-            case 'float':
-            case 'boolean':
-            case 'array':
-            case 'datetime':
-            case 'null':
+            case 'invalid_arg':
+            case 'empty':
+                $set_user_email->with($value)->willThrowException(new InvalidArgumentException());
+
+                static::expectException(InvalidArgumentException::class);
+                $this->userEmailEntity->setUserEmail($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setUserEmail($value);
+                break;
+            case 'type_error':
+                $set_user_email->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userEmailEntity->setUserEmail($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setUserEmail($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideLocalPart
      * @param $type
      * @param $value
      */
     public function testSetLocalPart($type, $value)
     {
+        $set_local_part = $this->mockEntity->method('setLocalPart');
+        $get_local_part = $this->mockEntity->method('getLocalPart');
         switch ($type) {
-            case 'string':
-                $this->userEmailEntity->setLocalPart($value);
-                static::assertIsString($this->userEmailEntity->getLocalPart());
+            case 'real':
+                $set_local_part->with($value)->willReturn(true);
+                $get_local_part->willReturn($value);
+
+                static::assertTrue($this->mockEntity->setLocalPart($value));
+                static::assertEquals($value, $this->mockEntity->getLocalPart());
+
+                static::assertTrue($this->userEmailEntity->setLocalPart($value));
+                static::assertEquals($value, $this->userEmailEntity->getLocalPart());
                 break;
-            case 'integer':
-            case 'float':
-            case 'boolean':
-            case 'array':
-            case 'datetime':
-            case 'null':
+            case 'invalid_arg':
+            case 'empty':
+                $set_local_part->with($value)->willThrowException(new InvalidArgumentException());
+
+                static::expectException(InvalidArgumentException::class);
+                $this->userEmailEntity->setLocalPart($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setLocalPart($value);
+                break;
+            case 'type_error':
+                $set_local_part->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userEmailEntity->setLocalPart($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setLocalPart($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideDomainName
      * @param $type
      * @param $value
      */
     public function testSetDomainName($type, $value)
     {
+        $set_domain_name = $this->mockEntity->method('setDomainName');
+        $get_domain_name = $this->mockEntity->method('getDomainName');
         switch ($type) {
-            case 'string':
-                $this->userEmailEntity->setDomainName($value);
-                static::assertIsString($this->userEmailEntity->getDomainName());
+            case 'real':
+                $set_domain_name->with($value)->willReturn(true);
+                $get_domain_name->willReturn($value);
+
+                static::assertTrue($this->mockEntity->setDomainName($value));
+                static::assertEquals($value, $this->mockEntity->getDomainName());
+
+                static::assertTrue($this->userEmailEntity->setDomainName($value));
+                static::assertEquals($value, $this->userEmailEntity->getDomainName());
                 break;
-            case 'integer':
-            case 'float':
-            case 'boolean':
-            case 'array':
-            case 'datetime':
-            case 'null':
+            case 'invalid_arg':
+            case 'empty':
+                $set_domain_name->with($value)->willThrowException(new InvalidArgumentException());
+
+                static::expectException(InvalidArgumentException::class);
+                $this->userEmailEntity->setDomainName($value);
+
+                static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->setDomainName($value);
+                break;
+            case 'type_error':
+                $set_domain_name->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userEmailEntity->setDomainName($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setDomainName($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
-     * @param $type
-     * @param $value
-     */
-    public function testSetDomainExt($type, $value)
-    {
-        switch ($type) {
-            case 'string':
-                $this->userEmailEntity->setDomainExt($value);
-                static::assertIsString($this->userEmailEntity->getDomainExt());
-                break;
-            case 'integer':
-            case 'float':
-            case 'boolean':
-            case 'array':
-            case 'datetime':
-            case 'null':
-                static::expectException(TypeError::class);
-                $this->userEmailEntity->setDomainExt($value);
-                break;
-        }
-    }
-
-    /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideEmailEnabled
      * @param $type
      * @param $value
      */
     public function testSetEmailEnabled($type, $value)
     {
+        $set_email_enabled = $this->mockEntity->method('setEmailEnabled');
+        $is_email_enabled  = $this->mockEntity->method('isEmailEnabled');
         switch ($type) {
-            case 'boolean':
+            case 'real':
+                $set_email_enabled->with($value);
+                $is_email_enabled->willReturn(true);
+
                 $this->userEmailEntity->setEmailEnabled($value);
-                static::assertIsBool($this->userEmailEntity->isEmailEnabled());
+                static::assertTrue($this->userEmailEntity->isEmailEnabled());
+
+                $this->mockEntity->setEmailEnabled($value);
+                static::assertTrue($this->mockEntity->isEmailEnabled());
                 break;
-            case 'integer':
-            case 'float':
-            case 'string':
-            case 'array':
-            case 'datetime':
-            case 'null':
+            case 'type_error':
+            case 'empty':
+                $set_email_enabled->with($value)->willThrowException(new TypeError());
+                $is_email_enabled->willReturn(false);
+
                 static::expectException(TypeError::class);
                 $this->userEmailEntity->setEmailEnabled($value);
+                static::assertIsBool($this->userEmailEntity->isEmailEnabled());
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setEmailEnabled($value);
+                static::assertIsBool($this->mockEntity->isEmailEnabled());
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideCreationDate
      * @param $type
      * @param $value
      */
     public function testSetCreationDate($type, $value)
     {
+        $set_creation_date = $this->mockEntity->method('setCreationDate');
+        $get_creation_date = $this->mockEntity->method('getCreationDate');
         switch ($type) {
-            case 'datetime':
+            case 'real':
+                $set_creation_date->with($value);
+                $get_creation_date->willReturn($value);
+
                 $this->userEmailEntity->setCreationDate($value);
-                static::assertThat(
-                    $this->userEmailEntity->getCreationDate(),
-                    new IsDateTimeImmutable()
+                $this->mockEntity->setCreationDate($value);
+
+                static::assertInstanceOf(
+                    DateTimeImmutable::class,
+                    $this->userEmailEntity->getCreationDate()
+                );
+                static::assertInstanceOf(
+                    DateTimeImmutable::class,
+                    $this->mockEntity->getCreationDate()
                 );
                 break;
-            case 'boolean':
-            case 'integer':
-            case 'float':
-            case 'string':
-            case 'array':
-            case 'null':
+            case 'type_error':
+            case 'empty':
+                $set_creation_date->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userEmailEntity->setCreationDate($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setCreationDate($value);
                 break;
         }
     }
 
     /**
-     * @dataProvider setAvailableData
+     * @dataProvider provideUpdateDate
      * @param $type
      * @param $value
      */
-    public function testSetUpdateData($type, $value)
+    public function testSetUpdateDate($type, $value)
     {
+        $set_update_date = $this->mockEntity->method('setUpdateDate');
+        $get_update_date = $this->mockEntity->method('getUpdateDate');
         switch ($type) {
-            case 'datetime':
+            case 'real':
+                $set_update_date->with($value);
+                $get_update_date->willReturn($value);
+
                 $this->userEmailEntity->setUpdateDate($value);
-                static::assertThat(
-                    $this->userEmailEntity->getUpdateDate(),
-                    new IsDateTimeImmutable()
+                $this->mockEntity->setUpdateDate($value);
+
+                static::assertInstanceOf(
+                    DateTimeImmutable::class,
+                    $this->userEmailEntity->getUpdateDate()
+                );
+                static::assertInstanceOf(
+                    DateTimeImmutable::class,
+                    $this->mockEntity->getUpdateDate()
                 );
                 break;
             case 'null':
+                $set_update_date->with($value);
+                $get_update_date->willReturn($value);
+
                 $this->userEmailEntity->setUpdateDate($value);
-                static::assertThat(
-                    $this->userEmailEntity->getUpdateDate(),
-                    new IsNull()
-                );
+                $this->mockEntity->setUpdateDate($value);
+
+                static::assertNull($this->userEmailEntity->getUpdateDate());
+                static::assertNull($this->mockEntity->getUpdateDate());
                 break;
-            case 'boolean':
-            case 'integer':
-            case 'float':
-            case 'string':
-            case 'array':
+            case 'type_error':
+            case 'empty':
+                $set_update_date->with($value)->willThrowException(new TypeError());
+
                 static::expectException(TypeError::class);
                 $this->userEmailEntity->setUpdateDate($value);
+
+                static::expectException(TypeError::class);
+                $this->mockEntity->setUpdateDate($value);
                 break;
         }
-    }
-
-    /** @return array */
-    public function setAvailableData()
-    {
-        return $this->entityData;
     }
 }

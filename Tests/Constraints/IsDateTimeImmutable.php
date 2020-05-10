@@ -1,6 +1,8 @@
 <?php
 
-namespace Tests\Entities\Constraints;
+declare(strict_types=1);
+
+namespace Tests\Constraints;
 
 use DateTimeImmutable;
 use PHPUnit\Framework\Constraint\Constraint;
