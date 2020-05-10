@@ -7,10 +7,8 @@ namespace Tests\Entities;
 use DateTimeImmutable;
 use Entities\UserProperty;
 use InvalidArgumentException;
-use PHPUnit\Framework\Constraint\IsNull;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Tests\Constraints\IsDateTimeImmutable;
 use Tests\Entities\Traits\PropertyProviderTrait;
 use TypeError;
 
