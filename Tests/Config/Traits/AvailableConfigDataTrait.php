@@ -113,7 +113,7 @@ trait AvailableConfigDataTrait
         $this->host     = [
             ['real', '172.17.0.3'],
             ['dummy', 'dummy'],
-            ['empty', null]
+            ['empty', '']
         ];
         $this->database = [
             ['real', 'averoes'],
@@ -212,5 +212,47 @@ trait AvailableConfigDataTrait
             ],
             ['empty', []]
         ];
+    }
+
+    /** @return array */
+    public function setAvailableDriver()
+    {
+        return $this->driver;
+    }
+
+    /** @return array */
+    public function setAvailableHost()
+    {
+        return $this->host;
+    }
+
+    /** @return array */
+    public function setAvailableDatabase()
+    {
+        return $this->database;
+    }
+
+    /** @return array */
+    public function setAvailableCharset()
+    {
+        return $this->charset;
+    }
+
+    /** @return array */
+    public function setAvailableUsername()
+    {
+        return $this->username;
+    }
+
+    /** @return array */
+    public function setAvailablePassword()
+    {
+        return $this->password;
+    }
+
+    /** @return array */
+    public function setAvailableDatabaseConfig()
+    {
+        return $this->databaseConfig;
     }
 }

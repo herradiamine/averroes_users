@@ -7,9 +7,12 @@ namespace Entities;
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use DateTimeImmutable;
+use InvalidArgumentException;
+use TypeError;
 
 /**
  * Class UserPropertyValue
+ *
  * @package App\Entities
  */
 class UserPropertyValue implements EntityInterface
@@ -71,10 +74,19 @@ class UserPropertyValue implements EntityInterface
         return $this->userPropertyValueId;
     }
 
-    /** @param int $userPropertyValueId */
-    public function setUserPropertyValueId(int $userPropertyValueId): void
+    /**
+     * @param int $userPropertyValueId
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserPropertyValueId(int $userPropertyValueId): bool
     {
-        $this->userPropertyValueId = $userPropertyValueId;
+        if ($userPropertyValueId) {
+            $this->userPropertyValueId = $userPropertyValueId;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userPropertyValueId is not a valid user property value id");
+        }
     }
 
     /** @return int */
@@ -83,10 +95,19 @@ class UserPropertyValue implements EntityInterface
         return $this->userId;
     }
 
-    /** @param int $userId */
-    public function setUserId(int $userId): void
+    /**
+     * @param int $userId
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserId(int $userId): bool
     {
-        $this->userId = $userId;
+        if ($userId) {
+            $this->userId = $userId;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userId is not a valid user id");
+        }
     }
 
     /** @return int */
@@ -95,10 +116,19 @@ class UserPropertyValue implements EntityInterface
         return $this->userPropertyId;
     }
 
-    /** @param int $userPropertyId */
-    public function setUserPropertyId(int $userPropertyId): void
+    /**
+     * @param int $userPropertyId
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setUserPropertyId(int $userPropertyId): bool
     {
-        $this->userPropertyId = $userPropertyId;
+        if ($userPropertyId) {
+            $this->userPropertyId = $userPropertyId;
+            return true;
+        } else {
+            throw new InvalidArgumentException("$userPropertyId is not a valid user password id");
+        }
     }
 
     /** @return int|float|bool|string|null */
@@ -107,10 +137,28 @@ class UserPropertyValue implements EntityInterface
         return $this->customValue;
     }
 
-    /** @param int|float|bool|string|null $customValue */
-    public function setCustomValue($customValue): void
+    /**
+     * @param int|float|bool|string|null $customValue
+     * @return true
+     * @throws InvalidArgumentException|TypeError
+     */
+    public function setCustomValue($customValue): bool
     {
-        $this->customValue = $customValue;
+        $valid_type = (
+            is_int($customValue)
+            || is_float($customValue)
+            || is_bool($customValue)
+            || is_string($customValue)
+            || is_null($customValue)
+        );
+        if ($valid_type && $customValue != '') {
+            $this->customValue = $customValue;
+            return true;
+        } else {
+            throw new InvalidArgumentException(
+                json_encode($customValue) . " is not a valid custom value"
+            );
+        }
     }
 
     /** @return DateTimeImmutable */
@@ -119,7 +167,11 @@ class UserPropertyValue implements EntityInterface
         return $this->creationDate;
     }
 
-    /** @param DateTimeImmutable $creationDate */
+    /**
+     * @param DateTimeImmutable $creationDate
+     * @return void
+     * @throws TypeError
+     */
     public function setCreationDate(DateTimeImmutable $creationDate): void
     {
         $this->creationDate = $creationDate;
@@ -131,8 +183,12 @@ class UserPropertyValue implements EntityInterface
         return $this->updateDate;
     }
 
-    /** @param DateTimeImmutable|null $updateDate */
-    public function setUpdateDate(?DateTimeImmutable $updateDate): void
+    /**
+     * @param DateTimeImmutable|null $updateDate
+     * @return void
+     * @throws TypeError
+     */
+    public function setUpdateDate(?DateTimeImmutable $updateDate = null): void
     {
         $this->updateDate = $updateDate;
     }
