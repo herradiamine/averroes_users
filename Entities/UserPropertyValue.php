@@ -12,6 +12,7 @@ use TypeError;
 
 /**
  * Class UserPropertyValue
+ *
  * @package App\Entities
  */
 class UserPropertyValue implements EntityInterface
@@ -143,18 +144,19 @@ class UserPropertyValue implements EntityInterface
      */
     public function setCustomValue($customValue): bool
     {
-        if (
-            is_int($customValue) ||
-            is_float($customValue) ||
-            is_bool($customValue) ||
-            is_string($customValue) ||
-            is_null($customValue) &&
-            $customValue != ''
+        if (is_int($customValue)
+            || is_float($customValue)
+            || is_bool($customValue)
+            || is_string($customValue)
+            || is_null($customValue)
+            && $customValue != ''
         ) {
             $this->customValue = $customValue;
             return true;
         } else {
-            throw new InvalidArgumentException(json_encode($customValue) . " is not a valid custom value");
+            throw new InvalidArgumentException(
+                json_encode($customValue) . " is not a valid custom value"
+            );
         }
     }
 
