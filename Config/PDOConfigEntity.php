@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Config;
 
+use Entities\Helpers\EntityHelper;
 use InvalidArgumentException;
+use TypeError;
 
 /**
  * Class PDOConfig
@@ -142,53 +144,10 @@ class PDOConfigEntity
      */
     public function loadDatabaseConfig(array $configData): bool
     {
-        /*****************************
-         * For DNS elements settings *
-         *****************************/
-
-        if (array_key_exists(self::LABEL_DRIVER, $configData)) {
-            $this->setDriver($configData[self::LABEL_DRIVER]);
-        } else {
-            throw new InvalidArgumentException('Database driver is missing');
+        foreach ($configData as $key => $value) {
+            $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
+            $this->{$method}($value);
         }
-
-        if (array_key_exists(self::LABEL_HOST, $configData)) {
-            $this->setHost($configData[self::LABEL_HOST]);
-        } else {
-            throw new InvalidArgumentException('Database host is missing');
-        }
-
-        if (array_key_exists(self::LABEL_DATABASE, $configData)) {
-            $this->setDatabase($configData[self::LABEL_DATABASE]);
-        } else {
-            throw new InvalidArgumentException('Database name is missing');
-        }
-
-        if (array_key_exists(self::LABEL_CHARSET, $configData)) {
-            $this->setCharset($configData[self::LABEL_CHARSET]);
-        } else {
-            throw new InvalidArgumentException('Database charset is missing');
-        }
-
-        /***********************
-         * For database access *
-         ***********************/
-
-        if (array_key_exists(self::LABEL_USERNAME, $configData)) {
-            $this->setUsername($configData[self::LABEL_USERNAME]);
-        } else {
-            throw new InvalidArgumentException('Database username is missing');
-        }
-
-        if (array_key_exists(self::LABEL_PASSWORD, $configData)) {
-            $this->setPassword($configData[self::LABEL_PASSWORD]);
-        } else {
-            throw new InvalidArgumentException('Database password is missing');
-        }
-
-        /***************************************
-         * For DNS construction using settings *
-         ***************************************/
 
         $this->setDns(
             $this->driver,
@@ -208,7 +167,7 @@ class PDOConfigEntity
     /**
      * @param string $driver
      * @return bool
-     * @throws InvalidArgumentException
+     * @throws InvalidArgumentException|TypeError
      */
     public function setDriver(string $driver): bool
     {
@@ -229,7 +188,7 @@ class PDOConfigEntity
     /**
      * @param string $host
      * @return true
-     * @throws InvalidArgumentException
+     * @throws InvalidArgumentException|TypeError
      */
     public function setHost(string $host): bool
     {
@@ -251,7 +210,7 @@ class PDOConfigEntity
     /**
      * @param string $database
      * @return bool
-     * @throws InvalidArgumentException
+     * @throws InvalidArgumentException|TypeError
      */
     public function setDatabase(string $database): bool
     {
@@ -272,7 +231,7 @@ class PDOConfigEntity
     /**
      * @param string $charset
      * @return true
-     * @throws InvalidArgumentException
+     * @throws InvalidArgumentException|TypeError
      */
     public function setCharset(string $charset): bool
     {
@@ -294,7 +253,7 @@ class PDOConfigEntity
     /**
      * @param string $username
      * @return bool
-     * @throws InvalidArgumentException
+     * @throws InvalidArgumentException|TypeError
      */
     public function setUsername(string $username): bool
     {
@@ -315,7 +274,7 @@ class PDOConfigEntity
     /**
      * @param string $password
      * @return true
-     * @throws InvalidArgumentException
+     * @throws InvalidArgumentException|TypeError
      */
     public function setPassword(string $password): bool
     {

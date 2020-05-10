@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Config;
 
 use Config\PDOConfigEntity;
+use Error;
 use InvalidArgumentException;
 use PHPUnit\Framework\Constraint\IsTrue;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -54,14 +55,8 @@ class PDOConfigEntityTest extends TestCase
         switch ($case) {
             case 'real':
                 $set_database_config->with($config)->willReturn(true);
-                static::assertThat(
-                    $this->mockEntity->loadDatabaseConfig($config),
-                    new IsTrue()
-                );
-                static::assertThat(
-                    $this->configEntity->loadDatabaseConfig($config),
-                    new IsTrue()
-                );
+                static::assertTrue($this->mockEntity->loadDatabaseConfig($config));
+                static::assertTrue($this->configEntity->loadDatabaseConfig($config));
 
                 $get_dns->willReturn($this->configEntity->getDns());
                 static::assertIsString($this->mockEntity->getDns());
@@ -74,12 +69,19 @@ class PDOConfigEntityTest extends TestCase
             case 'fake_charset':
             case 'empty_username':
             case 'empty_password':
-            case 'empty':
                 $set_database_config->with($config)->willThrowException(new InvalidArgumentException());
                 static::expectException(InvalidArgumentException::class);
                 $this->configEntity->loadDatabaseConfig($config);
 
                 static::expectException(InvalidArgumentException::class);
+                $this->mockEntity->loadDatabaseConfig($config);
+                break;
+            case 'empty':
+                $set_database_config->with($config)->willThrowException(new Error());
+                static::expectException(Error::class);
+                $this->configEntity->loadDatabaseConfig($config);
+
+                static::expectException(Error::class);
                 $this->mockEntity->loadDatabaseConfig($config);
                 break;
         }

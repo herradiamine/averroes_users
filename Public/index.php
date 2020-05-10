@@ -27,7 +27,7 @@ try {
     );
     $users = $bdd->query('SELECT * FROM user');
     $users = $users->fetchAll(PDO::FETCH_CLASS);
-    // var_dump($users);
+    var_dump($pdo_config);
 } catch (Exception $exception) {
     echo $exception->getMessage();
 }
@@ -52,8 +52,8 @@ $email = [
         )
     ),
 ];
-$email = new UserEmail($email);
-var_dump($email);
+//$email = new UserEmail($email);
+//var_dump($email);
 
 $password = [
     UserPassword::LABEL_USER_PASSWORD_ID => 3208324089,
