@@ -143,7 +143,8 @@ class UserPropertyValue implements EntityInterface
      */
     public function setCustomValue($customValue): bool
     {
-        if (is_int($customValue) ||
+        if (
+            is_int($customValue) ||
             is_float($customValue) ||
             is_bool($customValue) ||
             is_string($customValue) ||

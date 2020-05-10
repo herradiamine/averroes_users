@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Entities;
 
 use Entities\UserGroup;
-
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Tests\Entities\Traits\GroupProviderTrait;

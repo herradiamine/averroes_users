@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Entities\Traits;
 
 use DateTimeImmutable;
-use stdClass;
 
 /**
  * Trait PropertyValueProviderTrait
