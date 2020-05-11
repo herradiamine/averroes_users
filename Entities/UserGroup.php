@@ -69,6 +69,47 @@ class UserGroup implements EntityInterface
         }
     }
 
+    /**
+     * @codeCoverageIgnore
+     * @param $name
+     * @param $value
+     */
+    public function __set($name, $value)
+    {
+        $method = 'set' . EntityHelper::snakeToCamelCase($name, true);
+        try {
+            switch ($method) {
+                case 'setUserGroupId':
+                    $value = ($value)? (int) $value : null ;
+                    $this->{$method}($value);
+                    break;
+                case 'setGroupName':
+                    $this->{$method}($value);
+                    break;
+                case 'setGroupEnabled':
+                    $value = (bool) $value;
+                    $this->{$method}($value);
+                    break;
+                case 'setCreationDate':
+                case 'setUpdateDate':
+                    if ($value) {
+                        $value = DateTimeImmutable::createFromFormat(
+                            DATE_W3C,
+                            date(DATE_W3C, strtotime($value))
+                        );
+                    } else {
+                        $value = null;
+                    }
+                    $this->{$method}($value);
+                    break;
+            }
+        } catch (TypeError $error) {
+            echo TypeError::class . ' : ' . $error->getMessage();
+        } catch (InvalidArgumentException $exception) {
+            echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
+        }
+    }
+
     /** @return int */
     public function getUserGroupId(): int
     {
