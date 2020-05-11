@@ -103,7 +103,7 @@ class UserProperty implements EntityInterface
             switch ($method) {
                 case 'setUserPropertyId':
                 case 'setGroupId':
-                    $value = ($value)? (int) $value : null ;
+                    $value = ($value) ? (int) $value : null ;
                     $this->{$method}($value);
                     break;
                 case 'setPropertyName':

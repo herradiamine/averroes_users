@@ -80,7 +80,7 @@ class UserGroup implements EntityInterface
         try {
             switch ($method) {
                 case 'setUserGroupId':
-                    $value = ($value)? (int) $value : null ;
+                    $value = ($value) ? (int) $value : null ;
                     $this->{$method}($value);
                     break;
                 case 'setGroupName':

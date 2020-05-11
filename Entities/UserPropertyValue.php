@@ -81,7 +81,7 @@ class UserPropertyValue implements EntityInterface
                 case 'setUserPropertyValueId':
                 case 'setUserId':
                 case 'setUserPropertyId':
-                    $value = ($value)? (int) $value : null ;
+                    $value = ($value) ? (int) $value : null ;
                     $this->{$method}($value);
                     break;
                 case 'setCustomValue':

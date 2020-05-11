@@ -94,7 +94,7 @@ class UserEmail implements EntityInterface
             switch ($method) {
                 case 'setUserEmailId':
                 case 'setUserId':
-                    $value = ($value)? (int) $value : null ;
+                    $value = ($value) ? (int) $value : null ;
                     $this->{$method}($value);
                     break;
                 case 'setUserEmail':
