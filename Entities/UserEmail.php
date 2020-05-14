@@ -6,8 +6,8 @@ namespace Entities;
 
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
+use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
 use DateTimeImmutable;
-use InvalidArgumentException;
 use TypeError;
 
 /**
@@ -16,7 +16,7 @@ use TypeError;
  */
 class UserEmail implements EntityInterface
 {
-    public const TABLE_NAME = 'user_mail';
+    public const TABLE_NAME = 'user_email';
 
     public const LABEL_EMAIL_ID          = 'user_email_id';
     public const LABEL_USER_ID           = 'user_id';
@@ -57,7 +57,7 @@ class UserEmail implements EntityInterface
      * @param array $entityData
      * @codeCoverageIgnore
      */
-    public function __construct(array $entityData = [])
+    public function __construct($entityData = [])
     {
         if (!empty($entityData)) {
             $this->initEntity($entityData);
@@ -79,6 +79,48 @@ class UserEmail implements EntityInterface
             } catch (InvalidArgumentException $exception) {
                 echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
             }
+        }
+    }
+
+    /**
+     * @codeCoverageIgnore
+     * @param $name
+     * @param $value
+     */
+    public function __set($name, $value)
+    {
+        $method = 'set' . EntityHelper::snakeToCamelCase($name, true);
+        try {
+            switch ($method) {
+                case 'setUserEmailId':
+                case 'setUserId':
+                    $value = ($value) ? (int) $value : null ;
+                    $this->{$method}($value);
+                    break;
+                case 'setUserEmail':
+                    $this->{$method}($value);
+                    break;
+                case 'setEmailEnabled':
+                    $value = (bool) $value;
+                    $this->{$method}($value);
+                    break;
+                case 'setCreationDate':
+                case 'setUpdateDate':
+                    if ($value) {
+                        $value = DateTimeImmutable::createFromFormat(
+                            DATE_W3C,
+                            date(DATE_W3C, strtotime($value))
+                        );
+                    } else {
+                        $value = null;
+                    }
+                    $this->{$method}($value);
+                    break;
+            }
+        } catch (TypeError $error) {
+            echo TypeError::class . ' : ' . $error->getMessage();
+        } catch (InvalidArgumentException $exception) {
+            echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
         }
     }
 

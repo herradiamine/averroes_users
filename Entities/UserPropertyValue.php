@@ -6,8 +6,8 @@ namespace Entities;
 
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
+use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
 use DateTimeImmutable;
-use InvalidArgumentException;
 use TypeError;
 
 /**
@@ -53,6 +53,58 @@ class UserPropertyValue implements EntityInterface
     {
         if (!empty($entityData)) {
             $this->initEntity($entityData);
+        }
+    }
+
+    /**
+     * @codeCoverageIgnore
+     * @param $name
+     * @param $value
+     */
+    public function __set($name, $value)
+    {
+        $method = 'set' . EntityHelper::snakeToCamelCase($name, true);
+        try {
+            switch ($method) {
+                case 'setUserPropertyValueId':
+                case 'setUserId':
+                case 'setUserPropertyId':
+                    $value = ($value) ? (int) $value : null ;
+                    $this->{$method}($value);
+                    break;
+                case 'setCustomValue':
+                    $valid_type = (
+                        is_int($value)
+                        || is_float($value)
+                        || is_bool($value)
+                        || is_string($value)
+                        || is_null($value)
+                    );
+                    if ($valid_type) {
+                        $this->{$method}($value);
+                    }
+                    break;
+                case 'setPropertyEnabled':
+                    $value = (bool) $value;
+                    $this->{$method}($value);
+                    break;
+                case 'setCreationDate':
+                case 'setUpdateDate':
+                    if ($value) {
+                        $value = DateTimeImmutable::createFromFormat(
+                            DATE_W3C,
+                            date(DATE_W3C, strtotime($value))
+                        );
+                    } else {
+                        $value = null;
+                    }
+                    $this->{$method}($value);
+                    break;
+            }
+        } catch (TypeError $error) {
+            echo TypeError::class . ' : ' . $error->getMessage();
+        } catch (InvalidArgumentException $exception) {
+            echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
         }
     }
 
