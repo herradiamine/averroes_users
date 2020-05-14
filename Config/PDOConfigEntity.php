@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Config;
 
 use Entities\Helpers\EntityHelper;
-use InvalidArgumentException;
+use Config\Exceptions\InvalidArgument as InvalidArgumentException;
 use TypeError;
 
 /**
