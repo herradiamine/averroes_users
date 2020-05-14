@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tests\Database\Engine;
+namespace Tests\Models\Engine;
 
-use Database\Engine\ModelManager;
+use Models\Engine\ModelManager;
 use PHPUnit\Framework\TestCase;
 
 /**
