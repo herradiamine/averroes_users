@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1589497523">
-  <project timestamp="1589497523">
+<coverage generated="1589498460">
+  <project timestamp="1589498460">
     <package name="App\Objects">
       <file name="/var/www/html/averoes/averoes_users/App/Objects/User.php">
         <class name="App\Objects\User" namespace="App\Objects" fullPackage="App" package="App">
