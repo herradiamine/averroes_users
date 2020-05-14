@@ -17,6 +17,7 @@ before_script:
 
 install:
   - printf "\n" | pecl install yaml
+  - gem install travis
   - travis_retry composer update
   - travis encrypt a62bd89f9f3e40b2376ea859149ea96dc0be4519
 
