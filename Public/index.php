@@ -17,20 +17,78 @@ use Entities\UserGroup;
 use Entities\UserPassword;
 use Entities\UserProperty;
 use Entities\UserPropertyValue;
+use Faker\Factory;
+use Models\UserEmailModel;
+use Models\UserGroupModel;
 
-try {
-    $pdo_config = new PDOConfigEntity();
-    $bdd = new PDO(
-        $pdo_config->getDns(),
-        $pdo_config->getUsername(),
-        $pdo_config->getPassword()
-    );
-    $users = $bdd->query('SELECT * FROM user');
-    $users = $users->fetchAll(PDO::FETCH_CLASS);
-    var_dump($pdo_config);
-} catch (Exception $exception) {
-    echo $exception->getMessage();
-}
+$model = new UserGroupModel();
+$collections = $model->getManyByIds([1,2,3], ['*']);
+var_dump($collections);
+
+// $pdo_config = new PDOConfigEntity();
+// $pdo = new PDO(
+//     $pdo_config->getDns(),
+//     $pdo_config->getUsername(),
+//     $pdo_config->getPassword()
+// );
+//
+// $query = $pdo->query("SELECT * FROM user WHERE user_id = '40001'");
+// $query->setFetchMode(
+//     PDO::FETCH_CLASS,
+//     User::class
+// );
+// $user_email = $query->fetch();
+// var_dump($user_email);
+// $faker = new Factory();
+// $create = $faker::create();
+
+// $sql = "INSERT INTO user_email (user_email.user_id, user_email.user_email, user_email.local_part,
+// user_email.domain_name, user_email.email_enabled, user_email.creation_date) VALUES ";
+// $email       = "yschoen@gmail.com";
+// $local_part  = "yschoen";
+// $domain_name = "gmail.com";
+// $date        = date(DATE_W3C, strtotime("now"));
+//
+// for ($iter = 1; $iter <= 5; $iter++) {
+//     $sql.= "(";
+//     $sql.= $pdo->quote("40001").", ";
+//     $sql.= $pdo->quote($email).", ";
+//     $sql.= $pdo->quote($local_part).", ";
+//     $sql.= $pdo->quote($domain_name).", ";
+//     $sql.= $pdo->quote("1").",";
+//     $sql.= $pdo->quote($date)."";
+//     $sql.= ")";
+//     $sql.= ($iter != 5)? ", " : "";
+// }
+// echo($sql); die;
+
+// $query  = $pdo->query($sql);
+// $insert = $query->execute();
+// var_dump($insert);
+
+// $illuminate = new Model();
+// $illuminate->addConnection([
+//     PDOConfigEntity::LABEL_DRIVER   => $pdo_config->getDriver(),
+//     PDOConfigEntity::LABEL_HOST     => $pdo_config->getHost(),
+//     PDOConfigEntity::LABEL_DATABASE => $pdo_config->getDatabase(),
+//     PDOConfigEntity::LABEL_USERNAME => $pdo_config->getUsername(),
+//     PDOConfigEntity::LABEL_PASSWORD => $pdo_config->getPassword(),
+//     PDOConfigEntity::LABEL_CHARSET  => $pdo_config->getCharset()
+// ]);
+// $illuminate->setFetchMode(PDO::FETCH_CLASS);
+// $illuminate->setAsGlobal();
+// /** @var Collection $users */
+// $users = Model::table('user')->get();
+// $users->each(
+//     function (array $user) {
+//         $user->user_enabled = (bool) $user->user_enabled;
+//         $user->creation_date = DateTimeImmutable::createFromFormat(
+//             DATE_W3C,
+//             date(DATE_W3C, strtotime($user->creation_date))
+//         );
+//         var_dump(new User((array) $user));
+//     }
+// );
 
 $email = [
     UserEmail::LABEL_EMAIL_ID         => 3098432098234,
@@ -79,29 +137,30 @@ $password = [
 // var_dump($password);
 
 // Instance d'un utilisateur
-$user = [
-    User::LABEL_USER_ID        => 3098240892734,
-    User::LABEL_USER_GROUP_ID  => null,
-    User::LABEL_USER_NAME      => 'amineherradi',
-    User::LABEL_USER_FIRSTNAME => 'Amine',
-    User::LABEL_USER_LASTNAME  => 'Herradi',
-    User::LABEL_USER_ENABLED   => true,
-    User::LABEL_CREATION_DATE  => DateTimeImmutable::createFromFormat(
-        DATE_W3C,
-        date(
-            DATE_W3C,
-            strtotime('yesterday')
-        )
-    ),
-    User::LABEL_UPDATE_DATE    => DateTimeImmutable::createFromFormat(
-        DATE_W3C,
-        date(
-            DATE_W3C,
-            strtotime('today')
-        )
-    ),
-];
+// $user = [
+//     User::LABEL_USER_ID        => 3098240892734,
+//     User::LABEL_USER_GROUP_ID  => null,
+//     User::LABEL_USER_NAME      => 'amineherradi',
+//     User::LABEL_USER_FIRSTNAME => 'Amine',
+//     User::LABEL_USER_LASTNAME  => 'Herradi',
+//     User::LABEL_USER_ENABLED   => true,
+//     User::LABEL_CREATION_DATE  => DateTimeImmutable::createFromFormat(
+//         DATE_W3C,
+//         date(
+//             DATE_W3C,
+//             strtotime('yesterday')
+//         )
+//     ),
+//     User::LABEL_UPDATE_DATE    => DateTimeImmutable::createFromFormat(
+//         DATE_W3C,
+//         date(
+//             DATE_W3C,
+//             strtotime('today')
+//         )
+//     ),
+// ];
 // $user = new User($user);
+// $user->setUserId(34098245);
 // var_dump($user);
 
 // Instance d'un groupe d'utilisateurs
@@ -175,30 +234,3 @@ $user_property_value = [
 ];
 // $user_property_value = new UserPropertyValue($user_property_value);
 // var_dump($user_property_value);
-
-// try {
-//     $database = new PDO('mysql:host=172.17.0.3;dbname=averoes;charset=utf8', 'root', 'root');
-// } catch (Exception $exception) {
-//     die($exception->getMessage());
-// }
-// $faker = new Factory();
-// $create = $faker::create();
-
-/*
-$sql = 'INSERT INTO users (user_name, user_firstname, user_lastname, user_email, user_password, creation_date) VALUES ';
-*/
-
-// for ($iter = 1; $iter <= 10000; $iter++) {
-//    $sql.= "(";
-//        $sql.= $database->quote($create->userName).", ";
-//        $sql.= $database->quote($create->firstName).", ";
-//        $sql.= $database->quote($create->lastName).", ";
-//        $sql.= $database->quote($create->freeEmail).", ";
-//        $sql.= $database->quote($create->password(10, 10)).", ";
-//        $sql.= $database->quote($create->dateTime->format(DATE_W3C));
-//    $sql.= ")";
-//    $sql.= ($iter != 10000)? ", " : "";
-// }
-// $query = $database->query($sql);
-// $insert = $query->execute();
-// var_dump($insert);
