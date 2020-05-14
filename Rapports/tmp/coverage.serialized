@@ -1,0 +1,2764 @@
+<?php
+$coverage = new SebastianBergmann\CodeCoverage\CodeCoverage;
+$coverage->setData(array (
+  '/var/www/html/averoes/averoes_users/Config/Exceptions/ConfigException.php' => 
+  array (
+    28 => 
+    array (
+    ),
+    29 => 
+    array (
+    ),
+    30 => 
+    array (
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Models/UserGroupModel.php' => 
+  array (
+    26 => 
+    array (
+    ),
+    27 => 
+    array (
+    ),
+    40 => 
+    array (
+    ),
+    42 => 
+    array (
+    ),
+    43 => 
+    array (
+    ),
+    44 => 
+    array (
+    ),
+    45 => 
+    array (
+    ),
+    47 => 
+    array (
+    ),
+    48 => 
+    array (
+    ),
+    50 => 
+    array (
+    ),
+    51 => 
+    array (
+    ),
+    52 => 
+    array (
+    ),
+    53 => 
+    array (
+    ),
+    55 => 
+    array (
+    ),
+    57 => 
+    array (
+    ),
+    59 => 
+    array (
+    ),
+    60 => NULL,
+    78 => 
+    array (
+    ),
+    79 => 
+    array (
+    ),
+    81 => 
+    array (
+    ),
+    82 => 
+    array (
+    ),
+    83 => 
+    array (
+    ),
+    84 => 
+    array (
+    ),
+    85 => 
+    array (
+    ),
+    87 => 
+    array (
+    ),
+    88 => 
+    array (
+    ),
+    90 => 
+    array (
+    ),
+    91 => 
+    array (
+    ),
+    92 => 
+    array (
+    ),
+    93 => 
+    array (
+    ),
+    95 => 
+    array (
+    ),
+    97 => 
+    array (
+    ),
+    99 => 
+    array (
+    ),
+    100 => NULL,
+    119 => 
+    array (
+    ),
+    136 => 
+    array (
+    ),
+    150 => 
+    array (
+    ),
+    165 => 
+    array (
+    ),
+    182 => 
+    array (
+    ),
+    199 => 
+    array (
+    ),
+    216 => 
+    array (
+    ),
+    227 => 
+    array (
+    ),
+    238 => 
+    array (
+    ),
+    249 => 
+    array (
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Models/UserPasswordModel.php' => 
+  array (
+    26 => 
+    array (
+    ),
+    27 => 
+    array (
+    ),
+    40 => 
+    array (
+    ),
+    42 => 
+    array (
+    ),
+    43 => 
+    array (
+    ),
+    44 => 
+    array (
+    ),
+    45 => 
+    array (
+    ),
+    47 => 
+    array (
+    ),
+    48 => 
+    array (
+    ),
+    50 => 
+    array (
+    ),
+    51 => 
+    array (
+    ),
+    52 => 
+    array (
+    ),
+    53 => 
+    array (
+    ),
+    55 => 
+    array (
+    ),
+    57 => 
+    array (
+    ),
+    59 => 
+    array (
+    ),
+    60 => NULL,
+    79 => 
+    array (
+    ),
+    80 => 
+    array (
+    ),
+    82 => 
+    array (
+    ),
+    83 => 
+    array (
+    ),
+    84 => 
+    array (
+    ),
+    85 => 
+    array (
+    ),
+    86 => 
+    array (
+    ),
+    88 => 
+    array (
+    ),
+    89 => 
+    array (
+    ),
+    91 => 
+    array (
+    ),
+    92 => 
+    array (
+    ),
+    93 => 
+    array (
+    ),
+    94 => 
+    array (
+    ),
+    96 => 
+    array (
+    ),
+    98 => 
+    array (
+    ),
+    100 => 
+    array (
+    ),
+    101 => NULL,
+    120 => 
+    array (
+    ),
+    137 => 
+    array (
+    ),
+    151 => 
+    array (
+    ),
+    166 => 
+    array (
+    ),
+    183 => 
+    array (
+    ),
+    200 => 
+    array (
+    ),
+    217 => 
+    array (
+    ),
+    228 => 
+    array (
+    ),
+    239 => 
+    array (
+    ),
+    250 => 
+    array (
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Entities/Exceptions/EntityException.php' => 
+  array (
+    28 => 
+    array (
+    ),
+    29 => 
+    array (
+    ),
+    30 => 
+    array (
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Entities/Helpers/EntityHelper.php' => 
+  array (
+  ),
+  '/var/www/html/averoes/averoes_users/App/Objects/User.php' => 
+  array (
+  ),
+  '/var/www/html/averoes/averoes_users/Entities/Exceptions/InvalidArgument.php' => 
+  array (
+    28 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmailId with data set #1',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetUserId with data set #1',
+      2 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #1',
+      3 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #3',
+      4 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #1',
+      5 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #3',
+      6 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #3',
+      7 => 'Tests\\Entities\\UserGroupTest::testSetUserGroupId with data set #1',
+      8 => 'Tests\\Entities\\UserGroupTest::testSetGroupName with data set #1',
+      9 => 'Tests\\Entities\\UserPasswordTest::testSetUserPasswordId with data set #1',
+      10 => 'Tests\\Entities\\UserPasswordTest::testSetUserId with data set #1',
+      11 => 'Tests\\Entities\\UserPasswordTest::testSetUserPassword with data set #1',
+      12 => 'Tests\\Entities\\UserPropertyTest::testSetUserPropertyId with data set #1',
+      13 => 'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #2',
+      14 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyName with data set #1',
+      15 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyType with data set #1',
+      16 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyValueId with data set #1',
+      17 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserId with data set #1',
+      18 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyId with data set #1',
+      19 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #1',
+      20 => 'Tests\\Entities\\UserTest::testSetUserId with data set #1',
+      21 => 'Tests\\Entities\\UserTest::testSetUserGroupId with data set #2',
+      22 => 'Tests\\Entities\\UserTest::testSetUserName with data set #1',
+      23 => 'Tests\\Entities\\UserTest::testSetUserFirstName with data set #1',
+      24 => 'Tests\\Entities\\UserTest::testSetUserLastName with data set #1',
+    ),
+    29 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmailId with data set #1',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetUserId with data set #1',
+      2 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #1',
+      3 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #3',
+      4 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #1',
+      5 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #3',
+      6 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #3',
+      7 => 'Tests\\Entities\\UserGroupTest::testSetUserGroupId with data set #1',
+      8 => 'Tests\\Entities\\UserGroupTest::testSetGroupName with data set #1',
+      9 => 'Tests\\Entities\\UserPasswordTest::testSetUserPasswordId with data set #1',
+      10 => 'Tests\\Entities\\UserPasswordTest::testSetUserId with data set #1',
+      11 => 'Tests\\Entities\\UserPasswordTest::testSetUserPassword with data set #1',
+      12 => 'Tests\\Entities\\UserPropertyTest::testSetUserPropertyId with data set #1',
+      13 => 'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #2',
+      14 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyName with data set #1',
+      15 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyType with data set #1',
+      16 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyValueId with data set #1',
+      17 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserId with data set #1',
+      18 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyId with data set #1',
+      19 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #1',
+      20 => 'Tests\\Entities\\UserTest::testSetUserId with data set #1',
+      21 => 'Tests\\Entities\\UserTest::testSetUserGroupId with data set #2',
+      22 => 'Tests\\Entities\\UserTest::testSetUserName with data set #1',
+      23 => 'Tests\\Entities\\UserTest::testSetUserFirstName with data set #1',
+      24 => 'Tests\\Entities\\UserTest::testSetUserLastName with data set #1',
+    ),
+    30 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmailId with data set #1',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetUserId with data set #1',
+      2 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #1',
+      3 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #3',
+      4 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #1',
+      5 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #3',
+      6 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #3',
+      7 => 'Tests\\Entities\\UserGroupTest::testSetUserGroupId with data set #1',
+      8 => 'Tests\\Entities\\UserGroupTest::testSetGroupName with data set #1',
+      9 => 'Tests\\Entities\\UserPasswordTest::testSetUserPasswordId with data set #1',
+      10 => 'Tests\\Entities\\UserPasswordTest::testSetUserId with data set #1',
+      11 => 'Tests\\Entities\\UserPasswordTest::testSetUserPassword with data set #1',
+      12 => 'Tests\\Entities\\UserPropertyTest::testSetUserPropertyId with data set #1',
+      13 => 'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #2',
+      14 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyName with data set #1',
+      15 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyType with data set #1',
+      16 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyValueId with data set #1',
+      17 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserId with data set #1',
+      18 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyId with data set #1',
+      19 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #1',
+      20 => 'Tests\\Entities\\UserTest::testSetUserId with data set #1',
+      21 => 'Tests\\Entities\\UserTest::testSetUserGroupId with data set #2',
+      22 => 'Tests\\Entities\\UserTest::testSetUserName with data set #1',
+      23 => 'Tests\\Entities\\UserTest::testSetUserFirstName with data set #1',
+      24 => 'Tests\\Entities\\UserTest::testSetUserLastName with data set #1',
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Models/Exceptions/InvalidArgument.php' => 
+  array (
+    28 => 
+    array (
+    ),
+    29 => 
+    array (
+    ),
+    30 => 
+    array (
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Entities/UserPassword.php' => 
+  array (
+    121 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserPasswordId with data set #0',
+    ),
+    122 => NULL,
+    131 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserPasswordId with data set #0',
+      1 => 'Tests\\Entities\\UserPasswordTest::testSetUserPasswordId with data set #1',
+    ),
+    132 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserPasswordId with data set #0',
+    ),
+    133 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserPasswordId with data set #0',
+    ),
+    135 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserPasswordId with data set #1',
+    ),
+    137 => NULL,
+    142 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserId with data set #0',
+    ),
+    143 => NULL,
+    152 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserId with data set #0',
+      1 => 'Tests\\Entities\\UserPasswordTest::testSetUserId with data set #1',
+    ),
+    153 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserId with data set #0',
+    ),
+    154 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserId with data set #0',
+    ),
+    156 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserId with data set #1',
+    ),
+    158 => NULL,
+    163 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserPassword with data set #0',
+    ),
+    164 => NULL,
+    173 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserPassword with data set #0',
+      1 => 'Tests\\Entities\\UserPasswordTest::testSetUserPassword with data set #1',
+    ),
+    174 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserPassword with data set #0',
+    ),
+    175 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserPassword with data set #0',
+    ),
+    177 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUserPassword with data set #1',
+    ),
+    179 => NULL,
+    184 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetPasswordEnabled with data set #0',
+    ),
+    185 => NULL,
+    194 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetPasswordEnabled with data set #0',
+    ),
+    195 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetPasswordEnabled with data set #0',
+    ),
+    200 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetCreationDate with data set #0',
+    ),
+    201 => NULL,
+    210 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetCreationDate with data set #0',
+    ),
+    211 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetCreationDate with data set #0',
+    ),
+    216 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUpdateData with data set #0',
+      1 => 'Tests\\Entities\\UserPasswordTest::testSetUpdateData with data set #1',
+    ),
+    217 => NULL,
+    226 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUpdateData with data set #0',
+      1 => 'Tests\\Entities\\UserPasswordTest::testSetUpdateData with data set #1',
+    ),
+    227 => 
+    array (
+      0 => 'Tests\\Entities\\UserPasswordTest::testSetUpdateData with data set #0',
+      1 => 'Tests\\Entities\\UserPasswordTest::testSetUpdateData with data set #1',
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Entities/UserGroup.php' => 
+  array (
+    116 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetUserGroupId with data set #0',
+    ),
+    117 => NULL,
+    126 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetUserGroupId with data set #0',
+      1 => 'Tests\\Entities\\UserGroupTest::testSetUserGroupId with data set #1',
+    ),
+    127 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetUserGroupId with data set #0',
+    ),
+    128 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetUserGroupId with data set #0',
+    ),
+    130 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetUserGroupId with data set #1',
+    ),
+    132 => NULL,
+    137 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetGroupName with data set #0',
+    ),
+    138 => NULL,
+    147 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetGroupName with data set #0',
+      1 => 'Tests\\Entities\\UserGroupTest::testSetGroupName with data set #1',
+    ),
+    148 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetGroupName with data set #0',
+    ),
+    149 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetGroupName with data set #0',
+    ),
+    151 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetGroupName with data set #1',
+    ),
+    153 => NULL,
+    158 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetGroupEnabled with data set #0',
+    ),
+    159 => NULL,
+    168 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetGroupEnabled with data set #0',
+    ),
+    169 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetGroupEnabled with data set #0',
+    ),
+    174 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetCreationDate with data set #0',
+    ),
+    175 => NULL,
+    184 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetCreationDate with data set #0',
+    ),
+    185 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetCreationDate with data set #0',
+    ),
+    190 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserGroupTest::testSetUpdateDate with data set #1',
+    ),
+    191 => NULL,
+    200 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserGroupTest::testSetUpdateDate with data set #1',
+    ),
+    201 => 
+    array (
+      0 => 'Tests\\Entities\\UserGroupTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserGroupTest::testSetUpdateDate with data set #1',
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Models/UserEmailModel.php' => 
+  array (
+    26 => 
+    array (
+    ),
+    27 => 
+    array (
+    ),
+    40 => 
+    array (
+    ),
+    42 => 
+    array (
+    ),
+    43 => 
+    array (
+    ),
+    44 => 
+    array (
+    ),
+    45 => 
+    array (
+    ),
+    47 => 
+    array (
+    ),
+    48 => 
+    array (
+    ),
+    50 => 
+    array (
+    ),
+    51 => 
+    array (
+    ),
+    52 => 
+    array (
+    ),
+    53 => 
+    array (
+    ),
+    55 => 
+    array (
+    ),
+    57 => 
+    array (
+    ),
+    59 => 
+    array (
+    ),
+    60 => NULL,
+    78 => 
+    array (
+    ),
+    79 => 
+    array (
+    ),
+    81 => 
+    array (
+    ),
+    82 => 
+    array (
+    ),
+    83 => 
+    array (
+    ),
+    84 => 
+    array (
+    ),
+    85 => 
+    array (
+    ),
+    87 => 
+    array (
+    ),
+    88 => 
+    array (
+    ),
+    90 => 
+    array (
+    ),
+    91 => 
+    array (
+    ),
+    92 => 
+    array (
+    ),
+    93 => 
+    array (
+    ),
+    95 => 
+    array (
+    ),
+    97 => 
+    array (
+    ),
+    99 => 
+    array (
+    ),
+    100 => NULL,
+    119 => 
+    array (
+    ),
+    136 => 
+    array (
+    ),
+    150 => 
+    array (
+    ),
+    165 => 
+    array (
+    ),
+    182 => 
+    array (
+    ),
+    199 => 
+    array (
+    ),
+    216 => 
+    array (
+    ),
+    227 => 
+    array (
+    ),
+    238 => 
+    array (
+    ),
+    249 => 
+    array (
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Models/UserPropertyValueModel.php' => 
+  array (
+    26 => 
+    array (
+    ),
+    27 => 
+    array (
+    ),
+    40 => 
+    array (
+    ),
+    42 => 
+    array (
+    ),
+    43 => 
+    array (
+    ),
+    44 => 
+    array (
+    ),
+    45 => 
+    array (
+    ),
+    47 => 
+    array (
+    ),
+    48 => 
+    array (
+    ),
+    50 => 
+    array (
+    ),
+    51 => 
+    array (
+    ),
+    52 => 
+    array (
+    ),
+    53 => 
+    array (
+    ),
+    55 => 
+    array (
+    ),
+    57 => 
+    array (
+    ),
+    59 => 
+    array (
+    ),
+    60 => NULL,
+    78 => 
+    array (
+    ),
+    79 => 
+    array (
+    ),
+    81 => 
+    array (
+    ),
+    82 => 
+    array (
+    ),
+    83 => 
+    array (
+    ),
+    84 => 
+    array (
+    ),
+    85 => 
+    array (
+    ),
+    87 => 
+    array (
+    ),
+    88 => 
+    array (
+    ),
+    90 => 
+    array (
+    ),
+    91 => 
+    array (
+    ),
+    92 => 
+    array (
+    ),
+    93 => 
+    array (
+    ),
+    95 => 
+    array (
+    ),
+    97 => 
+    array (
+    ),
+    99 => 
+    array (
+    ),
+    100 => NULL,
+    119 => 
+    array (
+    ),
+    136 => 
+    array (
+    ),
+    150 => 
+    array (
+    ),
+    165 => 
+    array (
+    ),
+    182 => 
+    array (
+    ),
+    199 => 
+    array (
+    ),
+    216 => 
+    array (
+    ),
+    227 => 
+    array (
+    ),
+    238 => 
+    array (
+    ),
+    249 => 
+    array (
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Models/Exceptions/ModelException.php' => 
+  array (
+    28 => 
+    array (
+    ),
+    29 => 
+    array (
+    ),
+    30 => 
+    array (
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Models/Helpers/ModelHelper.php' => 
+  array (
+    21 => 
+    array (
+    ),
+    22 => 
+    array (
+    ),
+    23 => 
+    array (
+    ),
+    24 => 
+    array (
+    ),
+    25 => 
+    array (
+    ),
+    26 => 
+    array (
+    ),
+    28 => 
+    array (
+    ),
+    29 => 
+    array (
+    ),
+    31 => 
+    array (
+    ),
+    33 => 
+    array (
+    ),
+    34 => NULL,
+  ),
+  '/var/www/html/averoes/averoes_users/Models/Interfaces/ModelInterface.php' => 
+  array (
+  ),
+  '/var/www/html/averoes/averoes_users/Entities/User.php' => 
+  array (
+    131 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserId with data set #0',
+    ),
+    132 => NULL,
+    141 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserId with data set #0',
+      1 => 'Tests\\Entities\\UserTest::testSetUserId with data set #1',
+    ),
+    142 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserId with data set #0',
+    ),
+    143 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserId with data set #0',
+    ),
+    145 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserId with data set #1',
+    ),
+    147 => NULL,
+    152 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserGroupId with data set #0',
+      1 => 'Tests\\Entities\\UserTest::testSetUserGroupId with data set #1',
+    ),
+    153 => NULL,
+    162 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserGroupId with data set #0',
+      1 => 'Tests\\Entities\\UserTest::testSetUserGroupId with data set #1',
+      2 => 'Tests\\Entities\\UserTest::testSetUserGroupId with data set #2',
+    ),
+    163 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserGroupId with data set #0',
+      1 => 'Tests\\Entities\\UserTest::testSetUserGroupId with data set #1',
+    ),
+    164 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserGroupId with data set #0',
+      1 => 'Tests\\Entities\\UserTest::testSetUserGroupId with data set #1',
+    ),
+    166 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserGroupId with data set #2',
+    ),
+    168 => NULL,
+    173 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserName with data set #0',
+    ),
+    174 => NULL,
+    183 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserName with data set #0',
+      1 => 'Tests\\Entities\\UserTest::testSetUserName with data set #1',
+    ),
+    184 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserName with data set #0',
+    ),
+    185 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserName with data set #0',
+    ),
+    187 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserName with data set #1',
+    ),
+    189 => NULL,
+    194 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserFirstName with data set #0',
+    ),
+    195 => NULL,
+    204 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserFirstName with data set #0',
+      1 => 'Tests\\Entities\\UserTest::testSetUserFirstName with data set #1',
+    ),
+    205 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserFirstName with data set #0',
+    ),
+    206 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserFirstName with data set #0',
+    ),
+    208 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserFirstName with data set #1',
+    ),
+    210 => NULL,
+    215 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserLastName with data set #0',
+    ),
+    216 => NULL,
+    225 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserLastName with data set #0',
+      1 => 'Tests\\Entities\\UserTest::testSetUserLastName with data set #1',
+    ),
+    226 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserLastName with data set #0',
+    ),
+    227 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserLastName with data set #0',
+    ),
+    229 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserLastName with data set #1',
+    ),
+    231 => NULL,
+    236 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserEnabled with data set #0',
+    ),
+    237 => NULL,
+    246 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserEnabled with data set #0',
+    ),
+    247 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUserEnabled with data set #0',
+    ),
+    252 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetCreationDate with data set #0',
+    ),
+    253 => NULL,
+    262 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetCreationDate with data set #0',
+    ),
+    263 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetCreationDate with data set #0',
+    ),
+    268 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserTest::testSetUpdateDate with data set #1',
+    ),
+    269 => NULL,
+    278 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserTest::testSetUpdateDate with data set #1',
+    ),
+    279 => 
+    array (
+      0 => 'Tests\\Entities\\UserTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserTest::testSetUpdateDate with data set #1',
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/App/UserController.php' => 
+  array (
+  ),
+  '/var/www/html/averoes/averoes_users/Entities/UserProperty.php' => 
+  array (
+    140 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetUserPropertyId with data set #0',
+    ),
+    141 => NULL,
+    150 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetUserPropertyId with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyTest::testSetUserPropertyId with data set #1',
+    ),
+    151 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetUserPropertyId with data set #0',
+    ),
+    152 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetUserPropertyId with data set #0',
+    ),
+    154 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetUserPropertyId with data set #1',
+    ),
+    156 => NULL,
+    161 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #1',
+    ),
+    162 => NULL,
+    171 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #1',
+      2 => 'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #2',
+    ),
+    172 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #1',
+    ),
+    173 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #1',
+    ),
+    175 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #2',
+    ),
+    177 => NULL,
+    182 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyName with data set #0',
+    ),
+    183 => NULL,
+    192 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyName with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyName with data set #1',
+    ),
+    193 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyName with data set #0',
+    ),
+    194 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyName with data set #0',
+    ),
+    196 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyName with data set #1',
+    ),
+    198 => NULL,
+    203 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyType with data set #0',
+    ),
+    204 => NULL,
+    213 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyType with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyType with data set #1',
+    ),
+    214 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyType with data set #0',
+    ),
+    215 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyType with data set #0',
+    ),
+    217 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyType with data set #1',
+    ),
+    219 => NULL,
+    224 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyEnabled with data set #0',
+    ),
+    225 => NULL,
+    234 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyEnabled with data set #0',
+    ),
+    235 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetPropertyEnabled with data set #0',
+    ),
+    240 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetCreationDate with data set #0',
+    ),
+    241 => NULL,
+    250 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetCreationDate with data set #0',
+    ),
+    251 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetCreationDate with data set #0',
+    ),
+    256 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyTest::testSetUpdateDate with data set #1',
+    ),
+    257 => NULL,
+    266 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyTest::testSetUpdateDate with data set #1',
+    ),
+    267 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyTest::testSetUpdateDate with data set #1',
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Models/UserPropertyModel.php' => 
+  array (
+    26 => 
+    array (
+    ),
+    27 => 
+    array (
+    ),
+    40 => 
+    array (
+    ),
+    42 => 
+    array (
+    ),
+    43 => 
+    array (
+    ),
+    44 => 
+    array (
+    ),
+    45 => 
+    array (
+    ),
+    47 => 
+    array (
+    ),
+    48 => 
+    array (
+    ),
+    50 => 
+    array (
+    ),
+    51 => 
+    array (
+    ),
+    52 => 
+    array (
+    ),
+    53 => 
+    array (
+    ),
+    55 => 
+    array (
+    ),
+    57 => 
+    array (
+    ),
+    59 => 
+    array (
+    ),
+    60 => NULL,
+    78 => 
+    array (
+    ),
+    79 => 
+    array (
+    ),
+    81 => 
+    array (
+    ),
+    82 => 
+    array (
+    ),
+    83 => 
+    array (
+    ),
+    84 => 
+    array (
+    ),
+    85 => 
+    array (
+    ),
+    87 => 
+    array (
+    ),
+    88 => 
+    array (
+    ),
+    90 => 
+    array (
+    ),
+    91 => 
+    array (
+    ),
+    92 => 
+    array (
+    ),
+    93 => 
+    array (
+    ),
+    95 => 
+    array (
+    ),
+    97 => 
+    array (
+    ),
+    99 => 
+    array (
+    ),
+    100 => NULL,
+    119 => 
+    array (
+    ),
+    136 => 
+    array (
+    ),
+    150 => 
+    array (
+    ),
+    165 => 
+    array (
+    ),
+    182 => 
+    array (
+    ),
+    199 => 
+    array (
+    ),
+    216 => 
+    array (
+    ),
+    227 => 
+    array (
+    ),
+    238 => 
+    array (
+    ),
+    249 => 
+    array (
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Models/UserModel.php' => 
+  array (
+    26 => 
+    array (
+    ),
+    27 => 
+    array (
+    ),
+    40 => 
+    array (
+    ),
+    42 => 
+    array (
+    ),
+    43 => 
+    array (
+    ),
+    44 => 
+    array (
+    ),
+    45 => 
+    array (
+    ),
+    47 => 
+    array (
+    ),
+    48 => 
+    array (
+    ),
+    50 => 
+    array (
+    ),
+    51 => 
+    array (
+    ),
+    52 => 
+    array (
+    ),
+    53 => 
+    array (
+    ),
+    55 => 
+    array (
+    ),
+    57 => 
+    array (
+    ),
+    59 => 
+    array (
+    ),
+    60 => NULL,
+    78 => 
+    array (
+    ),
+    79 => 
+    array (
+    ),
+    81 => 
+    array (
+    ),
+    82 => 
+    array (
+    ),
+    83 => 
+    array (
+    ),
+    84 => 
+    array (
+    ),
+    85 => 
+    array (
+    ),
+    87 => 
+    array (
+    ),
+    88 => 
+    array (
+    ),
+    90 => 
+    array (
+    ),
+    91 => 
+    array (
+    ),
+    92 => 
+    array (
+    ),
+    93 => 
+    array (
+    ),
+    95 => 
+    array (
+    ),
+    97 => 
+    array (
+    ),
+    99 => 
+    array (
+    ),
+    100 => NULL,
+    119 => 
+    array (
+    ),
+    136 => 
+    array (
+    ),
+    150 => 
+    array (
+    ),
+    165 => 
+    array (
+    ),
+    182 => 
+    array (
+    ),
+    199 => 
+    array (
+    ),
+    216 => 
+    array (
+    ),
+    227 => 
+    array (
+    ),
+    238 => 
+    array (
+    ),
+    249 => 
+    array (
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Config/Exceptions/InvalidArgument.php' => 
+  array (
+    28 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #1',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #2',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #1',
+      7 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #2',
+      8 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #1',
+      9 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #2',
+      10 => 'Tests\\Config\\PDOConfigEntityTest::testSetDatabase with data set #1',
+      11 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #1',
+      12 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #2',
+      13 => 'Tests\\Config\\PDOConfigEntityTest::testSetUsername with data set #1',
+      14 => 'Tests\\Config\\PDOConfigEntityTest::testSetPassword with data set #1',
+    ),
+    29 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #1',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #2',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #1',
+      7 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #2',
+      8 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #1',
+      9 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #2',
+      10 => 'Tests\\Config\\PDOConfigEntityTest::testSetDatabase with data set #1',
+      11 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #1',
+      12 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #2',
+      13 => 'Tests\\Config\\PDOConfigEntityTest::testSetUsername with data set #1',
+      14 => 'Tests\\Config\\PDOConfigEntityTest::testSetPassword with data set #1',
+    ),
+    30 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #1',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #2',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #1',
+      7 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #2',
+      8 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #1',
+      9 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #2',
+      10 => 'Tests\\Config\\PDOConfigEntityTest::testSetDatabase with data set #1',
+      11 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #1',
+      12 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #2',
+      13 => 'Tests\\Config\\PDOConfigEntityTest::testSetUsername with data set #1',
+      14 => 'Tests\\Config\\PDOConfigEntityTest::testSetPassword with data set #1',
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Entities/UserPropertyValue.php' => 
+  array (
+    126 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyValueId with data set #0',
+    ),
+    127 => NULL,
+    136 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyValueId with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyValueId with data set #1',
+    ),
+    137 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyValueId with data set #0',
+    ),
+    138 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyValueId with data set #0',
+    ),
+    140 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyValueId with data set #1',
+    ),
+    142 => NULL,
+    147 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserId with data set #0',
+    ),
+    148 => NULL,
+    157 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserId with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserId with data set #1',
+    ),
+    158 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserId with data set #0',
+    ),
+    159 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserId with data set #0',
+    ),
+    161 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserId with data set #1',
+    ),
+    163 => NULL,
+    168 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyId with data set #0',
+    ),
+    169 => NULL,
+    178 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyId with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyId with data set #1',
+    ),
+    179 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyId with data set #0',
+    ),
+    180 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyId with data set #0',
+    ),
+    182 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyId with data set #1',
+    ),
+    184 => NULL,
+    189 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #0',
+    ),
+    190 => NULL,
+    200 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #1',
+    ),
+    201 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #1',
+    ),
+    202 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #1',
+    ),
+    203 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #1',
+    ),
+    204 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #1',
+    ),
+    206 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #1',
+    ),
+    207 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #0',
+    ),
+    208 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #0',
+    ),
+    210 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #1',
+    ),
+    211 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #1',
+    ),
+    214 => NULL,
+    219 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCreationDate with data set #0',
+    ),
+    220 => NULL,
+    229 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCreationDate with data set #0',
+    ),
+    230 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetCreationDate with data set #0',
+    ),
+    235 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyValueTest::testSetUpdateDate with data set #1',
+    ),
+    236 => NULL,
+    245 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyValueTest::testSetUpdateDate with data set #1',
+    ),
+    246 => 
+    array (
+      0 => 'Tests\\Entities\\UserPropertyValueTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserPropertyValueTest::testSetUpdateDate with data set #1',
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Entities/UserEmail.php' => 
+  array (
+    130 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmailId with data set #0',
+    ),
+    131 => NULL,
+    140 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmailId with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetUserEmailId with data set #1',
+    ),
+    141 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmailId with data set #0',
+    ),
+    142 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmailId with data set #0',
+    ),
+    144 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmailId with data set #1',
+    ),
+    146 => NULL,
+    151 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserId with data set #0',
+    ),
+    152 => NULL,
+    161 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserId with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetUserId with data set #1',
+    ),
+    162 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserId with data set #0',
+    ),
+    163 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserId with data set #0',
+    ),
+    165 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserId with data set #1',
+    ),
+    167 => NULL,
+    172 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+    ),
+    173 => NULL,
+    182 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #1',
+      2 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #3',
+    ),
+    183 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #1',
+      2 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #3',
+    ),
+    184 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+    ),
+    185 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+    ),
+    187 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+    ),
+    188 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+    ),
+    189 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+    ),
+    191 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #1',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #3',
+    ),
+    193 => NULL,
+    198 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #0',
+    ),
+    199 => NULL,
+    208 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #0',
+      2 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #1',
+      3 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #3',
+    ),
+    209 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #0',
+    ),
+    210 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #0',
+    ),
+    212 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #1',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #3',
+    ),
+    214 => NULL,
+    219 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #0',
+    ),
+    220 => NULL,
+    229 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #0',
+      2 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #1',
+      3 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #3',
+    ),
+    230 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #0',
+      2 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #1',
+      3 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #3',
+    ),
+    231 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #0',
+      2 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #1',
+    ),
+    232 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #0',
+      2 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #1',
+    ),
+    234 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #3',
+    ),
+    236 => NULL,
+    241 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetEmailEnabled with data set #0',
+    ),
+    242 => NULL,
+    251 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetEmailEnabled with data set #0',
+    ),
+    252 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetEmailEnabled with data set #0',
+    ),
+    257 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetCreationDate with data set #0',
+    ),
+    258 => NULL,
+    267 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetCreationDate with data set #0',
+    ),
+    268 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetCreationDate with data set #0',
+    ),
+    273 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetUpdateDate with data set #1',
+    ),
+    274 => NULL,
+    283 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetUpdateDate with data set #1',
+    ),
+    284 => 
+    array (
+      0 => 'Tests\\Entities\\UserEmailTest::testSetUpdateDate with data set #0',
+      1 => 'Tests\\Entities\\UserEmailTest::testSetUpdateDate with data set #1',
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Config/PDOConfigEntity.php' => 
+  array (
+    147 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #1',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #2',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      7 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #7',
+    ),
+    148 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #1',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #2',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+    ),
+    149 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #1',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #2',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+    ),
+    152 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #7',
+    ),
+    153 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #7',
+    ),
+    154 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+    ),
+    155 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+    ),
+    156 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+    ),
+    158 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+    ),
+    159 => NULL,
+    164 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #0',
+    ),
+    165 => NULL,
+    174 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #1',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #2',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      7 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #0',
+      8 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #1',
+      9 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #2',
+    ),
+    175 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #2',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #0',
+    ),
+    176 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #2',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #0',
+    ),
+    178 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #1',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #1',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #2',
+    ),
+    180 => NULL,
+    185 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #0',
+    ),
+    186 => NULL,
+    195 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #2',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #0',
+      7 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #1',
+      8 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #2',
+    ),
+    196 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #2',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #0',
+      7 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #1',
+      8 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #2',
+    ),
+    197 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #0',
+    ),
+    198 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #0',
+    ),
+    200 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #2',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #1',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #2',
+    ),
+    202 => NULL,
+    207 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testSetDatabase with data set #0',
+    ),
+    208 => NULL,
+    217 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testSetDatabase with data set #0',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testSetDatabase with data set #1',
+    ),
+    218 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testSetDatabase with data set #0',
+    ),
+    219 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testSetDatabase with data set #0',
+    ),
+    221 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testSetDatabase with data set #1',
+    ),
+    223 => NULL,
+    228 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #0',
+    ),
+    229 => NULL,
+    238 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #0',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #1',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #2',
+    ),
+    239 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #0',
+      5 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #1',
+      6 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #2',
+    ),
+    240 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #0',
+    ),
+    241 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #0',
+    ),
+    243 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #1',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #2',
+    ),
+    245 => NULL,
+    250 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testSetUsername with data set #0',
+    ),
+    251 => NULL,
+    260 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testSetUsername with data set #0',
+      4 => 'Tests\\Config\\PDOConfigEntityTest::testSetUsername with data set #1',
+    ),
+    261 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testSetUsername with data set #0',
+    ),
+    262 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testSetUsername with data set #0',
+    ),
+    264 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testSetUsername with data set #1',
+    ),
+    266 => NULL,
+    271 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testSetPassword with data set #0',
+    ),
+    272 => NULL,
+    281 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      2 => 'Tests\\Config\\PDOConfigEntityTest::testSetPassword with data set #0',
+      3 => 'Tests\\Config\\PDOConfigEntityTest::testSetPassword with data set #1',
+    ),
+    282 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testSetPassword with data set #0',
+    ),
+    283 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testSetPassword with data set #0',
+    ),
+    285 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6',
+      1 => 'Tests\\Config\\PDOConfigEntityTest::testSetPassword with data set #1',
+    ),
+    287 => NULL,
+    295 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+    ),
+    296 => NULL,
+    311 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+    ),
+    312 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+    ),
+    313 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+    ),
+    314 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+    ),
+    315 => 
+    array (
+      0 => 'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0',
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Models/Engine/ModelManager.php' => 
+  array (
+    27 => 
+    array (
+    ),
+    28 => 
+    array (
+    ),
+    29 => 
+    array (
+    ),
+    30 => 
+    array (
+    ),
+    31 => 
+    array (
+    ),
+    33 => 
+    array (
+    ),
+  ),
+  '/var/www/html/averoes/averoes_users/Entities/Interfaces/EntityInterface.php' => 
+  array (
+  ),
+));
+$coverage->setTests(array (
+  'UNCOVERED_FILES_FROM_WHITELIST' => 
+  array (
+    'size' => 'unknown',
+    'status' => -1,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #2' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #3' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #4' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #5' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #6' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testLoadDatabaseConfig with data set #7' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetDriver with data set #2' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetHost with data set #2' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetDatabase with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetDatabase with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetCharset with data set #2' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetUsername with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetUsername with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetPassword with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Config\\PDOConfigEntityTest::testSetPassword with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetUserEmailId with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetUserEmailId with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetUserId with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetUserId with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetUserEmail with data set #3' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetLocalPart with data set #3' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetDomainName with data set #3' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetEmailEnabled with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetCreationDate with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetUpdateDate with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserEmailTest::testSetUpdateDate with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserGroupTest::testSetUserGroupId with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserGroupTest::testSetUserGroupId with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserGroupTest::testSetGroupName with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserGroupTest::testSetGroupName with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserGroupTest::testSetGroupEnabled with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserGroupTest::testSetCreationDate with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserGroupTest::testSetUpdateDate with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserGroupTest::testSetUpdateDate with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPasswordTest::testSetUserPasswordId with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPasswordTest::testSetUserPasswordId with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPasswordTest::testSetUserId with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPasswordTest::testSetUserId with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPasswordTest::testSetUserPassword with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPasswordTest::testSetUserPassword with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPasswordTest::testSetPasswordEnabled with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPasswordTest::testSetCreationDate with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPasswordTest::testSetUpdateData with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPasswordTest::testSetUpdateData with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyTest::testSetUserPropertyId with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyTest::testSetUserPropertyId with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyTest::testSetUserGroupId with data set #2' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyTest::testSetPropertyName with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyTest::testSetPropertyName with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyTest::testSetPropertyType with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyTest::testSetPropertyType with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyTest::testSetPropertyEnabled with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyTest::testSetCreationDate with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyTest::testSetUpdateDate with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyTest::testSetUpdateDate with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyValueId with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyValueId with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyValueTest::testSetUserId with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyValueTest::testSetUserId with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyId with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyValueTest::testSetUserPropertyId with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyValueTest::testSetCustomValue with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyValueTest::testSetCreationDate with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyValueTest::testSetUpdateDate with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserPropertyValueTest::testSetUpdateDate with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUserId with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUserId with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUserGroupId with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUserGroupId with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUserGroupId with data set #2' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUserName with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUserName with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUserFirstName with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUserFirstName with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUserLastName with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUserLastName with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUserEnabled with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetCreationDate with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUpdateDate with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'Tests\\Entities\\UserTest::testSetUpdateDate with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+));
+
+$filter = $coverage->filter();
+$filter->setWhitelistedFiles(array (
+  '/var/www/html/averoes/averoes_users/App/Objects/User.php' => true,
+  '/var/www/html/averoes/averoes_users/App/UserController.php' => true,
+  '/var/www/html/averoes/averoes_users/Config/Exceptions/ConfigException.php' => true,
+  '/var/www/html/averoes/averoes_users/Config/Exceptions/InvalidArgument.php' => true,
+  '/var/www/html/averoes/averoes_users/Config/PDOConfigEntity.php' => true,
+  '/var/www/html/averoes/averoes_users/Entities/Exceptions/EntityException.php' => true,
+  '/var/www/html/averoes/averoes_users/Entities/Exceptions/InvalidArgument.php' => true,
+  '/var/www/html/averoes/averoes_users/Entities/Helpers/EntityHelper.php' => true,
+  '/var/www/html/averoes/averoes_users/Entities/Interfaces/EntityInterface.php' => true,
+  '/var/www/html/averoes/averoes_users/Entities/User.php' => true,
+  '/var/www/html/averoes/averoes_users/Entities/UserEmail.php' => true,
+  '/var/www/html/averoes/averoes_users/Entities/UserGroup.php' => true,
+  '/var/www/html/averoes/averoes_users/Entities/UserPassword.php' => true,
+  '/var/www/html/averoes/averoes_users/Entities/UserProperty.php' => true,
+  '/var/www/html/averoes/averoes_users/Entities/UserPropertyValue.php' => true,
+  '/var/www/html/averoes/averoes_users/Models/Engine/ModelManager.php' => true,
+  '/var/www/html/averoes/averoes_users/Models/Exceptions/InvalidArgument.php' => true,
+  '/var/www/html/averoes/averoes_users/Models/Exceptions/ModelException.php' => true,
+  '/var/www/html/averoes/averoes_users/Models/Helpers/ModelHelper.php' => true,
+  '/var/www/html/averoes/averoes_users/Models/Interfaces/ModelInterface.php' => true,
+  '/var/www/html/averoes/averoes_users/Models/UserEmailModel.php' => true,
+  '/var/www/html/averoes/averoes_users/Models/UserGroupModel.php' => true,
+  '/var/www/html/averoes/averoes_users/Models/UserModel.php' => true,
+  '/var/www/html/averoes/averoes_users/Models/UserPasswordModel.php' => true,
+  '/var/www/html/averoes/averoes_users/Models/UserPropertyModel.php' => true,
+  '/var/www/html/averoes/averoes_users/Models/UserPropertyValueModel.php' => true,
+));
+
+return $coverage;
