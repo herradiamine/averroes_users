@@ -19,6 +19,12 @@ install:
   - printf "\n" | pecl install yaml
   - travis_retry composer update
 
+addons:
+  sonarcloud:
+    organization: "herradiamine"
+    token:
+      secure: "90c9dfe0fd8d3b8d1d33d6bf135bf950897e7a12"
+
 script:
   - vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*,*/Rapports/*
   - vendor/bin/phpunit
@@ -26,9 +32,3 @@ script:
 
 notifications:
   email: herradiamine@gmail.com
-
-addons:
-  sonarcloud:
-    organization: "herradiamine"
-    token:
-      secure: "90c9dfe0fd8d3b8d1d33d6bf135bf950897e7a12"
