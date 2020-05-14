@@ -13,7 +13,7 @@ use InvalidArgumentException;
  */
 class InvalidArgument extends InvalidArgumentException
 {
-    private const DEFAULT_MESSAGE = "";
+    private const DEFAULT_MESSAGE = "Given argument is not valid";
 
     /**
      * Construct the exception. Note: The message is NOT binary safe.

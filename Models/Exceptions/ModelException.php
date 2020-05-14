@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Models\Exceptions;
 
-use PDOException;
+use Exception;
 use Throwable;
 
 /**
  * Class ModelException
  * @package Models\Exceptions
  */
-class ModelException extends PDOException
+class ModelException extends Exception
 {
     private const DEFAULT_MESSAGE = "It seems that your query contains errors";
 
