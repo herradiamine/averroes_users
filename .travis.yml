@@ -23,7 +23,7 @@ addons:
   sonarcloud:
     organization: "herradiamine"
     token:
-      secure: "ef1dfbd5df729be979679e52bb6044c56d1bf929"
+      secure: "a62bd89f9f3e40b2376ea859149ea96dc0be4519"
 
 script:
   - vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*,*/Rapports/*
