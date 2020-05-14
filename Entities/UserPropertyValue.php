@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Entities;
 
+use Entities\Traits\EntityTrait;
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
@@ -17,6 +18,10 @@ use TypeError;
  */
 class UserPropertyValue implements EntityInterface
 {
+    use EntityTrait {
+        EntityTrait::initEntity as public;
+    }
+
     public const TABLE_NAME = 'user_property_value';
 
     public const LABEL_USER_PROPERTY_VALUE_ID = 'user_property_value_id';
@@ -105,18 +110,6 @@ class UserPropertyValue implements EntityInterface
             echo TypeError::class . ' : ' . $error->getMessage();
         } catch (InvalidArgumentException $exception) {
             echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
-        }
-    }
-
-    /**
-     * @codeCoverageIgnore
-     * @param array $entityData
-     */
-    public function initEntity(array $entityData): void
-    {
-        foreach ($entityData as $key => $value) {
-            $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
-            $this->{$method}($value);
         }
     }
 
