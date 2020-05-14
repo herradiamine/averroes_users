@@ -6,8 +6,8 @@ namespace Entities;
 
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
+use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
 use DateTimeImmutable;
-use InvalidArgumentException;
 use TypeError;
 
 /**
@@ -18,12 +18,19 @@ class UserProperty implements EntityInterface
 {
     public const TABLE_NAME = 'user_property';
 
-    public const INT_VALUE = 'integer';
-    public const FLOAT_VALUE = 'float';
-    public const BOOL_VALUE = 'boolean';
-    public const STRING_VALUE = 'string';
-    public const NULL_VALUE = 'null';
-    public const OBJECT_VALUE = 'object';
+    public const INT_VALUE    = 'INTEGER';
+    public const FLOAT_VALUE  = 'FLOAT';
+    public const BOOL_VALUE   = 'BOOLEAN';
+    public const STRING_VALUE = 'STRING';
+    public const NULL_VALUE   = 'NULL';
+    public const OBJECT_VALUE = [
+        'user' => User::class,
+        'user_email' => UserEmail::class,
+        'user_group' => UserGroup::class,
+        'user_password' => UserPassword::class,
+        'user_property' => UserProperty::class,
+        'user_property_value' => UserPropertyValue::class
+    ];
 
     public const LABEL_USER_PROPERTY_ID = 'user_property_id';
     public const LABEL_USER_GROUP_ID    = 'user_group_id';
@@ -63,6 +70,49 @@ class UserProperty implements EntityInterface
     {
         if (!empty($entityData)) {
             $this->initEntity($entityData);
+        }
+    }
+
+    /**
+     * @codeCoverageIgnore
+     * @param $name
+     * @param $value
+     */
+    public function __set($name, $value)
+    {
+        $method = 'set' . EntityHelper::snakeToCamelCase($name, true);
+        try {
+            switch ($method) {
+                case 'setUserPropertyId':
+                case 'setGroupId':
+                    $value = ($value) ? (int) $value : null ;
+                    $this->{$method}($value);
+                    break;
+                case 'setPropertyName':
+                case 'setPropertyType':
+                    $this->{$method}($value);
+                    break;
+                case 'setPropertyEnabled':
+                    $value = (bool) $value;
+                    $this->{$method}($value);
+                    break;
+                case 'setCreationDate':
+                case 'setUpdateDate':
+                    if ($value) {
+                        $value = DateTimeImmutable::createFromFormat(
+                            DATE_W3C,
+                            date(DATE_W3C, strtotime($value))
+                        );
+                    } else {
+                        $value = null;
+                    }
+                    $this->{$method}($value);
+                    break;
+            }
+        } catch (TypeError $error) {
+            echo TypeError::class . ' : ' . $error->getMessage();
+        } catch (InvalidArgumentException $exception) {
+            echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
         }
     }
 

@@ -1,10 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Models;
 
+use Models\Exceptions\ModelException;
+use Models\Helpers\ModelHelper;
 use Models\Interfaces\ModelInterface;
-use Database\Engine\ModelManager;
+use Models\Engine\ModelManager;
 use Entities\UserEmail;
+use PDO;
 
 /**
  * Class UserEmailModel
@@ -12,23 +17,46 @@ use Entities\UserEmail;
  */
 class UserEmailModel extends ModelManager implements ModelInterface
 {
+    /** @var string $table */
+    private string $table = UserEmail::TABLE_NAME;
+
+    /** UserEmailModel constructor.*/
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     /**
      * Gets one element using select by id and displays choosen fields.
      * Returns all fields by default if not given $displayFields parameter.
      * @param int   $id
      * @param array $displayFiedls
-     * @return object|false
+     * @return UserEmail|null
      */
     public function getOneById(
         int $id,
-        array $displayFiedls = []
+        array $displayFiedls = ['*']
     ): ?object {
-        $result = (object) $this->select()
-                                ->fields($displayFiedls)
-                                ->from(UserEmail::TABLE_NAME)
-                                ->where([UserEmail::LABEL_USER_ID => $id])
-                                ->fetch();
-        return (!empty($result)) ? $result : false;
+        $fields = ModelHelper::quoteFields($displayFiedls);
+
+        $sql    = "
+            SELECT $fields 
+            FROM $this->table 
+            WHERE $this->table.user_email_id = $id
+        ";
+        $query  = $this->query($sql);
+        $result = null;
+
+        if ($query) {
+            $query->setFetchMode(
+                PDO::FETCH_CLASS,
+                UserEmail::class
+            );
+            $result = $query->fetch();
+        } else {
+            throw new ModelException(__METHOD__);
+        }
+        return $result;
     }
 
     /**
@@ -39,30 +67,51 @@ class UserEmailModel extends ModelManager implements ModelInterface
      * @param array $displayFiedls
      * @param int   $limit
      * @param int   $offset
-     * @return array|false
+     * @return array|null
      */
     public function getManyByIds(
         array $ids,
-        array $displayFiedls = [],
+        array $displayFiedls = ['*'],
         int $limit = 20,
         int $offset = 0
     ): ?array {
-        // TODO: Implement getManyByIds() method.
+        $fields = ModelHelper::quoteFields($displayFiedls);
+        $ids    = implode(",", $ids);
+
+        $sql    = "
+            SELECT $fields 
+            FROM $this->table 
+            WHERE $this->table.user_email_id IN ($ids) 
+            LIMIT $offset, $limit
+        ";
+        $query  = $this->query($sql);
+        $result = null;
+
+        if ($query) {
+            $query->setFetchMode(
+                PDO::FETCH_CLASS,
+                UserEmail::class
+            );
+            $result = $query->fetchAll();
+        } else {
+            throw new ModelException(__METHOD__);
+        }
+        return $result;
     }
 
     /**
      * Gets one or many elements using custom data select and displays choosen fields.
      * Returns all fields by default if not given $displayFields parameter
      * and 20 elements from offset 0.
-     * @param array $dataSelect
      * @param array $displayFields
+     * @param array $operatorKeyValue
      * @param int   $limit
      * @param int   $offset
      * @return array|false
      */
     public function getCustom(
-        array $dataSelect,
         array $displayFields = [],
+        array $operatorKeyValue = [],
         int $limit = 20,
         int $offset = 0
     ): ?array {
@@ -79,7 +128,7 @@ class UserEmailModel extends ModelManager implements ModelInterface
      * @return array|false
      */
     public function getAll(
-        array $displayFields = [],
+        array $displayFields = ['*'],
         int $limit = 20,
         int $offset = 0
     ): ?array {

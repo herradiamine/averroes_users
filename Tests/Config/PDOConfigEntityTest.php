@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Tests\Config;
 
 use Config\PDOConfigEntity;
-use Error;
-use InvalidArgumentException;
+use Tests\Config\Traits\AvailableConfigDataTrait;
 use PHPUnit\Framework\Constraint\IsTrue;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Tests\Config\Traits\AvailableConfigDataTrait;
+use InvalidArgumentException;
+use Error;
 
 /**
  * Class PDOConfigEntityTest

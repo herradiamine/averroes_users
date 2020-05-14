@@ -6,8 +6,8 @@ namespace Entities;
 
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
+use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
 use DateTimeImmutable;
-use InvalidArgumentException;
 use TypeError;
 
 /**
@@ -52,6 +52,48 @@ class UserPassword implements EntityInterface
     {
         if (!empty($entityData)) {
             $this->initEntity($entityData);
+        }
+    }
+
+    /**
+     * @codeCoverageIgnore
+     * @param $name
+     * @param $value
+     */
+    public function __set($name, $value)
+    {
+        $method = 'set' . EntityHelper::snakeToCamelCase($name, true);
+        try {
+            switch ($method) {
+                case 'setUserPasswordId':
+                case 'setUserId':
+                    $value = ($value) ? (int) $value : null ;
+                    $this->{$method}($value);
+                    break;
+                case 'setUserPassword':
+                    $this->{$method}($value);
+                    break;
+                case 'setPasswordEnabled':
+                    $value = (bool) $value;
+                    $this->{$method}($value);
+                    break;
+                case 'setCreationDate':
+                case 'setUpdateDate':
+                    if ($value) {
+                        $value = DateTimeImmutable::createFromFormat(
+                            DATE_W3C,
+                            date(DATE_W3C, strtotime($value))
+                        );
+                    } else {
+                        $value = null;
+                    }
+                    $this->{$method}($value);
+                    break;
+            }
+        } catch (TypeError $error) {
+            echo TypeError::class . ' : ' . $error->getMessage();
+        } catch (InvalidArgumentException $exception) {
+            echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
         }
     }
 
