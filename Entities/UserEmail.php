@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Entities;
 
+use Entities\Traits\EntityTrait;
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
@@ -16,6 +17,10 @@ use TypeError;
  */
 class UserEmail implements EntityInterface
 {
+    use EntityTrait {
+        EntityTrait::initEntity as public;
+    }
+
     public const TABLE_NAME = 'user_email';
 
     public const LABEL_EMAIL_ID          = 'user_email_id';
@@ -61,24 +66,6 @@ class UserEmail implements EntityInterface
     {
         if (!empty($entityData)) {
             $this->initEntity($entityData);
-        }
-    }
-
-    /**
-     * @param array $entityData
-     * @codeCoverageIgnore
-     */
-    public function initEntity(array $entityData): void
-    {
-        foreach ($entityData as $key => $value) {
-            $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
-            try {
-                $this->{$method}($value);
-            } catch (TypeError $error) {
-                echo TypeError::class . ' : ' . $error->getMessage();
-            } catch (InvalidArgumentException $exception) {
-                echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
-            }
         }
     }
 
