@@ -19,7 +19,7 @@ install:
   - printf "\n" | pecl install yaml
   - gem install travis
   - travis_retry composer update
-  - printf "\n" | travis encrypt a62bd89f9f3e40b2376ea859149ea96dc0be4519
+  - printf "\n" | printf "\n" | travis encrypt a62bd89f9f3e40b2376ea859149ea96dc0be4519
 
 addons:
   sonarcloud:
