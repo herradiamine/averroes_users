@@ -29,7 +29,6 @@ addons:
 script:
   - vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*,*/Rapports/*
   - vendor/bin/phpunit
-  - travis encrypt a62bd89f9f3e40b2376ea859149ea96dc0be4519
   - sonar-scanner
 
 notifications:
