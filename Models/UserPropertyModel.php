@@ -1,32 +1,62 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Models;
 
+use Models\Exceptions\ModelException;
+use Models\Helpers\ModelHelper;
 use Models\Interfaces\ModelInterface;
+use Models\Engine\ModelManager;
+use Entities\UserProperty;
+use PDO;
 
 /**
  * Class UserPropertyModel
  * @package Models
  */
-class UserPropertyModel implements ModelInterface
+class UserPropertyModel extends ModelManager implements ModelInterface
 {
+    /** @var string $table */
+    private string $table = UserProperty::TABLE_NAME;
+
+    /** UserModel constructor. */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     /**
      * Gets one element using select by id and displays choosen fields.
-     * Returns all fields by default if not given $displayFields parameter
-     * and 20 elements from offset 0.
+     * Returns all fields by default if not given $displayFields parameter.
      * @param int   $id
      * @param array $displayFiedls
-     * @param int   $limit
-     * @param int   $offset
      * @return object|false
      */
     public function getOneById(
         int $id,
-        array $displayFiedls = [],
-        int $limit = 20,
-        int $offset = 0
+        array $displayFiedls = ['*']
     ): ?object {
-        // TODO: Implement getOneById() method.
+        $fields = ModelHelper::quoteFields($displayFiedls);
+
+        $sql = "
+            SELECT $fields 
+            FROM $this->table 
+            WHERE $this->table.user_property_id = $id
+        ";
+        $query  = $this->query($sql);
+        $result = null;
+
+        if ($query) {
+            $query->setFetchMode(
+                PDO::FETCH_CLASS,
+                UserProperty::class
+            );
+            $result = $query->fetch();
+        } else {
+            throw new ModelException(__METHOD__);
+        }
+        return $result;
     }
 
     /**
@@ -41,26 +71,47 @@ class UserPropertyModel implements ModelInterface
      */
     public function getManyByIds(
         array $ids,
-        array $displayFiedls = [],
+        array $displayFiedls = ['*'],
         int $limit = 20,
         int $offset = 0
     ): ?array {
-        // TODO: Implement getManyByIds() method.
+        $fields = ModelHelper::quoteFields($displayFiedls);
+        $ids    = implode(",", $ids);
+
+        $sql = "
+            SELECT $fields 
+            FROM $this->table 
+            WHERE $this->table.user_property_id IN ($ids) 
+            LIMIT $offset, $limit
+        ";
+        $query  = $this->query($sql);
+        $result = null;
+
+        if ($query) {
+            $query->setFetchMode(
+                PDO::FETCH_CLASS,
+                UserProperty::class
+            );
+            $result = $query->fetchAll();
+        } else {
+            throw new ModelException(__METHOD__);
+        }
+        return $result;
     }
 
     /**
      * Gets one or many elements using custom data select and displays choosen fields.
      * Returns all fields by default if not given $displayFields parameter
      * and 20 elements from offset 0.
-     * @param array $dataSelect
      * @param array $displayFields
+     * @param array $operatorKeyValue
      * @param int   $limit
      * @param int   $offset
      * @return array|false
      */
     public function getCustom(
-        array $dataSelect,
         array $displayFields = [],
+        array $operatorKeyValue = [],
         int $limit = 20,
         int $offset = 0
     ): ?array {

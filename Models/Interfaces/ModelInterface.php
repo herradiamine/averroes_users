@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Models\Interfaces;
+
+use Models\Exceptions\ModelException;
 
 /**
  * Interface ModelInterface
@@ -14,6 +18,7 @@ interface ModelInterface
      * @param int   $id
      * @param array $displayFiedls
      * @return object|false
+     * @throws ModelException
      */
     public function getOneById(
         int $id,
@@ -29,6 +34,7 @@ interface ModelInterface
      * @param int   $limit
      * @param int   $offset
      * @return array|false
+     * @throws ModelException
      */
     public function getManyByIds(
         array $ids,
@@ -41,15 +47,16 @@ interface ModelInterface
      * Gets one or many elements using custom data select and displays choosen fields.
      * Returns all fields by default if not given $displayFields parameter
      * and 20 elements from offset 0.
-     * @param array $dataSelect
      * @param array $displayFields
+     * @param array $operatorKeyValue
      * @param int   $limit
      * @param int   $offset
      * @return array|false
+     * @throws ModelException
      */
     public function getCustom(
-        array $dataSelect,
         array $displayFields = [],
+        array $operatorKeyValue = [],
         int $limit = 20,
         int $offset = 0
     ): ?array;
@@ -62,6 +69,7 @@ interface ModelInterface
      * @param int   $limit
      * @param int   $offset
      * @return array|false
+     * @throws ModelException
      */
     public function getAll(
         array $displayFields = [],
@@ -75,6 +83,7 @@ interface ModelInterface
      * @param array $data
      * @param array $rules
      * @return int|false
+     * @throws ModelException
      */
     public function insertOne(
         array $data,
@@ -88,6 +97,7 @@ interface ModelInterface
      * @param array $datas
      * @param array $rules
      * @return array|false
+     * @throws ModelException
      */
     public function insertMany(
         array $datas,
@@ -102,6 +112,7 @@ interface ModelInterface
      * @param array $data
      * @param array $rules
      * @return int|false
+     * @throws ModelException
      */
     public function updateOneById(
         int $id,
@@ -117,6 +128,7 @@ interface ModelInterface
      * @param array $datas
      * @param array $rules
      * @return array|false
+     * @throws ModelException
      */
     public function updateManyByIds(
         array $ids,
@@ -132,6 +144,7 @@ interface ModelInterface
      * @param array $dataUpdates
      * @param array $rules
      * @return array|false
+     * @throws ModelException
      */
     public function updateManyByCustom(
         array $dataSelects,
@@ -144,6 +157,7 @@ interface ModelInterface
      * Returns boolean.
      * @param int $id
      * @return bool
+     * @throws ModelException
      */
     public function deleteOneById(int $id): bool;
 
@@ -152,6 +166,7 @@ interface ModelInterface
      * Returns array that contains boolean in front of each elements ids that has been deleted or not.
      * @param array $ids
      * @return array|false
+     * @throws ModelException
      */
     public function deleteManyByIds(array $ids): ?array;
 
@@ -160,6 +175,7 @@ interface ModelInterface
      * Returns array that contains boolean in front of each elements ids that has been deleted or not.
      * @param array $dataSelects
      * @return array|false
+     * @throws ModelException
      */
     public function deleteManyByCustom(array $dataSelects): ?array;
 }
