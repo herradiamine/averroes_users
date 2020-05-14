@@ -16,7 +16,7 @@ use TypeError;
  */
 class UserEmail implements EntityInterface
 {
-    public const TABLE_NAME = 'user_mail';
+    public const TABLE_NAME = 'user_email';
 
     public const LABEL_EMAIL_ID          = 'user_email_id';
     public const LABEL_USER_ID           = 'user_id';
@@ -57,7 +57,7 @@ class UserEmail implements EntityInterface
      * @param array $entityData
      * @codeCoverageIgnore
      */
-    public function __construct(array $entityData = [])
+    public function __construct($entityData = [])
     {
         if (!empty($entityData)) {
             $this->initEntity($entityData);

@@ -52,24 +52,6 @@ class UserGroup implements EntityInterface
     }
 
     /**
-     * @param array $entityData
-     * @codeCoverageIgnore
-     */
-    public function initEntity(array $entityData): void
-    {
-        foreach ($entityData as $key => $value) {
-            $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
-            try {
-                $this->{$method}($value);
-            } catch (TypeError $error) {
-                echo TypeError::class . ' : ' . $error->getMessage();
-            } catch (InvalidArgumentException $exception) {
-                echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
-            }
-        }
-    }
-
-    /**
      * @codeCoverageIgnore
      * @param $name
      * @param $value
@@ -107,6 +89,24 @@ class UserGroup implements EntityInterface
             echo TypeError::class . ' : ' . $error->getMessage();
         } catch (InvalidArgumentException $exception) {
             echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
+        }
+    }
+
+    /**
+     * @param array $entityData
+     * @codeCoverageIgnore
+     */
+    public function initEntity(array $entityData): void
+    {
+        foreach ($entityData as $key => $value) {
+            $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
+            try {
+                $this->{$method}($value);
+            } catch (TypeError $error) {
+                echo TypeError::class . ' : ' . $error->getMessage();
+            } catch (InvalidArgumentException $exception) {
+                echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
+            }
         }
     }
 

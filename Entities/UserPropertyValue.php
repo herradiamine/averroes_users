@@ -58,18 +58,6 @@ class UserPropertyValue implements EntityInterface
 
     /**
      * @codeCoverageIgnore
-     * @param array $entityData
-     */
-    public function initEntity(array $entityData): void
-    {
-        foreach ($entityData as $key => $value) {
-            $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
-            $this->{$method}($value);
-        }
-    }
-
-    /**
-     * @codeCoverageIgnore
      * @param $name
      * @param $value
      */
@@ -117,6 +105,18 @@ class UserPropertyValue implements EntityInterface
             echo TypeError::class . ' : ' . $error->getMessage();
         } catch (InvalidArgumentException $exception) {
             echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
+        }
+    }
+
+    /**
+     * @codeCoverageIgnore
+     * @param array $entityData
+     */
+    public function initEntity(array $entityData): void
+    {
+        foreach ($entityData as $key => $value) {
+            $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
+            $this->{$method}($value);
         }
     }
 
