@@ -23,7 +23,7 @@ class ModelHelper extends ModelManager
             $count = count($displayFields);
             for ($key = 0; $key < $count; $key++) {
                 $fields .= (new ModelHelper())->quote($displayFields[$key]);
-                $fields .= ($key != ($count-1)) ? "," : "";
+                $fields .= ($key != ($count - 1)) ? "," : "";
             }
         } elseif (in_array('*', $displayFields)) {
             $fields = $displayFields[0];
