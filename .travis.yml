@@ -6,29 +6,27 @@ os: linux
 
 jobs:
   include:
-    - php: 7.4
+  - php: 7.4
 
 cache:
   directories:
-    - $HOME/.composer/cache
+  - "$HOME/.composer/cache"
 
 before_script:
-  - composer install --prefer-dist
+- composer install --prefer-dist
 
 install:
-  - printf "\n" | pecl install yaml
-  - travis_retry composer update
-
-addons:
-  sonarcloud:
-    organization: "herradiamine"
-    token:
-      secure: "nBNTjoiC3/8oCl7aMcPFpc/Jgl3IlC8IR9YQgp3QnJIIVINPXXEYS1hjVpjMePURakvMD7A01cPiGI25JIn3j4SrBPdKUCwln5QtSBNy7WclG12Nw9BBD9vXmzxniriakYnwwCC2RzAn6nj+h9JVYONzbXuPWvxZaWfLF703Z/zYAesBdWyr/NH7JsZz0XEsD3rG3XgtZ3gU28T1XyG4o0nnf1gCKKt4W7Q5QOcL2v9U3MFYyGYOBPdbIMPF3eMafitXdU6VTjZgbAaflFQv39mbY2R9s0r+cnxyG5BQ3eRVK8CQ6uv23Hh8aIn0x5vcSSckZJaJqm6pinNzDCfIbU0I/66D8ABWPMY2JLxgcE3ZB+CH6OZ7gIFYFP4Jkmzv9RK+iMEgVbTSItph9yCjgwi991d2dSljOEQGjBk6px3rW8qiPqcXPNs0+z8SqjHp4YlgmK2/CZJcCLCjOyO+Ji6FRkwbH4izbtFR9AQVhnWDu1RVINlavziczrhIgqSAyXFuifYhYZWJMB3wUYW/tNIxawyD0Qa4E8TG5XdCzRVsNnDaSoMcZXMqkwdvedqEvGMIfrsYu63VWfsVEUJk/TjnU1DntXC0lS0DFdo3bDsEhdPD3sq1aVneqN+SnNNijJxrkunD7s0vY0F84MYoSGxfKjSjUo8LGclcKeK2enA="
+- printf "\n" | pecl install yaml
+- travis_retry composer update
 
 script:
-  - vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*,*/Rapports/*
-  - vendor/bin/phpunit
-  - sonar-scanner
+- vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*,*/Rapports/*
+- vendor/bin/phpunit
+- sonar-scanner
 
 notifications:
   email: herradiamine@gmail.com
+
+env:
+  global:
+    secure: ffD87ThSDrtynrn3ASlpKSePZRdv/hebt3mIT3pDqhIomKNpFhlUvqGjwUA1fWCdRaJDu/2XFz/dsFDeUTZVBJE7u9FbmwxljrLm0HYFu4LGVE/Tyf1H0JAXkArZPNY3FJGZ0mfEirqJMvttFgdq44f89Fz31AGDFmrRwZQGOG1Sr8nB8mIHHiKZK6n5HzoY1fMyqLbU/uGrOalJylZzhlyi4bOew5Oy/5B2KAqyETwQzfIGUIj6m6pESJrqvDi8faJWf+030ozw/D/lPaNEP1BMfv8J1jJv3WDbRbg0JQPS99xUu4oDUs7jCSJHzWSJaHZxFkIo6Hdb2Z2kmctWikIY/cCiN/9s3LLjw5gWDuUBLdWFRZGw+skH83ulOWq4xNKBOBNn04vA/W39ubC5cigJ/+/GznxU+4WcHsh2ckEdBNM6nVLUmhCDf2rWmNelZcxkaTybRKBGU6OhVGBBtW7boARUy0BZdLbvrAb2aZdQYCu5TrKepBaQi3G3oX4/eCLtty8bYYUH82WIzXvLZev2jd55W3981AYk1nOr3P4M1PMaepDzG+RLRiveV+kyuiU4i8P6d9XHbceTTF/ednI5fgbMzRwBxhozuB3RZpsTFsuqaS8SP8Bi+JqkRNnWFOv2JRFpVegby0zLq5UpwjY0AKxsimDGw1XrUl7PkAM=
