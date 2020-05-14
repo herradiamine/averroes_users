@@ -6,8 +6,8 @@ namespace Entities;
 
 use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
+use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
 use DateTimeImmutable;
-use InvalidArgumentException;
 use TypeError;
 
 /**
