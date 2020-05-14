@@ -17,15 +17,13 @@ before_script:
 
 install:
   - printf "\n" | pecl install yaml
-  - gem install travis
   - travis_retry composer update
-  - printf "\n" | printf "\n" | travis encrypt a62bd89f9f3e40b2376ea859149ea96dc0be4519
 
 addons:
   sonarcloud:
     organization: "herradiamine"
     token:
-      secure: "a62bd89f9f3e40b2376ea859149ea96dc0be4519"
+      secure: "nBNTjoiC3/8oCl7aMcPFpc/Jgl3IlC8IR9YQgp3QnJIIVINPXXEYS1hjVpjMePURakvMD7A01cPiGI25JIn3j4SrBPdKUCwln5QtSBNy7WclG12Nw9BBD9vXmzxniriakYnwwCC2RzAn6nj+h9JVYONzbXuPWvxZaWfLF703Z/zYAesBdWyr/NH7JsZz0XEsD3rG3XgtZ3gU28T1XyG4o0nnf1gCKKt4W7Q5QOcL2v9U3MFYyGYOBPdbIMPF3eMafitXdU6VTjZgbAaflFQv39mbY2R9s0r+cnxyG5BQ3eRVK8CQ6uv23Hh8aIn0x5vcSSckZJaJqm6pinNzDCfIbU0I/66D8ABWPMY2JLxgcE3ZB+CH6OZ7gIFYFP4Jkmzv9RK+iMEgVbTSItph9yCjgwi991d2dSljOEQGjBk6px3rW8qiPqcXPNs0+z8SqjHp4YlgmK2/CZJcCLCjOyO+Ji6FRkwbH4izbtFR9AQVhnWDu1RVINlavziczrhIgqSAyXFuifYhYZWJMB3wUYW/tNIxawyD0Qa4E8TG5XdCzRVsNnDaSoMcZXMqkwdvedqEvGMIfrsYu63VWfsVEUJk/TjnU1DntXC0lS0DFdo3bDsEhdPD3sq1aVneqN+SnNNijJxrkunD7s0vY0F84MYoSGxfKjSjUo8LGclcKeK2enA="
 
 script:
   - vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*,*/Rapports/*
