@@ -63,7 +63,7 @@ class UserModel extends ModelManager implements ModelInterface
      * @param array $displayFiedls
      * @param int   $limit
      * @param int   $offset
-     * @return Generator|null
+     * @return Generator
      * @throws ModelException
      */
     public function getManyByIds(
