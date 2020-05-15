@@ -26,13 +26,13 @@ class UserModel extends ModelManager implements ModelInterface
      * Returns all fields by default if not given $displayFields parameter.
      * @param int   $id
      * @param array $displayFiedls
-     * @return object|false
+     * @return User|null
      * @throws ModelException
      */
     public function getOneById(
         int $id,
         array $displayFiedls = ['*']
-    ): ?object {
+    ): ?User {
         $fields = ModelHelper::quoteFields($displayFiedls);
 
         $sql    = "
