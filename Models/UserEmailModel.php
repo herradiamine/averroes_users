@@ -32,7 +32,7 @@ class UserEmailModel extends ModelManager implements ModelInterface
     public function getOneById(
         int $id,
         array $displayFiedls = ['*']
-    ): ?object {
+    ): ?UserEmail {
         $fields = ModelHelper::quoteFields($displayFiedls);
 
         $sql    = "

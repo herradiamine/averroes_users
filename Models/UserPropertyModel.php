@@ -26,13 +26,13 @@ class UserPropertyModel extends ModelManager implements ModelInterface
      * Returns all fields by default if not given $displayFields parameter.
      * @param int   $id
      * @param array $displayFiedls
-     * @return object|false
+     * @return UserProperty|null
      * @throws ModelException
      */
     public function getOneById(
         int $id,
         array $displayFiedls = ['*']
-    ): ?object {
+    ): ?UserProperty {
         $fields = ModelHelper::quoteFields($displayFiedls);
 
         $sql = "
