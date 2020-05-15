@@ -14,19 +14,6 @@ use Models\Exceptions\ModelException;
 interface ModelInterface
 {
     /**
-     * Gets one element using select by id and displays choosen fields.
-     * Returns all fields by default if not given $displayFields parameter.
-     * @param int   $id
-     * @param array $displayFiedls
-     * @return object|false
-     * @throws ModelException
-     */
-    public function getOneById(
-        int $id,
-        array $displayFiedls = []
-    ): ?object;
-
-    /**
      * Gets many elements using select by many ids and displays choosen fields.
      * Returns all fields by default if not given $displayFields parameter
      * and 20 elements from offset 0.
@@ -34,10 +21,10 @@ interface ModelInterface
      * @param array $displayFiedls
      * @param int   $limit
      * @param int   $offset
-     * @return Generator
+     * @return Generator|null
      * @throws ModelException
      */
-    public function getManyByIds(
+    public function getOneOrManyByIds(
         array $ids,
         array $displayFiedls = [],
         int $limit = 20,

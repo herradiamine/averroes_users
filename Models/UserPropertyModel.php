@@ -21,40 +21,6 @@ class UserPropertyModel extends ModelManager implements ModelInterface
     private string $table = UserProperty::TABLE_NAME;
 
     /**
-     * Gets one element using select by id and displays choosen fields.
-     * Returns all fields by default if not given $displayFields parameter.
-     * @param int   $id
-     * @param array $displayFiedls
-     * @return UserProperty|null
-     * @throws ModelException
-     */
-    public function getOneById(
-        int $id,
-        array $displayFiedls = ['*']
-    ): ?UserProperty {
-        $fields = ModelHelper::quoteFields($displayFiedls);
-
-        $sql = "
-            SELECT $fields 
-            FROM $this->table 
-            WHERE $this->table.user_property_id = $id
-        ";
-        $query  = $this->query($sql);
-        $result = null;
-
-        if ($query) {
-            $query->setFetchMode(
-                ModelManager::FETCH_CLASS,
-                UserProperty::class
-            );
-            $result = $query->fetch();
-        } else {
-            throw new ModelException(__METHOD__);
-        }
-        return $result;
-    }
-
-    /**
      * Gets many elements using select by many ids and displays choosen fields.
      * Returns all fields by default if not given $displayFields parameter
      * and 20 elements from offset 0.
@@ -65,7 +31,7 @@ class UserPropertyModel extends ModelManager implements ModelInterface
      * @return Generator
      * @throws ModelException
      */
-    public function getManyByIds(
+    public function getOneOrManyByIds(
         array $ids,
         array $displayFiedls = ['*'],
         int $limit = 20,
