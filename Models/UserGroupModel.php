@@ -10,7 +10,6 @@ use Models\Helpers\ModelHelper;
 use Models\Interfaces\ModelInterface;
 use Models\Engine\ModelManager;
 use Entities\UserGroup;
-use PDO;
 
 /**
  * Class UserGroupModel
@@ -45,7 +44,7 @@ class UserGroupModel extends ModelManager implements ModelInterface
 
         if ($query) {
             $query->setFetchMode(
-                PDO::FETCH_CLASS,
+                ModelManager::FETCH_CLASS,
                 UserGroup::class
             );
             $result = $query->fetch();
@@ -85,7 +84,7 @@ class UserGroupModel extends ModelManager implements ModelInterface
 
         if ($query) {
             $query->setFetchMode(
-                PDO::FETCH_CLASS,
+                ModelManager::FETCH_CLASS,
                 UserGroup::class
             );
             while ($result = $query->fetch()) {
