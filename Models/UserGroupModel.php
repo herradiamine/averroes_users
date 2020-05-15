@@ -26,13 +26,13 @@ class UserGroupModel extends ModelManager implements ModelInterface
      * Returns all fields by default if not given $displayFields parameter.
      * @param int   $id
      * @param array $displayFiedls
-     * @return object|false
+     * @return UserGroup|null
      * @throws ModelException
      */
     public function getOneById(
         int $id,
         array $displayFiedls = ['*']
-    ): ?object {
+    ): ?UserGroup {
         $fields = ModelHelper::quoteFields($displayFiedls);
 
         $sql    = "
