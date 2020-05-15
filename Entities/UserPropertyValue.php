@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Entities;
 
 use Entities\Traits\EntityTrait;
-use Entities\Helpers\EntityHelper;
 use Entities\Interfaces\EntityInterface;
 use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
 use DateTimeImmutable;
