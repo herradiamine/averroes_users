@@ -20,18 +20,13 @@ class UserPasswordModel extends ModelManager implements ModelInterface
     /** @var string $table */
     private string $table = UserPassword::TABLE_NAME;
 
-    /** UserModel constructor. */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /**
      * Gets one element using select by id and displays choosen fields.
      * Returns all fields by default if not given $displayFields parameter.
      * @param int   $id
      * @param array $displayFiedls
      * @return object|false
+     * @throws ModelException
      */
     public function getOneById(
         int $id,
@@ -116,7 +111,7 @@ class UserPasswordModel extends ModelManager implements ModelInterface
         int $limit = 20,
         int $offset = 0
     ): ?array {
-        // TODO: Implement getCustom() method.
+        return [];
     }
 
     /**
@@ -133,7 +128,7 @@ class UserPasswordModel extends ModelManager implements ModelInterface
         int $limit = 20,
         int $offset = 0
     ): ?array {
-        // TODO: Implement getAll() method.
+        return [];
     }
 
     /**
@@ -147,7 +142,7 @@ class UserPasswordModel extends ModelManager implements ModelInterface
         array $data,
         array $rules
     ): ?int {
-        // TODO: Implement insertOne() method.
+        return 1;
     }
 
     /**
@@ -162,7 +157,7 @@ class UserPasswordModel extends ModelManager implements ModelInterface
         array $datas,
         array $rules
     ): ?array {
-        // TODO: Implement insertMany() method.
+        return [];
     }
 
     /**
@@ -179,7 +174,7 @@ class UserPasswordModel extends ModelManager implements ModelInterface
         array $data,
         array $rules
     ): ?int {
-        // TODO: Implement updateOneById() method.
+        return 1;
     }
 
     /**
@@ -196,7 +191,7 @@ class UserPasswordModel extends ModelManager implements ModelInterface
         array $datas,
         array $rules
     ): ?array {
-        // TODO: Implement updateManyByIds() method.
+        return [];
     }
 
     /**
@@ -213,7 +208,7 @@ class UserPasswordModel extends ModelManager implements ModelInterface
         array $dataUpdates,
         array $rules
     ): ?array {
-        // TODO: Implement updateManyByCustom() method.
+        return [];
     }
 
     /**
@@ -224,7 +219,7 @@ class UserPasswordModel extends ModelManager implements ModelInterface
      */
     public function deleteOneById(int $id): bool
     {
-        // TODO: Implement deleteOneById() method.
+        return true;
     }
 
     /**
@@ -235,7 +230,7 @@ class UserPasswordModel extends ModelManager implements ModelInterface
      */
     public function deleteManyByIds(array $ids): ?array
     {
-        // TODO: Implement deleteManyByIds() method.
+        return [];
     }
 
     /**
@@ -246,6 +241,6 @@ class UserPasswordModel extends ModelManager implements ModelInterface
      */
     public function deleteManyByCustom(array $dataSelects): ?array
     {
-        // TODO: Implement deleteManyByCustom() method.
+        return [];
     }
 }
