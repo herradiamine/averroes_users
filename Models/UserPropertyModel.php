@@ -10,7 +10,6 @@ use Models\Helpers\ModelHelper;
 use Models\Interfaces\ModelInterface;
 use Models\Engine\ModelManager;
 use Entities\UserProperty;
-use PDO;
 
 /**
  * Class UserPropertyModel
@@ -45,7 +44,7 @@ class UserPropertyModel extends ModelManager implements ModelInterface
 
         if ($query) {
             $query->setFetchMode(
-                PDO::FETCH_CLASS,
+                ModelManager::FETCH_CLASS,
                 UserProperty::class
             );
             $result = $query->fetch();
@@ -85,7 +84,7 @@ class UserPropertyModel extends ModelManager implements ModelInterface
 
         if ($query) {
             $query->setFetchMode(
-                PDO::FETCH_CLASS,
+                ModelManager::FETCH_CLASS,
                 UserProperty::class
             );
             while ($result = $query->fetch()) {

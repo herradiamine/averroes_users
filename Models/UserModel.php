@@ -10,7 +10,6 @@ use Models\Helpers\ModelHelper;
 use Models\Interfaces\ModelInterface;
 use Models\Engine\ModelManager;
 use Entities\User;
-use PDO;
 
 /**
  * Class UserModel
@@ -45,7 +44,7 @@ class UserModel extends ModelManager implements ModelInterface
 
         if ($query) {
             $query->setFetchMode(
-                PDO::FETCH_CLASS,
+                ModelManager::FETCH_CLASS,
                 User::class
             );
             $result = $query->fetch();
@@ -85,7 +84,7 @@ class UserModel extends ModelManager implements ModelInterface
 
         if ($query) {
             $query->setFetchMode(
-                PDO::FETCH_CLASS,
+                ModelManager::FETCH_CLASS,
                 User::class
             );
             while ($result = $query->fetch()) {

@@ -10,7 +10,6 @@ use Models\Helpers\ModelHelper;
 use Models\Interfaces\ModelInterface;
 use Models\Engine\ModelManager;
 use Entities\UserEmail;
-use PDO;
 
 /**
  * Class UserEmailModel
@@ -45,7 +44,7 @@ class UserEmailModel extends ModelManager implements ModelInterface
 
         if ($query) {
             $query->setFetchMode(
-                PDO::FETCH_CLASS,
+                ModelManager::FETCH_CLASS,
                 UserEmail::class
             );
             $result = $query->fetch();
@@ -85,7 +84,7 @@ class UserEmailModel extends ModelManager implements ModelInterface
 
         if ($query) {
             $query->setFetchMode(
-                PDO::FETCH_CLASS,
+                ModelManager::FETCH_CLASS,
                 UserEmail::class
             );
             while ($result = $query->fetch()) {

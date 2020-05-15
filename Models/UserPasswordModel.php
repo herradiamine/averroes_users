@@ -10,7 +10,6 @@ use Models\Helpers\ModelHelper;
 use Models\Interfaces\ModelInterface;
 use Models\Engine\ModelManager;
 use Entities\UserPassword;
-use PDO;
 
 /**
  * Class UserPasswordModel
@@ -45,7 +44,7 @@ class UserPasswordModel extends ModelManager implements ModelInterface
 
         if ($query) {
             $query->setFetchMode(
-                PDO::FETCH_CLASS,
+                ModelManager::FETCH_CLASS,
                 UserPassword::class
             );
             $result = $query->fetch();
@@ -85,7 +84,7 @@ class UserPasswordModel extends ModelManager implements ModelInterface
 
         if ($query) {
             $query->setFetchMode(
-                PDO::FETCH_CLASS,
+                ModelManager::FETCH_CLASS,
                 UserPassword::class
             );
             while ($result = $query->fetchAll()) {
