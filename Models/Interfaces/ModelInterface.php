@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Models\Interfaces;
 
+use Generator;
 use Models\Exceptions\ModelException;
 
 /**
@@ -33,7 +34,7 @@ interface ModelInterface
      * @param array $displayFiedls
      * @param int   $limit
      * @param int   $offset
-     * @return array|false
+     * @return Generator
      * @throws ModelException
      */
     public function getManyByIds(
@@ -41,7 +42,7 @@ interface ModelInterface
         array $displayFiedls = [],
         int $limit = 20,
         int $offset = 0
-    ): ?array;
+    ): ?Generator;
 
     /**
      * Gets one or many elements using custom data select and displays choosen fields.

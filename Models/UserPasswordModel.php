@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Models;
 
+use Generator;
 use Models\Exceptions\ModelException;
 use Models\Helpers\ModelHelper;
 use Models\Interfaces\ModelInterface;
@@ -62,7 +63,7 @@ class UserPasswordModel extends ModelManager implements ModelInterface
      * @param array $displayFiedls
      * @param int   $limit
      * @param int   $offset
-     * @return array|false
+     * @return Generator
      * @throws ModelException
      */
     public function getManyByIds(
@@ -70,9 +71,9 @@ class UserPasswordModel extends ModelManager implements ModelInterface
         array $displayFiedls = ['*'],
         int $limit = 20,
         int $offset = 0
-    ): ?array {
+    ): Generator {
         $fields = ModelHelper::quoteFields($displayFiedls);
-        $ids    = implode(",", $ids);
+        $ids = implode(",", $ids);
 
         $sql = "
             SELECT $fields 
@@ -80,19 +81,19 @@ class UserPasswordModel extends ModelManager implements ModelInterface
             WHERE $this->table.user_password_id IN ($ids) 
             LIMIT $offset, $limit
         ";
-        $query  = $this->query($sql);
-        $result = null;
+        $query = $this->query($sql);
 
         if ($query) {
             $query->setFetchMode(
                 PDO::FETCH_CLASS,
                 UserPassword::class
             );
-            $result = $query->fetchAll();
+            while ($result = $query->fetchAll()) {
+                yield $result;
+            }
         } else {
             throw new ModelException(__METHOD__);
         }
-        return $result;
     }
 
     /**
