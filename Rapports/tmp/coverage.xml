@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1589501624">
-  <project timestamp="1589501624">
+<coverage generated="1589503449">
+  <project timestamp="1589503449">
     <package name="App\Objects">
       <file name="./App/Objects/User.php">
         <class name="App\Objects\User" namespace="App\Objects" fullPackage="App" package="App">
