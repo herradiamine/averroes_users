@@ -18,6 +18,7 @@ use TypeError;
 class UserProperty implements EntityInterface
 {
     use EntityTrait {
+        EntityTrait::__set as public;
         EntityTrait::initEntity as public;
     }
 
@@ -75,49 +76,6 @@ class UserProperty implements EntityInterface
     {
         if (!empty($entityData)) {
             $this->initEntity($entityData);
-        }
-    }
-
-    /**
-     * @codeCoverageIgnore
-     * @param $name
-     * @param $value
-     */
-    public function __set($name, $value)
-    {
-        $method = 'set' . EntityHelper::snakeToCamelCase($name, true);
-        try {
-            switch ($method) {
-                case 'setUserPropertyId':
-                case 'setGroupId':
-                    $value = ($value) ? (int) $value : null ;
-                    $this->{$method}($value);
-                    break;
-                case 'setPropertyName':
-                case 'setPropertyType':
-                    $this->{$method}($value);
-                    break;
-                case 'setPropertyEnabled':
-                    $value = (bool) $value;
-                    $this->{$method}($value);
-                    break;
-                case 'setCreationDate':
-                case 'setUpdateDate':
-                    if ($value) {
-                        $value = DateTimeImmutable::createFromFormat(
-                            DATE_W3C,
-                            date(DATE_W3C, strtotime($value))
-                        );
-                    } else {
-                        $value = null;
-                    }
-                    $this->{$method}($value);
-                    break;
-            }
-        } catch (TypeError $error) {
-            echo TypeError::class . ' : ' . $error->getMessage();
-        } catch (InvalidArgumentException $exception) {
-            echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
         }
     }
 
