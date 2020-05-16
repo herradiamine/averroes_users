@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1589589384">
-  <project timestamp="1589589384">
+<coverage generated="1589590488">
+  <project timestamp="1589590488">
     <package name="App\Objects">
       <file name="./App/Objects/User.php">
         <class name="App\Objects\User" namespace="App\Objects" fullPackage="App" package="App">
@@ -445,6 +445,77 @@
         <metrics loc="188" ncloc="136" classes="1" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="32" elements="44" coveredelements="44"/>
       </file>
     </package>
-    <metrics files="27" loc="2512" ncloc="1716" classes="21" methods="121" coveredmethods="97" conditionals="0" coveredconditionals="0" statements="341" coveredstatements="230" elements="462" coveredelements="327"/>
+    <package name="Models\Engine">
+      <file name="./Models/Engine/ModelManager.php">
+        <class name="Models\Engine\ModelManager" namespace="Models\Engine" fullPackage="Database" package="Database">
+          <metrics complexity="29" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="299" ncloc="178" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Models\Exceptions">
+      <file name="./Models/Exceptions/InvalidArgument.php">
+        <class name="Models\Exceptions\InvalidArgument" namespace="Models\Exceptions" fullPackage="Models" package="Models">
+          <metrics complexity="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="32" ncloc="19" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="./Models/Exceptions/ModelException.php">
+        <class name="Models\Exceptions\ModelException" namespace="Models\Exceptions" fullPackage="Models" package="Models">
+          <metrics complexity="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="32" ncloc="19" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Models\Helpers">
+      <file name="./Models/Helpers/ModelHelper.php">
+        <class name="Models\Helpers\ModelHelper" namespace="Models\Helpers" fullPackage="Models" package="Models">
+          <metrics complexity="5" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="36" ncloc="27" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <file name="./Models/Interfaces/ModelInterface.php">
+      <metrics loc="183" ncloc="71" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="Models">
+      <file name="./Models/UserEmailModel.php">
+        <class name="Models\UserEmailModel" namespace="Models" fullPackage="Models" package="Models">
+          <metrics complexity="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="25" ncloc="20" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="./Models/UserGroupModel.php">
+        <class name="Models\UserGroupModel" namespace="Models" fullPackage="Models" package="Models">
+          <metrics complexity="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="25" ncloc="20" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="./Models/UserModel.php">
+        <class name="Models\UserModel" namespace="Models" fullPackage="Models" package="Models">
+          <metrics complexity="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="25" ncloc="20" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="./Models/UserPasswordModel.php">
+        <class name="Models\UserPasswordModel" namespace="Models" fullPackage="Models" package="Models">
+          <metrics complexity="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="25" ncloc="20" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="./Models/UserPropertyModel.php">
+        <class name="Models\UserPropertyModel" namespace="Models" fullPackage="Models" package="Models">
+          <metrics complexity="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="25" ncloc="20" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="./Models/UserPropertyValueModel.php">
+        <class name="Models\UserPropertyValueModel" namespace="Models" fullPackage="Models" package="Models">
+          <metrics complexity="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="25" ncloc="20" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <metrics files="27" loc="2522" ncloc="1716" classes="11" methods="99" coveredmethods="97" conditionals="0" coveredconditionals="0" statements="236" coveredstatements="230" elements="335" coveredelements="327"/>
   </project>
 </coverage>
