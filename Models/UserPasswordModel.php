@@ -11,6 +11,7 @@ use Entities\UserPassword;
 /**
  * Class UserPasswordModel
  * @package Models
+ * @codeCoverageIgnore
  */
 class UserPasswordModel extends ModelManager implements ModelInterface
 {

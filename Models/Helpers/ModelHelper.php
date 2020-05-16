@@ -9,6 +9,7 @@ use Models\Engine\ModelManager;
 /**
  * Class ModelHelper
  * @package Models\Helpers
+ * @codeCoverageIgnore
  */
 class ModelHelper extends ModelManager
 {

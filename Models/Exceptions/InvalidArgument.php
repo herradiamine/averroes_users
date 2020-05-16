@@ -10,6 +10,7 @@ use InvalidArgumentException;
 /**
  * Class InvalidArgumentException
  * @package Models\Exceptions
+ * @codeCoverageIgnore
  */
 class InvalidArgument extends InvalidArgumentException
 {

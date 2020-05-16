@@ -11,6 +11,7 @@ use Entities\UserEmail;
 /**
  * Class UserEmailModel
  * @package Models
+ * @codeCoverageIgnore
  */
 class UserEmailModel extends ModelManager implements ModelInterface
 {
