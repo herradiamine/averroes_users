@@ -14,6 +14,7 @@ use PDO;
 /**
  * Abstract ModelManager
  * @package Database/Engine
+ * @codeCoverageIgnore
  */
 abstract class ModelManager extends PDO implements ModelInterface
 {
@@ -135,7 +136,7 @@ abstract class ModelManager extends PDO implements ModelInterface
         int $limit = 20,
         int $offset = 0
     ): ?Generator {
-        return [];
+        yield [];
     }
 
     /**

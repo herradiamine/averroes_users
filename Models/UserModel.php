@@ -11,6 +11,7 @@ use Entities\User;
 /**
  * Class UserModel
  * @package Models
+ * @codeCoverageIgnore
  */
 class UserModel extends ModelManager implements ModelInterface
 {
