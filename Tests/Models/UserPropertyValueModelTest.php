@@ -13,51 +13,5 @@ use PHPUnit\Framework\TestCase;
  */
 class UserPropertyValueModelTest extends TestCase
 {
-    public function testUpdateManyByIds()
-    {
-    }
 
-    public function testGetOneById()
-    {
-    }
-
-    public function testGetCustom()
-    {
-    }
-
-    public function testDeleteOneById()
-    {
-    }
-
-    public function testDeleteManyByIds()
-    {
-    }
-
-    public function testGetAll()
-    {
-    }
-
-    public function testInsertOne()
-    {
-    }
-
-    public function testUpdateManyByCustom()
-    {
-    }
-
-    public function testUpdateOneById()
-    {
-    }
-
-    public function testGetManyByIds()
-    {
-    }
-
-    public function testInsertMany()
-    {
-    }
-
-    public function testDeleteManyByCustom()
-    {
-    }
 }

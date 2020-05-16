@@ -15,185 +15,39 @@ $coverage->setData(array (
   ),
   '/var/www/html/averoes/averoes_users/Models/UserGroupModel.php' => 
   array (
-    40 => 
+    19 => 
     array (
     ),
-    41 => 
+    20 => 
     array (
     ),
-    43 => 
+    21 => 
     array (
     ),
-    44 => 
+    22 => 
     array (
     ),
-    45 => 
+    23 => 
     array (
     ),
-    46 => 
-    array (
-    ),
-    47 => 
-    array (
-    ),
-    49 => 
-    array (
-    ),
-    51 => 
-    array (
-    ),
-    52 => 
-    array (
-    ),
-    53 => 
-    array (
-    ),
-    54 => 
-    array (
-    ),
-    56 => 
-    array (
-    ),
-    57 => 
-    array (
-    ),
-    60 => 
-    array (
-    ),
-    62 => 
-    array (
-    ),
-    80 => 
-    array (
-    ),
-    81 => NULL,
-    97 => 
-    array (
-    ),
-    98 => NULL,
-    111 => 
-    array (
-    ),
-    112 => NULL,
-    126 => 
-    array (
-    ),
-    127 => NULL,
-    143 => 
-    array (
-    ),
-    144 => NULL,
-    160 => 
-    array (
-    ),
-    161 => NULL,
-    177 => 
-    array (
-    ),
-    178 => NULL,
-    188 => 
-    array (
-    ),
-    189 => NULL,
-    199 => 
-    array (
-    ),
-    200 => NULL,
-    210 => 
-    array (
-    ),
-    211 => NULL,
   ),
   '/var/www/html/averoes/averoes_users/Models/UserPasswordModel.php' => 
   array (
-    40 => 
+    19 => 
     array (
     ),
-    41 => 
+    20 => 
     array (
     ),
-    43 => 
+    21 => 
     array (
     ),
-    44 => 
+    22 => 
     array (
     ),
-    45 => 
+    23 => 
     array (
     ),
-    46 => 
-    array (
-    ),
-    47 => 
-    array (
-    ),
-    49 => 
-    array (
-    ),
-    51 => 
-    array (
-    ),
-    52 => 
-    array (
-    ),
-    53 => 
-    array (
-    ),
-    54 => 
-    array (
-    ),
-    56 => 
-    array (
-    ),
-    57 => 
-    array (
-    ),
-    60 => 
-    array (
-    ),
-    62 => 
-    array (
-    ),
-    80 => 
-    array (
-    ),
-    81 => NULL,
-    97 => 
-    array (
-    ),
-    98 => NULL,
-    111 => 
-    array (
-    ),
-    112 => NULL,
-    126 => 
-    array (
-    ),
-    127 => NULL,
-    143 => 
-    array (
-    ),
-    144 => NULL,
-    160 => 
-    array (
-    ),
-    161 => NULL,
-    177 => 
-    array (
-    ),
-    178 => NULL,
-    188 => 
-    array (
-    ),
-    189 => NULL,
-    199 => 
-    array (
-    ),
-    200 => NULL,
-    210 => 
-    array (
-    ),
-    211 => NULL,
   ),
   '/var/www/html/averoes/averoes_users/Entities/Traits/EntityTrait.php' => 
   array (
@@ -522,185 +376,42 @@ $coverage->setData(array (
   ),
   '/var/www/html/averoes/averoes_users/Models/UserEmailModel.php' => 
   array (
-    40 => 
+    19 => 
     array (
     ),
-    41 => 
+    20 => 
     array (
     ),
-    43 => 
+    21 => 
     array (
     ),
-    44 => 
+    22 => 
     array (
     ),
-    45 => 
+    23 => 
     array (
     ),
-    46 => 
-    array (
-    ),
-    47 => 
-    array (
-    ),
-    49 => 
-    array (
-    ),
-    51 => 
-    array (
-    ),
-    52 => 
-    array (
-    ),
-    53 => 
-    array (
-    ),
-    54 => 
-    array (
-    ),
-    56 => 
-    array (
-    ),
-    57 => 
-    array (
-    ),
-    60 => 
-    array (
-    ),
-    62 => 
-    array (
-    ),
-    80 => 
-    array (
-    ),
-    81 => NULL,
-    97 => 
-    array (
-    ),
-    98 => NULL,
-    111 => 
-    array (
-    ),
-    112 => NULL,
-    126 => 
-    array (
-    ),
-    127 => NULL,
-    143 => 
-    array (
-    ),
-    144 => NULL,
-    160 => 
-    array (
-    ),
-    161 => NULL,
-    177 => 
-    array (
-    ),
-    178 => NULL,
-    188 => 
-    array (
-    ),
-    189 => NULL,
-    199 => 
-    array (
-    ),
-    200 => NULL,
-    210 => 
-    array (
-    ),
-    211 => NULL,
   ),
   '/var/www/html/averoes/averoes_users/Models/UserPropertyValueModel.php' => 
   array (
-    40 => 
+    19 => 
     array (
     ),
-    41 => 
+    20 => 
     array (
     ),
-    43 => 
+    21 => 
     array (
     ),
-    44 => 
+    22 => 
     array (
     ),
-    45 => 
+    23 => 
     array (
     ),
-    46 => 
-    array (
-    ),
-    47 => 
-    array (
-    ),
-    49 => 
-    array (
-    ),
-    51 => 
-    array (
-    ),
-    52 => 
-    array (
-    ),
-    53 => 
-    array (
-    ),
-    54 => 
-    array (
-    ),
-    56 => 
-    array (
-    ),
-    57 => 
-    array (
-    ),
-    60 => 
-    array (
-    ),
-    62 => 
-    array (
-    ),
-    80 => 
-    array (
-    ),
-    81 => NULL,
-    97 => 
-    array (
-    ),
-    98 => NULL,
-    111 => 
-    array (
-    ),
-    112 => NULL,
-    126 => 
-    array (
-    ),
-    127 => NULL,
-    143 => 
-    array (
-    ),
-    144 => NULL,
-    160 => 
-    array (
-    ),
-    161 => NULL,
-    177 => 
-    array (
-    ),
-    178 => NULL,
-    188 => 
-    array (
-    ),
-    189 => NULL,
-    199 => 
-    array (
-    ),
-    200 => NULL,
-    210 => 
-    array (
-    ),
-    211 => NULL,
+  ),
+  '/var/www/html/averoes/averoes_users/Models/Interfaces/ModelInterface.php' => 
+  array (
   ),
   '/var/www/html/averoes/averoes_users/Models/Exceptions/ModelException.php' => 
   array (
@@ -747,9 +458,6 @@ $coverage->setData(array (
     array (
     ),
     34 => NULL,
-  ),
-  '/var/www/html/averoes/averoes_users/Models/Interfaces/ModelInterface.php' => 
-  array (
   ),
   '/var/www/html/averoes/averoes_users/Entities/User.php' => 
   array (
@@ -1061,185 +769,39 @@ $coverage->setData(array (
   ),
   '/var/www/html/averoes/averoes_users/Models/UserPropertyModel.php' => 
   array (
-    40 => 
+    19 => 
     array (
     ),
-    41 => 
+    20 => 
     array (
     ),
-    43 => 
+    21 => 
     array (
     ),
-    44 => 
+    22 => 
     array (
     ),
-    45 => 
+    23 => 
     array (
     ),
-    46 => 
-    array (
-    ),
-    47 => 
-    array (
-    ),
-    49 => 
-    array (
-    ),
-    51 => 
-    array (
-    ),
-    52 => 
-    array (
-    ),
-    53 => 
-    array (
-    ),
-    54 => 
-    array (
-    ),
-    56 => 
-    array (
-    ),
-    57 => 
-    array (
-    ),
-    60 => 
-    array (
-    ),
-    62 => 
-    array (
-    ),
-    80 => 
-    array (
-    ),
-    81 => NULL,
-    97 => 
-    array (
-    ),
-    98 => NULL,
-    111 => 
-    array (
-    ),
-    112 => NULL,
-    126 => 
-    array (
-    ),
-    127 => NULL,
-    143 => 
-    array (
-    ),
-    144 => NULL,
-    160 => 
-    array (
-    ),
-    161 => NULL,
-    177 => 
-    array (
-    ),
-    178 => NULL,
-    188 => 
-    array (
-    ),
-    189 => NULL,
-    199 => 
-    array (
-    ),
-    200 => NULL,
-    210 => 
-    array (
-    ),
-    211 => NULL,
   ),
   '/var/www/html/averoes/averoes_users/Models/UserModel.php' => 
   array (
-    40 => 
+    19 => 
     array (
     ),
-    41 => 
+    20 => 
     array (
     ),
-    43 => 
+    21 => 
     array (
     ),
-    44 => 
+    22 => 
     array (
     ),
-    45 => 
+    23 => 
     array (
     ),
-    46 => 
-    array (
-    ),
-    47 => 
-    array (
-    ),
-    49 => 
-    array (
-    ),
-    51 => 
-    array (
-    ),
-    52 => 
-    array (
-    ),
-    53 => 
-    array (
-    ),
-    54 => 
-    array (
-    ),
-    56 => 
-    array (
-    ),
-    57 => 
-    array (
-    ),
-    60 => 
-    array (
-    ),
-    62 => 
-    array (
-    ),
-    80 => 
-    array (
-    ),
-    81 => NULL,
-    97 => 
-    array (
-    ),
-    98 => NULL,
-    111 => 
-    array (
-    ),
-    112 => NULL,
-    126 => 
-    array (
-    ),
-    127 => NULL,
-    143 => 
-    array (
-    ),
-    144 => NULL,
-    160 => 
-    array (
-    ),
-    161 => NULL,
-    177 => 
-    array (
-    ),
-    178 => NULL,
-    188 => 
-    array (
-    ),
-    189 => NULL,
-    199 => 
-    array (
-    ),
-    200 => NULL,
-    210 => 
-    array (
-    ),
-    211 => NULL,
   ),
   '/var/www/html/averoes/averoes_users/Config/Exceptions/InvalidArgument.php' => 
   array (
@@ -1978,24 +1540,193 @@ $coverage->setData(array (
   ),
   '/var/www/html/averoes/averoes_users/Models/Engine/ModelManager.php' => 
   array (
-    27 => 
+    40 => 
     array (
     ),
-    28 => 
+    41 => 
     array (
     ),
-    29 => 
+    42 => 
     array (
     ),
-    30 => 
+    43 => 
     array (
     ),
-    31 => 
+    44 => 
     array (
     ),
-    33 => 
+    46 => 
     array (
     ),
+    60 => 
+    array (
+    ),
+    61 => 
+    array (
+    ),
+    62 => 
+    array (
+    ),
+    63 => 
+    array (
+    ),
+    64 => 
+    array (
+    ),
+    66 => 
+    array (
+    ),
+    67 => 
+    array (
+    ),
+    69 => 
+    array (
+    ),
+    70 => 
+    array (
+    ),
+    71 => 
+    array (
+    ),
+    72 => 
+    array (
+    ),
+    74 => 
+    array (
+    ),
+    76 => 
+    array (
+    ),
+    78 => 
+    array (
+    ),
+    79 => NULL,
+    98 => 
+    array (
+    ),
+    99 => 
+    array (
+    ),
+    100 => 
+    array (
+    ),
+    101 => 
+    array (
+    ),
+    102 => 
+    array (
+    ),
+    103 => 
+    array (
+    ),
+    104 => 
+    array (
+    ),
+    106 => 
+    array (
+    ),
+    108 => 
+    array (
+    ),
+    109 => 
+    array (
+    ),
+    110 => 
+    array (
+    ),
+    111 => 
+    array (
+    ),
+    113 => 
+    array (
+    ),
+    114 => 
+    array (
+    ),
+    117 => 
+    array (
+    ),
+    119 => 
+    array (
+    ),
+    138 => 
+    array (
+    ),
+    139 => NULL,
+    156 => 
+    array (
+    ),
+    157 => 
+    array (
+    ),
+    158 => 
+    array (
+    ),
+    159 => 
+    array (
+    ),
+    160 => 
+    array (
+    ),
+    162 => 
+    array (
+    ),
+    164 => 
+    array (
+    ),
+    165 => 
+    array (
+    ),
+    166 => 
+    array (
+    ),
+    167 => 
+    array (
+    ),
+    169 => 
+    array (
+    ),
+    170 => 
+    array (
+    ),
+    173 => 
+    array (
+    ),
+    175 => 
+    array (
+    ),
+    189 => 
+    array (
+    ),
+    190 => NULL,
+    205 => 
+    array (
+    ),
+    206 => NULL,
+    223 => 
+    array (
+    ),
+    224 => NULL,
+    242 => 
+    array (
+    ),
+    243 => NULL,
+    260 => 
+    array (
+    ),
+    261 => NULL,
+    272 => 
+    array (
+    ),
+    273 => NULL,
+    284 => 
+    array (
+    ),
+    285 => NULL,
+    296 => 
+    array (
+    ),
+    297 => NULL,
   ),
   '/var/www/html/averoes/averoes_users/Entities/Interfaces/EntityInterface.php' => 
   array (
