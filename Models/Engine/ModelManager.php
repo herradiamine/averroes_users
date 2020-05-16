@@ -203,7 +203,7 @@ abstract class ModelManager extends PDO implements ModelInterface
         array $datas,
         array $rules
     ): ?array {
-        return[];
+        return [];
     }
 
     /**
