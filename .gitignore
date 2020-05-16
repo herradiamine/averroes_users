@@ -1,3 +1,8 @@
 /Public/
 /vendor/
+/Rapports/tmp/report
+/Rapports/tmp/coverage.serialized
+/Rapports/tmp/logfile.xml
+/Rapports/tmp/testdox.html
+/Rapports/tmp/testdox.txt
 .DS_store
