@@ -13,51 +13,5 @@ use PHPUnit\Framework\TestCase;
  */
 class UserEmailModelTest extends TestCase
 {
-    public function testInsertMany()
-    {
-    }
 
-    public function testUpdateOneById()
-    {
-    }
-
-    public function testInsertOne()
-    {
-    }
-
-    public function testGetManyByIds()
-    {
-    }
-
-    public function testGetCustom()
-    {
-    }
-
-    public function testGetAll()
-    {
-    }
-
-    public function testGetOneById()
-    {
-    }
-
-    public function testDeleteManyByCustom()
-    {
-    }
-
-    public function testUpdateManyByIds()
-    {
-    }
-
-    public function testUpdateManyByCustom()
-    {
-    }
-
-    public function testDeleteOneById()
-    {
-    }
-
-    public function testDeleteManyByIds()
-    {
-    }
 }

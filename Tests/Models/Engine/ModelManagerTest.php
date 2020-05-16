@@ -15,19 +15,4 @@ use PHPUnit\Framework\TestCase;
 class ModelManagerTest extends TestCase
 {
 
-    public function testUpdate()
-    {
-    }
-
-    public function testDelete()
-    {
-    }
-
-    public function testSelect()
-    {
-    }
-
-    public function testInsert()
-    {
-    }
 }
