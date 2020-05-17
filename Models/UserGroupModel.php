@@ -11,7 +11,6 @@ use Entities\UserGroup;
 /**
  * Class UserGroupModel
  * @package Models
- * @codeCoverageIgnore
  */
 class UserGroupModel extends ModelManager implements ModelInterface
 {

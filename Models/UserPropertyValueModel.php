@@ -11,7 +11,6 @@ use Entities\UserPropertyValue;
 /**
  * Class UserPropertyValueModel
  * @package Models
- * @codeCoverageIgnore
  */
 class UserPropertyValueModel extends ModelManager implements ModelInterface
 {
