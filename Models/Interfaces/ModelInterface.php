@@ -18,12 +18,12 @@ interface ModelInterface
      * Returns all fields by default if not given $displayFields parameter.
      * @param int    $id
      * @param array  $displayFields
-     * @return object|null
+     * @return object
      * @throws ModelException
      */
     public function getOneById(
         int $id,
-        array $displayFields = []
+        array $displayFields = ['*']
     ): ?object;
 
     /**
@@ -34,30 +34,12 @@ interface ModelInterface
      * @param array  $displayFiedls
      * @param int    $limit
      * @param int    $offset
-     * @return Generator|null
+     * @return Generator
      * @throws ModelException
      */
     public function getManyByIds(
         array $ids,
-        array $displayFiedls = [],
-        int $limit = 20,
-        int $offset = 0
-    ): ?Generator;
-
-    /**
-     * Gets one or many elements using custom data select and displays choosen fields.
-     * Returns all fields by default if not given $displayFields parameter
-     * and 20 elements from offset 0.
-     * @param array  $displayFields
-     * @param array  $operatorKeyValue
-     * @param int    $limit
-     * @param int    $offset
-     * @return Generator|null
-     * @throws ModelException
-     */
-    public function getCustom(
-        array $displayFields = [],
-        array $operatorKeyValue = [],
+        array $displayFiedls = ['*'],
         int $limit = 20,
         int $offset = 0
     ): ?Generator;
@@ -69,11 +51,11 @@ interface ModelInterface
      * @param array  $displayFields
      * @param int    $limit
      * @param int    $offset
-     * @return Generator|null
+     * @return Generator
      * @throws ModelException
      */
     public function getAll(
-        array $displayFields = [],
+        array $displayFields = ['*'],
         int $limit = 20,
         int $offset = 0
     ): ?Generator;
@@ -82,13 +64,11 @@ interface ModelInterface
      * Inserts one element, must have data to be inserted and respect every fields data types rules.
      * Returns the inserted element id.
      * @param array  $data
-     * @param array  $rules
      * @return int|null
      * @throws ModelException
      */
     public function insertOne(
-        array $data,
-        array $rules
+        array $data
     ): ?int;
 
     /**
@@ -96,63 +76,26 @@ interface ModelInterface
      * and respect every fields data types rules.
      * Returns the inserted elements ids in an array.
      * @param array  $datas
-     * @param array  $rules
-     * @return array|null
+     * @return bool
      * @throws ModelException
      */
     public function insertMany(
-        array $datas,
-        array $rules
-    ): ?array;
-
-    /**
-     * Updates one element by his id, must have id of element to be updated and data to replace.
-     * Must respect all fields data types rules.
-     * Returns id of updated element or false.
-     * @param int    $id
-     * @param array  $data
-     * @param array  $rules
-     * @return int|null
-     * @throws ModelException
-     */
-    public function updateOneById(
-        int $id,
-        array $data,
-        array $rules
-    ): ?int;
+        array $datas
+    ): bool;
 
     /**
      * Updates many elements by their ids, must have array of elements ids to be updated and datas to replace.
      * Must respect all fields data types rules.
      * Returns array that contains boolean in front of each elements ids that has been updated or not.
      * @param array  $ids
-     * @param array  $datas
-     * @param array  $rules
-     * @return array|null
+     * @param array  $data
+     * @return true
      * @throws ModelException
      */
-    public function updateManyByIds(
+    public function updateOneOrManyByIds(
         array $ids,
-        array $datas,
-        array $rules,
-        string $table = ''
-    ): ?array;
-
-    /**
-     * Updates many elements by custum selected data, must have array of selects datas to be updated.
-     * Must respect all fields data types rules.
-     * Returns array that contains boolean in front of each elements ids that has been updated or not.
-     * @param array  $dataSelects
-     * @param array  $dataUpdates
-     * @param array  $rules
-     * @return array|null
-     * @throws ModelException
-     */
-    public function updateManyByCustom(
-        array $dataSelects,
-        array $dataUpdates,
-        array $rules
-    ): ?array;
+        array $data
+    ): bool;
 
     /**
      * Deletes on element by id, must have element id to be deleted.
@@ -167,17 +110,57 @@ interface ModelInterface
      * Deletes many elements by ids, must have array of ids elements to be deleted.
      * Returns array that contains boolean in front of each elements ids that has been deleted or not.
      * @param array  $ids
-     * @return array|null
+     * @return bool
      * @throws ModelException
      */
-    public function deleteManyByIds(array $ids): ?array;
+    public function deleteManyByIds(array $ids): ?bool;
+
+    /* *********************** *
+     * Custom abstract queries *
+     * *********************** */
+
+    /**
+     * Gets one or many elements using custom data select and displays choosen fields.
+     * Returns all fields by default if not given $displayFields parameter
+     * and 20 elements from offset 0.
+     * @param array  $displayFields
+     * @param array  $operatorKeyValue
+     * @param int    $limit
+     * @param int    $offset
+     * @return Generator
+     * @throws ModelException
+     */
+    public function getCustom(
+        array $displayFields = ['*'],
+        array $operatorKeyValue = [],
+        int $limit = 20,
+        int $offset = 0
+    ): ?Generator;
+
+    /**
+     * Updates many elements by custum selected data, must have array of selects datas to be updated.
+     * Must respect all fields data types rules.
+     * Returns array that contains boolean in front of each elements ids that has been updated or not.
+     * @param array  $dataSelects
+     * @param array  $dataUpdates
+     * @param array  $rules
+     * @return bool
+     * @throws ModelException
+     */
+    public function updateCustom(
+        array $dataSelects,
+        array $dataUpdates,
+        array $rules
+    ): bool;
 
     /**
      * Deletes many elements by custom selets datas, must have array of datas to select elements to be deleted.
      * Returns array that contains boolean in front of each elements ids that has been deleted or not.
      * @param array  $dataSelects
-     * @return array|null
+     * @return bool
      * @throws ModelException
      */
-    public function deleteManyByCustom(array $dataSelects): ?array;
+    public function deleteCustom(
+        array $dataSelects = []
+    ): bool;
 }
