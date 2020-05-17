@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Entities\Traits;
 
 use DateTimeImmutable;
+use Tests\Entities\UserEmailTest;
 
 /**
  * Trait AvailableDataTypes
@@ -16,7 +17,6 @@ trait EmailProviderTrait
     private array $userEmail;
     private array $localPart;
     private array $domainName;
-    private array $domainExt;
     private array $emailEnabled;
     private array $creationDate;
     private array $updateDate;
@@ -24,62 +24,62 @@ trait EmailProviderTrait
     public function __construct()
     {
         $this->userEmailId = [
-            ['real', 39873],
-            ['invalid_arg', 0],
-            ['type_error', '39873'],
-            ['empty', null]
+            [UserEmailTest::LABEL_INDEX_REAL, 39873],
+            [UserEmailTest::LABEL_INDEX_INVALID_ARG, 0],
+            [UserEmailTest::LABEL_INDEX_TYPE_ERROR, '39873'],
+            [UserEmailTest::LABEL_INDEX_EMPTY, null]
         ];
         $this->userId = [
-            ['real', 42765],
-            ['invalid_arg', 0],
-            ['type_error', '42765'],
-            ['empty', null]
+            [UserEmailTest::LABEL_INDEX_REAL, 42765],
+            [UserEmailTest::LABEL_INDEX_INVALID_ARG, 0],
+            [UserEmailTest::LABEL_INDEX_TYPE_ERROR, '42765'],
+            [UserEmailTest::LABEL_INDEX_EMPTY, null]
         ];
         $this->userEmail = [
-            ['real', 'pierre.dupont@mail.com'],
-            ['invalid_arg', 'pierre.dupont'],
-            ['type_error', 98347],
-            ['empty', '']
+            [UserEmailTest::LABEL_INDEX_REAL, 'pierre.dupont@mail.com'],
+            [UserEmailTest::LABEL_INDEX_INVALID_ARG, 'pierre.dupont'],
+            [UserEmailTest::LABEL_INDEX_TYPE_ERROR, 98347],
+            [UserEmailTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->localPart = [
-            ['real', 'pierre.dupont'],
-            ['invalid_arg', ''],
-            ['type_error', 98347],
-            ['empty', '']
+            [UserEmailTest::LABEL_INDEX_REAL, 'pierre.dupont'],
+            [UserEmailTest::LABEL_INDEX_INVALID_ARG, ''],
+            [UserEmailTest::LABEL_INDEX_TYPE_ERROR, 98347],
+            [UserEmailTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->domainName = [
-            ['real', 'gmail.com'],
-            ['invalid_arg', '^|fzzeoi.dzoie'],
-            ['type_error', 98347],
-            ['empty', '']
+            [UserEmailTest::LABEL_INDEX_REAL, 'gmail.com'],
+            [UserEmailTest::LABEL_INDEX_INVALID_ARG, '^|fzzeoi.dzoie'],
+            [UserEmailTest::LABEL_INDEX_TYPE_ERROR, 98347],
+            [UserEmailTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->emailEnabled = [
-            ['real', true],
-            ['type_error', 1],
-            ['empty', null]
+            [UserEmailTest::LABEL_INDEX_REAL, true],
+            [UserEmailTest::LABEL_INDEX_TYPE_ERROR, 1],
+            [UserEmailTest::LABEL_INDEX_EMPTY, null]
         ];
         $this->creationDate = [
-            ['real', DateTimeImmutable::createFromFormat(
+            [UserEmailTest::LABEL_INDEX_REAL, DateTimeImmutable::createFromFormat(
                 DATE_W3C,
                 date(
                     DATE_W3C,
                     strtotime('yesterday')
                 )
             )],
-            ['type_error', date(DATE_W3C, strtotime('yesterday'))],
-            ['empty', null]
+            [UserEmailTest::LABEL_INDEX_TYPE_ERROR, date(DATE_W3C, strtotime('yesterday'))],
+            [UserEmailTest::LABEL_INDEX_EMPTY, null]
         ];
         $this->updateDate = [
-            ['real', DateTimeImmutable::createFromFormat(
+            [UserEmailTest::LABEL_INDEX_REAL, DateTimeImmutable::createFromFormat(
                 DATE_W3C,
                 date(
                     DATE_W3C,
                     strtotime('today')
                 )
             )],
-            ['null', null],
-            ['type_error', date(DATE_W3C, strtotime('today'))],
-            ['empty', '']
+            [UserEmailTest::LABEL_INDEX_NULL, null],
+            [UserEmailTest::LABEL_INDEX_TYPE_ERROR, date(DATE_W3C, strtotime('today'))],
+            [UserEmailTest::LABEL_INDEX_EMPTY, '']
         ];
     }
 

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Config\Traits;
 
+use Config\PDOConfigEntity;
+use Tests\Config\PDOConfigEntityTest;
+
 /**
  * Trait AvailableConfigDataTrait
  * @package Tests\Config\Traits
@@ -42,111 +45,111 @@ trait AvailableConfigDataTrait
         $this->regexHost .= '(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9]))\b/s';
 
         $this->driver   = [
-            ['real', 'mysql'],
-            ['dummy', 'dummy'],
-            ['empty', '']
+            [PDOConfigEntityTest::LABEL_INDEX_REAL, PDOConfigEntityTest::LABEL_REAL_DRIVER],
+            [PDOConfigEntityTest::LABEL_INDEX_DUMMY, 'dummy1'],
+            [PDOConfigEntityTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->host     = [
-            ['real', '172.17.0.3'],
-            ['dummy', 'dummy'],
-            ['empty', '']
+            [PDOConfigEntityTest::LABEL_INDEX_REAL, PDOConfigEntityTest::LABEL_REAL_HOST],
+            [PDOConfigEntityTest::LABEL_INDEX_DUMMY, 'dummy2'],
+            [PDOConfigEntityTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->database = [
-            ['real', 'averoes'],
-            ['empty', '']
+            [PDOConfigEntityTest::LABEL_INDEX_REAL, PDOConfigEntityTest::LABEL_REAL_DATABASE],
+            [PDOConfigEntityTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->charset  = [
-            ['real', 'utf8'],
-            ['dummy', 'dummy'],
-            ['empty', '']
+            [PDOConfigEntityTest::LABEL_INDEX_REAL, PDOConfigEntityTest::LABEL_REAL_CHARSET],
+            [PDOConfigEntityTest::LABEL_INDEX_DUMMY, 'dummy3'],
+            [PDOConfigEntityTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->username = [
-            ['real', 'root'],
-            ['empty', '']
+            [PDOConfigEntityTest::LABEL_INDEX_REAL, PDOConfigEntityTest::LABEL_REAL_USERNAME],
+            [PDOConfigEntityTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->password = [
-            ['real', 'root'],
-            ['empty', '']
+            [PDOConfigEntityTest::LABEL_INDEX_REAL, PDOConfigEntityTest::LABEL_REAL_PASSWORD],
+            [PDOConfigEntityTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->databaseConfig = [
             [
-                'real',
+                PDOConfigEntityTest::LABEL_INDEX_REAL,
                 [
-                    'driver' => 'mysql',
-                    'host' => '172.17.0.3',
-                    'database' => 'averoes',
-                    'charset' => 'utf8',
-                    'username' => 'root',
-                    'password' => 'root'
+                    PDOConfigEntity::LABEL_DRIVER   => PDOConfigEntityTest::LABEL_REAL_DRIVER,
+                    PDOConfigEntity::LABEL_HOST     => PDOConfigEntityTest::LABEL_REAL_HOST,
+                    PDOConfigEntity::LABEL_DATABASE => PDOConfigEntityTest::LABEL_REAL_DATABASE,
+                    PDOConfigEntity::LABEL_CHARSET  => PDOConfigEntityTest::LABEL_REAL_CHARSET,
+                    PDOConfigEntity::LABEL_USERNAME => PDOConfigEntityTest::LABEL_REAL_USERNAME,
+                    PDOConfigEntity::LABEL_PASSWORD => PDOConfigEntityTest::LABEL_REAL_PASSWORD
                 ]
             ],
             [
-                'fake_driver',
+                PDOConfigEntityTest::LABEL_INDEX_FAKE_DRIVER,
                 [
-                    'driver' => 'baboulinet',
-                    'host' => '172.17.0.3',
-                    'database' => 'averoes',
-                    'charset' => 'utf8',
-                    'username' => 'root',
-                    'password' => 'root'
+                    PDOConfigEntity::LABEL_DRIVER   => 'baboulinet',
+                    PDOConfigEntity::LABEL_HOST     => PDOConfigEntityTest::LABEL_REAL_HOST,
+                    PDOConfigEntity::LABEL_DATABASE => PDOConfigEntityTest::LABEL_REAL_DATABASE,
+                    PDOConfigEntity::LABEL_CHARSET  => PDOConfigEntityTest::LABEL_REAL_CHARSET,
+                    PDOConfigEntity::LABEL_USERNAME => PDOConfigEntityTest::LABEL_REAL_USERNAME,
+                    PDOConfigEntity::LABEL_PASSWORD => PDOConfigEntityTest::LABEL_REAL_PASSWORD
                 ]
             ],
             [
-                'fake_host',
+                PDOConfigEntityTest::LABEL_INDEX_FAKE_HOST,
                 [
-                    'driver' => 'mysql',
-                    'host' => 'A172.17.0.3',
-                    'database' => 'averoes',
-                    'charset' => 'utf8',
-                    'username' => 'root',
-                    'password' => 'root'
+                    PDOConfigEntity::LABEL_DRIVER   => PDOConfigEntityTest::LABEL_REAL_DRIVER,
+                    PDOConfigEntity::LABEL_HOST     => 'A172.17.0.3',
+                    PDOConfigEntity::LABEL_DATABASE => PDOConfigEntityTest::LABEL_REAL_DATABASE,
+                    PDOConfigEntity::LABEL_CHARSET  => PDOConfigEntityTest::LABEL_REAL_CHARSET,
+                    PDOConfigEntity::LABEL_USERNAME => PDOConfigEntityTest::LABEL_REAL_USERNAME,
+                    PDOConfigEntity::LABEL_PASSWORD => PDOConfigEntityTest::LABEL_REAL_PASSWORD
                 ]
             ],
             [
-                'empty_database',
+                PDOConfigEntityTest::LABEL_INDEX_EMPTY_DATABASE,
                 [
-                    'driver' => 'mysql',
-                    'host' => '172.17.0.3',
-                    'database' => '',
-                    'charset' => 'utf8',
-                    'username' => 'root',
-                    'password' => 'root'
+                    PDOConfigEntity::LABEL_DRIVER   => PDOConfigEntityTest::LABEL_REAL_DRIVER,
+                    PDOConfigEntity::LABEL_HOST     => PDOConfigEntityTest::LABEL_REAL_HOST,
+                    PDOConfigEntity::LABEL_DATABASE => '',
+                    PDOConfigEntity::LABEL_CHARSET  => PDOConfigEntityTest::LABEL_REAL_CHARSET,
+                    PDOConfigEntity::LABEL_USERNAME => PDOConfigEntityTest::LABEL_REAL_USERNAME,
+                    PDOConfigEntity::LABEL_PASSWORD => PDOConfigEntityTest::LABEL_REAL_PASSWORD,
                 ]
             ],
             [
-                'fake_charset',
+                PDOConfigEntityTest::LABEL_INDEX_FAKE_CHARSET,
                 [
-                    'driver' => 'mysql',
-                    'host' => '172.17.0.3',
-                    'database' => 'averoes',
-                    'charset' => 'baboulinet',
-                    'username' => 'root',
-                    'password' => 'root'
+                    PDOConfigEntity::LABEL_DRIVER   => PDOConfigEntityTest::LABEL_REAL_DRIVER,
+                    PDOConfigEntity::LABEL_HOST     => PDOConfigEntityTest::LABEL_REAL_HOST,
+                    PDOConfigEntity::LABEL_DATABASE => PDOConfigEntityTest::LABEL_REAL_DATABASE,
+                    PDOConfigEntity::LABEL_CHARSET  => 'baboulinet',
+                    PDOConfigEntity::LABEL_USERNAME => PDOConfigEntityTest::LABEL_REAL_USERNAME,
+                    PDOConfigEntity::LABEL_PASSWORD => PDOConfigEntityTest::LABEL_REAL_PASSWORD
                 ]
             ],
             [
-                'empty_username',
+                PDOConfigEntityTest::LABEL_INDEX_EMPTY_USERNAME,
                 [
-                    'driver' => 'mysql',
-                    'host' => '172.17.0.3',
-                    'database' => 'averoes',
-                    'charset' => 'utf8',
-                    'username' => '',
-                    'password' => 'root'
+                    PDOConfigEntity::LABEL_DRIVER   => PDOConfigEntityTest::LABEL_REAL_DRIVER,
+                    PDOConfigEntity::LABEL_HOST     => PDOConfigEntityTest::LABEL_REAL_HOST,
+                    PDOConfigEntity::LABEL_DATABASE => PDOConfigEntityTest::LABEL_REAL_DATABASE,
+                    PDOConfigEntity::LABEL_CHARSET  => PDOConfigEntityTest::LABEL_REAL_CHARSET,
+                    PDOConfigEntity::LABEL_USERNAME => '',
+                    PDOConfigEntity::LABEL_PASSWORD => PDOConfigEntityTest::LABEL_REAL_PASSWORD
                 ]
             ],
             [
-                'empty_password',
+                PDOConfigEntityTest::LABEL_INDEX_EMPTY_PASSWORD,
                 [
-                    'driver' => 'mysql',
-                    'host' => '172.17.0.3',
-                    'database' => 'averoes',
-                    'charset' => 'utf8',
-                    'username' => 'root',
-                    'password' => ''
+                    PDOConfigEntity::LABEL_DRIVER   => PDOConfigEntityTest::LABEL_REAL_DRIVER,
+                    PDOConfigEntity::LABEL_HOST     => PDOConfigEntityTest::LABEL_REAL_HOST,
+                    PDOConfigEntity::LABEL_DATABASE => PDOConfigEntityTest::LABEL_REAL_DATABASE,
+                    PDOConfigEntity::LABEL_CHARSET  => PDOConfigEntityTest::LABEL_REAL_CHARSET,
+                    PDOConfigEntity::LABEL_USERNAME => PDOConfigEntityTest::LABEL_REAL_USERNAME,
+                    PDOConfigEntity::LABEL_PASSWORD => ''
                 ]
             ],
-            ['empty', []]
+            [PDOConfigEntityTest::LABEL_INDEX_EMPTY, []]
         ];
     }
 
