@@ -10,7 +10,6 @@ use Throwable;
 /**
  * Class ModelException
  * @package Models\Exceptions
- * @codeCoverageIgnore
  */
 class ModelException extends Exception
 {
