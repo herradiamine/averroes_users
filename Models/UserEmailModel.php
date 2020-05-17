@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Models;
 
-use Generator;
-use Models\Exceptions\ModelException;
 use Models\Interfaces\ModelInterface;
 use Models\Engine\ModelManager;
 use Entities\UserEmail;
