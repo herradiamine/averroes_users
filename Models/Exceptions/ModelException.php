@@ -14,7 +14,10 @@ use Throwable;
  */
 class ModelException extends Exception
 {
-    private const DEFAULT_MESSAGE = "It seems that your query contains errors";
+    private const DEFAULT_MESSAGE         = "It seems that your query contains errors";
+    public const INSERT_MANY_FIELDS_KEY   = "Data parameter should contain fields in a key named 'fields'";
+    public const INSERT_MANY_VALUES_KEY   = "Data parameter should contain values arrays in a key named 'values'";
+    public const INSERT_MANY_VALUES_COUNT = "There is a problem with values, %s given for %s fields";
 
     /**
      * Construct the exception. Note: The message is NOT binary safe.

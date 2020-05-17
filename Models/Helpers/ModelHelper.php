@@ -17,7 +17,7 @@ class ModelHelper extends ModelManager
      * @param array $displayFields
      * @return false|string
      */
-    public static function quoteFields(array $displayFields = []): string
+    public static function quoteElements(array $displayFields = []): string
     {
         $fields = "";
         if (count($displayFields) > 1) {

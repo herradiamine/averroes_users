@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Models\Engine;
 
 use Config\PDOConfigEntity;
-use Generator;
 use Models\Exceptions\ModelException;
 use Models\Helpers\ModelHelper;
 use Models\Interfaces\ModelInterface;
+use Generator;
 use PDO;
+use TypeError;
 
 /**
  * Abstract ModelManager
@@ -18,6 +19,9 @@ use PDO;
  */
 abstract class ModelManager extends PDO implements ModelInterface
 {
+    private const INSERT_MANY_FIELDS_KEY = "fields";
+    private const INSERT_MANY_VALUES_KEY = "values";
+
     /** @var PDOConfigEntity $pdoConfig */
     private PDOConfigEntity $pdoConfig;
 
@@ -47,39 +51,6 @@ abstract class ModelManager extends PDO implements ModelInterface
     }
 
     /**
-     * Gets one element using select by id and displays choosen fields.
-     * Returns all fields by default if not given $displayFields parameter.
-     * @param int    $id
-     * @param array  $displayFields
-     * @return object|null
-     * @throws ModelException
-     */
-    public function getOneById(
-        int $id,
-        array $displayFields = []
-    ): ?object {
-        $fields = ModelHelper::quoteFields($displayFields);
-        $sql    = "
-            SELECT $fields 
-            FROM $this->table 
-            WHERE $this->table.$this->entityLabelId = $id
-        ";
-        $query  = $this->query($sql);
-        $result = null;
-
-        if ($query) {
-            $query->setFetchMode(
-                ModelManager::FETCH_CLASS,
-                $this->entityName
-            );
-            $result = $query->fetch();
-        } else {
-            throw new ModelException(__METHOD__);
-        }
-        return $result;
-    }
-
-    /**
      * Gets many elements using select by many ids and displays choosen fields.
      * Returns all fields by default if not given $displayFields parameter
      * and 20 elements from offset 0.
@@ -87,16 +58,16 @@ abstract class ModelManager extends PDO implements ModelInterface
      * @param array  $displayFiedls
      * @param int    $limit
      * @param int    $offset
-     * @return Generator|null
+     * @return Generator
      * @throws ModelException
      */
-    public function getManyByIds(
+    public function getOneOrManyByIds(
         array $ids,
-        array $displayFiedls = [],
+        array $displayFiedls = ['*'],
         int $limit = 20,
         int $offset = 0
-    ): ?Generator {
-        $fields = ModelHelper::quoteFields($displayFiedls);
+    ): Generator {
+        $fields = ModelHelper::quoteElements($displayFiedls);
         $ids = implode(",", $ids);
         $sql = "
             SELECT $fields 
@@ -120,41 +91,21 @@ abstract class ModelManager extends PDO implements ModelInterface
     }
 
     /**
-     * Gets one or many elements using custom data select and displays choosen fields.
-     * Returns all fields by default if not given $displayFields parameter
-     * and 20 elements from offset 0.
-     * @param array $displayFields
-     * @param array $operatorKeyValue
-     * @param int   $limit
-     * @param int   $offset
-     * @return array|null
-     * @throws ModelException
-     */
-    public function getCustom(
-        array $displayFields = [],
-        array $operatorKeyValue = [],
-        int $limit = 20,
-        int $offset = 0
-    ): ?Generator {
-        yield [];
-    }
-
-    /**
      * Gets all stored elements.
      * Returns all fields by default if not given $displayFields parameter
      * and 20 elements from offset 0.
      * @param array $displayFields
      * @param int   $limit
      * @param int   $offset
-     * @return Generator|null
+     * @return Generator
      * @throws ModelException
      */
     public function getAll(
-        array $displayFields = [],
+        array $displayFields = ['*'],
         int $limit = 20,
         int $offset = 0
-    ): ?Generator {
-        $fields = ModelHelper::quoteFields($displayFields);
+    ): Generator {
+        $fields = ModelHelper::quoteElements($displayFields);
         $sql = "
             SELECT $fields 
             FROM $this->table 
@@ -179,15 +130,21 @@ abstract class ModelManager extends PDO implements ModelInterface
      * Inserts one element, must have data to be inserted and respect every fields data types rules.
      * Returns the inserted element id.
      * @param array $data
-     * @param array $rules
-     * @return int|null
+     * @return int
      * @throws ModelException
      */
     public function insertOne(
-        array $data,
-        array $rules
-    ): ?int {
-        return 1;
+        array $data
+    ): int {
+        $fields = "$this->table." . implode(", $this->table.", array_keys($data));
+        $values = ModelHelper::quoteElements(array_values($data));
+        $sql    = "INSERT INTO $this->table ($fields) VALUES ($values)";
+
+        if ($this->query($sql)) {
+            return (int) $this->lastInsertId("$this->table.$this->entityLabelId");
+        } else {
+            throw new ModelException(__METHOD__);
+        }
     }
 
     /**
@@ -195,105 +152,106 @@ abstract class ModelManager extends PDO implements ModelInterface
      * and respect every fields data types rules.
      * Returns the inserted elements ids in an array.
      * @param array $datas
-     * @param array $rules
-     * @return array|null
-     * @throws ModelException
+     * @return bool
+     * @throws ModelException|TypeError
      */
     public function insertMany(
-        array $datas,
-        array $rules
-    ): ?array {
-        return [];
-    }
+        array $datas
+    ): bool {
+        if (array_key_exists(ModelManager::INSERT_MANY_FIELDS_KEY, $datas)) {
+            $fields  = "$this->table.";
+            $fields .= implode(", $this->table.", $datas[ModelManager::INSERT_MANY_FIELDS_KEY]);
+        } else {
+            throw new ModelException(__METHOD__, ModelException::INSERT_MANY_FIELDS_KEY);
+        }
 
-    /**
-     * Updates one element by his id, must have id of element to be updated and data to replace.
-     * Must respect all fields data types rules.
-     * Returns id of updated element or false.
-     * @param int   $id
-     * @param array $data
-     * @param array $rules
-     * @return int|null
-     * @throws ModelException
-     */
-    public function updateOneById(
-        int $id,
-        array $data,
-        array $rules
-    ): ?int {
-        return 1;
+        $values = [];
+        if (array_key_exists(ModelManager::INSERT_MANY_VALUES_KEY, $datas)) {
+            $count_fields = count($datas[self::INSERT_MANY_FIELDS_KEY]);
+
+            foreach ($datas[ModelManager::INSERT_MANY_VALUES_KEY] as $value) {
+                $count_value = count($value);
+
+                if ($count_fields == $count_value) {
+                    $values[] = "(" . ModelHelper::quoteElements(array_values($value)) . ")";
+                } else {
+                    $message = sprintf(
+                        ModelException::INSERT_MANY_VALUES_COUNT,
+                        $count_value,
+                        $count_fields
+                    );
+                    throw new ModelException(__METHOD__, $message);
+                }
+            }
+            $values = implode(', ', $values);
+        } else {
+            throw new ModelException(__METHOD__, ModelException::INSERT_MANY_VALUES_KEY);
+        }
+
+        $sql = "INSERT INTO $this->table ($fields) VALUES $values";
+        if ($this->query($sql)) {
+            return true;
+        } else {
+            throw new ModelException(__METHOD__);
+        }
     }
 
     /**
      * Updates many elements by their ids, must have array of elements ids to be updated and datas to replace.
      * Must respect all fields data types rules.
      * Returns array that contains boolean in front of each elements ids that has been updated or not.
-     * @param array $ids
-     * @param array $datas
-     * @param array $rules
-     * @return array|null
+     * @param array  $ids
+     * @param array  $data
+     * @return true
      * @throws ModelException
      */
-    public function updateManyByIds(
+    public function updateOneOrManyByIds(
         array $ids,
-        array $datas,
-        array $rules,
-        string $table = ''
-    ): ?array {
-        return [];
-    }
+        array $data
+    ): bool {
+        $first = true;
+        $ids = implode(",", $ids);
 
-    /**
-     * Updates many elements by custum selected data, must have array of selects datas to be updated.
-     * Must respect all fields data types rules.
-     * Returns array that contains boolean in front of each elements ids that has been updated or not.
-     * @param array $dataSelects
-     * @param array $dataUpdates
-     * @param array $rules
-     * @return array|null
-     * @throws ModelException
-     */
-    public function updateManyByCustom(
-        array $dataSelects,
-        array $dataUpdates,
-        array $rules
-    ): ?array {
-        return [];
-    }
+        $sql = "UPDATE $this->table SET";
+        foreach ($data as $key => $value) {
+            $sql .= ($first) ? " " : "";
+            $sql .= "$this->table.$key = :$key";
+            $sql .= (next($data)) ? ", " : " ";
+            $first = false;
+        }
+        $sql .= "WHERE $this->table.$this->entityLabelId IN ($ids)";
 
-    /**
-     * Deletes on element by id, must have element id to be deleted.
-     * Returns boolean.
-     * @param int $id
-     * @return bool
-     * @throws ModelException
-     */
-    public function deleteOneById(int $id): bool
-    {
-        return true;
+        $statement = $this->prepare($sql);
+        foreach ($data as $key => $value) {
+            $statement->bindValue(":$key", $value);
+        }
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            throw new ModelException(__METHOD__);
+        }
     }
 
     /**
      * Deletes many elements by ids, must have array of ids elements to be deleted.
      * Returns array that contains boolean in front of each elements ids that has been deleted or not.
      * @param array $ids
-     * @return array|null
+     * @return bool
      * @throws ModelException
      */
-    public function deleteManyByIds(array $ids): ?array
-    {
-        return [];
-    }
+    public function deleteOneOrManyByIds(
+        array $ids
+    ): ?bool {
+        $ids = implode(',', $ids);
+        $sql = "DELETE FROM $this->table WHERE $this->table.$this->entityLabelId IN ($ids)";
+        $query = $this->query($sql);
 
-    /**
-     * Deletes many elements by custom selets datas, must have array of datas to select elements to be deleted.
-     * Returns array that contains boolean in front of each elements ids that has been deleted or not.
-     * @param array $dataSelects
-     * @return array|null
-     * @throws ModelException
-     */
-    public function deleteManyByCustom(array $dataSelects): ?array
-    {
-        return [];
+        if ($query) {
+            $result = $query->execute();
+        } else {
+            throw new ModelException(__METHOD__);
+        }
+        return $result;
     }
 }
