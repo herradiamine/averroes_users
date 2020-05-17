@@ -55,13 +55,13 @@ abstract class ModelManager extends PDO implements ModelInterface
      * Returns all fields by default if not given $displayFields parameter.
      * @param int    $id
      * @param array  $displayFields
-     * @return object|null
+     * @return object|false
      * @throws ModelException
      */
     public function getOneById(
         int $id,
         array $displayFields = ['*']
-    ): ?object {
+    ): object {
         $fields = ModelHelper::quoteElements($displayFields);
         $sql    = "
             SELECT $fields 
@@ -91,7 +91,7 @@ abstract class ModelManager extends PDO implements ModelInterface
      * @param array  $displayFiedls
      * @param int    $limit
      * @param int    $offset
-     * @return Generator|null
+     * @return Generator
      * @throws ModelException
      */
     public function getManyByIds(
@@ -99,7 +99,7 @@ abstract class ModelManager extends PDO implements ModelInterface
         array $displayFiedls = ['*'],
         int $limit = 20,
         int $offset = 0
-    ): ?Generator {
+    ): Generator {
         $fields = ModelHelper::quoteElements($displayFiedls);
         $ids = implode(",", $ids);
         $sql = "
@@ -130,14 +130,14 @@ abstract class ModelManager extends PDO implements ModelInterface
      * @param array $displayFields
      * @param int   $limit
      * @param int   $offset
-     * @return Generator|null
+     * @return Generator
      * @throws ModelException
      */
     public function getAll(
         array $displayFields = ['*'],
         int $limit = 20,
         int $offset = 0
-    ): ?Generator {
+    ): Generator {
         $fields = ModelHelper::quoteElements($displayFields);
         $sql = "
             SELECT $fields 
@@ -163,12 +163,12 @@ abstract class ModelManager extends PDO implements ModelInterface
      * Inserts one element, must have data to be inserted and respect every fields data types rules.
      * Returns the inserted element id.
      * @param array $data
-     * @return int|null
+     * @return int
      * @throws ModelException
      */
     public function insertOne(
         array $data
-    ): ?int {
+    ): int {
         $fields = "$this->table." . implode(", $this->table.", array_keys($data));
         $values = ModelHelper::quoteElements(array_values($data));
         $sql    = "INSERT INTO $this->table ($fields) VALUES ($values)";
@@ -273,8 +273,9 @@ abstract class ModelManager extends PDO implements ModelInterface
      * @return bool
      * @throws ModelException
      */
-    public function deleteOneById(int $id): bool
-    {
+    public function deleteOneById(
+        int $id
+    ): bool {
         $sql = "DELETE FROM $this->table WHERE $this->table.$this->entityLabelId = $id";
         $query = $this->query($sql);
 
@@ -293,8 +294,9 @@ abstract class ModelManager extends PDO implements ModelInterface
      * @return bool
      * @throws ModelException
      */
-    public function deleteManyByIds(array $ids): ?bool
-    {
+    public function deleteManyByIds(
+        array $ids
+    ): ?bool {
         $ids = implode(',', $ids);
         $sql = "DELETE FROM $this->table WHERE $this->table.$this->entityLabelId IN ($ids)";
         $query = $this->query($sql);
@@ -305,84 +307,5 @@ abstract class ModelManager extends PDO implements ModelInterface
             throw new ModelException(__METHOD__);
         }
         return $result;
-    }
-
-    /* *********************** *
-     * Custom abstract queries *
-     * *********************** */
-
-    /**
-     * Gets one or many elements using custom data select and displays choosen fields.
-     * Returns all fields by default if not given $displayFields parameter
-     * and 20 elements from offset 0.
-     * @param array $displayFields
-     * @param array $operatorKeyValue
-     * @param int   $limit
-     * @param int   $offset
-     * @return Generator
-     * @throws ModelException
-     */
-    public function getCustom(
-        array $displayFields = [],
-        array $operatorKeyValue = [],
-        int $limit = 20,
-        int $offset = 0
-    ): ?Generator {
-        $sql = "";
-        $query = $this->query($sql);
-        if ($query) {
-            $query->setFetchMode(
-                ModelManager::FETCH_CLASS,
-                $this->entityName
-            );
-            while ($result = $query->fetch()) {
-                yield $result;
-            }
-        } else {
-            throw new ModelException(__METHOD__);
-        }
-    }
-
-    /**
-     * Updates many elements by custum selected data, must have array of selects datas to be updated.
-     * Must respect all fields data types rules.
-     * Returns array that contains boolean in front of each elements ids that has been updated or not.
-     * @param array $dataSelects
-     * @param array $dataUpdates
-     * @param array $rules
-     * @return bool
-     * @throws ModelException
-     */
-    public function updateCustom(
-        array $dataSelects,
-        array $dataUpdates,
-        array $rules
-    ): bool {
-        $sql = "UPDATE $this->table SET";
-        $query = $this->query($sql);
-        if ($query) {
-            return $query->execute();
-        } else {
-            throw new ModelException(__METHOD__);
-        }
-    }
-
-    /**
-     * Deletes many elements by custom selets datas, must have array of datas to select elements to be deleted.
-     * Returns array that contains boolean in front of each elements ids that has been deleted or not.
-     * @param array $dataSelects
-     * @return bool
-     * @throws ModelException
-     */
-    public function deleteCustom(
-        array $dataSelects = []
-    ): bool {
-        $sql = "DELETE FROM $this->table WHERE";
-        $query = $this->query($sql);
-        if ($query) {
-            return $query->execute();
-        } else {
-            throw new ModelException(__METHOD__);
-        }
     }
 }

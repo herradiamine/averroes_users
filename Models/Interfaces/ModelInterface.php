@@ -18,13 +18,13 @@ interface ModelInterface
      * Returns all fields by default if not given $displayFields parameter.
      * @param int    $id
      * @param array  $displayFields
-     * @return object
+     * @return object|false
      * @throws ModelException
      */
     public function getOneById(
         int $id,
         array $displayFields = ['*']
-    ): ?object;
+    ): object;
 
     /**
      * Gets many elements using select by many ids and displays choosen fields.
@@ -42,7 +42,7 @@ interface ModelInterface
         array $displayFiedls = ['*'],
         int $limit = 20,
         int $offset = 0
-    ): ?Generator;
+    ): Generator;
 
     /**
      * Gets all stored elements.
@@ -58,18 +58,18 @@ interface ModelInterface
         array $displayFields = ['*'],
         int $limit = 20,
         int $offset = 0
-    ): ?Generator;
+    ): Generator;
 
     /**
      * Inserts one element, must have data to be inserted and respect every fields data types rules.
      * Returns the inserted element id.
      * @param array  $data
-     * @return int|null
+     * @return int
      * @throws ModelException
      */
     public function insertOne(
         array $data
-    ): ?int;
+    ): int;
 
     /**
      * Inserts many elements at once, must have one or many datas to be inserted
@@ -114,53 +114,4 @@ interface ModelInterface
      * @throws ModelException
      */
     public function deleteManyByIds(array $ids): ?bool;
-
-    /* *********************** *
-     * Custom abstract queries *
-     * *********************** */
-
-    /**
-     * Gets one or many elements using custom data select and displays choosen fields.
-     * Returns all fields by default if not given $displayFields parameter
-     * and 20 elements from offset 0.
-     * @param array  $displayFields
-     * @param array  $operatorKeyValue
-     * @param int    $limit
-     * @param int    $offset
-     * @return Generator
-     * @throws ModelException
-     */
-    public function getCustom(
-        array $displayFields = ['*'],
-        array $operatorKeyValue = [],
-        int $limit = 20,
-        int $offset = 0
-    ): ?Generator;
-
-    /**
-     * Updates many elements by custum selected data, must have array of selects datas to be updated.
-     * Must respect all fields data types rules.
-     * Returns array that contains boolean in front of each elements ids that has been updated or not.
-     * @param array  $dataSelects
-     * @param array  $dataUpdates
-     * @param array  $rules
-     * @return bool
-     * @throws ModelException
-     */
-    public function updateCustom(
-        array $dataSelects,
-        array $dataUpdates,
-        array $rules
-    ): bool;
-
-    /**
-     * Deletes many elements by custom selets datas, must have array of datas to select elements to be deleted.
-     * Returns array that contains boolean in front of each elements ids that has been deleted or not.
-     * @param array  $dataSelects
-     * @return bool
-     * @throws ModelException
-     */
-    public function deleteCustom(
-        array $dataSelects = []
-    ): bool;
 }
