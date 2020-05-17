@@ -14,19 +14,6 @@ use Models\Exceptions\ModelException;
 interface ModelInterface
 {
     /**
-     * Gets one element using select by id and displays choosen fields.
-     * Returns all fields by default if not given $displayFields parameter.
-     * @param int    $id
-     * @param array  $displayFields
-     * @return object|false
-     * @throws ModelException
-     */
-    public function getOneById(
-        int $id,
-        array $displayFields = ['*']
-    ): object;
-
-    /**
      * Gets many elements using select by many ids and displays choosen fields.
      * Returns all fields by default if not given $displayFields parameter
      * and 20 elements from offset 0.
@@ -37,7 +24,7 @@ interface ModelInterface
      * @return Generator
      * @throws ModelException
      */
-    public function getManyByIds(
+    public function getOneOrManyByIds(
         array $ids,
         array $displayFiedls = ['*'],
         int $limit = 20,
@@ -98,20 +85,11 @@ interface ModelInterface
     ): bool;
 
     /**
-     * Deletes on element by id, must have element id to be deleted.
-     * Returns boolean.
-     * @param int  $id
-     * @return bool
-     * @throws ModelException
-     */
-    public function deleteOneById(int $id): bool;
-
-    /**
      * Deletes many elements by ids, must have array of ids elements to be deleted.
      * Returns array that contains boolean in front of each elements ids that has been deleted or not.
      * @param array  $ids
      * @return bool
      * @throws ModelException
      */
-    public function deleteManyByIds(array $ids): ?bool;
+    public function deleteOneOrManyByIds(array $ids): ?bool;
 }

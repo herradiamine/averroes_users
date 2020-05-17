@@ -51,39 +51,6 @@ abstract class ModelManager extends PDO implements ModelInterface
     }
 
     /**
-     * Gets one element using select by id and displays choosen fields.
-     * Returns all fields by default if not given $displayFields parameter.
-     * @param int    $id
-     * @param array  $displayFields
-     * @return object|false
-     * @throws ModelException
-     */
-    public function getOneById(
-        int $id,
-        array $displayFields = ['*']
-    ): object {
-        $fields = ModelHelper::quoteElements($displayFields);
-        $sql    = "
-            SELECT $fields 
-            FROM $this->table 
-            WHERE $this->table.$this->entityLabelId = $id
-        ";
-        $query  = $this->query($sql);
-        $result = null;
-
-        if ($query) {
-            $query->setFetchMode(
-                ModelManager::FETCH_CLASS,
-                $this->entityName
-            );
-            $result = $query->fetch();
-        } else {
-            throw new ModelException(__METHOD__);
-        }
-        return $result;
-    }
-
-    /**
      * Gets many elements using select by many ids and displays choosen fields.
      * Returns all fields by default if not given $displayFields parameter
      * and 20 elements from offset 0.
@@ -94,7 +61,7 @@ abstract class ModelManager extends PDO implements ModelInterface
      * @return Generator
      * @throws ModelException
      */
-    public function getManyByIds(
+    public function getOneOrManyByIds(
         array $ids,
         array $displayFiedls = ['*'],
         int $limit = 20,
@@ -267,34 +234,13 @@ abstract class ModelManager extends PDO implements ModelInterface
     }
 
     /**
-     * Deletes one element by id, must have element id to be deleted.
-     * Returns boolean.
-     * @param int $id
-     * @return bool
-     * @throws ModelException
-     */
-    public function deleteOneById(
-        int $id
-    ): bool {
-        $sql = "DELETE FROM $this->table WHERE $this->table.$this->entityLabelId = $id";
-        $query = $this->query($sql);
-
-        if ($query) {
-            $result = $query->execute();
-        } else {
-            throw new ModelException(__METHOD__);
-        }
-        return $result;
-    }
-
-    /**
      * Deletes many elements by ids, must have array of ids elements to be deleted.
      * Returns array that contains boolean in front of each elements ids that has been deleted or not.
      * @param array $ids
      * @return bool
      * @throws ModelException
      */
-    public function deleteManyByIds(
+    public function deleteOneOrManyByIds(
         array $ids
     ): ?bool {
         $ids = implode(',', $ids);
