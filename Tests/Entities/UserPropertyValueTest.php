@@ -22,6 +22,12 @@ class UserPropertyValueTest extends TestCase
         PropertyValueProviderTrait::__construct as availableData;
     }
 
+    public const LABEL_INDEX_REAL        = 'real';
+    public const LABEL_INDEX_INVALID_ARG = 'invalid_arg';
+    public const LABEL_INDEX_TYPE_ERROR  = 'type_error';
+    public const LABEL_INDEX_EMPTY       = 'empty';
+    public const LABEL_INDEX_NULL        = 'null';
+
     /** @var UserPropertyValue $userPropertyValueEntity */
     private UserPropertyValue $userPropertyValueEntity;
 
@@ -53,7 +59,7 @@ class UserPropertyValueTest extends TestCase
         $set_user_property_value_id = $this->mockEntity->method('setUserPropertyValueId');
         $get_user_property_value_id = $this->mockEntity->method('getUserPropertyValueId');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_user_property_value_id->with($value)->willReturn(true);
                 $get_user_property_value_id->willReturn($value);
 
@@ -63,7 +69,7 @@ class UserPropertyValueTest extends TestCase
                 static::assertTrue($this->mockEntity->setUserPropertyValueId($value));
                 static::assertEquals($value, $this->mockEntity->getUserPropertyValueId());
                 break;
-            case 'invalid_arg':
+            case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_property_value_id->with($value)->willThrowException(new InvalidArgumentException());
 
                 static::expectException(InvalidArgumentException::class);
@@ -72,8 +78,9 @@ class UserPropertyValueTest extends TestCase
                 static::expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserPropertyValueId($value);
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_user_property_value_id->with($value)->willThrowException(new TypeError());
 
                 static::expectException(TypeError::class);
@@ -95,7 +102,7 @@ class UserPropertyValueTest extends TestCase
         $set_user_id = $this->mockEntity->method('setUserId');
         $get_user_id = $this->mockEntity->method('getUserId');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_user_id->with($value)->willReturn(true);
                 $get_user_id->willReturn($value);
 
@@ -105,7 +112,7 @@ class UserPropertyValueTest extends TestCase
                 static::assertTrue($this->mockEntity->setUserId($value));
                 static::assertEquals($value, $this->mockEntity->getUserId());
                 break;
-            case 'invalid_arg':
+            case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_id->with($value)->willThrowException(new InvalidArgumentException());
 
                 static::expectException(InvalidArgumentException::class);
@@ -114,8 +121,9 @@ class UserPropertyValueTest extends TestCase
                 static::expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserId($value);
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_user_id->with($value)->willThrowException(new TypeError());
 
                 static::expectException(TypeError::class);
@@ -137,7 +145,7 @@ class UserPropertyValueTest extends TestCase
         $set_user_property_id = $this->mockEntity->method('setUserPropertyId');
         $get_user_property_id = $this->mockEntity->method('getUserPropertyId');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_user_property_id->with($value)->willReturn(true);
                 $get_user_property_id->willReturn($value);
 
@@ -147,7 +155,7 @@ class UserPropertyValueTest extends TestCase
                 static::assertTrue($this->mockEntity->setUserPropertyId($value));
                 static::assertEquals($value, $this->mockEntity->getUserPropertyId());
                 break;
-            case 'invalid_arg':
+            case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_property_id->with($value)->willThrowException(new InvalidArgumentException());
 
                 static::expectException(InvalidArgumentException::class);
@@ -156,8 +164,9 @@ class UserPropertyValueTest extends TestCase
                 static::expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserPropertyId($value);
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_user_property_id->with($value)->willThrowException(new TypeError());
 
                 static::expectException(TypeError::class);
@@ -180,7 +189,7 @@ class UserPropertyValueTest extends TestCase
         $get_custom_value = $this->mockEntity->method('getCustomValue');
 
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_custom_value->with($value)->willReturn(true);
                 $get_custom_value->willReturn($value);
 
@@ -190,7 +199,8 @@ class UserPropertyValueTest extends TestCase
                 static::assertTrue($this->mockEntity->setCustomValue($value));
                 static::assertEquals($value, $this->mockEntity->getCustomValue());
                 break;
-            case 'invalid_arg':
+            case self::LABEL_INDEX_INVALID_ARG:
+            default:
                 $set_custom_value->with($value)->willThrowException(new InvalidArgumentException());
 
                 static::expectException(InvalidArgumentException::class);
@@ -212,7 +222,7 @@ class UserPropertyValueTest extends TestCase
         $set_creation_date = $this->mockEntity->method('setCreationDate');
         $get_creation_date = $this->mockEntity->method('getCreationDate');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_creation_date->with($value);
                 $get_creation_date->willReturn($value);
 
@@ -228,8 +238,9 @@ class UserPropertyValueTest extends TestCase
                     $this->mockEntity->getCreationDate()
                 );
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_creation_date->with($value)->willThrowException(new TypeError());
 
                 static::expectException(TypeError::class);
@@ -251,7 +262,7 @@ class UserPropertyValueTest extends TestCase
         $set_update_date = $this->mockEntity->method('setUpdateDate');
         $get_update_date = $this->mockEntity->method('getUpdateDate');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_update_date->with($value);
                 $get_update_date->willReturn($value);
 
@@ -267,7 +278,7 @@ class UserPropertyValueTest extends TestCase
                     $this->mockEntity->getUpdateDate()
                 );
                 break;
-            case 'null':
+            case self::LABEL_INDEX_NULL:
                 $set_update_date->with($value);
                 $get_update_date->willReturn($value);
 
@@ -277,8 +288,9 @@ class UserPropertyValueTest extends TestCase
                 static::assertNull($this->userPropertyValueEntity->getUpdateDate());
                 static::assertNull($this->mockEntity->getUpdateDate());
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_update_date->with($value)->willThrowException(new TypeError());
 
                 static::expectException(TypeError::class);
