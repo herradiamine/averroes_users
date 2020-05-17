@@ -214,9 +214,9 @@ abstract class ModelManager extends PDO implements ModelInterface
 
         $sql = "UPDATE $this->table SET";
         foreach ($data as $key => $value) {
-            $sql .= ($first)? " " : "";
+            $sql .= ($first) ? " " : "";
             $sql .= "$this->table.$key = :$key";
-            $sql .= (next($data))? ", ": " ";
+            $sql .= (next($data)) ? ", " : " ";
             $first = false;
         }
         $sql .= "WHERE $this->table.$this->entityLabelId IN ($ids)";
