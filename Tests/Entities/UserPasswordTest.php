@@ -45,7 +45,7 @@ class UserPasswordTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableData();
-        $this->mockEntity = static::createMock(UserPassword::class);
+        $this->mockEntity = $this->createMock(UserPassword::class);
         $this->userPasswordEntity = new UserPassword();
     }
 

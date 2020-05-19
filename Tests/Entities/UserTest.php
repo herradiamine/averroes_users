@@ -45,7 +45,7 @@ class UserTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableData();
-        $this->mockEntity = static::createMock(User::class);
+        $this->mockEntity = $this->createMock(User::class);
         $this->userEntity = new User();
     }
 

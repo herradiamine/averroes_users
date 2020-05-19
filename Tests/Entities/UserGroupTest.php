@@ -45,7 +45,7 @@ class UserGroupTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableData();
-        $this->mockEntity      = static::createMock(UserGroup::class);
+        $this->mockEntity      = $this->createMock(UserGroup::class);
         $this->userGroupEntity = new UserGroup();
     }
 

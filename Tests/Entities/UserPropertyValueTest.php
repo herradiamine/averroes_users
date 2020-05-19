@@ -45,7 +45,7 @@ class UserPropertyValueTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableData();
-        $this->mockEntity = static::createMock(UserPropertyValue::class);
+        $this->mockEntity = $this->createMock(UserPropertyValue::class);
         $this->userPropertyValueEntity = new UserPropertyValue();
     }
 
