@@ -72,10 +72,10 @@ class UserEmailTest extends TestCase
             case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_email_id->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userEmailEntity->setUserEmailId($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserEmailId($value);
                 break;
             case self::LABEL_INDEX_TYPE_ERROR:
@@ -83,10 +83,10 @@ class UserEmailTest extends TestCase
             default:
                 $set_user_email_id->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setUserEmailId($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserEmailId($value);
                 break;
         }
@@ -115,10 +115,10 @@ class UserEmailTest extends TestCase
             case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_id->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userEmailEntity->setUserId($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserId($value);
                 break;
             case self::LABEL_INDEX_TYPE_ERROR:
@@ -126,10 +126,10 @@ class UserEmailTest extends TestCase
             default:
                 $set_user_id->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setUserId($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserId($value);
                 break;
         }
@@ -158,10 +158,10 @@ class UserEmailTest extends TestCase
             case self::LABEL_INDEX_TYPE_ERROR:
                 $set_user_email->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setUserEmail($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserEmail($value);
                 break;
             case self::LABEL_INDEX_INVALID_ARG:
@@ -169,10 +169,10 @@ class UserEmailTest extends TestCase
             default:
                 $set_user_email->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userEmailEntity->setUserEmail($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserEmail($value);
                 break;
         }
@@ -201,10 +201,10 @@ class UserEmailTest extends TestCase
             case self::LABEL_INDEX_TYPE_ERROR:
                 $set_local_part->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setLocalPart($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setLocalPart($value);
                 break;
             case self::LABEL_INDEX_INVALID_ARG:
@@ -212,10 +212,10 @@ class UserEmailTest extends TestCase
             default:
                 $set_local_part->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userEmailEntity->setLocalPart($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setLocalPart($value);
                 break;
         }
@@ -244,10 +244,10 @@ class UserEmailTest extends TestCase
             case self::LABEL_INDEX_TYPE_ERROR:
                 $set_domain_name->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setDomainName($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setDomainName($value);
                 break;
             case self::LABEL_INDEX_INVALID_ARG:
@@ -255,10 +255,10 @@ class UserEmailTest extends TestCase
             default:
                 $set_domain_name->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userEmailEntity->setDomainName($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setDomainName($value);
                 break;
         }
@@ -290,11 +290,11 @@ class UserEmailTest extends TestCase
                 $set_email_enabled->with($value)->willThrowException(new TypeError());
                 $is_email_enabled->willReturn(false);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setEmailEnabled($value);
                 static::assertIsBool($this->userEmailEntity->isEmailEnabled());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setEmailEnabled($value);
                 static::assertIsBool($this->mockEntity->isEmailEnabled());
                 break;
@@ -332,10 +332,10 @@ class UserEmailTest extends TestCase
             default:
                 $set_creation_date->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setCreationDate($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setCreationDate($value);
                 break;
         }
@@ -382,10 +382,10 @@ class UserEmailTest extends TestCase
             default:
                 $set_update_date->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setUpdateDate($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUpdateDate($value);
                 break;
         }
