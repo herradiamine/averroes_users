@@ -17,7 +17,6 @@
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">App</directory>
             <directory suffix=".php">Config</directory>
-            <directory suffix=".php">Database</directory>
             <directory suffix=".php">Entities</directory>
             <directory suffix=".php">Models</directory>
             <directory suffix=".php">Routes</directory>
