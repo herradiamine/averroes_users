@@ -10,6 +10,7 @@ use Throwable;
 /**
  * Class EntityException
  * @package Entities\Exceptions
+ * @codeCoverageIgnore
  */
 class EntityException extends Exception
 {
