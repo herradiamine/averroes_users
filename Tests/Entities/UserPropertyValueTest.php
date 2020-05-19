@@ -9,7 +9,7 @@ use Entities\UserPropertyValue;
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Tests\Entities\Traits\PropertyValueProviderTrait;
+use Tests\Entities\DataProviderTraits\PropertyValueProviderTrait;
 use TypeError;
 
 /**

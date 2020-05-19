@@ -9,7 +9,7 @@ use Entities\UserEmail;
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Tests\Entities\Traits\EmailProviderTrait;
+use Tests\Entities\DataProviderTraits\EmailProviderTrait;
 use TypeError;
 
 /**

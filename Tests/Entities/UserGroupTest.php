@@ -7,7 +7,7 @@ namespace Tests\Entities;
 use Entities\UserGroup;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Tests\Entities\Traits\GroupProviderTrait;
+use Tests\Entities\DataProviderTraits\GroupProviderTrait;
 use DateTimeImmutable;
 use InvalidArgumentException;
 use TypeError;

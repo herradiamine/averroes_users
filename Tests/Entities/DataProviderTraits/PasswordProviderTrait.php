@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Entities\Traits;
+namespace Tests\Entities\DataProviderTraits;
 
 use DateTimeImmutable;
 use Tests\Entities\UserPasswordTest;

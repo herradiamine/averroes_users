@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Entities;
 
 use Entities\UserPassword;
-use Tests\Entities\Traits\PasswordProviderTrait;
+use Tests\Entities\DataProviderTraits\PasswordProviderTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use DateTimeImmutable;
