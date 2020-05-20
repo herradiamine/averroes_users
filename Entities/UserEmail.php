@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Entities;
 
-use Entities\Traits\EntityTrait;
+use Entities\Abstractions\EntityAbstraction;
 use Entities\Interfaces\EntityInterface;
 use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
 use DateTimeImmutable;
@@ -14,16 +14,11 @@ use TypeError;
  * Class Email
  * @package App\Entities
  */
-class UserEmail implements EntityInterface
+class UserEmail extends EntityAbstraction implements EntityInterface
 {
-    use EntityTrait {
-        EntityTrait::__set as public;
-        EntityTrait::initEntity as public;
-    }
-
     public const TABLE_NAME = 'user_email';
 
-    public const LABEL_USER_EMAIL_ID          = 'user_email_id';
+    public const LABEL_USER_EMAIL_ID     = 'user_email_id';
     public const LABEL_USER_ID           = 'user_id';
     public const LABEL_USER_EMAIL        = 'user_email';
     public const LABEL_EMAIL_LOCAL_PART  = 'local_part';
@@ -56,18 +51,6 @@ class UserEmail implements EntityInterface
 
     /** @var DateTimeImmutable|null $updateDate */
     private ?DateTimeImmutable $updateDate;
-
-    /**
-     * Email constructor.
-     * @param array $entityData
-     * @codeCoverageIgnore
-     */
-    public function __construct($entityData = [])
-    {
-        if (!empty($entityData)) {
-            $this->initEntity($entityData);
-        }
-    }
 
     /** @return int */
     public function getUserEmailId(): int

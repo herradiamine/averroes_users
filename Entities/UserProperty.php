@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Entities;
 
-use Entities\Traits\EntityTrait;
+use Entities\Abstractions\EntityAbstraction;
 use Entities\Interfaces\EntityInterface;
 use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
 use DateTimeImmutable;
@@ -14,28 +14,9 @@ use TypeError;
  * Class UserProperty
  * @package App\Entities
  */
-class UserProperty implements EntityInterface
+class UserProperty extends EntityAbstraction implements EntityInterface
 {
-    use EntityTrait {
-        EntityTrait::__set as public;
-        EntityTrait::initEntity as public;
-    }
-
     public const TABLE_NAME = 'user_property';
-
-    public const INT_VALUE    = 'INTEGER';
-    public const FLOAT_VALUE  = 'FLOAT';
-    public const BOOL_VALUE   = 'BOOLEAN';
-    public const STRING_VALUE = 'STRING';
-    public const NULL_VALUE   = 'NULL';
-    public const OBJECT_VALUE = [
-        'user' => User::class,
-        'user_email' => UserEmail::class,
-        'user_group' => UserGroup::class,
-        'user_password' => UserPassword::class,
-        'user_property' => UserProperty::class,
-        'user_property_value' => UserPropertyValue::class
-    ];
 
     public const LABEL_USER_PROPERTY_ID = 'user_property_id';
     public const LABEL_USER_GROUP_ID    = 'user_group_id';
@@ -65,18 +46,6 @@ class UserProperty implements EntityInterface
 
     /** @var DateTimeImmutable|null $updateDate */
     private ?DateTimeImmutable $updateDate;
-
-    /**
-     * UserProperty constructor.
-     * @param array $entityData
-     * @codeCoverageIgnore
-     */
-    public function __construct(array $entityData = [])
-    {
-        if (!empty($entityData)) {
-            $this->initEntity($entityData);
-        }
-    }
 
     /** @return int */
     public function getUserPropertyId(): int
