@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1589944540">
-  <project timestamp="1589944540">
+<coverage generated="1589944736">
+  <project timestamp="1589944736">
     <package name="App\Objects">
       <file name="./App/Objects/User.php">
         <class name="App\Objects\User" namespace="App\Objects" fullPackage="App" package="App">
@@ -124,10 +124,10 @@
         <class name="Entities\Exceptions\InvalidArgument" namespace="Entities\Exceptions" fullPackage="Entities" package="Entities">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
         </class>
-        <line num="26" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="26"/>
-        <line num="28" type="stmt" count="26"/>
-        <line num="29" type="stmt" count="26"/>
-        <line num="30" type="stmt" count="26"/>
+        <line num="26" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="25"/>
+        <line num="28" type="stmt" count="25"/>
+        <line num="29" type="stmt" count="25"/>
+        <line num="30" type="stmt" count="25"/>
         <metrics loc="31" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
       </file>
       <file name="./Entities/Exceptions/UndefinedProperty.php">
@@ -567,22 +567,9 @@
     <package name="Models\Helpers">
       <file name="./Models/Helpers/ModelHelper.php">
         <class name="Models\Helpers\ModelHelper" namespace="Models\Helpers" fullPackage="Models" package="Models">
-          <metrics complexity="5" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="0" elements="13" coveredelements="0"/>
+          <metrics complexity="5" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
-        <line num="20" type="method" name="quoteElements" visibility="public" complexity="5" crap="30" count="0"/>
-        <line num="22" type="stmt" count="0"/>
-        <line num="23" type="stmt" count="0"/>
-        <line num="26" type="stmt" count="0"/>
-        <line num="28" type="stmt" count="0"/>
-        <line num="29" type="stmt" count="0"/>
-        <line num="30" type="stmt" count="0"/>
-        <line num="31" type="stmt" count="0"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="34" type="stmt" count="0"/>
-        <line num="35" type="stmt" count="0"/>
-        <line num="37" type="stmt" count="0"/>
-        <line num="39" type="stmt" count="0"/>
-        <metrics loc="41" ncloc="32" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="0" elements="13" coveredelements="0"/>
+        <metrics loc="42" ncloc="32" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
     </package>
     <file name="./Models/Interfaces/ModelInterface.php">
@@ -662,6 +649,6 @@
         <metrics loc="24" ncloc="20" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="6" coveredelements="0"/>
       </file>
     </package>
-    <metrics files="28" loc="2381" ncloc="1686" classes="19" methods="113" coveredmethods="97" conditionals="0" coveredconditionals="0" statements="362" coveredstatements="230" elements="475" coveredelements="327"/>
+    <metrics files="28" loc="2382" ncloc="1686" classes="18" methods="112" coveredmethods="97" conditionals="0" coveredconditionals="0" statements="350" coveredstatements="230" elements="462" coveredelements="327"/>
   </project>
 </coverage>
