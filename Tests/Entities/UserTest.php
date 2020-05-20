@@ -9,7 +9,7 @@ use Entities\User;
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Tests\Entities\Traits\UserProviderTrait;
+use Tests\Entities\DataProviderTraits\UserProviderTrait;
 use TypeError;
 
 /**
@@ -45,7 +45,7 @@ class UserTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableData();
-        $this->mockEntity = static::createMock(User::class);
+        $this->mockEntity = $this->createMock(User::class);
         $this->userEntity = new User();
     }
 
@@ -72,10 +72,10 @@ class UserTest extends TestCase
             case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_id->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userEntity->setUserId($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserId($value);
                 break;
             case self::LABEL_INDEX_TYPE_ERROR:
@@ -83,10 +83,10 @@ class UserTest extends TestCase
             default:
                 $set_user_id->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEntity->setUserId($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserId($value);
                 break;
         }
@@ -116,10 +116,10 @@ class UserTest extends TestCase
             case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_group_id->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userEntity->setUserGroupId($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserGroupId($value);
                 break;
             case self::LABEL_INDEX_TYPE_ERROR:
@@ -127,10 +127,10 @@ class UserTest extends TestCase
             default:
                 $set_user_group_id->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEntity->setUserGroupId($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserGroupId($value);
                 break;
         }
@@ -160,10 +160,10 @@ class UserTest extends TestCase
             case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_name->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userEntity->setUserName($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserName($value);
                 break;
             case self::LABEL_INDEX_TYPE_ERROR:
@@ -171,10 +171,10 @@ class UserTest extends TestCase
             default:
                 $set_user_name->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEntity->setUserName($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserName($value);
                 break;
         }
@@ -204,10 +204,10 @@ class UserTest extends TestCase
             case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_firstname->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userEntity->setUserFirstname($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserFirstname($value);
                 break;
             case self::LABEL_INDEX_TYPE_ERROR:
@@ -215,10 +215,10 @@ class UserTest extends TestCase
             default:
                 $set_user_firstname->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEntity->setUserFirstname($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserFirstname($value);
                 break;
         }
@@ -248,10 +248,10 @@ class UserTest extends TestCase
             case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_lastname->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userEntity->setUserLastname($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserLastname($value);
                 break;
             case self::LABEL_INDEX_TYPE_ERROR:
@@ -259,10 +259,10 @@ class UserTest extends TestCase
             default:
                 $set_user_lastname->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEntity->setUserLastname($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserLastname($value);
                 break;
         }
@@ -294,10 +294,10 @@ class UserTest extends TestCase
                 $set_user_enabled->with($value)->willThrowException(new TypeError());
                 $is_user_enabled->willReturn(false);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEntity->setUserEnabled($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserEnabled($value);
                 break;
         }
@@ -334,10 +334,10 @@ class UserTest extends TestCase
             default:
                 $set_creation_date->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEntity->setCreationDate($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setCreationDate($value);
                 break;
         }
@@ -384,10 +384,10 @@ class UserTest extends TestCase
             default:
                 $set_update_date->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEntity->setUpdateDate($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUpdateDate($value);
                 break;
         }

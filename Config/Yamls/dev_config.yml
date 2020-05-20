@@ -2,7 +2,7 @@ name: Development configuration file
 
 database_configuration:
   driver: mysql
-  host: 172.17.0.3
+  host: 172.17.0.2
   database: averoes
   charset: utf8
   username: root

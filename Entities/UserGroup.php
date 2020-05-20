@@ -4,23 +4,18 @@ declare(strict_types=1);
 
 namespace Entities;
 
+use Entities\Abstractions\EntityAbstraction;
 use Entities\Interfaces\EntityInterface;
 use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
 use DateTimeImmutable;
-use Entities\Traits\EntityTrait;
 use TypeError;
 
 /**
  * Class UserGroup
  * @package App\Entities
  */
-class UserGroup implements EntityInterface
+class UserGroup extends EntityAbstraction implements EntityInterface
 {
-    use EntityTrait {
-        EntityTrait::__set as public;
-        EntityTrait::initEntity as public;
-    }
-
     public const TABLE_NAME = 'user_group';
 
     public const LABEL_USER_GROUP_ID   = 'user_group_id';
@@ -43,18 +38,6 @@ class UserGroup implements EntityInterface
 
     /** @var DateTimeImmutable|null $updateDate */
     private ?DateTimeImmutable $updateDate;
-
-    /**
-     * UserGroup constructor.
-     * @param array $entityData
-     * @codeCoverageIgnore
-     */
-    public function __construct(array $entityData = [])
-    {
-        if (!empty($entityData)) {
-            $this->initEntity($entityData);
-        }
-    }
 
     /** @return int */
     public function getUserGroupId(): int

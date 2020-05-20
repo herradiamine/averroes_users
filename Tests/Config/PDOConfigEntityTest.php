@@ -55,7 +55,7 @@ class PDOConfigEntityTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableConfigData();
-        $this->mockEntity   = static::createMock(PDOConfigEntity::class);
+        $this->mockEntity   = $this->createMock(PDOConfigEntity::class);
         $this->configEntity = new PDOConfigEntity();
     }
 
@@ -80,10 +80,10 @@ class PDOConfigEntityTest extends TestCase
                 break;
             case self::LABEL_INDEX_EMPTY:
                 $set_database_config->with($config)->willThrowException(new Error());
-                static::expectException(Error::class);
+                $this->expectException(Error::class);
                 $this->configEntity->loadDatabaseConfig($config);
 
-                static::expectException(Error::class);
+                $this->expectException(Error::class);
                 $this->mockEntity->loadDatabaseConfig($config);
                 break;
             case self::LABEL_INDEX_FAKE_DRIVER:
@@ -94,10 +94,10 @@ class PDOConfigEntityTest extends TestCase
             case self::LABEL_INDEX_EMPTY_PASSWORD:
             default:
                 $set_database_config->with($config)->willThrowException(new InvalidArgumentException());
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->configEntity->loadDatabaseConfig($config);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->loadDatabaseConfig($config);
                 break;
         }
@@ -133,10 +133,10 @@ class PDOConfigEntityTest extends TestCase
                 $set_driver->with($value)->willThrowException(new InvalidArgumentException());
                 $get_driver->willReturn($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->configEntity->setDriver($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setDriver($value);
                 break;
             case self::LABEL_INDEX_EMPTY:
@@ -144,10 +144,10 @@ class PDOConfigEntityTest extends TestCase
                 $set_driver->with($value)->willThrowException(new InvalidArgumentException());
                 $get_driver->willReturn(null);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->configEntity->setDriver($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setDriver($value);
                 break;
         }
@@ -185,10 +185,10 @@ class PDOConfigEntityTest extends TestCase
                 $set_host->with($value)->willThrowException(new InvalidArgumentException());
                 $get_host->willReturn(null);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->configEntity->setHost($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setHost($value);
                 break;
         }
@@ -225,10 +225,10 @@ class PDOConfigEntityTest extends TestCase
                 $set_database->willThrowException(new InvalidArgumentException());
                 $get_database->willReturn(null);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->configEntity->setDatabase($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setDatabase($value);
                 break;
         }
@@ -266,10 +266,10 @@ class PDOConfigEntityTest extends TestCase
                 $set_charset->with($value)->willThrowException(new InvalidArgumentException());
                 $get_charset->willReturn(null);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->configEntity->setCharset($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setCharset($value);
                 break;
         }
@@ -306,10 +306,10 @@ class PDOConfigEntityTest extends TestCase
                 $set_username->willThrowException(new InvalidArgumentException());
                 $get_username->willReturn(null);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->configEntity->setUsername($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUsername($value);
                 break;
         }
@@ -346,10 +346,10 @@ class PDOConfigEntityTest extends TestCase
                 $set_password->willThrowException(new InvalidArgumentException());
                 $get_password->willReturn(null);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->configEntity->setPassword($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setPassword($value);
                 break;
         }
