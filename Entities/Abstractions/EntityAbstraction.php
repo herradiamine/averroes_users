@@ -19,12 +19,12 @@ use TypeError;
  */
 abstract class EntityAbstraction
 {
-    protected const LABEL_TYPE_BOOL   = 'bool';
-    protected const LABEL_TYPE_STRING = 'string';
-    protected const LABEL_TYPE_ARRAY  = 'array';
-    protected const LABEL_TYPE_INT    = 'int';
-    protected const LABEL_TYPE_FLOAT  = 'float';
-    protected const LABEL_TYPE_DATETIMEIMMUTABLE = 'DateTimeImmutable';
+    private const LABEL_TYPE_BOOL   = 'bool';
+    private const LABEL_TYPE_STRING = 'string';
+    private const LABEL_TYPE_ARRAY  = 'array';
+    private const LABEL_TYPE_INT    = 'int';
+    private const LABEL_TYPE_FLOAT  = 'float';
+    private const LABEL_TYPE_DATETIMEIMMUTABLE = 'DateTimeImmutable';
 
     /**
      * Entity constructor.
@@ -72,6 +72,7 @@ abstract class EntityAbstraction
     }
 
     /**
+     * Used when we the entity constructor is called manually
      * @param array $entityData
      * @codeCoverageIgnore
      */

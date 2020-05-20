@@ -26,8 +26,15 @@ class UndefinedProperty extends ErrorException
      * @param int       $lineno   [optional] The line number where the exception is thrown.
      * @param Exception $previous [optional] The previous exception used for the exception chaining.
      */
-    public function __construct($location, $message = self::DEFAULT_MESSAGE, $code = 0, $severity = 1, $filename = __FILE__, $lineno = __LINE__, $previous = null)
-    {
+    public function __construct(
+        $location,
+        $message = self::DEFAULT_MESSAGE,
+        $code = 0,
+        $severity = 1,
+        $filename = __FILE__,
+        $lineno = __LINE__,
+        $previous = null
+    ) {
         parent::__construct($message, $code, $severity, $filename, $lineno, $previous);
         $this->message = "$location : $message";
     }
