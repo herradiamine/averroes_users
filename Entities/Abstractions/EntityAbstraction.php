@@ -125,6 +125,7 @@ abstract class EntityAbstraction
      * Applies a set method after its existence check and cast of its value to the right type.
      * @param string $setMethod
      * @param mixed  $value
+     * @codeCoverageIgnore
      */
     private function setMethod(string $setMethod, $value): void
     {

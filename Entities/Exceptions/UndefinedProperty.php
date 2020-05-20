@@ -10,6 +10,7 @@ use ErrorException;
 /**
  * Class UndefinedMethod
  * @package Entities\Exceptions
+ * @codeCoverageIgnore
  */
 class UndefinedProperty extends ErrorException
 {
