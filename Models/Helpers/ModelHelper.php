@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Models\Helpers;
 
-use Models\Engine\ModelManager;
+use PDO;
+use ReflectionClass;
 
 /**
  * Class ModelHelper
  * @package Models\Helpers
  */
-class ModelHelper extends ModelManager
+class ModelHelper
 {
     /**
      * @param array $displayFields
@@ -19,16 +20,21 @@ class ModelHelper extends ModelManager
     public static function quoteElements(array $displayFields = []): string
     {
         $fields = "";
+        $pdo_reflection = new ReflectionClass(PDO::class);
+
+        /** @var PDO $pdo */
+        $pdo = $pdo_reflection->newInstanceWithoutConstructor();
+
         if (count($displayFields) > 1) {
             $count = count($displayFields);
             for ($key = 0; $key < $count; $key++) {
-                $fields .= (new ModelHelper())->quote($displayFields[$key]);
+                $fields .= $pdo->quote($displayFields[$key]);
                 $fields .= ($key != ($count - 1)) ? "," : "";
             }
         } elseif (in_array('*', $displayFields)) {
             $fields = $displayFields[0];
         } else {
-            $fields = (new ModelHelper())->quote($displayFields[0]);
+            $fields = $pdo->quote($displayFields[0]);
         }
         return $fields;
     }
