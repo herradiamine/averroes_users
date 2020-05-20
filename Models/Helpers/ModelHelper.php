@@ -16,6 +16,7 @@ class ModelHelper
     /**
      * @param array $displayFields
      * @return false|string
+     * @codeCoverageIgnore
      */
     public static function quoteElements(array $displayFields = []): string
     {
