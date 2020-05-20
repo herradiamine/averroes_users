@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Entities;
 
-use Entities\Traits\EntityTrait;
+use Entities\Abstractions\EntityAbstraction;
 use Entities\Interfaces\EntityInterface;
 use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
 use DateTimeImmutable;
@@ -14,13 +14,8 @@ use TypeError;
  * Class Password
  * @package App\Entities
  */
-class UserPassword implements EntityInterface
+class UserPassword extends EntityAbstraction implements EntityInterface
 {
-    use EntityTrait {
-        EntityTrait::__set as public;
-        EntityTrait::initEntity as public;
-    }
-
     public const TABLE_NAME = 'user_password';
 
     public const LABEL_USER_PASSWORD_ID = 'user_password_id';
@@ -47,18 +42,6 @@ class UserPassword implements EntityInterface
 
     /** @var DateTimeImmutable|null $updateDate */
     private ?DateTimeImmutable $updateDate;
-
-    /**
-     * Password constructor.
-     * @param array $entityData
-     * @codeCoverageIgnore
-     */
-    public function __construct(array $entityData = [])
-    {
-        if (!empty($entityData)) {
-            $this->initEntity($entityData);
-        }
-    }
 
     /** @return int */
     public function getUserPasswordId(): int

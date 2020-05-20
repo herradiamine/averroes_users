@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Entities;
 
 use Entities\UserPassword;
-use Tests\Entities\Traits\PasswordProviderTrait;
+use Tests\Entities\DataProviderTraits\PasswordProviderTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use DateTimeImmutable;
@@ -45,7 +45,7 @@ class UserPasswordTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableData();
-        $this->mockEntity = static::createMock(UserPassword::class);
+        $this->mockEntity = $this->createMock(UserPassword::class);
         $this->userPasswordEntity = new UserPassword();
     }
 
@@ -72,20 +72,20 @@ class UserPasswordTest extends TestCase
             case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_password_id->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userPasswordEntity->setUserPasswordId($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserPasswordId($value);
                 break;
             case self::LABEL_INDEX_TYPE_ERROR:
             case self::LABEL_INDEX_EMPTY:
             default:
                 $set_user_password_id->with($value)->willThrowException(new TypeError());
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userPasswordEntity->setUserPasswordId($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserPasswordId($value);
                 break;
         }
@@ -114,20 +114,20 @@ class UserPasswordTest extends TestCase
             case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_id->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userPasswordEntity->setUserId($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserId($value);
                 break;
             case self::LABEL_INDEX_TYPE_ERROR:
             case self::LABEL_INDEX_EMPTY:
             default:
                 $set_user_id->with($value)->willThrowException(new TypeError());
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userPasswordEntity->setUserId($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserId($value);
                 break;
         }
@@ -156,10 +156,10 @@ class UserPasswordTest extends TestCase
             case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_password->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userPasswordEntity->setUserPassword($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserPassword($value);
                 break;
             case self::LABEL_INDEX_EMPTY:
@@ -167,10 +167,10 @@ class UserPasswordTest extends TestCase
             default:
                 $set_user_password->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userPasswordEntity->setUserPassword($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserPassword($value);
                 break;
         }
@@ -201,10 +201,10 @@ class UserPasswordTest extends TestCase
             default:
                 $set_password_enabled->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userPasswordEntity->setPasswordEnabled($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setPasswordEnabled($value);
                 break;
         }
@@ -241,10 +241,10 @@ class UserPasswordTest extends TestCase
             default:
                 $set_creation_date->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userPasswordEntity->setCreationDate($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setCreationDate($value);
                 break;
         }
@@ -291,10 +291,10 @@ class UserPasswordTest extends TestCase
             default:
                 $set_update_date->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userPasswordEntity->setUpdateDate($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUpdateDate($value);
                 break;
         }

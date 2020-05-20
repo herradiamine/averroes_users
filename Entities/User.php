@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Entities;
 
-use Entities\Traits\EntityTrait;
+use Entities\Abstractions\EntityAbstraction;
 use Entities\Interfaces\EntityInterface;
 use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
 use DateTimeImmutable;
@@ -14,13 +14,8 @@ use TypeError;
  * Class User
  * @package App\Entities
  */
-class User implements EntityInterface
+class User extends EntityAbstraction implements EntityInterface
 {
-    use EntityTrait {
-        EntityTrait::__set as public;
-        EntityTrait::initEntity as public;
-    }
-
     public const TABLE_NAME = 'user';
 
     public const LABEL_USER_ID        = 'user_id';
@@ -48,25 +43,13 @@ class User implements EntityInterface
     private string $userLastname;
 
     /** @var bool $userEnabled */
-    private bool $userEnabled;
+    private bool $userEnabled = false;
 
     /** @var DateTimeImmutable $creationDate */
     private DateTimeImmutable $creationDate;
 
     /** @var DateTimeImmutable|null $updateDate */
     private ?DateTimeImmutable $updateDate;
-
-    /**
-     * User constructor.
-     * @param array $entityData
-     * @codeCoverageIgnore
-     */
-    public function __construct(array $entityData = [])
-    {
-        if (!empty($entityData)) {
-            $this->initEntity($entityData);
-        }
-    }
 
     /** @return int */
     public function getUserId(): int

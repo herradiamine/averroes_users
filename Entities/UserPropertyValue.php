@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Entities;
 
-use Entities\Traits\EntityTrait;
+use Entities\Abstractions\EntityAbstraction;
 use Entities\Interfaces\EntityInterface;
 use Entities\Exceptions\InvalidArgument as InvalidArgumentException;
 use DateTimeImmutable;
@@ -15,13 +15,8 @@ use TypeError;
  *
  * @package App\Entities
  */
-class UserPropertyValue implements EntityInterface
+class UserPropertyValue extends EntityAbstraction implements EntityInterface
 {
-    use EntityTrait {
-        EntityTrait::__set as public;
-        EntityTrait::initEntity as public;
-    }
-
     public const TABLE_NAME = 'user_property_value';
 
     public const LABEL_USER_PROPERTY_VALUE_ID = 'user_property_value_id';
@@ -48,18 +43,6 @@ class UserPropertyValue implements EntityInterface
 
     /** @var DateTimeImmutable|null $updateDate */
     private ?DateTimeImmutable $updateDate;
-
-    /**
-     * UserPropertyValue constructor.
-     * @param array $entityData
-     * @codeCoverageIgnore
-     */
-    public function __construct(array $entityData = [])
-    {
-        if (!empty($entityData)) {
-            $this->initEntity($entityData);
-        }
-    }
 
     /** @return int */
     public function getUserPropertyValueId(): int
