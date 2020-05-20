@@ -15,6 +15,7 @@ use TypeError;
 /**
  * Trait EntityTrait
  * @package Entities
+ * @codeCoverageIgnore
  */
 abstract class EntityAbstraction
 {
@@ -38,6 +39,7 @@ abstract class EntityAbstraction
     }
 
     /**
+     * Entity setter. Used in PDO fetch modes to map properties with their values in the right type.
      * @param $name
      * @param $value
      * @throws ReflectionException
@@ -49,9 +51,9 @@ abstract class EntityAbstraction
         $reflection = new ReflectionClass($this);
 
         $method_name = EntityHelper::snakeToCamelCase($name, true);
-        $is_method  = 'is' . $method_name;
-        $set_method = 'set' . $method_name;
-        $get_method = 'get' . $method_name;
+        $get_method  = 'get' . $method_name;
+        $is_method   = 'is' . $method_name;
+        $set_method  = 'set' . $method_name;
 
         if ($reflection->hasMethod($get_method)) {
             $method_type = $reflection->getMethod($get_method)->getReturnType()->getName();
@@ -63,13 +65,21 @@ abstract class EntityAbstraction
             throw new UndefinedProperty(__METHOD__, $message);
         }
 
-        $value = $this->automatedValueCastAndSet(
-            $method_type,
-            $value
-        );
-
         if ($reflection->hasMethod($set_method)) {
-            $this->{$set_method}($value);
+            $value = $this->automatedValueCastAndSet($method_type, $value);
+            $this->setMethod($set_method, $value);
+        }
+    }
+
+    /**
+     * @param array $entityData
+     * @codeCoverageIgnore
+     */
+    public function initEntity(array $entityData): void
+    {
+        foreach ($entityData as $key => $value) {
+            $set_method = 'set' . EntityHelper::snakeToCamelCase($key, true);
+            $this->setMethod($set_method, $value);
         }
     }
 
@@ -111,20 +121,18 @@ abstract class EntityAbstraction
     }
 
     /**
-     * @param array $entityData
-     * @codeCoverageIgnore
+     * Applies a set method after its existence check and cast of its value to the right type.
+     * @param string $setMethod
+     * @param mixed  $value
      */
-    public function initEntity(array $entityData): void
+    private function setMethod(string $setMethod, $value): void
     {
-        foreach ($entityData as $key => $value) {
-            $method = 'set' . EntityHelper::snakeToCamelCase($key, true);
-            try {
-                $this->{$method}($value);
-            } catch (TypeError $error) {
-                echo TypeError::class . ' : ' . $error->getMessage();
-            } catch (InvalidArgumentException $exception) {
-                echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
-            }
+        try {
+            $this->{$setMethod}($value);
+        } catch (TypeError $error) {
+            echo TypeError::class . ' : ' . $error->getMessage();
+        } catch (InvalidArgumentException $exception) {
+            echo InvalidArgumentException::class . ' : ' . $exception->getMessage();
         }
     }
 }
