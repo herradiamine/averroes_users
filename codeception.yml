@@ -22,5 +22,3 @@ coverage:
         - App/*
         - Config/*
         - Entities/*
-        - Models/*
-        - Routes/*
