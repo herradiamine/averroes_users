@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Tests\App;
 
 use App\UserController;
-use PHPUnit\Framework\TestCase;
+use Codeception\Test\Unit;
 
 /**
  * Class UserControllerTest
  * @package Tests\App
  */
-class UserControllerTest extends TestCase
+class UserControllerTest extends Unit
 {
 
 }

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Config;
 
+use Codeception\Test\Unit;
 use Config\PDOConfigEntity;
 use Tests\Config\Traits\AvailableConfigDataTrait;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 use InvalidArgumentException;
 use Error;
 
@@ -15,7 +15,7 @@ use Error;
  * Class PDOConfigEntityTest
  * @package Tests\Config
  */
-class PDOConfigEntityTest extends TestCase
+class PDOConfigEntityTest extends Unit
 {
     use AvailableConfigDataTrait {
         AvailableConfigDataTrait::__construct as availableConfigData;

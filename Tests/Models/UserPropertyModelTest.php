@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Tests\Models;
 
 use Models\UserPropertyModel;
-use PHPUnit\Framework\TestCase;
+use Codeception\Test\Unit;
 
 /**
  * Class UserPropertyModelTest
  * @package Tests\Models
  */
-class UserPropertyModelTest extends TestCase
+class UserPropertyModelTest extends Unit
 {
 
 }

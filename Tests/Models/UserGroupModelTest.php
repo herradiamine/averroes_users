@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Tests\Models;
 
 use Models\UserGroupModel;
-use PHPUnit\Framework\TestCase;
+use Codeception\Test\Unit;
 
 /**
  * Class UserGroupModelTest
  * @package Tests\Models
  */
-class UserGroupModelTest extends TestCase
+class UserGroupModelTest extends Unit
 {
 
 }
