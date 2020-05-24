@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Tests\Entities;
 
 use Entities\UserGroup;
+use Codeception\Test\Unit;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 use Tests\Entities\DataProviderTraits\GroupProviderTrait;
 use DateTimeImmutable;
 use InvalidArgumentException;
@@ -16,7 +16,7 @@ use TypeError;
  * Class UserGroupTest
  * @package Tests\Entities
  */
-class UserGroupTest extends TestCase
+class UserGroupTest extends Unit
 {
     use GroupProviderTrait {
         GroupProviderTrait::__construct as availableData;
