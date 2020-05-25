@@ -1,11 +1,6 @@
 # Select image from https://hub.docker.com/_/php/
 image: php:7.4.6
 
-# Select what we should cache
-cache:
-  paths:
-    - vendor/
-
 before_script:
   # Install git and unzip (composer will need them)
   - apt-get update && apt-get install -qqy git unzip
