@@ -17,5 +17,5 @@ before_script:
 # Test
 test:
   script:
-    - vendor/bin/phpcs
-    - vendor/bin/codecept run
+    - vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*,*/Rapports/*
+    - vendor/bin/codecept run unit
