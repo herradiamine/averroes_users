@@ -9,16 +9,34 @@ suites:
                 - Asserts
         step_decorators: ~ 
 settings:
-    shuffle: true
+    # Shuffle tests or proceed in order
+    shuffle: false
     lint: true
+    # Display colors in CLI
+    colors: true
+    # Use xml strict as doctype for coverage report
+    strict_xml: true
+    # Codeception should not exceed 1024M
+    memory_limit: 1024M
+    # Can report useless/empty tests or not
+    report_useless_tests: true
+    disallow_test_output: false
 paths:
+    # Path to tests
     tests: Tests
+    # Path to outputs
     output: Tests/_output
+    # Path to helpers and UnitTester
     support: Tests/_support
-    data: Tests
+    # Path to fixtures
+    data: Tests/_data
+    # Path to environment configuration
+    env: Tests/_env
 coverage:
     enabled: true
     include:
         - App/*
         - Config/*
         - Entities/*
+        - Models/*
+        - Routes/*
