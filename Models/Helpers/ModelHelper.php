@@ -15,10 +15,12 @@ class ModelHelper extends ModelManager
     /**
      * @param array $displayFields
      * @return false|string
+     * @codeCoverageIgnore
      */
     public static function quoteElements(array $displayFields = []): string
     {
         $fields = "";
+
         if (count($displayFields) > 1) {
             $count = count($displayFields);
             for ($key = 0; $key < $count; $key++) {

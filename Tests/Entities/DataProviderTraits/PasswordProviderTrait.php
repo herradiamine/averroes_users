@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Entities\Traits;
+namespace Tests\Entities\DataProviderTraits;
 
 use DateTimeImmutable;
+use Tests\Entities\UserPasswordTest;
 
 /**
  * Trait PasswordProviderTrait
@@ -23,50 +24,50 @@ trait PasswordProviderTrait
     public function __construct()
     {
         $this->userPasswordId = [
-            ['real', 39873],
-            ['invalid_arg', 0],
-            ['type_error', '39873'],
-            ['empty', '']
+            [UserPasswordTest::LABEL_INDEX_REAL, 39873],
+            [UserPasswordTest::LABEL_INDEX_INVALID_ARG, 0],
+            [UserPasswordTest::LABEL_INDEX_TYPE_ERROR, '39873'],
+            [UserPasswordTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->userId = [
-            ['real', 39873],
-            ['invalid_arg', 0],
-            ['type_error', '39873'],
-            ['empty', '']
+            [UserPasswordTest::LABEL_INDEX_REAL, 39873],
+            [UserPasswordTest::LABEL_INDEX_INVALID_ARG, 0],
+            [UserPasswordTest::LABEL_INDEX_TYPE_ERROR, '39873'],
+            [UserPasswordTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->userPassword = [
-            ['real', 'E0D9U3FDOIJE'],
-            ['invalid_arg', ''],
-            ['type_error', 39873],
-            ['empty', null]
+            [UserPasswordTest::LABEL_INDEX_REAL, 'E0D9U3FDOIJE'],
+            [UserPasswordTest::LABEL_INDEX_INVALID_ARG, ''],
+            [UserPasswordTest::LABEL_INDEX_TYPE_ERROR, 39873],
+            [UserPasswordTest::LABEL_INDEX_EMPTY, null]
         ];
         $this->passwordEnabled = [
-            ['real', true],
-            ['type_error', 1],
-            ['empty', '']
+            [UserPasswordTest::LABEL_INDEX_REAL, true],
+            [UserPasswordTest::LABEL_INDEX_TYPE_ERROR, 1],
+            [UserPasswordTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->creationDate = [
-            ['real', DateTimeImmutable::createFromFormat(
+            [UserPasswordTest::LABEL_INDEX_REAL, DateTimeImmutable::createFromFormat(
                 DATE_W3C,
                 date(
                     DATE_W3C,
                     strtotime('yesterday')
                 )
             )],
-            ['type_error', date(DATE_W3C, strtotime('yesterday'))],
-            ['empty', '']
+            [UserPasswordTest::LABEL_INDEX_TYPE_ERROR, date(DATE_W3C, strtotime('yesterday'))],
+            [UserPasswordTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->updateDate = [
-            ['real', DateTimeImmutable::createFromFormat(
+            [UserPasswordTest::LABEL_INDEX_REAL, DateTimeImmutable::createFromFormat(
                 DATE_W3C,
                 date(
                     DATE_W3C,
                     strtotime('today')
                 )
             )],
-            ['null', null],
-            ['type_error', date(DATE_W3C, strtotime('today'))],
-            ['empty', '']
+            [UserPasswordTest::LABEL_INDEX_NULL, null],
+            [UserPasswordTest::LABEL_INDEX_TYPE_ERROR, date(DATE_W3C, strtotime('today'))],
+            [UserPasswordTest::LABEL_INDEX_EMPTY, '']
         ];
     }
 

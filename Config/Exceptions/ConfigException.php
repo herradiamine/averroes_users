@@ -10,6 +10,7 @@ use Throwable;
 /**
  * Class ConfigException
  * @package Config\Exceptions
+ * @codeCoverageIgnore
  */
 class ConfigException extends Exception
 {

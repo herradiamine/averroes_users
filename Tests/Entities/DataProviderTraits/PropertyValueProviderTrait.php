@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Entities\Traits;
+namespace Tests\Entities\DataProviderTraits;
 
 use DateTimeImmutable;
+use Tests\Entities\UserPropertyValueTest;
 
 /**
  * Trait PropertyValueProviderTrait
@@ -23,49 +24,49 @@ trait PropertyValueProviderTrait
     public function __construct()
     {
         $this->userPropertyValueId = [
-            ['real', 39873],
-            ['invalid_arg', 0],
-            ['type_error', '39873'],
-            ['empty', '']
+            [UserPropertyValueTest::LABEL_INDEX_REAL, 39873],
+            [UserPropertyValueTest::LABEL_INDEX_INVALID_ARG, 0],
+            [UserPropertyValueTest::LABEL_INDEX_TYPE_ERROR, '39870'],
+            [UserPropertyValueTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->userId = [
-            ['real', 39873],
-            ['invalid_arg', 0],
-            ['type_error', '39873'],
-            ['empty', '']
+            [UserPropertyValueTest::LABEL_INDEX_REAL, 39873],
+            [UserPropertyValueTest::LABEL_INDEX_INVALID_ARG, 0],
+            [UserPropertyValueTest::LABEL_INDEX_TYPE_ERROR, '39871'],
+            [UserPropertyValueTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->userPropertyId = [
-            ['real', 39873],
-            ['invalid_arg', 0],
-            ['type_error', '39873'],
-            ['empty', '']
+            [UserPropertyValueTest::LABEL_INDEX_REAL, 39873],
+            [UserPropertyValueTest::LABEL_INDEX_INVALID_ARG, 0],
+            [UserPropertyValueTest::LABEL_INDEX_TYPE_ERROR, '39873'],
+            [UserPropertyValueTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->customValue = [
-            ['real', 'CUSTOM_VALUE'],
-            ['invalid_arg', ['']]
+            [UserPropertyValueTest::LABEL_INDEX_REAL, 'CUSTOM_VALUE'],
+            [UserPropertyValueTest::LABEL_INDEX_INVALID_ARG, ['']]
         ];
         $this->creationDate = [
-            ['real', DateTimeImmutable::createFromFormat(
+            [UserPropertyValueTest::LABEL_INDEX_REAL, DateTimeImmutable::createFromFormat(
                 DATE_W3C,
                 date(
                     DATE_W3C,
                     strtotime('yesterday')
                 )
             )],
-            ['type_error', date(DATE_W3C, strtotime('yesterday'))],
-            ['empty', '']
+            [UserPropertyValueTest::LABEL_INDEX_TYPE_ERROR, date(DATE_W3C, strtotime('yesterday'))],
+            [UserPropertyValueTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->updateDate = [
-            ['real', DateTimeImmutable::createFromFormat(
+            [UserPropertyValueTest::LABEL_INDEX_REAL, DateTimeImmutable::createFromFormat(
                 DATE_W3C,
                 date(
                     DATE_W3C,
                     strtotime('today')
                 )
             )],
-            ['null', null],
-            ['type_error', date(DATE_W3C, strtotime('now'))],
-            ['empty', '']
+            [UserPropertyValueTest::LABEL_INDEX_NULL, null],
+            [UserPropertyValueTest::LABEL_INDEX_TYPE_ERROR, date(DATE_W3C, strtotime('now'))],
+            [UserPropertyValueTest::LABEL_INDEX_EMPTY, '']
         ];
     }
 

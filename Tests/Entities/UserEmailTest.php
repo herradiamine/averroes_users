@@ -6,21 +6,27 @@ namespace Tests\Entities;
 
 use DateTimeImmutable;
 use Entities\UserEmail;
+use Codeception\Test\Unit;
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
-use Tests\Entities\Traits\EmailProviderTrait;
+use Tests\Entities\DataProviderTraits\EmailProviderTrait;
 use TypeError;
 
 /**
  * Class UserEmailTest
  * @package App\Tests\Entities
  */
-class UserEmailTest extends TestCase
+class UserEmailTest extends Unit
 {
     use EmailProviderTrait {
         EmailProviderTrait::__construct as availableData;
     }
+
+    public const LABEL_INDEX_REAL        = 'real';
+    public const LABEL_INDEX_INVALID_ARG = 'invalid_arg';
+    public const LABEL_INDEX_TYPE_ERROR  = 'type_error';
+    public const LABEL_INDEX_EMPTY       = 'empty';
+    public const LABEL_INDEX_NULL        = 'null';
 
     /** @var UserEmail|MockObject $mockEntity */
     private MockObject $mockEntity;
@@ -39,7 +45,7 @@ class UserEmailTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableData();
-        $this->mockEntity      = static::createMock(UserEmail::class);
+        $this->mockEntity      = $this->createMock(UserEmail::class);
         $this->userEmailEntity = new UserEmail();
     }
 
@@ -53,7 +59,7 @@ class UserEmailTest extends TestCase
         $set_user_email_id = $this->mockEntity->method('setUserEmailId');
         $get_user_email_id = $this->mockEntity->method('getUserEmailId');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_user_email_id->with($value)->willReturn(true);
                 $get_user_email_id->willReturn($value);
 
@@ -63,23 +69,24 @@ class UserEmailTest extends TestCase
                 static::assertTrue($this->mockEntity->setUserEmailId($value));
                 static::assertEquals($value, $this->mockEntity->getUserEmailId());
                 break;
-            case 'invalid_arg':
+            case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_email_id->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userEmailEntity->setUserEmailId($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserEmailId($value);
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_user_email_id->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setUserEmailId($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserEmailId($value);
                 break;
         }
@@ -95,7 +102,7 @@ class UserEmailTest extends TestCase
         $set_user_id = $this->mockEntity->method('setUserId');
         $get_user_id = $this->mockEntity->method('getUserId');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_user_id->with($value)->willReturn(true);
                 $get_user_id->willReturn($value);
 
@@ -105,23 +112,24 @@ class UserEmailTest extends TestCase
                 static::assertTrue($this->mockEntity->setUserId($value));
                 static::assertEquals($value, $this->mockEntity->getUserId());
                 break;
-            case 'invalid_arg':
+            case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_id->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userEmailEntity->setUserId($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserId($value);
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_user_id->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setUserId($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserId($value);
                 break;
         }
@@ -137,7 +145,7 @@ class UserEmailTest extends TestCase
         $set_user_email = $this->mockEntity->method('setUserEmail');
         $get_user_email = $this->mockEntity->method('getUserEmail');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_user_email->with($value)->willReturn(true);
                 $get_user_email->willReturn($value);
 
@@ -147,23 +155,24 @@ class UserEmailTest extends TestCase
                 static::assertTrue($this->userEmailEntity->setUserEmail($value));
                 static::assertEquals($value, $this->userEmailEntity->getUserEmail());
                 break;
-            case 'invalid_arg':
-            case 'empty':
-                $set_user_email->with($value)->willThrowException(new InvalidArgumentException());
-
-                static::expectException(InvalidArgumentException::class);
-                $this->userEmailEntity->setUserEmail($value);
-
-                static::expectException(InvalidArgumentException::class);
-                $this->mockEntity->setUserEmail($value);
-                break;
-            case 'type_error':
+            case self::LABEL_INDEX_TYPE_ERROR:
                 $set_user_email->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setUserEmail($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
+                $this->mockEntity->setUserEmail($value);
+                break;
+            case self::LABEL_INDEX_INVALID_ARG:
+            case self::LABEL_INDEX_EMPTY:
+            default:
+                $set_user_email->with($value)->willThrowException(new InvalidArgumentException());
+
+                $this->expectException(InvalidArgumentException::class);
+                $this->userEmailEntity->setUserEmail($value);
+
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserEmail($value);
                 break;
         }
@@ -179,7 +188,7 @@ class UserEmailTest extends TestCase
         $set_local_part = $this->mockEntity->method('setLocalPart');
         $get_local_part = $this->mockEntity->method('getLocalPart');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_local_part->with($value)->willReturn(true);
                 $get_local_part->willReturn($value);
 
@@ -189,23 +198,24 @@ class UserEmailTest extends TestCase
                 static::assertTrue($this->userEmailEntity->setLocalPart($value));
                 static::assertEquals($value, $this->userEmailEntity->getLocalPart());
                 break;
-            case 'invalid_arg':
-            case 'empty':
-                $set_local_part->with($value)->willThrowException(new InvalidArgumentException());
-
-                static::expectException(InvalidArgumentException::class);
-                $this->userEmailEntity->setLocalPart($value);
-
-                static::expectException(InvalidArgumentException::class);
-                $this->mockEntity->setLocalPart($value);
-                break;
-            case 'type_error':
+            case self::LABEL_INDEX_TYPE_ERROR:
                 $set_local_part->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setLocalPart($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
+                $this->mockEntity->setLocalPart($value);
+                break;
+            case self::LABEL_INDEX_INVALID_ARG:
+            case self::LABEL_INDEX_EMPTY:
+            default:
+                $set_local_part->with($value)->willThrowException(new InvalidArgumentException());
+
+                $this->expectException(InvalidArgumentException::class);
+                $this->userEmailEntity->setLocalPart($value);
+
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setLocalPart($value);
                 break;
         }
@@ -221,7 +231,7 @@ class UserEmailTest extends TestCase
         $set_domain_name = $this->mockEntity->method('setDomainName');
         $get_domain_name = $this->mockEntity->method('getDomainName');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_domain_name->with($value)->willReturn(true);
                 $get_domain_name->willReturn($value);
 
@@ -231,23 +241,24 @@ class UserEmailTest extends TestCase
                 static::assertTrue($this->userEmailEntity->setDomainName($value));
                 static::assertEquals($value, $this->userEmailEntity->getDomainName());
                 break;
-            case 'invalid_arg':
-            case 'empty':
-                $set_domain_name->with($value)->willThrowException(new InvalidArgumentException());
-
-                static::expectException(InvalidArgumentException::class);
-                $this->userEmailEntity->setDomainName($value);
-
-                static::expectException(InvalidArgumentException::class);
-                $this->mockEntity->setDomainName($value);
-                break;
-            case 'type_error':
+            case self::LABEL_INDEX_TYPE_ERROR:
                 $set_domain_name->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setDomainName($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
+                $this->mockEntity->setDomainName($value);
+                break;
+            case self::LABEL_INDEX_INVALID_ARG:
+            case self::LABEL_INDEX_EMPTY:
+            default:
+                $set_domain_name->with($value)->willThrowException(new InvalidArgumentException());
+
+                $this->expectException(InvalidArgumentException::class);
+                $this->userEmailEntity->setDomainName($value);
+
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setDomainName($value);
                 break;
         }
@@ -263,7 +274,7 @@ class UserEmailTest extends TestCase
         $set_email_enabled = $this->mockEntity->method('setEmailEnabled');
         $is_email_enabled  = $this->mockEntity->method('isEmailEnabled');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_email_enabled->with($value);
                 $is_email_enabled->willReturn(true);
 
@@ -273,16 +284,17 @@ class UserEmailTest extends TestCase
                 $this->mockEntity->setEmailEnabled($value);
                 static::assertTrue($this->mockEntity->isEmailEnabled());
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_email_enabled->with($value)->willThrowException(new TypeError());
                 $is_email_enabled->willReturn(false);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setEmailEnabled($value);
                 static::assertIsBool($this->userEmailEntity->isEmailEnabled());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setEmailEnabled($value);
                 static::assertIsBool($this->mockEntity->isEmailEnabled());
                 break;
@@ -299,7 +311,7 @@ class UserEmailTest extends TestCase
         $set_creation_date = $this->mockEntity->method('setCreationDate');
         $get_creation_date = $this->mockEntity->method('getCreationDate');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_creation_date->with($value);
                 $get_creation_date->willReturn($value);
 
@@ -315,14 +327,15 @@ class UserEmailTest extends TestCase
                     $this->mockEntity->getCreationDate()
                 );
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_creation_date->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setCreationDate($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setCreationDate($value);
                 break;
         }
@@ -338,7 +351,7 @@ class UserEmailTest extends TestCase
         $set_update_date = $this->mockEntity->method('setUpdateDate');
         $get_update_date = $this->mockEntity->method('getUpdateDate');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_update_date->with($value);
                 $get_update_date->willReturn($value);
 
@@ -354,7 +367,7 @@ class UserEmailTest extends TestCase
                     $this->mockEntity->getUpdateDate()
                 );
                 break;
-            case 'null':
+            case self::LABEL_INDEX_NULL:
                 $set_update_date->with($value);
                 $get_update_date->willReturn($value);
 
@@ -364,14 +377,15 @@ class UserEmailTest extends TestCase
                 static::assertNull($this->userEmailEntity->getUpdateDate());
                 static::assertNull($this->mockEntity->getUpdateDate());
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_update_date->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userEmailEntity->setUpdateDate($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUpdateDate($value);
                 break;
         }

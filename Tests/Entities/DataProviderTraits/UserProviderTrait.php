@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Entities\Traits;
+namespace Tests\Entities\DataProviderTraits;
 
 use DateTimeImmutable;
+use Tests\Entities\UserTest;
 
 /**
  * Trait UserProviderTrait
@@ -25,63 +26,63 @@ trait UserProviderTrait
     public function __construct()
     {
         $this->userId = [
-            ['real', 39873],
-            ['invalid_arg', 0],
-            ['type_error', '39873'],
-            ['empty', '']
+            [UserTest::LABEL_INDEX_REAL, 39873],
+            [UserTest::LABEL_INDEX_INVALID_ARG, 0],
+            [UserTest::LABEL_INDEX_TYPE_ERROR, '39873'],
+            [UserTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->userGroupId = [
-            ['real', 39873],
-            ['null', null],
-            ['invalid_arg', 0],
-            ['type_error', '39873'],
-            ['empty', '']
+            [UserTest::LABEL_INDEX_REAL, 39873],
+            [UserTest::LABEL_INDEX_NULL, null],
+            [UserTest::LABEL_INDEX_INVALID_ARG, 0],
+            [UserTest::LABEL_INDEX_TYPE_ERROR, '39873'],
+            [UserTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->userName = [
-            ['real', 'amineherradi'],
-            ['invalid_arg', ''],
-            ['type_error', 39873],
-            ['empty', null]
+            [UserTest::LABEL_INDEX_REAL, 'amineherradi'],
+            [UserTest::LABEL_INDEX_INVALID_ARG, ''],
+            [UserTest::LABEL_INDEX_TYPE_ERROR, 39873],
+            [UserTest::LABEL_INDEX_EMPTY, null]
         ];
         $this->userFirstname = [
-            ['real', 'Amine'],
-            ['invalid_arg', ''],
-            ['type_error', 39873],
-            ['empty', null]
+            [UserTest::LABEL_INDEX_REAL, 'Amine'],
+            [UserTest::LABEL_INDEX_INVALID_ARG, ''],
+            [UserTest::LABEL_INDEX_TYPE_ERROR, 39873],
+            [UserTest::LABEL_INDEX_EMPTY, null]
         ];
         $this->userLastname = [
-            ['real', 'Herradi'],
-            ['invalid_arg', ''],
-            ['type_error', 39873],
-            ['empty', null]
+            [UserTest::LABEL_INDEX_REAL, 'Herradi'],
+            [UserTest::LABEL_INDEX_INVALID_ARG, ''],
+            [UserTest::LABEL_INDEX_TYPE_ERROR, 39873],
+            [UserTest::LABEL_INDEX_EMPTY, null]
         ];
         $this->userEnabled = [
-            ['real', true],
-            ['type_error', 1],
-            ['empty', '']
+            [UserTest::LABEL_INDEX_REAL, true],
+            [UserTest::LABEL_INDEX_TYPE_ERROR, 1],
+            [UserTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->creationDate = [
-            ['real', DateTimeImmutable::createFromFormat(
+            [UserTest::LABEL_INDEX_REAL, DateTimeImmutable::createFromFormat(
                 DATE_W3C,
                 date(
                     DATE_W3C,
                     strtotime('yesterday')
                 )
             )],
-            ['type_error', date(DATE_W3C, strtotime('tomorrow'))],
-            ['empty', '']
+            [UserTest::LABEL_INDEX_TYPE_ERROR, date(DATE_W3C, strtotime('tomorrow'))],
+            [UserTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->updateDate = [
-            ['real', DateTimeImmutable::createFromFormat(
+            [UserTest::LABEL_INDEX_REAL, DateTimeImmutable::createFromFormat(
                 DATE_W3C,
                 date(
                     DATE_W3C,
                     strtotime('today')
                 )
             )],
-            ['null', null],
-            ['type_error', date(DATE_W3C, strtotime('now'))],
-            ['empty', '']
+            [UserTest::LABEL_INDEX_NULL, null],
+            [UserTest::LABEL_INDEX_TYPE_ERROR, date(DATE_W3C, strtotime('now'))],
+            [UserTest::LABEL_INDEX_EMPTY, '']
         ];
     }
 

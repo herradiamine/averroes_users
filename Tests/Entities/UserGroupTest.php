@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Tests\Entities;
 
 use Entities\UserGroup;
+use Codeception\Test\Unit;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
-use Tests\Entities\Traits\GroupProviderTrait;
+use Tests\Entities\DataProviderTraits\GroupProviderTrait;
 use DateTimeImmutable;
 use InvalidArgumentException;
 use TypeError;
@@ -16,11 +16,17 @@ use TypeError;
  * Class UserGroupTest
  * @package Tests\Entities
  */
-class UserGroupTest extends TestCase
+class UserGroupTest extends Unit
 {
     use GroupProviderTrait {
         GroupProviderTrait::__construct as availableData;
     }
+
+    public const LABEL_INDEX_REAL        = 'real';
+    public const LABEL_INDEX_INVALID_ARG = 'invalid_arg';
+    public const LABEL_INDEX_TYPE_ERROR  = 'type_error';
+    public const LABEL_INDEX_EMPTY       = 'empty';
+    public const LABEL_INDEX_NULL        = 'null';
 
     /** @var UserGroup|MockObject $mockEntity */
     private MockObject $mockEntity;
@@ -39,7 +45,7 @@ class UserGroupTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableData();
-        $this->mockEntity      = static::createMock(UserGroup::class);
+        $this->mockEntity      = $this->createMock(UserGroup::class);
         $this->userGroupEntity = new UserGroup();
     }
 
@@ -53,7 +59,7 @@ class UserGroupTest extends TestCase
         $set_user_group_id = $this->mockEntity->method('setUserGroupId');
         $get_user_group_id = $this->mockEntity->method('getUserGroupId');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_user_group_id->with($value)->willReturn(true);
                 $get_user_group_id->willReturn($value);
 
@@ -63,23 +69,24 @@ class UserGroupTest extends TestCase
                 static::assertTrue($this->userGroupEntity->setUserGroupId($value));
                 static::assertEquals($value, $this->userGroupEntity->getUserGroupId());
                 break;
-            case 'invalid_arg':
+            case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_group_id->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userGroupEntity->setUserGroupId($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserGroupId($value);
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_user_group_id->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userGroupEntity->setUserGroupId($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserGroupId($value);
                 break;
         }
@@ -95,30 +102,31 @@ class UserGroupTest extends TestCase
         $set_group_name = $this->mockEntity->method('setGroupName');
         $get_group_name = $this->mockEntity->method('getGroupName');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_group_name->with($value)->willReturn(true);
                 $get_group_name->willReturn($value);
 
                 static::assertTrue($this->userGroupEntity->setGroupName($value));
                 static::assertEquals($value, $this->userGroupEntity->getGroupName());
                 break;
-            case 'invalid_arg':
+            case self::LABEL_INDEX_INVALID_ARG:
                 $set_group_name->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userGroupEntity->setGroupName($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setGroupName($value);
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_group_name->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userGroupEntity->setGroupName($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setGroupName($value);
                 break;
         }
@@ -135,7 +143,7 @@ class UserGroupTest extends TestCase
         $get_group_enabled = $this->mockEntity->method('isGroupEnabled');
 
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_group_enabled->with($value);
                 $get_group_enabled->willReturn($value);
 
@@ -145,11 +153,12 @@ class UserGroupTest extends TestCase
                 $this->mockEntity->setGroupEnabled($value);
                 static::assertTrue($this->mockEntity->isGroupEnabled());
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_group_enabled->with($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userGroupEntity->setGroupEnabled($value);
                 break;
         }
@@ -165,7 +174,7 @@ class UserGroupTest extends TestCase
         $set_creation_date = $this->mockEntity->method('setCreationDate');
         $get_creation_date = $this->mockEntity->method('getCreationDate');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_creation_date->with($value);
                 $get_creation_date->willReturn($value);
 
@@ -181,14 +190,15 @@ class UserGroupTest extends TestCase
                     $this->mockEntity->getCreationDate()
                 );
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_creation_date->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userGroupEntity->setCreationDate($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setCreationDate($value);
                 break;
         }
@@ -204,7 +214,7 @@ class UserGroupTest extends TestCase
         $set_update_date = $this->mockEntity->method('setUpdateDate');
         $get_update_date = $this->mockEntity->method('getUpdateDate');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_update_date->with($value);
                 $get_update_date->willReturn($value);
 
@@ -220,7 +230,7 @@ class UserGroupTest extends TestCase
                     $this->mockEntity->getUpdateDate()
                 );
                 break;
-            case 'null':
+            case self::LABEL_INDEX_NULL:
                 $set_update_date->with($value);
                 $get_update_date->willReturn($value);
 
@@ -230,14 +240,15 @@ class UserGroupTest extends TestCase
                 static::assertNull($this->userGroupEntity->getUpdateDate());
                 static::assertNull($this->mockEntity->getUpdateDate());
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_update_date->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userGroupEntity->setUpdateDate($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUpdateDate($value);
                 break;
         }

@@ -6,21 +6,27 @@ namespace Tests\Entities;
 
 use DateTimeImmutable;
 use Entities\UserProperty;
+use Codeception\Test\Unit;
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
-use Tests\Entities\Traits\PropertyProviderTrait;
+use Tests\Entities\DataProviderTraits\PropertyProviderTrait;
 use TypeError;
 
 /**
  * Class UserPropertyTest
  * @package Tests\Entities
  */
-class UserPropertyTest extends TestCase
+class UserPropertyTest extends Unit
 {
     use PropertyProviderTrait {
         PropertyProviderTrait::__construct as availableData;
     }
+
+    public const LABEL_INDEX_REAL        = 'real';
+    public const LABEL_INDEX_INVALID_ARG = 'invalid_arg';
+    public const LABEL_INDEX_TYPE_ERROR  = 'type_error';
+    public const LABEL_INDEX_EMPTY       = 'empty';
+    public const LABEL_INDEX_NULL        = 'null';
 
     /** @var UserProperty $userPropertyEntity */
     private UserProperty $userPropertyEntity;
@@ -39,7 +45,7 @@ class UserPropertyTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->availableData();
-        $this->mockEntity = static::createMock(UserProperty::class);
+        $this->mockEntity = $this->createMock(UserProperty::class);
         $this->userPropertyEntity = new UserProperty();
     }
 
@@ -53,7 +59,7 @@ class UserPropertyTest extends TestCase
         $set_user_property_id = $this->mockEntity->method('setUserPropertyId');
         $get_user_property_id = $this->mockEntity->method('getUserPropertyId');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_user_property_id->with($value)->willReturn(true);
                 $get_user_property_id->willReturn($value);
 
@@ -63,23 +69,24 @@ class UserPropertyTest extends TestCase
                 static::assertTrue($this->mockEntity->setUserPropertyId($value));
                 static::assertEquals($value, $this->mockEntity->getUserPropertyId());
                 break;
-            case 'invalid_arg':
+            case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_property_id->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userPropertyEntity->setUserPropertyId($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserPropertyId($value);
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_user_property_id->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userPropertyEntity->setUserPropertyId($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserPropertyId($value);
                 break;
         }
@@ -95,8 +102,8 @@ class UserPropertyTest extends TestCase
         $set_user_group_id = $this->mockEntity->method('setUserGroupId');
         $get_user_group_id = $this->mockEntity->method('getUserGroupId');
         switch ($type) {
-            case 'real':
-            case 'null':
+            case self::LABEL_INDEX_REAL:
+            case self::LABEL_INDEX_NULL:
                 $set_user_group_id->with($value)->willReturn(true);
                 $get_user_group_id->willReturn($value);
 
@@ -106,23 +113,24 @@ class UserPropertyTest extends TestCase
                 static::assertTrue($this->mockEntity->setUserGroupId($value));
                 static::assertEquals($value, $this->mockEntity->getUserGroupId());
                 break;
-            case 'invalid_arg':
+            case self::LABEL_INDEX_INVALID_ARG:
                 $set_user_group_id->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userPropertyEntity->setUserGroupId($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setUserGroupId($value);
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_user_group_id->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userPropertyEntity->setUserGroupId($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUserGroupId($value);
                 break;
         }
@@ -139,7 +147,7 @@ class UserPropertyTest extends TestCase
         $get_property_name = $this->mockEntity->method('getPropertyName');
 
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_property_name->with($value)->willReturn(true);
                 $get_property_name->willReturn($value);
 
@@ -149,23 +157,24 @@ class UserPropertyTest extends TestCase
                 static::assertTrue($this->mockEntity->setPropertyName($value));
                 static::assertEquals($value, $this->mockEntity->getPropertyName());
                 break;
-            case 'invalid_arg':
+            case self::LABEL_INDEX_INVALID_ARG:
                 $set_property_name->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userPropertyEntity->setPropertyName($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setPropertyName($value);
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_property_name->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userPropertyEntity->setPropertyName($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setPropertyName($value);
                 break;
         }
@@ -182,7 +191,7 @@ class UserPropertyTest extends TestCase
         $get_property_type = $this->mockEntity->method('getPropertyType');
 
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_property_type->with($value)->willReturn(true);
                 $get_property_type->willReturn($value);
 
@@ -192,23 +201,24 @@ class UserPropertyTest extends TestCase
                 static::assertTrue($this->mockEntity->setPropertyType($value));
                 static::assertEquals($value, $this->mockEntity->getPropertyType());
                 break;
-            case 'invalid_arg':
+            case self::LABEL_INDEX_INVALID_ARG:
                 $set_property_type->with($value)->willThrowException(new InvalidArgumentException());
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->userPropertyEntity->setPropertyType($value);
 
-                static::expectException(InvalidArgumentException::class);
+                $this->expectException(InvalidArgumentException::class);
                 $this->mockEntity->setPropertyType($value);
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_property_type->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userPropertyEntity->setPropertyType($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setPropertyType($value);
                 break;
         }
@@ -224,7 +234,7 @@ class UserPropertyTest extends TestCase
         $set_property_enabled = $this->mockEntity->method('setPropertyEnabled');
         $is_property_enabled  = $this->mockEntity->method('isPropertyEnabled');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_property_enabled->with($value);
                 $is_property_enabled->willReturn($value);
 
@@ -234,15 +244,16 @@ class UserPropertyTest extends TestCase
                 $this->mockEntity->setPropertyEnabled($value);
                 static::assertTrue($this->mockEntity->isPropertyEnabled());
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_property_enabled->with($value)->willThrowException(new TypeError());
                 $is_property_enabled->willReturn(false);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userPropertyEntity->setPropertyEnabled($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setPropertyEnabled($value);
                 break;
         }
@@ -258,7 +269,7 @@ class UserPropertyTest extends TestCase
         $set_creation_date = $this->mockEntity->method('setCreationDate');
         $get_creation_date = $this->mockEntity->method('getCreationDate');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_creation_date->with($value);
                 $get_creation_date->willReturn($value);
 
@@ -274,14 +285,15 @@ class UserPropertyTest extends TestCase
                     $this->mockEntity->getCreationDate()
                 );
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_creation_date->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userPropertyEntity->setCreationDate($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setCreationDate($value);
                 break;
         }
@@ -297,7 +309,7 @@ class UserPropertyTest extends TestCase
         $set_update_date = $this->mockEntity->method('setUpdateDate');
         $get_update_date = $this->mockEntity->method('getUpdateDate');
         switch ($type) {
-            case 'real':
+            case self::LABEL_INDEX_REAL:
                 $set_update_date->with($value);
                 $get_update_date->willReturn($value);
 
@@ -313,7 +325,7 @@ class UserPropertyTest extends TestCase
                     $this->mockEntity->getUpdateDate()
                 );
                 break;
-            case 'null':
+            case self::LABEL_INDEX_NULL:
                 $set_update_date->with($value);
                 $get_update_date->willReturn($value);
 
@@ -323,14 +335,15 @@ class UserPropertyTest extends TestCase
                 static::assertNull($this->userPropertyEntity->getUpdateDate());
                 static::assertNull($this->mockEntity->getUpdateDate());
                 break;
-            case 'type_error':
-            case 'empty':
+            case self::LABEL_INDEX_TYPE_ERROR:
+            case self::LABEL_INDEX_EMPTY:
+            default:
                 $set_update_date->with($value)->willThrowException(new TypeError());
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->userPropertyEntity->setUpdateDate($value);
 
-                static::expectException(TypeError::class);
+                $this->expectException(TypeError::class);
                 $this->mockEntity->setUpdateDate($value);
                 break;
         }

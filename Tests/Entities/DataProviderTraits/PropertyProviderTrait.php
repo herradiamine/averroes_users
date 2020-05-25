@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Entities\Traits;
+namespace Tests\Entities\DataProviderTraits;
 
 use DateTimeImmutable;
+use Tests\Entities\UserPropertyTest;
 
 /**
  * Trait PropertyProviderTrait
@@ -24,57 +25,57 @@ trait PropertyProviderTrait
     public function __construct()
     {
         $this->userPropertyId = [
-            ['real', 39873],
-            ['invalid_arg', 0],
-            ['type_error', '39873'],
-            ['empty', '']
+            [UserPropertyTest::LABEL_INDEX_REAL, 39873],
+            [UserPropertyTest::LABEL_INDEX_INVALID_ARG, 0],
+            [UserPropertyTest::LABEL_INDEX_TYPE_ERROR, '39873'],
+            [UserPropertyTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->userGroupId = [
-            ['real', 39873],
-            ['null', null],
-            ['invalid_arg', 0],
-            ['type_error', '39873'],
-            ['empty', '']
+            [UserPropertyTest::LABEL_INDEX_REAL, 39873],
+            [UserPropertyTest::LABEL_INDEX_NULL, null],
+            [UserPropertyTest::LABEL_INDEX_INVALID_ARG, 0],
+            [UserPropertyTest::LABEL_INDEX_TYPE_ERROR, '39873'],
+            [UserPropertyTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->propertyName = [
-            ['real', 'PROPERTY_NAME'],
-            ['invalid_arg', ''],
-            ['type_error', 39873],
-            ['empty', null]
+            [UserPropertyTest::LABEL_INDEX_REAL, 'PROPERTY_NAME'],
+            [UserPropertyTest::LABEL_INDEX_INVALID_ARG, ''],
+            [UserPropertyTest::LABEL_INDEX_TYPE_ERROR, 39873],
+            [UserPropertyTest::LABEL_INDEX_EMPTY, null]
         ];
         $this->propertyType = [
-            ['real', 'PROPERTY_TYPE'],
-            ['invalid_arg', ''],
-            ['type_error', 39873],
-            ['empty', null]
+            [UserPropertyTest::LABEL_INDEX_REAL, 'PROPERTY_TYPE'],
+            [UserPropertyTest::LABEL_INDEX_INVALID_ARG, ''],
+            [UserPropertyTest::LABEL_INDEX_TYPE_ERROR, 39873],
+            [UserPropertyTest::LABEL_INDEX_EMPTY, null]
         ];
         $this->propertyEnabled = [
-            ['real', true],
-            ['type_error', 1],
-            ['empty', '']
+            [UserPropertyTest::LABEL_INDEX_REAL, true],
+            [UserPropertyTest::LABEL_INDEX_TYPE_ERROR, 1],
+            [UserPropertyTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->creationDate = [
-            ['real', DateTimeImmutable::createFromFormat(
+            [UserPropertyTest::LABEL_INDEX_REAL, DateTimeImmutable::createFromFormat(
                 DATE_W3C,
                 date(
                     DATE_W3C,
                     strtotime('yesterday')
                 )
             )],
-            ['type_error', date(DATE_W3C, strtotime('tomorrow'))],
-            ['empty', '']
+            [UserPropertyTest::LABEL_INDEX_TYPE_ERROR, date(DATE_W3C, strtotime('tomorrow'))],
+            [UserPropertyTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->updateDate = [
-            ['real', DateTimeImmutable::createFromFormat(
+            [UserPropertyTest::LABEL_INDEX_REAL, DateTimeImmutable::createFromFormat(
                 DATE_W3C,
                 date(
                     DATE_W3C,
                     strtotime('today')
                 )
             )],
-            ['null', null],
-            ['type_error', date(DATE_W3C, strtotime('now'))],
-            ['empty', '']
+            [UserPropertyTest::LABEL_INDEX_NULL, null],
+            [UserPropertyTest::LABEL_INDEX_TYPE_ERROR, date(DATE_W3C, strtotime('now'))],
+            [UserPropertyTest::LABEL_INDEX_EMPTY, '']
         ];
     }
 

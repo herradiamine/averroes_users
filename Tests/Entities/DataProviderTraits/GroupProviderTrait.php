@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Entities\Traits;
+namespace Tests\Entities\DataProviderTraits;
 
 use DateTimeImmutable;
+use Tests\Entities\UserGroupTest;
 
 /**
  * Trait GroupProviderTrait
@@ -22,44 +23,44 @@ trait GroupProviderTrait
     public function __construct()
     {
         $this->userGroupId = [
-            ['real', 39873],
-            ['invalid_arg', 0],
-            ['type_error', '39873'],
-            ['empty', '']
+            [UserGroupTest::LABEL_INDEX_REAL, 39873],
+            [UserGroupTest::LABEL_INDEX_INVALID_ARG, 0],
+            [UserGroupTest::LABEL_INDEX_TYPE_ERROR, '39873'],
+            [UserGroupTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->groupName = [
-            ['real', 'GROUP_NAME'],
-            ['invalid_arg', ''],
-            ['type_error', 39873],
-            ['empty', null]
+            [UserGroupTest::LABEL_INDEX_REAL, 'GROUP_NAME'],
+            [UserGroupTest::LABEL_INDEX_INVALID_ARG, ''],
+            [UserGroupTest::LABEL_INDEX_TYPE_ERROR, 39873],
+            [UserGroupTest::LABEL_INDEX_EMPTY, null]
         ];
         $this->groupEnabled = [
-            ['real', true],
-            ['type_error', 1],
-            ['empty', '']
+            [UserGroupTest::LABEL_INDEX_REAL, true],
+            [UserGroupTest::LABEL_INDEX_TYPE_ERROR, 1],
+            [UserGroupTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->creationDate = [
-            ['real', DateTimeImmutable::createFromFormat(
+            [UserGroupTest::LABEL_INDEX_REAL, DateTimeImmutable::createFromFormat(
                 DATE_W3C,
                 date(
                     DATE_W3C,
                     strtotime('yesterday')
                 )
             )],
-            ['type_error', date(DATE_W3C, strtotime('yesterday'))],
-            ['empty', '']
+            [UserGroupTest::LABEL_INDEX_TYPE_ERROR, date(DATE_W3C, strtotime('yesterday'))],
+            [UserGroupTest::LABEL_INDEX_EMPTY, '']
         ];
         $this->updateDate = [
-            ['real', DateTimeImmutable::createFromFormat(
+            [UserGroupTest::LABEL_INDEX_REAL, DateTimeImmutable::createFromFormat(
                 DATE_W3C,
                 date(
                     DATE_W3C,
                     strtotime('today')
                 )
             )],
-            ['null', null],
-            ['type_error', date(DATE_W3C, strtotime('today'))],
-            ['empty', '']
+            [UserGroupTest::LABEL_INDEX_NULL, null],
+            [UserGroupTest::LABEL_INDEX_TYPE_ERROR, date(DATE_W3C, strtotime('today'))],
+            [UserGroupTest::LABEL_INDEX_EMPTY, '']
         ];
     }
 
