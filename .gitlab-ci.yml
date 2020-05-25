@@ -11,12 +11,15 @@ before_script:
   - apt-get update && apt-get install -qqy git unzip
   # Install composer
   - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-  # Install all project dependencies
-  - composer install
 
 stages:
+  - composer_install
   - code_sniffer
   - codeception_unit
+
+Composer install:
+  stage: composer_install
+  script: composer install
 
 Code sniffer:
   stage: code_sniffer
