@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Tests\Entities;
 
 use Entities\UserPassword;
+use Codeception\Test\Unit;
 use Tests\Entities\DataProviderTraits\PasswordProviderTrait;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 use DateTimeImmutable;
 use InvalidArgumentException;
 use TypeError;
@@ -16,7 +16,7 @@ use TypeError;
  * Class UserPasswordTest
  * @package Tests\Entities
  */
-class UserPasswordTest extends TestCase
+class UserPasswordTest extends Unit
 {
     use PasswordProviderTrait {
         PasswordProviderTrait::__construct as availableData;

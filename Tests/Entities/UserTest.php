@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Tests\Entities;
 
-use DateTimeImmutable;
+use TypeError;
 use Entities\User;
+use DateTimeImmutable;
+use Codeception\Test\Unit;
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 use Tests\Entities\DataProviderTraits\UserProviderTrait;
-use TypeError;
 
 /**
- * Class UserTest
- * @package App\Test\Entities
+ * Class UserEntityTest
+ * @package Tests\Entities
  */
-class UserTest extends TestCase
+class UserTest extends Unit
 {
     use UserProviderTrait {
         UserProviderTrait::__construct as availableData;

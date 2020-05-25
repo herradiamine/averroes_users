@@ -6,9 +6,9 @@ namespace Tests\Entities;
 
 use DateTimeImmutable;
 use Entities\UserProperty;
+use Codeception\Test\Unit;
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 use Tests\Entities\DataProviderTraits\PropertyProviderTrait;
 use TypeError;
 
@@ -16,7 +16,7 @@ use TypeError;
  * Class UserPropertyTest
  * @package Tests\Entities
  */
-class UserPropertyTest extends TestCase
+class UserPropertyTest extends Unit
 {
     use PropertyProviderTrait {
         PropertyProviderTrait::__construct as availableData;

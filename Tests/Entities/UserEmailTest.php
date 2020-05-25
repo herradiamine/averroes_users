@@ -6,9 +6,9 @@ namespace Tests\Entities;
 
 use DateTimeImmutable;
 use Entities\UserEmail;
+use Codeception\Test\Unit;
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 use Tests\Entities\DataProviderTraits\EmailProviderTrait;
 use TypeError;
 
@@ -16,7 +16,7 @@ use TypeError;
  * Class UserEmailTest
  * @package App\Tests\Entities
  */
-class UserEmailTest extends TestCase
+class UserEmailTest extends Unit
 {
     use EmailProviderTrait {
         EmailProviderTrait::__construct as availableData;

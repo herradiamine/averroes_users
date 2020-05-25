@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Tests\Entities;
 
 use DateTimeImmutable;
+use Codeception\Test\Unit;
 use Entities\UserPropertyValue;
 use InvalidArgumentException;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 use Tests\Entities\DataProviderTraits\PropertyValueProviderTrait;
 use TypeError;
 
@@ -16,7 +16,7 @@ use TypeError;
  * Class UserPropertyValueTest
  * @package Tests\Entities
  */
-class UserPropertyValueTest extends TestCase
+class UserPropertyValueTest extends Unit
 {
     use PropertyValueProviderTrait {
         PropertyValueProviderTrait::__construct as availableData;
