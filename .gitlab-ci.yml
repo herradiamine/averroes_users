@@ -14,8 +14,12 @@ before_script:
   # Install all project dependencies
   - composer install
 
-# Test
-test:
+# Test1
+test1:
   script:
     - vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*,*/Rapports/*
+
+# Test2
+test2:
+  script:
     - vendor/bin/codecept run unit
