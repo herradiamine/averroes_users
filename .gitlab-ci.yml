@@ -14,12 +14,14 @@ before_script:
   # Install all project dependencies
   - composer install
 
-# Test1
-test1:
-  script:
-    - vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*,*/Rapports/*
+stages:
+  - code_snifer
+  - codeception_unit
 
-# Test2
-test2:
-  script:
-    - vendor/bin/codecept run unit
+job 0:
+  stage: code_snifer
+  script: vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*,*/Tests/_output/*
+
+job 1:
+  stage: codeception_unit
+  script: vendor/bin/codecept run unit
