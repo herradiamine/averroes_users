@@ -17,16 +17,18 @@ interface ModelInterface
      * Gets many elements using select by many ids and displays choosen fields.
      * Returns all fields by default if not given $displayFields parameter
      * and 20 elements from offset 0.
-     * @param array  $ids
-     * @param array  $displayFiedls
-     * @param int    $limit
-     * @param int    $offset
+     *
+     * @param array $ids
+     * @param array $displayFields
+     * @param int   $limit
+     * @param int   $offset
+     *
      * @return Generator
      * @throws ModelException
      */
     public function getOneOrManyByIds(
         array $ids,
-        array $displayFiedls = ['*'],
+        array $displayFields = ['*'],
         int $limit = 20,
         int $offset = 0
     ): Generator;
