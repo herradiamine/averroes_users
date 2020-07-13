@@ -14,7 +14,7 @@ settings:
     lint: true
     # Display colors in CLI
     colors: true
-    # Use xml strict as doctype for coverage report
+    # Use xml strict as type for coverage report
     strict_xml: true
     # Codeception should not exceed 1024M
     memory_limit: 1024M
@@ -36,7 +36,8 @@ coverage:
     enabled: true
     include:
         - App/*
-        - Config/*
+        - Config/Exceptions/*
+        - Config/PDOConfigEntity.php
         - Entities/*
         - Models/*
         - Routes/*
