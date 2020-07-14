@@ -36,8 +36,7 @@ coverage:
     enabled: true
     include:
         - App/*
-        - Config/Exceptions/*
-        - Config/PDOConfigEntity.php
+        - Config/*
         - Entities/*
         - Models/*
         - Routes/*

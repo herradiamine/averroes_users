@@ -14,7 +14,7 @@ use TypeError;
 
 /**
  * Abstract ModelManager
- * @package Database/Engine
+ * @package Models/Engine
  */
 abstract class ModelManager extends PDO implements ModelInterface
 {
