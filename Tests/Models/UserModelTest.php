@@ -8,7 +8,9 @@ use DI\Container;
 use Entities\User;
 use Dotenv\Dotenv;
 use Models\UserModel;
+use DI\NotFoundException;
 use Codeception\Test\Unit;
+use DI\DependencyException;
 use Models\Exceptions\ModelException;
 use PHPUnit\Framework\MockObject\MockObject;
 
@@ -38,7 +40,15 @@ class UserModelTest extends Unit
         $dotenv = Dotenv::createImmutable('/home/travis/build/herradiamine/averoes/averoes_users');
         $dotenv->load();
 
-        $this->userModel = new UserModel();
+        $container = new Container();
+        try {
+            $this->userModel = $container->get(UserModel::class);
+        } catch (DependencyException $exception) {
+            echo $exception->getMessage();
+        } catch (NotFoundException $exception) {
+            echo $exception->getMessage();
+        }
+
         $this->mockModel = $this->createMock(UserModel::class);
     }
 
