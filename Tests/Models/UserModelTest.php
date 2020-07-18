@@ -37,9 +37,6 @@ class UserModelTest extends Unit
     {
         parent::__construct($name, $data, $dataName);
 
-        $dotenv = Dotenv::createImmutable('/home/travis/build/herradiamine/averoes/averoes_users');
-        $dotenv->load();
-
         $container = new Container();
         try {
             $this->userModel = $container->get(UserModel::class);
