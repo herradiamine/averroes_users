@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Models;
 
+use DI\Container;
 use Entities\User;
 use Dotenv\Dotenv;
 use Models\UserModel;
@@ -34,7 +35,7 @@ class UserModelTest extends Unit
     {
         parent::__construct($name, $data, $dataName);
 
-        $dotenv = Dotenv::createImmutable('../averoes/averoes_users');
+        $dotenv = Dotenv::createImmutable('/home/travis/build/herradiamine/averoes/averoes_users');
         $dotenv->load();
 
         $this->userModel = new UserModel();
