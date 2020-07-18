@@ -130,7 +130,7 @@ class PDOConfigEntity
         ];
 
         Dotenv::createImmutable(__DIR__ . "/Env")->load();
-        $config_settings  = getenv('APP_DEV_CONFIG');
+        $config_settings  = __DIR__ . getenv('APP_DEV_CONFIG');
         $this->yamlConfig = ($config_settings) ? yaml_parse_file($config_settings) : null;
         if ($this->yamlConfig) {
             $this->yamlConfig = $this->yamlConfig['database_configuration'];
