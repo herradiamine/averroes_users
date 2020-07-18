@@ -22,7 +22,8 @@ class UserModel extends ModelManager implements ModelInterface
      * @param PDOConfigEntity $configuration
      * @return void
      */
-    public function __construct(PDOConfigEntity $configuration) {
+    public function __construct(PDOConfigEntity $configuration)
+    {
         parent::__construct($configuration);
         $this->entityName = User::class;
         $this->table = User::TABLE_NAME;

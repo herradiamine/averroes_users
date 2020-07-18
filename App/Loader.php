@@ -39,9 +39,4 @@ class Loader extends Container
             $wrapperContainer
         );
     }
-
-    public function loadApplication()
-    {
-
-    }
 }

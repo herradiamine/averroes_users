@@ -42,7 +42,8 @@ abstract class ModelManager extends PDO implements ModelInterface
      *
      * @param PDOConfigEntity $configuration
      */
-    public function __construct(PDOConfigEntity $configuration) {
+    public function __construct(PDOConfigEntity $configuration)
+    {
         $this->pdoConfig = $configuration;
         parent::__construct(
             $this->pdoConfig->getDns(),
