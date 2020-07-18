@@ -38,8 +38,10 @@ class Loader extends Container
             $proxyFactory,
             $wrapperContainer
         );
-
-        
     }
 
+    public function loadApplication()
+    {
+
+    }
 }

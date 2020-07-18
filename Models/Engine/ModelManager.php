@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Models\Engine;
 
+use Dotenv\Dotenv;
 use Config\PDOConfigEntity;
 use Models\Exceptions\ModelException;
 use Models\Helpers\ModelHelper;
@@ -38,10 +39,11 @@ abstract class ModelManager extends PDO implements ModelInterface
 
     /**
      * ModelManager constructor using illuminate/database dependency.
+     *
+     * @param PDOConfigEntity $configuration
      */
-    public function __construct()
-    {
-        $this->pdoConfig = new PDOConfigEntity();
+    public function __construct(PDOConfigEntity $configuration) {
+        $this->pdoConfig = $configuration;
         parent::__construct(
             $this->pdoConfig->getDns(),
             $this->pdoConfig->getUsername(),
