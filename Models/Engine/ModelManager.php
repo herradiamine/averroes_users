@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Models\Engine;
 
-use Dotenv\Dotenv;
 use Config\PDOConfigEntity;
 use Models\Exceptions\ModelException;
 use Models\Helpers\ModelHelper;
 use Models\Interfaces\ModelInterface;
 use Generator;
-use PDO;
 use TypeError;
+use PDO;
 
 /**
  * Abstract ModelManager

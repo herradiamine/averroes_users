@@ -20,5 +20,8 @@
             "Routes\\": "Routes/",
             "Tests\\": "Tests/"
         }
+    },
+    "require-dev": {
+        "codeception/module-db": "^1.0"
     }
 }

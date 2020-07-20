@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Models;
 
-use Dotenv\Dotenv;
 use Config\PDOConfigEntity;
 use Models\Interfaces\ModelInterface;
 use Models\Engine\ModelManager;

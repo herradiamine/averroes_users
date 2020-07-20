@@ -6,8 +6,18 @@ suites:
         modules:
             enabled:
                 # add more modules here
+                - Db:
+                    dns: 'mysql:host=172.17.0.2;dbname=averoes;charset=utf8'
+                    user: 'root'
+                    password: 'root'
+                    dump: ''
+                    populate: true
+                    cleanup: true
+                    reconnect: true
+
                 - Asserts
-        step_decorators: ~ 
+                - \Helper\Unit
+        step_decorators: ~
 settings:
     # Shuffle tests or proceed in order
     shuffle: false

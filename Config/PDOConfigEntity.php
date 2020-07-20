@@ -129,8 +129,8 @@ class PDOConfigEntity
             'utf8mb4'
         ];
 
-        Dotenv::createImmutable(__DIR__ . "/Env")->load();
-        $config_settings  = __DIR__ . getenv('APP_DEV_CONFIG');
+        $environment = Dotenv::createImmutable(__DIR__ . "/Env")->load();
+        $config_settings  = __DIR__ . $environment['APP_DEV_CONFIG'];
         $this->yamlConfig = ($config_settings) ? yaml_parse_file($config_settings) : null;
         if ($this->yamlConfig) {
             $this->yamlConfig = $this->yamlConfig['database_configuration'];
