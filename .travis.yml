@@ -14,7 +14,7 @@ cache:
 
 before_script:
 - composer install --prefer-dist
-- sudo apt install default-jre
+- sudo apt install openjdk-9-jre-headless
 
 install:
 - printf "\n" | pecl install yaml
