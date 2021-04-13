@@ -15,7 +15,7 @@ stages:
 
 Code sniffer:
   stage: code_sniffer
-  script: vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averoes_users --ignore=*/vendor/*,*/Tests/_output/*
+  script: vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averroes_users --ignore=*/vendor/*,*/Tests/_output/*
 
 Codeception unit:
   stage: codeception_unit
