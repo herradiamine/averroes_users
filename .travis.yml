@@ -14,7 +14,7 @@ cache:
 
 before_script:
 - composer install --prefer-dist
-- sudo update-alternatives --config java
+- sudo apt install openjdk-11-jre
 
 install:
 - printf "\n" | pecl install yaml
