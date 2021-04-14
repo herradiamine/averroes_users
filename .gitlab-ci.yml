@@ -1,3 +1,7 @@
+variables:
+  SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+  GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
+
 # Select image from https://hub.docker.com/_/php/
 image: php:7.4.6
 
@@ -11,11 +15,20 @@ before_script:
 
 stages:
   - code_sniffer
+  - sonar_scanner
   - codeception_unit
 
 Code sniffer:
   stage: code_sniffer
   script: vendor/bin/phpcs --standard=PSR1,PSR2,PSR12 ../averroes_users --ignore=*/vendor/*,*/Tests/_output/*
+
+Sonar scanner:
+  stage: sonar_scanner
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  script: sonar-scanner
 
 Codeception unit:
   stage: codeception_unit
