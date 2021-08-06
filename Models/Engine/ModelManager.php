@@ -9,12 +9,12 @@ use Models\Exceptions\ModelException;
 use Models\Helpers\ModelHelper;
 use Models\Interfaces\ModelInterface;
 use Generator;
-use PDO;
 use TypeError;
+use PDO;
 
 /**
  * Abstract ModelManager
- * @package Database/Engine
+ * @package Models/Engine
  */
 abstract class ModelManager extends PDO implements ModelInterface
 {
@@ -38,10 +38,12 @@ abstract class ModelManager extends PDO implements ModelInterface
 
     /**
      * ModelManager constructor using illuminate/database dependency.
+     *
+     * @param PDOConfigEntity $configuration
      */
-    public function __construct()
+    public function __construct(PDOConfigEntity $configuration)
     {
-        $this->pdoConfig = new PDOConfigEntity();
+        $this->pdoConfig = $configuration;
         parent::__construct(
             $this->pdoConfig->getDns(),
             $this->pdoConfig->getUsername(),
@@ -50,23 +52,25 @@ abstract class ModelManager extends PDO implements ModelInterface
     }
 
     /**
-     * Gets many elements using select by many ids and displays choosen fields.
+     * Gets many elements using select by many ids and displays chosen fields.
      * Returns all fields by default if not given $displayFields parameter
      * and 20 elements from offset 0.
-     * @param array  $ids
-     * @param array  $displayFiedls
-     * @param int    $limit
-     * @param int    $offset
+     *
+     * @param array $ids
+     * @param array $displayFields
+     * @param int   $limit
+     * @param int   $offset
+     *
      * @return Generator
      * @throws ModelException
      */
     public function getOneOrManyByIds(
         array $ids,
-        array $displayFiedls = ['*'],
+        array $displayFields = ['*'],
         int $limit = 20,
         int $offset = 0
     ): Generator {
-        $fields = ModelHelper::quoteElements($displayFiedls);
+        $fields = ModelHelper::quoteElements($displayFields);
         $ids = implode(",", $ids);
         $sql = "
             SELECT $fields 
@@ -93,9 +97,11 @@ abstract class ModelManager extends PDO implements ModelInterface
      * Gets all stored elements.
      * Returns all fields by default if not given $displayFields parameter
      * and 20 elements from offset 0.
+     *
      * @param array $displayFields
      * @param int   $limit
      * @param int   $offset
+     *
      * @return Generator
      * @throws ModelException
      */
@@ -128,7 +134,9 @@ abstract class ModelManager extends PDO implements ModelInterface
     /**
      * Inserts one element, must have data to be inserted and respect every fields data types rules.
      * Returns the inserted element id.
+     *
      * @param array $data
+     *
      * @return int
      * @throws ModelException
      */
@@ -150,7 +158,9 @@ abstract class ModelManager extends PDO implements ModelInterface
      * Inserts many elements at once, must have one or many datas to be inserted
      * and respect every fields data types rules.
      * Returns the inserted elements ids in an array.
+     *
      * @param array $datas
+     *
      * @return bool
      * @throws ModelException|TypeError
      */
@@ -199,8 +209,10 @@ abstract class ModelManager extends PDO implements ModelInterface
      * Updates many elements by their ids, must have array of elements ids to be updated and datas to replace.
      * Must respect all fields data types rules.
      * Returns array that contains boolean in front of each elements ids that has been updated or not.
+     *
      * @param array  $ids
-     * @param array  $data
+     * @param array $data
+     *
      * @return true
      * @throws ModelException
      */
@@ -235,7 +247,9 @@ abstract class ModelManager extends PDO implements ModelInterface
     /**
      * Deletes many elements by ids, must have array of ids elements to be deleted.
      * Returns array that contains boolean in front of each elements ids that has been deleted or not.
+     *
      * @param array $ids
+     *
      * @return bool
      * @throws ModelException
      */

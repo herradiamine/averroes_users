@@ -7,3 +7,4 @@
 /Rapports/tmp/testdox.txt
 .DS_store
 .idea
+composer.lock

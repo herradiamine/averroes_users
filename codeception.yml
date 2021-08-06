@@ -6,15 +6,25 @@ suites:
         modules:
             enabled:
                 # add more modules here
+                - Db:
+                    dns: 'mysql:host=172.17.0.2;dbname=averoes;charset=utf8'
+                    user: 'root'
+                    password: 'root'
+                    dump: ''
+                    populate: true
+                    cleanup: true
+                    reconnect: true
+
                 - Asserts
-        step_decorators: ~ 
+                - \Helper\Unit
+        step_decorators: ~
 settings:
     # Shuffle tests or proceed in order
     shuffle: false
     lint: true
     # Display colors in CLI
     colors: true
-    # Use xml strict as doctype for coverage report
+    # Use xml strict as type for coverage report
     strict_xml: true
     # Codeception should not exceed 1024M
     memory_limit: 1024M

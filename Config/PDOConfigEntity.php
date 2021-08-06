@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Config;
 
+use Dotenv\Dotenv;
 use Entities\Helpers\EntityHelper;
 use Config\Exceptions\InvalidArgument as InvalidArgumentException;
 use TypeError;
@@ -128,7 +129,8 @@ class PDOConfigEntity
             'utf8mb4'
         ];
 
-        $config_settings  = getenv('APP_DEV_CONFIG');
+        $environment = Dotenv::createImmutable(__DIR__ . "/Env")->load();
+        $config_settings  = __DIR__ . $environment['APP_DEV_CONFIG'];
         $this->yamlConfig = ($config_settings) ? yaml_parse_file($config_settings) : null;
         if ($this->yamlConfig) {
             $this->yamlConfig = $this->yamlConfig['database_configuration'];
